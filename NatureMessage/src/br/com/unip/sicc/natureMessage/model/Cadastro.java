@@ -20,7 +20,7 @@ public class Cadastro {
         if (!noPessoa.equals("") && !noSobrenome.equals("") && !noCargo.equals("") && !noEmpresa.equals("") && !noEndereco.equals("")
                 && !dtNascimento.equals("") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
 
-            if (!noLogin.equals(banco.getResultNome())) {
+            if (!noLogin.equals(banco.getNome())) {
                 if (noSenha.equals(confirmacaoSenha)) {
                     criaQuerySql = "INSERT INTO TB_USUARIO VALUES(" + "'" + noPessoa + "'" + "," + "'" + noSobrenome + "'" + "," + "'" + noCargo + "'" + "," + "'" + noEmpresa + "'" + "," + "'" + noEndereco + "'" + "," + "'" + dtNascimento + "'" + "," + "'" + noEmail + "'" + "," + "'" + noLogin + "'" + "," + "'" + noSenha + "'"+")";
                     banco.CriaCadastroUsuario(criaQuerySql);
