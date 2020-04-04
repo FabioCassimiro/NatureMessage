@@ -65,7 +65,7 @@ public class TelaCadastro {
                     telaCadastro.dispose();
                     new TelaLogin();
                 }
-                
+
             }
         });
 
@@ -245,8 +245,8 @@ public class TelaCadastro {
                 linhaSeparatorConfirmaSenha.setForeground(botoesPadrao.validaCorCampo(pwdSenha.getText()));
 
                 try {
-                    cadastro.CadastroUsuario(txfNome.getText(), txfSobreNome.getText(), txfCargo.getText(),
-                            txfEmpresa.getText(), txfEndereco.getText(), txfDataNasc.getText(), txfEmail.getText(), txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
+                        cadastro.CadastroUsuario(txfNome.getText(), txfSobreNome.getText(), txfCargo.getText(),
+                                txfEmpresa.getText(), txfEndereco.getText(), txfDataNasc.getText(), txfEmail.getText(), txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
                 } catch (InsufficientCharactersException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 } catch (UserRegisteredException ex) {
@@ -254,10 +254,10 @@ public class TelaCadastro {
                 } catch (PasswordsDontMatch ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
-                
+
                 telaCadastro.dispose();
                 new TelaServidor();
-            }
+                }
         });
 
         JButton btnLimpar = new JButton();

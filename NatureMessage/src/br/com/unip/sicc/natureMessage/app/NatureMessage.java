@@ -12,10 +12,11 @@ import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
 public class NatureMessage {
 
     public static void main(String[] args) {
-        
+        new TelaCadastro();
+                
        // new TelaChat();
-        ConfigConexaoServidor  chat = new ConfigConexaoServidor();
-        chat.conexaoChat("127.0.0.1",5000);
+       // ConfigConexaoServidor  chat = new ConfigConexaoServidor();
+       // chat.conexaoChat("127.0.0.1",5000);
 
     }
 }

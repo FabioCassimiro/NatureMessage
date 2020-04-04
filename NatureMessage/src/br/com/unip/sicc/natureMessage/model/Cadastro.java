@@ -22,7 +22,7 @@ public class Cadastro {
 
             if (!noLogin.equals(banco.getNome())) {
                 if (noSenha.equals(confirmacaoSenha)) {
-                    criaQuerySql = "INSERT INTO TB_USUARIO VALUES(" + "'" + noPessoa + "'" + "," + "'" + noSobrenome + "'" + "," + "'" + noCargo + "'" + "," + "'" + noEmpresa + "'" + "," + "'" + noEndereco + "'" + "," + "'" + dtNascimento + "'" + "," + "'" + noEmail + "'" + "," + "'" + noLogin + "'" + "," + "'" + noSenha + "'"+")";
+                    criaQuerySql = "INSERT INTO TB_USUARIO VALUES(" + "'" + noPessoa + "'" + "," + "'" + noSobrenome + "'" + "," + "'" + noCargo + "'" + "," + "'" + noEmpresa + "'" + "," + "'" + noEndereco + "'" + "," + "'" + dtNascimento + "'" + "," + "'" + noEmail + "'" + "," + "'" + noLogin + "'" + "," + "'" + noSenha + "'" + ")";
                     banco.CriaCadastroUsuario(criaQuerySql);
                 } else {
                     throw new PasswordsDontMatch("Senhas não conferemem");
