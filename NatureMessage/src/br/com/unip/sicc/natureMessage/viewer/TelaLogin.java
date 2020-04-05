@@ -56,14 +56,14 @@ public class TelaLogin {
             public void keyPressed(KeyEvent e) {
                 int codigo = e.getKeyCode();
                 int tecla = KeyEvent.VK_ENTER;
-                
+
                 if (codigo == tecla) {
                     try {
 
                         String result = login.ValidaUsuarioSenha(txfUsuario.getText(), pwdSenha.getText());
                         if (result != null) {
                             telaLogin.dispose();
-                            TelaServidor telaServidor =  new TelaServidor();
+                            TelaServidor telaServidor = new TelaServidor();
                             telaServidor.setNomeUsuario(result);
                             botoesPadrao.montaAvisoMensagem("Bem-Vindo  " + result, "SUCESSO");
                         }
@@ -101,17 +101,18 @@ public class TelaLogin {
         btnEntra.setBounds(277, 342, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
         btnEntra.setForeground(Color.WHITE);
-        /*btnEntra.addActionListener(new ActionListener() {
+        btnEntra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 try {
 
                     String result = login.ValidaUsuarioSenha(txfUsuario.getText(), pwdSenha.getText());
-                    if (result.equals("Logado")) {
+                    if (result != null) {
                         telaLogin.dispose();
-                        new TelaServidor();
-                        botoesPadrao.montaAvisoMensagem("Login efetuado!", "SUCESSO");
+                        TelaServidor telaServidor = new TelaServidor();
+                        telaServidor.setNomeUsuario(result);
+                        botoesPadrao.montaAvisoMensagem("Bem-Vindo  " + result, "SUCESSO");
                     }
 
                 } catch (UserInvalidException usuarioInvalido) {
@@ -119,11 +120,11 @@ public class TelaLogin {
                 } catch (InvalidPasswordException senhaInvalida) {
                     JOptionPane.showMessageDialog(null, senhaInvalida.getMessage());
                 }
-
             }
-        });*/
 
- /*JLabel txtLblCadastro = new JLabel("Cadastra-se!");
+        });
+
+        /*JLabel txtLblCadastro = new JLabel("Cadastra-se!");
         txtLblCadastro.setForeground(Color.WHITE);
         txtLblCadastro.setFont(new Font("Arial",Font.BOLD, 12));
         txtLblCadastro.setBounds(416, 377, 100, 25);

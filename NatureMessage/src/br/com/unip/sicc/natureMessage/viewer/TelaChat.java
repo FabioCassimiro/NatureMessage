@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
@@ -31,12 +32,15 @@ public class TelaChat extends JFrame {
     private Socket s;
     private BufferedReader bff;
     private InputStreamReader isr;
+    Calendar dataHora = Calendar.getInstance();
 
     public JButton btnCompartilharImagem;
     public JButton btnCompartilharDoc;
     JTextArea txaEnviar;
     JTextArea txaChat;
     private String nomeUsuario;
+    JTextField txfNome;
+    JTextField txfStatusServidor;
 
     public String getNomeUsuario() {
         return nomeUsuario;
@@ -131,7 +135,6 @@ public class TelaChat extends JFrame {
                 int tecla = KeyEvent.VK_ENTER;
                 if (codigo == tecla) {                 
                        botaoEnviarActionPerformed();
-                       System.out.println("algo");
                 }
             }
         });
@@ -155,7 +158,8 @@ public class TelaChat extends JFrame {
         txtLblMessageChat.setFont(new Font("Arial", Font.BOLD, 10));
         txtLblMessageChat.setBounds(72, 38, 350, 25);
 
-        JTextField txfNome = new JTextField("Nome:");
+        txfNome = new JTextField();
+        
         txfNome.setBorder(null);
         txfNome.setFont(new Font("Arial", Font.BOLD, 11));
         txfNome.setForeground(Color.WHITE);
@@ -163,7 +167,7 @@ public class TelaChat extends JFrame {
         txfNome.setEditable(false);
         txfNome.setBounds(260, 37, 150, 25);
 
-        JTextField txfStatusServidor = new JTextField("Status Servidor:");
+         txfStatusServidor = new JTextField("Status Servidor:");
         txfStatusServidor.setBorder(null);
         txfStatusServidor.setFont(new Font("Arial", Font.BOLD, 11));
         txfStatusServidor.setForeground(Color.WHITE);
@@ -212,9 +216,10 @@ public class TelaChat extends JFrame {
     }
 
     public void Chat() {
-
+        
         try {
             s = new Socket("localhost", 5000);
+            txfStatusServidor.setText("Status Servidor: Online");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -246,10 +251,10 @@ public class TelaChat extends JFrame {
 
     private void botaoEnviarActionPerformed() {
         try {
-            //AcoesBancoDeDados buscaNome = new AcoesBancoDeDados();
+            txfNome.setText("Nome: " + nomeUsuario);
             String mensagem =  nomeUsuario + " Disse: ";
             PrintStream ps = new PrintStream(s.getOutputStream());
-            mensagem += txaEnviar.getText();
+            mensagem += txaEnviar.getText() +  "    "  + dataHora.get(Calendar.HOUR_OF_DAY)+ ":" + dataHora.get(Calendar.MINUTE) ;
             ps.println(mensagem);
             ps.flush();
 

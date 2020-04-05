@@ -256,7 +256,7 @@ public class TelaCadastro {
                 }
 
                 telaCadastro.dispose();
-                new TelaServidor();
+                new TelaLogin();
                 }
         });
 
