@@ -13,8 +13,8 @@ public class NatureMessage {
     public static void main(String[] args) {
         //new TelaCadastro();
 //
-        new TelaLogin();
-       //new TelaSobre();
+        //new TelaLogin();
+       new TelaSobre();
         // ConfigConexaoServidor  chat = new ConfigConexaoServidor();
         // chat.conexaoChat("127.0.0.1",5000);
 

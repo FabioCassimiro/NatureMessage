@@ -68,7 +68,6 @@ public class BotoesPadrao {
         txtLblCaixaAviso.setFont(new Font("Arial", Font.BOLD, 15));
         txtLblCaixaAviso.setBounds(5, 30, 300, 25);
         
-        
         JLabel btnOkay = new JLabel("OK");
         btnOkay.setForeground(Color.WHITE);
         btnOkay.setFont(new Font("Arial", Font.BOLD, 20));
