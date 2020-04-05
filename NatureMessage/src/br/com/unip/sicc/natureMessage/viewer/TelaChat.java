@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -103,7 +105,6 @@ public class TelaChat extends JFrame {
         txaChat.setColumns(0);
         txaChat.setRows(0);
         txaChat.setBounds(260, 63, 600, 320);
-        //txaChat.setBackground(new Color(75, 0, 130));
         txaChat.setEditable(false);
         scroll.setViewportView(txaChat);
 
@@ -112,7 +113,16 @@ public class TelaChat extends JFrame {
         txaEnviar.setColumns(0);
         txaEnviar.setRows(0);
         txaEnviar.setBounds(260, 390, 515, 35);
-        //txaEnviar.setBackground(new Color(75, 0, 130));
+        txaEnviar.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                int codigo = e.getKeyCode();
+                int tecla = KeyEvent.VK_ENTER;
+                if (codigo == tecla) {                 
+                       botaoEnviarActionPerformed();
+                       System.out.println("algo");
+                }
+            }
+        });
         scrollEnviar.setViewportView(txaEnviar);
 
         JButton btnEnviar = new JButton();
@@ -122,12 +132,6 @@ public class TelaChat extends JFrame {
         btnEnviar.setBackground(new Color(0, 255, 127));
         btnEnviar.setFont(new Font("Arial", Font.BOLD, 12));
         btnEnviar.setForeground(Color.WHITE);
-        btnEnviar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ex) {
-                botaoEnviarActionPerformed(ex);
-            }
-        });
 
         JLabel txtLblTitulo = new JLabel("NATURE");
         txtLblTitulo.setForeground(Color.WHITE);
@@ -228,19 +232,19 @@ public class TelaChat extends JFrame {
         tr.start();
     }
 
-    private void botaoEnviarActionPerformed(java.awt.event.ActionEvent evt) {
+    private void botaoEnviarActionPerformed() {
         try {
-                    String mensagem = " Walisson " + " Disse: ";
-                    PrintStream ps = new PrintStream(s.getOutputStream());
-                    mensagem += txaEnviar.getText();
-                    ps.println(mensagem);
-                    ps.flush();
+            String mensagem = " Walisson " + " Disse: ";
+            PrintStream ps = new PrintStream(s.getOutputStream());
+            mensagem += txaEnviar.getText();
+            ps.println(mensagem);
+            ps.flush();
 
-                    txaEnviar.setText("");
+            txaEnviar.setText("");
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,7 +22,7 @@ import javax.swing.JTextField;
 public class TelaLogin {
 
     ConfigLogin login = new ConfigLogin();
-    
+
     PainelPadrao painelLogin = new PainelPadrao();
     BotoesPadrao botoesPadrao = new BotoesPadrao();
     JFrame telaLogin = new JFrame();
@@ -50,6 +52,29 @@ public class TelaLogin {
         pwdSenha.setForeground(Color.WHITE);
         pwdSenha.setBackground(null);
         pwdSenha.setBounds(277, 285, 350, 30);
+        pwdSenha.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                int codigo = e.getKeyCode();
+                int tecla = KeyEvent.VK_ENTER;
+                
+                if (codigo == tecla) {
+                    try {
+
+                        String result = login.ValidaUsuarioSenha(txfUsuario.getText(), pwdSenha.getText());
+                        if (result.equals("Logado")) {
+                            telaLogin.dispose();
+                            new TelaServidor();
+                            botoesPadrao.montaAvisoMensagem("Login efetuado!", "SUCESSO");
+                        }
+
+                    } catch (UserInvalidException usuarioInvalido) {
+                        JOptionPane.showMessageDialog(null, usuarioInvalido.getMessage());
+                    } catch (InvalidPasswordException senhaInvalida) {
+                        JOptionPane.showMessageDialog(null, senhaInvalida.getMessage());
+                    }
+                }
+            }
+        });
 
         JLabel txtLblSubUsuario = new JLabel("Usuario:");
         txtLblSubUsuario.setForeground(Color.WHITE);
@@ -75,7 +100,7 @@ public class TelaLogin {
         btnEntra.setBounds(277, 342, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
         btnEntra.setForeground(Color.WHITE);
-        btnEntra.addActionListener(new ActionListener() {
+        /*btnEntra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -95,9 +120,9 @@ public class TelaLogin {
                 }
 
             }
-        });
+        });*/
 
-        /*JLabel txtLblCadastro = new JLabel("Cadastra-se!");
+ /*JLabel txtLblCadastro = new JLabel("Cadastra-se!");
         txtLblCadastro.setForeground(Color.WHITE);
         txtLblCadastro.setFont(new Font("Arial",Font.BOLD, 12));
         txtLblCadastro.setBounds(416, 377, 100, 25);
