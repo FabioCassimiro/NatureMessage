@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 public class TelaLogin {
 
     ConfigLogin login = new ConfigLogin();
-    ;
+    
     PainelPadrao painelLogin = new PainelPadrao();
     BotoesPadrao botoesPadrao = new BotoesPadrao();
     JFrame telaLogin = new JFrame();
@@ -31,7 +31,6 @@ public class TelaLogin {
         telaLogin.setLocationRelativeTo(null);
         telaLogin.setUndecorated(true);
         telaLogin.setVisible(true);
-
     }
 
     public JPanel montaPainelLogin() {
