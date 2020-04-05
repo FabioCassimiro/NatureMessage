@@ -31,15 +31,15 @@ public class ConfigLogin {
 
         if (usuario.equals(banco.getNome()) && senha.equals(banco.getSenha())) {
             
-            return "Logado";
+            return banco.getNomeUsuario();
         }
         if (usuario.equals(banco.getNome()) && !senha.equals(banco.getSenha())) {
             botoesPadrao.montaAvisoMensagem("Senha ou usuário informado invalido!", "ERRO");
-            return "Não Logado";
+            return null;
         }
         if (!usuario.equals(banco.getNome())) {
            botoesPadrao.montaAvisoMensagem("Senha ou usuário informado invalido!", "ERRO");
-           return "Não Logado";
+           return null;
         }
         return null;
     }

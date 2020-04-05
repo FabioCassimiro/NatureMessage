@@ -16,7 +16,17 @@ public class TelaServidor {
     
     PainelPadrao painelServidor = new PainelPadrao();
     BotoesPadrao botoesPadrao = new BotoesPadrao();
+    private String nomeUsuario;
     JFrame telaServidor = new JFrame();
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+    
 
     public TelaServidor() {
         telaServidor.add(montaPainelServidor());
@@ -61,8 +71,9 @@ public class TelaServidor {
                 ConfigConexaoServidor servidor = new ConfigConexaoServidor();
                 servidor.ValidaServidor(txfUsuario.getText());
                 telaServidor.dispose();
-                new TelaChat();
-                botoesPadrao.montaAvisoMensagem("Conectado a: " +servidor.getNoHostname(), "SUCESSO");
+                TelaChat telaChat =  new TelaChat();
+                telaChat.setNomeUsuario(nomeUsuario);
+                botoesPadrao.montaAvisoMensagem(nomeUsuario + " Conectado a: " +servidor.getNoHostname(), "SUCESSO");
             }
         });
          

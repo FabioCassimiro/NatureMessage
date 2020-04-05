@@ -13,6 +13,7 @@ public class AcoesBancoDeDados {
     private String resulIpServidor;
     private String resulPortaServidor;
     private String resultNoHostname;
+    private String nomeUsuario;
     ConexaoBancoDeDados conexao = new ConexaoBancoDeDados();
 
 
@@ -35,9 +36,14 @@ public class AcoesBancoDeDados {
     public String getSenha() {
         return senha;
     }
-    
-    
-    
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
 
     //->Consulta usuário no banco de dados.
     public void ConsultaLoginSenha(String sqlquery) {
@@ -49,7 +55,7 @@ public class AcoesBancoDeDados {
             while (resultado.next()) {
                 nome = resultado.getString("noLogin");
                 senha = resultado.getString("noSenha");
-
+                nomeUsuario = resultado.getString("noPessoa");
             }
 
         } catch (SQLException e) {

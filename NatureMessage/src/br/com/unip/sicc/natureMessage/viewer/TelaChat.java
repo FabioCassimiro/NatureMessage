@@ -1,5 +1,6 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
+import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -35,6 +36,17 @@ public class TelaChat extends JFrame {
     public JButton btnCompartilharDoc;
     JTextArea txaEnviar;
     JTextArea txaChat;
+    private String nomeUsuario;
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+    
+    
 
     //PainelChat painelChat = new PainelChat();
     PainelPadrao painelChat = new PainelPadrao();
@@ -234,7 +246,8 @@ public class TelaChat extends JFrame {
 
     private void botaoEnviarActionPerformed() {
         try {
-            String mensagem = " Walisson " + " Disse: ";
+            //AcoesBancoDeDados buscaNome = new AcoesBancoDeDados();
+            String mensagem =  nomeUsuario + " Disse: ";
             PrintStream ps = new PrintStream(s.getOutputStream());
             mensagem += txaEnviar.getText();
             ps.println(mensagem);

@@ -61,10 +61,11 @@ public class TelaLogin {
                     try {
 
                         String result = login.ValidaUsuarioSenha(txfUsuario.getText(), pwdSenha.getText());
-                        if (result.equals("Logado")) {
+                        if (result != null) {
                             telaLogin.dispose();
-                            new TelaServidor();
-                            botoesPadrao.montaAvisoMensagem("Login efetuado!", "SUCESSO");
+                            TelaServidor telaServidor =  new TelaServidor();
+                            telaServidor.setNomeUsuario(result);
+                            botoesPadrao.montaAvisoMensagem("Bem-Vindo  " + result, "SUCESSO");
                         }
 
                     } catch (UserInvalidException usuarioInvalido) {
