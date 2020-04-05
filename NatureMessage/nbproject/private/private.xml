@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/WINDOWS/Documents/GitHub/NatureMessage/NatureMessage/src/br/com/unip/sicc/natureMessage/control/ConfigLogin.java</file>
+            <file>file:/C:/Users/WINDOWS/Documents/GitHub/NatureMessage/NatureMessage/src/br/com/unip/sicc/natureMessage/viewer/TelaCadastro.java</file>
+            <file>file:/C:/Users/WINDOWS/Documents/GitHub/NatureMessage/NatureMessage/src/br/com/unip/sicc/natureMessage/viewer/TelaLogin.java</file>
+            <file>file:/C:/Users/WINDOWS/Documents/GitHub/NatureMessage/NatureMessage/src/br/com/unip/sicc/natureMessage/control/ConfigConexaoServidor.java</file>
             <file>file:/C:/Users/WINDOWS/Documents/GitHub/NatureMessage/NatureMessage/src/br/com/unip/sicc/natureMessage/viewer/TelaChat.java</file>
+            <file>file:/C:/Users/WINDOWS/Documents/GitHub/NatureMessage/NatureMessage/src/br/com/unip/sicc/natureMessage/viewer/TelaConexao.java</file>
             <file>file:/C:/Users/WINDOWS/Documents/GitHub/NatureMessage/NatureMessage/src/br/com/unip/sicc/natureMessage/app/NatureMessage.java</file>
+            <file>file:/C:/Users/WINDOWS/Documents/GitHub/NatureMessage/NatureMessage/src/br/com/unip/sicc/natureMessage/viewer/TelaServidor.java</file>
         </group>
     </open-files>
 </project-private>

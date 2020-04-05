@@ -49,8 +49,6 @@ public class TelaChat extends JFrame {
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
     }
-    
-    
 
     //PainelChat painelChat = new PainelChat();
     PainelPadrao painelChat = new PainelPadrao();
@@ -133,8 +131,8 @@ public class TelaChat extends JFrame {
             public void keyPressed(KeyEvent e) {
                 int codigo = e.getKeyCode();
                 int tecla = KeyEvent.VK_ENTER;
-                if (codigo == tecla) {                 
-                       botaoEnviarActionPerformed();
+                if (codigo == tecla) {
+                    botaoEnviarActionPerformed();
                 }
             }
         });
@@ -159,7 +157,7 @@ public class TelaChat extends JFrame {
         txtLblMessageChat.setBounds(72, 38, 350, 25);
 
         txfNome = new JTextField();
-        
+
         txfNome.setBorder(null);
         txfNome.setFont(new Font("Arial", Font.BOLD, 11));
         txfNome.setForeground(Color.WHITE);
@@ -167,7 +165,7 @@ public class TelaChat extends JFrame {
         txfNome.setEditable(false);
         txfNome.setBounds(260, 37, 150, 25);
 
-         txfStatusServidor = new JTextField("Status Servidor:");
+        txfStatusServidor = new JTextField("Status Servidor:");
         txfStatusServidor.setBorder(null);
         txfStatusServidor.setFont(new Font("Arial", Font.BOLD, 11));
         txfStatusServidor.setForeground(Color.WHITE);
@@ -216,7 +214,7 @@ public class TelaChat extends JFrame {
     }
 
     public void Chat() {
-        
+
         try {
             s = new Socket("localhost", 5000);
             txfStatusServidor.setText("Status Servidor: Online");
@@ -252,12 +250,12 @@ public class TelaChat extends JFrame {
     private void botaoEnviarActionPerformed() {
         try {
             txfNome.setText("Nome: " + nomeUsuario);
-            String mensagem =  nomeUsuario + " Disse: ";
+            String mensagem = nomeUsuario + " Disse: ";
             PrintStream ps = new PrintStream(s.getOutputStream());
-            mensagem += txaEnviar.getText() +  "    "  + dataHora.get(Calendar.HOUR_OF_DAY)+ ":" + dataHora.get(Calendar.MINUTE) ;
+            mensagem += txaEnviar.getText() + "    " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
             ps.println(mensagem);
             ps.flush();
-
+            //walisson Gay
             txaEnviar.setText("");
 
         } catch (IOException e) {
