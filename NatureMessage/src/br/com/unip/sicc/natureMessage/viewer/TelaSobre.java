@@ -24,10 +24,10 @@ public class TelaSobre {
 
     public JPanel montaPainelSobre() {
         
-        JLabel txtLblTexto = new JLabel("SOBRE:");
+        JLabel txtLblTexto = new JLabel("SOBRE");
         txtLblTexto.setForeground(Color.WHITE);
-        txtLblTexto.setFont(new Font("Arial", Font.BOLD, 20));
-        txtLblTexto.setBounds(100, 100, 350, 100);
+        txtLblTexto.setFont(new Font("Arial", Font.BOLD, 25));
+        txtLblTexto.setBounds(400, 50, 350, 100);
         
         /*JLabel txtLblTexto = new JLabel("Nome:");
         txtLblTexto.setForeground(Color.WHITE);
