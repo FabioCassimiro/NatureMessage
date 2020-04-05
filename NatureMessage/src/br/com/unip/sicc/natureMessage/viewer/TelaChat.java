@@ -35,13 +35,13 @@ public class TelaChat extends JFrame {
         telaChat.setVisible(true);
     }    
 
-    ImageIcon imagemCompartilhar = new ImageIcon(getClass().getResource("compartilhar.png"));
+    ImageIcon imagemCompartilhar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/compartilhar.png"));
     JLabel mostraCompartilhar = new JLabel(imagemCompartilhar);
     
-    ImageIcon imagemCompartilharImagem = new ImageIcon(getClass().getResource("compartilharImagem.png"));
+    ImageIcon imagemCompartilharImagem = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/compartilharImagem.png"));
     JLabel mostraCompartilharImagem = new JLabel(imagemCompartilharImagem);
     
-    ImageIcon imagemCompartilharDoc = new ImageIcon(getClass().getResource("compartilharDoc.png"));
+    ImageIcon imagemCompartilharDoc = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/compartilharDoc.png"));
     JLabel mostraCompartilharDoc = new JLabel(imagemCompartilharDoc);
 
     public JPanel montaPainelChat() {

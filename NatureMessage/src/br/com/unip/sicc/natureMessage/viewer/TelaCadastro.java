@@ -31,7 +31,7 @@ public class TelaCadastro {
     public JPasswordField pwdSenha;
     public JPasswordField pwdConfirmaSenha;
 
-    ImageIcon imagemVoltar = new ImageIcon(getClass().getResource("setaVoltar.png"));
+    ImageIcon imagemVoltar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"));
     JLabel mostraVoltar = new JLabel(imagemVoltar);
     JFrame telaCadastro = new JFrame();
     PainelPadrao painelCadastro = new PainelPadrao();
