@@ -79,7 +79,7 @@ public class PainelPadrao extends JPanel {
 
     public JButton montaBtnInfo() {
         btnInfo = new JButton();
-        btnInfo.setBounds(3, 455, 50, 50);
+        btnInfo.setBounds(856, 456, 50, 50);
         btnInfo.setBorder(null);
         btnInfo.setBackground(null);
         btnInfo.setForeground(null);
