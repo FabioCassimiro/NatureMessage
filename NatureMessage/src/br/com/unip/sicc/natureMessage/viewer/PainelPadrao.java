@@ -2,6 +2,8 @@ package br.com.unip.sicc.natureMessage.viewer;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -85,6 +87,12 @@ public class PainelPadrao extends JPanel {
         btnInfo.setForeground(null);
         btnInfo.setContentAreaFilled(false);
         btnInfo.setIcon(imagemInfo);
+        btnInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new TelaSobre();
+            }
+        });
 
         return btnInfo;
     }
