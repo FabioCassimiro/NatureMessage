@@ -124,8 +124,8 @@ public class TelaChat extends JFrame {
         btnEnviar.setForeground(Color.WHITE);
         btnEnviar.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                botaoEnviarActionPerformed(e);
+            public void actionPerformed(ActionEvent ex) {
+                botaoEnviarActionPerformed(ex);
             }
         });
 
