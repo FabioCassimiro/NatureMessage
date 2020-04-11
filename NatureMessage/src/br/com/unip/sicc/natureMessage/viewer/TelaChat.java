@@ -255,7 +255,7 @@ public class TelaChat extends JFrame {
             mensagem += txaEnviar.getText() + "    " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
             ps.println(mensagem);
             ps.flush();
-            //walisson Gay
+            //walisson Gay - obrigado
             txaEnviar.setText("");
 
         } catch (IOException e) {
