@@ -1,8 +1,6 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
-import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,11 +12,13 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,23 +26,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
 public class TelaChat extends JFrame {
 
-    private Socket s;
-    private BufferedReader bff;
-    private InputStreamReader isr;
+    private Socket socketCliente;
+    private BufferedReader bufferedReader;
+    private InputStreamReader inputStreamReader;
     Calendar dataHora = Calendar.getInstance();
 
     public JButton btnCompartilharImagem;
     public JButton btnCompartilharDoc;
-    JEditorPane txaEnviar;
+    JTextField txaEnviar;
     JEditorPane txaChat;
     private String nomeUsuario;
     JTextField txfNome;
     JTextField txfStatusServidor;
+    String actionName = "TECLA_ENTER";
+    JButton btnEnviar;
 
     public String getNomeUsuario() {
         return nomeUsuario;
@@ -115,41 +117,45 @@ public class TelaChat extends JFrame {
         linhaSeparatorMenu.setForeground(Color.WHITE);
         linhaSeparatorMenu.setBounds(220, 28, 1, 410);
         linhaSeparatorMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
-    
+
         JScrollPane scroll = new JScrollPane();
         txaChat = new JEditorPane();
-        /*txaChat.setContentType("text/html");
-        try {
-            txaChat.setPage("file:///C:/Users/Walisson/Desktop/Arquivos/APS1/Home.html");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
         txaChat.setBounds(260, 63, 600, 320);
-        txaChat.setEditable(false);  
+        txaChat.setEditable(false);
         scroll.setViewportView(txaChat);
 
         JScrollPane scrollEnviar = new JScrollPane(txaEnviar);
-        txaEnviar = new JEditorPane();
+        txaEnviar = new JTextField();
         txaEnviar.setBounds(260, 390, 515, 35);
-        txaEnviar.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent e) {
-                int codigo = e.getKeyCode();
-                int tecla = KeyEvent.VK_ENTER;
-                if (codigo == tecla) {
-                    botaoEnviarActionPerformed();
-                }
-            }
-        });
-        
-        //scroll.setViewportView(txaChat);
-        
-        JButton btnEnviar = new JButton();
+
+        btnEnviar = new JButton();
         btnEnviar = botoesPadrao.montaBtnAlteravel();
         btnEnviar.setText("Enviar");
         btnEnviar.setBounds(782, 390, 79, 35);
         btnEnviar.setBackground(new Color(0, 255, 127));
         btnEnviar.setFont(new Font("Arial", Font.BOLD, 12));
         btnEnviar.setForeground(Color.WHITE);
+        btnEnviar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                botaoEnviarActionPerformed();
+            }
+        });
+        
+        Action actionTecla = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                //simula o click no botão
+                btnEnviar.doClick();
+
+            }
+        };
+        KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+
+        InputMap inputMap = btnEnviar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        inputMap.put(keyStroke, actionName);
+        ActionMap actionMap = btnEnviar.getActionMap();
+        actionMap.put(actionName, actionTecla);
 
         JLabel txtLblTitulo = new JLabel("NATURE");
         txtLblTitulo.setForeground(Color.WHITE);
@@ -203,10 +209,9 @@ public class TelaChat extends JFrame {
         painelChat.add(btnCompartilharImagem);
         painelChat.add(btnCompartilharDoc);
         painelChat.add(linhaSeparatorMenu);
-        //painelChat.add(scroll);
         painelChat.add(txaChat);
         painelChat.add(scrollEnviar);
-        painelChat.add(txaEnviar);    
+        painelChat.add(txaEnviar);
         painelChat.add(btnEnviar);
         painelChat.add(txtLblTitulo);
         painelChat.add(txtLblMessageChat);
@@ -221,7 +226,7 @@ public class TelaChat extends JFrame {
     public void Chat() {
 
         try {
-            s = new Socket("localhost", 5000);
+            socketCliente = new Socket("localhost", 5000);
             txfStatusServidor.setText("Status Servidor: Online");
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -237,11 +242,19 @@ public class TelaChat extends JFrame {
             public void run() {
                 try {
                     String msgReceb;
-                    isr = new InputStreamReader(s.getInputStream());
-                    bff = new BufferedReader(isr);
+                    inputStreamReader = new InputStreamReader(socketCliente.getInputStream());
+                    bufferedReader = new BufferedReader(inputStreamReader);
 
-                    while ((msgReceb = bff.readLine()) != null) {
-                        txaChat.setText(txaChat.getText() + msgReceb + "\n");
+                    while ((msgReceb = bufferedReader.readLine()) != null) {
+                        System.out.println(txaChat.getText());
+                        if (txaChat.getText().equals("")) {
+                            txaChat.setText(msgReceb);
+                            System.out.println("Passei");
+                        } else {
+                            txaChat.setText(txaChat.getText() + "\n" + msgReceb);
+                            System.out.println("Erros");
+                        }
+
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -255,12 +268,12 @@ public class TelaChat extends JFrame {
     private void botaoEnviarActionPerformed() {
         try {
             txfNome.setText("Nome: " + nomeUsuario);
-            String mensagem = nomeUsuario + " Disse: ";
-            PrintStream ps = new PrintStream(s.getOutputStream());
-            mensagem += txaEnviar.getText() + "    " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
+            String mensagem = nomeUsuario;
+            PrintStream ps = new PrintStream(socketCliente.getOutputStream());
+            mensagem = nomeUsuario + "\n" + txaEnviar.getText() + "       " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
             ps.println(mensagem);
             ps.flush();
-            txaEnviar.setText("");
+            txaEnviar.setText(null);
 
         } catch (IOException e) {
             e.printStackTrace();

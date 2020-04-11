@@ -14,10 +14,12 @@ public class NatureMessage {
     public static void main(String[] args) {
         //new TelaCadastro();
 //
-        new TelaInicial();
+        //new TelaInicial();
+        new TelaConexao();
        //new TelaChat();
        //new TelaSobre();
-        //new TelaLogin();
+        
+       //new TelaLogin();
        //new TelaSobre();
        //new TelaConexao();
         // ConfigConexaoServidor  chat = new ConfigConexaoServidor();
