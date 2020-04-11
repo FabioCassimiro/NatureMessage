@@ -88,6 +88,7 @@ public class PainelPadrao extends JPanel {
         btnInfo.setBackground(null);
         btnInfo.setForeground(null);
         btnInfo.setContentAreaFilled(false);
+        btnInfo .setToolTipText("Sobre");
         btnInfo.setIcon(imagemInfo);
         btnInfo.addActionListener(new ActionListener() {
             @Override

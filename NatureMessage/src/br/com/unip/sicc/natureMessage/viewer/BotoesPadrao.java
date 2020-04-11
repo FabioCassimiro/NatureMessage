@@ -2,6 +2,7 @@ package br.com.unip.sicc.natureMessage.viewer;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -107,6 +108,9 @@ public class BotoesPadrao {
         return corAviso;
     }
 
+    public void setIcon(JFrame icone) {
+        icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));
+    }
    
 
 }

@@ -99,7 +99,7 @@ public class TelaSobre {
             @Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 try {
-                    Runtime.getRuntime().exec("cmd.exe /C start " + "https://github.com/");
+                    Runtime.getRuntime().exec("cmd.exe /C start " + "https://github.com/WalissonCF");
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 }

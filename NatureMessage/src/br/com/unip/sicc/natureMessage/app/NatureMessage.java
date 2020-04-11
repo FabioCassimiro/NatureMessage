@@ -19,6 +19,7 @@ public class NatureMessage {
        //new TelaSobre();
         //new TelaLogin();
        //new TelaSobre();
+       //new TelaConexao();
         // ConfigConexaoServidor  chat = new ConfigConexaoServidor();
         // chat.conexaoChat("127.0.0.1",5000);
 
