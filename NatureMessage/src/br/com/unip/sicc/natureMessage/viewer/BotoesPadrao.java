@@ -2,11 +2,20 @@ package br.com.unip.sicc.natureMessage.viewer;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.plaf.basic.BasicArrowButton;
 
 public class BotoesPadrao {
@@ -14,6 +23,7 @@ public class BotoesPadrao {
     Font fonte = new Font("Arial", Font.BOLD, 15);
     JFrame caixaAvisoMsg = new JFrame();
     JPanel painelcaixaAviso = new JPanel();
+    JButton btnOkay;
 
     Color cor;
 
@@ -68,16 +78,30 @@ public class BotoesPadrao {
         txtLblCaixaAviso.setFont(new Font("Arial", Font.BOLD, 15));
         txtLblCaixaAviso.setBounds(5, 30, 300, 25);
         
-        JLabel btnOkay = new JLabel("OK");
+        btnOkay = new JButton("OK");
         btnOkay.setForeground(Color.WHITE);
         btnOkay.setFont(new Font("Arial", Font.BOLD, 20));
         btnOkay.setBounds(120, 80, 100, 25);
-        btnOkay.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnOkay.addActionListener(new ActionListener() {
             @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+            public void actionPerformed(ActionEvent e) {
                 caixaAvisoMsg.dispose();
             }
         });
+        Action actionTecla = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                //simula o click no botão
+                btnOkay.doClick();
+
+            }
+        };
+        KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+
+        InputMap inputMap = btnOkay.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        inputMap.put(keyStroke, "Tecla_Enter");
+        ActionMap actionMap = btnOkay.getActionMap();
+        actionMap.put("Tecla_Enter", actionTecla);
 
         
         painelcaixaAviso.add(btnOkay);

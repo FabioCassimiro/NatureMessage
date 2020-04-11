@@ -5,18 +5,26 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
 public class TelaServidor {
     
     PainelPadrao painelServidor = new PainelPadrao();
     BotoesPadrao botoesPadrao = new BotoesPadrao();
     private String nomeUsuario;
+    JButton btnEntra;
     JFrame telaServidor = new JFrame();
 
     public String getNomeUsuario() {
@@ -59,12 +67,26 @@ public class TelaServidor {
         linhaSeparatorUsuario.setForeground(Color.WHITE);
         linhaSeparatorUsuario.setBounds(277, 255, 350, 1);
 
-        JButton btnEntra = new JButton();
+        btnEntra = new JButton();
         btnEntra = botoesPadrao.montaBtnAlteravel();
         btnEntra.setText("Entrar");
         btnEntra.setBounds(277, 268, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
         btnEntra.setForeground(Color.WHITE);
+        Action actionTecla = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                //simula o click no botão
+                btnEntra.doClick();
+
+            }
+        };
+        KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+
+        InputMap inputMap = btnEntra.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        inputMap.put(keyStroke, "Tecla_Enter");
+        ActionMap actionMap = btnEntra.getActionMap();
+        actionMap.put("Tecla_Enter", actionTecla);
         btnEntra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
