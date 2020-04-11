@@ -7,17 +7,18 @@ import br.com.unip.sicc.natureMessage.viewer.TelaServidor;
 import br.com.unip.sicc.natureMessage.viewer.TelaConexao;
 import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
 import br.com.unip.sicc.natureMessage.viewer.TelaSobre;
+import br.com.unip.sicc.natureMessage.viewer.TelaInicial;
 
 public class NatureMessage {
 
     public static void main(String[] args) {
         //new TelaCadastro();
 //
-
-        new TelaChat();
+        new TelaInicial();
+       //new TelaChat();
        //new TelaSobre();
         //new TelaLogin();
-       new TelaSobre();
+       //new TelaSobre();
         // ConfigConexaoServidor  chat = new ConfigConexaoServidor();
         // chat.conexaoChat("127.0.0.1",5000);
 

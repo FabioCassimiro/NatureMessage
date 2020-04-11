@@ -2,6 +2,7 @@ package br.com.unip.sicc.natureMessage.viewer;
 
 import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,8 +38,8 @@ public class TelaChat extends JFrame {
 
     public JButton btnCompartilharImagem;
     public JButton btnCompartilharDoc;
-    JTextArea txaEnviar;
-    JTextArea txaChat;
+    JEditorPane txaEnviar;
+    JEditorPane txaChat;
     private String nomeUsuario;
     JTextField txfNome;
     JTextField txfStatusServidor;
@@ -113,19 +115,21 @@ public class TelaChat extends JFrame {
         linhaSeparatorMenu.setForeground(Color.WHITE);
         linhaSeparatorMenu.setBounds(220, 28, 1, 410);
         linhaSeparatorMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
+    
         JScrollPane scroll = new JScrollPane();
-        txaChat = new JTextArea();
-        txaChat.setColumns(0);
-        txaChat.setRows(0);
+        txaChat = new JEditorPane();
+        /*txaChat.setContentType("text/html");
+        try {
+            txaChat.setPage("file:///C:/Users/Walisson/Desktop/Arquivos/APS1/Home.html");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
         txaChat.setBounds(260, 63, 600, 320);
-        txaChat.setEditable(false);
+        txaChat.setEditable(false);  
         scroll.setViewportView(txaChat);
 
-        JScrollPane scrollEnviar = new JScrollPane();
-        txaEnviar = new JTextArea();
-        txaEnviar.setColumns(0);
-        txaEnviar.setRows(0);
+        JScrollPane scrollEnviar = new JScrollPane(txaEnviar);
+        txaEnviar = new JEditorPane();
         txaEnviar.setBounds(260, 390, 515, 35);
         txaEnviar.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
@@ -136,8 +140,9 @@ public class TelaChat extends JFrame {
                 }
             }
         });
-        scrollEnviar.setViewportView(txaEnviar);
-
+        
+        //scroll.setViewportView(txaChat);
+        
         JButton btnEnviar = new JButton();
         btnEnviar = botoesPadrao.montaBtnAlteravel();
         btnEnviar.setText("Enviar");
@@ -198,10 +203,10 @@ public class TelaChat extends JFrame {
         painelChat.add(btnCompartilharImagem);
         painelChat.add(btnCompartilharDoc);
         painelChat.add(linhaSeparatorMenu);
+        //painelChat.add(scroll);
         painelChat.add(txaChat);
-        painelChat.add(scroll);
-        painelChat.add(txaEnviar);
         painelChat.add(scrollEnviar);
+        painelChat.add(txaEnviar);    
         painelChat.add(btnEnviar);
         painelChat.add(txtLblTitulo);
         painelChat.add(txtLblMessageChat);
@@ -255,7 +260,6 @@ public class TelaChat extends JFrame {
             mensagem += txaEnviar.getText() + "    " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
             ps.println(mensagem);
             ps.flush();
-            //walisson Gay - obrigado
             txaEnviar.setText("");
 
         } catch (IOException e) {
