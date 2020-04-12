@@ -16,10 +16,10 @@ public class NatureMessage {
 //
         //new TelaInicial();
         //new TelaConexao();
-       new TelaChat();
+       //new TelaChat();
        //new TelaSobre();
-        
-      // new TelaLogin();
+        new TelaCadastro();
+      //new TelaLogin();
        //new TelaSobre();
        //new TelaConexao();
         // ConfigConexaoServidor  chat = new ConfigConexaoServidor();

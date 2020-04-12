@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,17 +13,17 @@ import javax.swing.JSeparator;
 
 public class TelaInicial {
 
-    PainelPadrao painelInicial = new PainelPadrao();
-    BotoesPadrao botoesPadrao = new BotoesPadrao();
-    JFrame telaInicial = new JFrame();
-    
-    public JLabel lblLogo;
-
-    public JButton btnInicia;
-    
-    ImageIcon imagemCompartilhar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png"));
-    JLabel mostraCompartilhar = new JLabel(imagemCompartilhar);
-
+    private PainelPadrao pnlInicial = new PainelPadrao();
+    private BotoesPadrao botoesPadrao = new BotoesPadrao();
+    private JFrame telaInicial = new JFrame();
+    private JLabel lblLogo;
+    private JButton btnInicia;
+    private JLabel lblTitulo;
+    private JLabel lblSubTitulo;
+    private JButton btnManual;
+    private JSeparator lnsManual;
+    private ImageIcon imgCompartilhar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png"));
+    private JLabel lblCompartilhar = new JLabel(imgCompartilhar);
 
     public TelaInicial() {
         telaInicial.setSize(900, 500);
@@ -36,23 +34,23 @@ public class TelaInicial {
     }
 
     public JPanel montaPainelInicial() {
+        
         lblLogo = new JLabel();
         lblLogo.setBounds(340, 120, 250, 250);
         lblLogo.setBorder(null);
         lblLogo.setBackground(null);
         lblLogo.setForeground(null);
-        //btnLogo.setContentAreaFilled(false);
-        lblLogo.setIcon(imagemCompartilhar);
+        lblLogo.setIcon(imgCompartilhar);
 
-        JLabel txtLblTitulo = new JLabel("NATURE");
-        txtLblTitulo.setForeground(Color.WHITE);
-        txtLblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
-        txtLblTitulo.setBounds(378, 100, 350, 32);
+        lblTitulo = new JLabel("NATURE");
+        lblTitulo.setForeground(Color.WHITE);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
+        lblTitulo.setBounds(378, 100, 350, 32);
 
-        JLabel txtLblSubTitulo = new JLabel("MESSAGE");
-        txtLblSubTitulo.setForeground(Color.WHITE);
-        txtLblSubTitulo.setFont(new Font("Arial", Font.BOLD, 22));
-        txtLblSubTitulo.setBounds(396, 124, 350, 32);
+        lblSubTitulo = new JLabel("MESSAGE");
+        lblSubTitulo.setForeground(Color.WHITE);
+        lblSubTitulo.setFont(new Font("Arial", Font.BOLD, 22));
+        lblSubTitulo.setBounds(396, 124, 350, 32);
 
         btnInicia = new JButton();
         btnInicia = botoesPadrao.montaBtnAlteravel();
@@ -68,7 +66,7 @@ public class TelaInicial {
             }
         });
         
-        JButton btnManual = new JButton();
+        btnManual = new JButton();
         btnManual = botoesPadrao.montaBtnPadrao();
         btnManual.setText("Manual de funcionamento");
         btnManual.setForeground(Color.WHITE);
@@ -81,18 +79,17 @@ public class TelaInicial {
             }
         });
         
-        JSeparator linhaSeparatorManual = new JSeparator();
-        linhaSeparatorManual.setForeground(Color.WHITE);
-        linhaSeparatorManual.setBounds(352, 380, 200, 1);
+        lnsManual = new JSeparator();
+        lnsManual.setForeground(Color.WHITE);
+        lnsManual.setBounds(352, 380, 200, 1);
 
-        painelInicial.add(btnInicia);
-        painelInicial.add(txtLblTitulo);
-        painelInicial.add(txtLblSubTitulo);
-        painelInicial.add(btnManual);
-        painelInicial.add(linhaSeparatorManual);
-        painelInicial.add(lblLogo);
+        pnlInicial.add(btnInicia);
+        pnlInicial.add(lblTitulo);
+        pnlInicial.add(lblSubTitulo);
+        pnlInicial.add(btnManual);
+        pnlInicial.add(lnsManual);
+        pnlInicial.add(lblLogo);
 
-        return painelInicial;
+        return pnlInicial;
     }
-
 }

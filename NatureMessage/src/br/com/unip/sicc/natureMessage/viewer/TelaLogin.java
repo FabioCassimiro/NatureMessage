@@ -1,6 +1,5 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
-import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.control.ConfigLogin;
 import br.com.unip.sicc.natureMessage.exception.InvalidPasswordException;
 import br.com.unip.sicc.natureMessage.exception.UserInvalidException;
@@ -8,7 +7,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -27,12 +25,20 @@ import javax.swing.KeyStroke;
 
 public class TelaLogin {
 
-    ConfigLogin login = new ConfigLogin();
-    JButton btnEntra;
-
-    PainelPadrao painelLogin = new PainelPadrao();
-    BotoesPadrao botoesPadrao = new BotoesPadrao();
-    JFrame telaLogin = new JFrame();
+    private ConfigLogin login = new ConfigLogin();
+    private JButton btnEntra;
+    private PainelPadrao pnlLogin = new PainelPadrao();
+    private BotoesPadrao componentes = new BotoesPadrao();
+    private JFrame telaLogin = new JFrame();
+    private JLabel lblTitulo;
+    private JTextField txfUsuario;
+    private JPasswordField pwdSenha;
+    private JLabel lblUsuario;
+    private JLabel lblSenha;
+    private JSeparator lnsUsuario;
+    private JSeparator lnsSenha;
+    private JButton btnCadastro;
+    private JLabel lblTalkNow;
 
     public TelaLogin() {
         telaLogin.add(montaPainelLogin());
@@ -43,43 +49,43 @@ public class TelaLogin {
     }
 
     public JPanel montaPainelLogin() {
-        JLabel txtLblTitulo = new JLabel("LOGIN");
-        txtLblTitulo.setForeground(Color.WHITE);
-        txtLblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
-        txtLblTitulo.setBounds(405, 100, 350, 32);
+        lblTitulo = new JLabel("LOGIN");
+        lblTitulo.setForeground(Color.WHITE);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
+        lblTitulo.setBounds(405, 100, 350, 32);
 
-        JTextField txfUsuario = new JTextField();
+        txfUsuario = new JTextField();
         txfUsuario.setBorder(null);
         txfUsuario.setForeground(Color.WHITE);
         txfUsuario.setBackground(null);
         txfUsuario.setBounds(277, 225, 350, 30);
 
-        JPasswordField pwdSenha = new JPasswordField();
+        pwdSenha = new JPasswordField();
         pwdSenha.setBorder(null);
         pwdSenha.setForeground(Color.WHITE);
         pwdSenha.setBackground(null);
         pwdSenha.setBounds(277, 285, 350, 30);
       
-        JLabel txtLblSubUsuario = new JLabel("Usuario:");
-        txtLblSubUsuario.setForeground(Color.WHITE);
-        txtLblSubUsuario.setFont(new Font("Arial", Font.BOLD, 12));
-        txtLblSubUsuario.setBounds(277, 202, 350, 25);
+        lblUsuario = new JLabel("Usuario:");
+        lblUsuario.setForeground(Color.WHITE);
+        lblUsuario.setFont(new Font("Arial", Font.BOLD, 12));
+        lblUsuario.setBounds(277, 202, 350, 25);
 
-        JLabel txtLblSubSenha = new JLabel("Senha:");
-        txtLblSubSenha.setForeground(Color.WHITE);
-        txtLblSubSenha.setFont(new Font("Arial", Font.BOLD, 12));
-        txtLblSubSenha.setBounds(277, 260, 350, 25);
+        lblSenha = new JLabel("Senha:");
+        lblSenha.setForeground(Color.WHITE);
+        lblSenha.setFont(new Font("Arial", Font.BOLD, 12));
+        lblSenha.setBounds(277, 260, 350, 25);
 
-        JSeparator linhaSeparatorUsuario = new JSeparator();
-        linhaSeparatorUsuario.setForeground(Color.WHITE);
-        linhaSeparatorUsuario.setBounds(277, 255, 350, 1);
+        lnsUsuario = new JSeparator();
+        lnsUsuario.setForeground(Color.WHITE);
+        lnsUsuario.setBounds(277, 255, 350, 1);
 
-        JSeparator linhaSeparatorSenha = new JSeparator();
-        linhaSeparatorSenha.setForeground(Color.WHITE);
-        linhaSeparatorSenha.setBounds(277, 318, 350, 1);
+        lnsSenha = new JSeparator();
+        lnsSenha.setForeground(Color.WHITE);
+        lnsSenha.setBounds(277, 318, 350, 1);
 
         btnEntra = new JButton();
-        btnEntra = botoesPadrao.montaBtnAlteravel();
+        btnEntra = componentes.montaBtnAlteravel();
         btnEntra.setText("Entrar");
         btnEntra.setBounds(277, 342, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
@@ -88,9 +94,7 @@ public class TelaLogin {
         Action actionTecla = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                //simula o click no botão
                 btnEntra.doClick();
-
             }
         };
         KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
@@ -110,7 +114,7 @@ public class TelaLogin {
                         telaLogin.dispose();
                         TelaServidor telaServidor = new TelaServidor();
                         telaServidor.setNomeUsuario(result);
-                        botoesPadrao.montaAvisoMensagem("Bem-Vindo  " + result, "SUCESSO");
+                        componentes.montaAvisoMensagem("Bem-Vindo  " + result, "SUCESSO");
                     }
 
                 } catch (UserInvalidException usuarioInvalido) {
@@ -122,8 +126,8 @@ public class TelaLogin {
 
         });
 
-        JButton btnCadastro = new JButton();
-        btnCadastro = botoesPadrao.montaBtnPadrao();
+        btnCadastro = new JButton();
+        btnCadastro = componentes.montaBtnPadrao();
         btnCadastro.setText("Cadastre-se!");
         btnCadastro.setForeground(Color.WHITE);
         btnCadastro.setFont(new Font("Arial", Font.BOLD, 12));
@@ -137,23 +141,22 @@ public class TelaLogin {
             }
         });
 
-        JLabel txtLblTalkNow = new JLabel("TALK NOW!");
-        txtLblTalkNow.setForeground(Color.WHITE);
-        txtLblTalkNow.setFont(new Font("Arial", Font.BOLD, 15));
-        txtLblTalkNow.setBounds(418, 127, 350, 25);
+        lblTalkNow = new JLabel("TALK NOW!");
+        lblTalkNow.setForeground(Color.WHITE);
+        lblTalkNow.setFont(new Font("Arial", Font.BOLD, 15));
+        lblTalkNow.setBounds(418, 127, 350, 25);
 
-        painelLogin.add(txtLblTitulo);
-        painelLogin.add(txfUsuario);
-        painelLogin.add(pwdSenha);
-        painelLogin.add(txtLblSubUsuario);
-        painelLogin.add(txtLblSubSenha);
-        painelLogin.add(linhaSeparatorUsuario);
-        painelLogin.add(linhaSeparatorSenha);
-        painelLogin.add(btnEntra);
-        //painelPadrao.add(txtLblCadastro);
-        painelLogin.add(txtLblTalkNow);
-        painelLogin.add(btnCadastro);
+        pnlLogin.add(lblTitulo);
+        pnlLogin.add(txfUsuario);
+        pnlLogin.add(pwdSenha);
+        pnlLogin.add(lblUsuario);
+        pnlLogin.add(lblSenha);
+        pnlLogin.add(lnsUsuario);
+        pnlLogin.add(lnsSenha);
+        pnlLogin.add(btnEntra);
+        pnlLogin.add(lblTalkNow);
+        pnlLogin.add(btnCadastro);
 
-        return painelLogin;
+        return pnlLogin;
     }
 }

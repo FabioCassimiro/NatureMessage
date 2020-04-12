@@ -21,12 +21,16 @@ import javax.swing.KeyStroke;
 
 public class TelaServidor {
     
-    PainelPadrao painelServidor = new PainelPadrao();
-    BotoesPadrao botoesPadrao = new BotoesPadrao();
+    private PainelPadrao pnlServidor = new PainelPadrao();
+    private BotoesPadrao componente = new BotoesPadrao();
     private String nomeUsuario;
-    JButton btnEntra;
-    JFrame telaServidor = new JFrame();
-
+    private JLabel lblTitulo;
+    private JButton btnEntra;
+    private JFrame telaServidor = new JFrame();
+    private JTextField txfEnderecoIP;
+    private JLabel lblEnderecoIP;
+    private JSeparator lnsUsuario;;
+    
     public String getNomeUsuario() {
         return nomeUsuario;
     }
@@ -35,7 +39,6 @@ public class TelaServidor {
         this.nomeUsuario = nomeUsuario;
     }
     
-
     public TelaServidor() {
         telaServidor.add(montaPainelServidor());
         telaServidor.setSize(900, 500);
@@ -47,28 +50,28 @@ public class TelaServidor {
 
     public JPanel montaPainelServidor() {
 
-        JLabel txtLblTitulo = new JLabel("SERVIDOR");
-        txtLblTitulo.setForeground(Color.WHITE);
-        txtLblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
-        txtLblTitulo.setBounds(361, 100, 350, 32);
+        lblTitulo = new JLabel("SERVIDOR");
+        lblTitulo.setForeground(Color.WHITE);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
+        lblTitulo.setBounds(361, 100, 350, 32);
 
-        JTextField txfUsuario = new JTextField();
-        txfUsuario.setBorder(null);
-        txfUsuario.setForeground(Color.WHITE);
-        txfUsuario.setBackground(null);
-        txfUsuario.setBounds(277, 225, 350, 30);
+        txfEnderecoIP = new JTextField();
+        txfEnderecoIP.setBorder(null);
+        txfEnderecoIP.setForeground(Color.WHITE);
+        txfEnderecoIP.setBackground(null);
+        txfEnderecoIP.setBounds(277, 225, 350, 30);
+        
+        lblEnderecoIP = new JLabel("Informe endereço IP:");
+        lblEnderecoIP.setForeground(Color.WHITE);
+        lblEnderecoIP.setFont(new Font("Arial", Font.BOLD, 12));
+        lblEnderecoIP.setBounds(277, 202, 350, 25);
 
-        JLabel txtLblSubUsuario = new JLabel("Informe endereço IP:");
-        txtLblSubUsuario.setForeground(Color.WHITE);
-        txtLblSubUsuario.setFont(new Font("Arial", Font.BOLD, 12));
-        txtLblSubUsuario.setBounds(277, 202, 350, 25);
-
-        JSeparator linhaSeparatorUsuario = new JSeparator();
-        linhaSeparatorUsuario.setForeground(Color.WHITE);
-        linhaSeparatorUsuario.setBounds(277, 255, 350, 1);
+        lnsUsuario = new JSeparator();
+        lnsUsuario.setForeground(Color.WHITE);
+        lnsUsuario.setBounds(277, 255, 350, 1);
 
         btnEntra = new JButton();
-        btnEntra = botoesPadrao.montaBtnAlteravel();
+        btnEntra = componente.montaBtnAlteravel();
         btnEntra.setText("Entrar");
         btnEntra.setBounds(277, 268, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
@@ -76,9 +79,7 @@ public class TelaServidor {
         Action actionTecla = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                //simula o click no botão
                 btnEntra.doClick();
-
             }
         };
         KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
@@ -91,23 +92,20 @@ public class TelaServidor {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ConfigConexaoServidor servidor = new ConfigConexaoServidor();
-                servidor.ValidaServidor(txfUsuario.getText());
+                servidor.ValidaServidor(txfEnderecoIP.getText());
                 telaServidor.dispose();
                 TelaChat telaChat =  new TelaChat();
                 telaChat.setNomeUsuario(nomeUsuario);
-                botoesPadrao.montaAvisoMensagem(nomeUsuario + " Conectado a: " +servidor.getNoHostname(), "SUCESSO");
+                componente.montaAvisoMensagem(nomeUsuario + " Conectado a: " +servidor.getNoHostname(), "SUCESSO");
             }
         });
-         
 
-        painelServidor.add(txtLblTitulo);
-        painelServidor.add(txfUsuario);
-        painelServidor.add(txtLblSubUsuario);
-        painelServidor.add(linhaSeparatorUsuario);
-        painelServidor.add(btnEntra);
+        pnlServidor.add(lblTitulo);
+        pnlServidor.add(txfEnderecoIP);
+        pnlServidor.add(lblEnderecoIP);
+        pnlServidor.add(lnsUsuario);
+        pnlServidor.add(btnEntra);
 
-        return painelServidor;
-
+        return pnlServidor;
     }
-
 }
