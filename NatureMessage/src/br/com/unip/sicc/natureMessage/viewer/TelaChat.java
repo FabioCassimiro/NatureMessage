@@ -1,7 +1,6 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,14 +41,17 @@ public class TelaChat extends JFrame {
 
     public JButton btnCompartilharImagem;
     public JButton btnCompartilharDoc;
-    JScrollPane scrollableTextArea;
-    JTextField txaEnviar;
-    JEditorPane txaChat;
+    public JScrollPane scrollableTextArea;
+    public JTextField txaEnviar;
+    public JEditorPane txaChat;
     private String nomeUsuario;
-    JTextField txfNome;
-    JTextField txfStatusServidor;
-    String actionName = "TECLA_ENTER";
-    JButton btnEnviar;
+    public JTextField txfNome;
+    public JTextField txfStatusServidor;
+    public String actionName = "TECLA_ENTER";
+    public JButton btnEnviar;
+    JButton btnCompartilhar;
+    public JButton btnAbrirCompartilhar;
+    public JButton btnAbrirImagem;
 
     public String getNomeUsuario() {
         return nomeUsuario;
@@ -59,7 +61,6 @@ public class TelaChat extends JFrame {
         this.nomeUsuario = nomeUsuario;
     }
 
-    //PainelChat painelChat = new PainelChat();
     PainelPadrao painelChat = new PainelPadrao();
     BotoesPadrao botoesPadrao = new BotoesPadrao();
 
@@ -77,17 +78,15 @@ public class TelaChat extends JFrame {
 
     ImageIcon imagemCompartilhar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/compartilhar.png"));
     JLabel mostraCompartilhar = new JLabel(imagemCompartilhar);
-
     ImageIcon imagemCompartilharImagem = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/compartilharImagem.png"));
     JLabel mostraCompartilharImagem = new JLabel(imagemCompartilharImagem);
-
     ImageIcon imagemCompartilharDoc = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/compartilharDoc.png"));
     JLabel mostraCompartilharDoc = new JLabel(imagemCompartilharDoc);
 
     public JPanel montaPainelChat() {
 
         btnCompartilharImagem = new JButton();
-        btnCompartilharImagem.setBounds(821, 317, 40, 40);
+        btnCompartilharImagem.setBounds(1, 180, 40, 40);
         btnCompartilharImagem.setBorder(null);
         btnCompartilharImagem.setBackground(null);
         btnCompartilharImagem.setForeground(null);
@@ -99,10 +98,26 @@ public class TelaChat extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
                 fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");    
+                fileChooser.setDialogTitle("Enviar");
             }
         });
-
+        
+        btnAbrirImagem = new JButton();
+        btnAbrirImagem = botoesPadrao.montaBtnPadrao();
+        btnAbrirImagem.setText("Imagem");
+        btnAbrirImagem.setForeground(Color.WHITE);
+        btnAbrirImagem.setFont(new Font("Arial", Font.BOLD, 12));
+        btnAbrirImagem.setBounds(13, 187, 100, 25);
+        btnAbrirImagem.setContentAreaFilled(false);
+        btnAbrirImagem.setVisible(false);
+        btnAbrirImagem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.showOpenDialog(telaChat);
+                fileChooser.setDialogTitle("Enviar");
+            }
+        });
 
         btnCompartilharDoc = new JButton();
         btnCompartilharDoc.setBounds(821, 290, 40, 40);
@@ -117,12 +132,12 @@ public class TelaChat extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
                 fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");    
+                fileChooser.setDialogTitle("Enviar");
             }
         });
 
-        JButton btnCompartilhar = new JButton();
-        btnCompartilhar.setBounds(822, 345, 40, 40);
+        btnCompartilhar = new JButton();
+        btnCompartilhar.setBounds(1, 150, 40, 40);
         btnCompartilhar.setBorder(null);
         btnCompartilhar.setBackground(null);
         btnCompartilhar.setForeground(null);
@@ -133,6 +148,23 @@ public class TelaChat extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 btnCompartilharImagem.setVisible(true);
                 btnCompartilharDoc.setVisible(true);
+                btnAbrirImagem.setVisible(true);
+            }
+        });
+
+        btnAbrirCompartilhar = new JButton();
+        btnAbrirCompartilhar = botoesPadrao.montaBtnPadrao();
+        btnAbrirCompartilhar.setText("Compartilhar");
+        btnAbrirCompartilhar.setForeground(Color.WHITE);
+        btnAbrirCompartilhar.setFont(new Font("Arial", Font.BOLD, 12));
+        btnAbrirCompartilhar.setBounds(25, 158, 100, 25);
+        btnAbrirCompartilhar.setContentAreaFilled(false);
+        btnAbrirCompartilhar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnCompartilharImagem.setVisible(true);
+                btnCompartilharDoc.setVisible(true);
+                btnAbrirImagem.setVisible(true);
             }
         });
 
@@ -140,12 +172,10 @@ public class TelaChat extends JFrame {
         linhaSeparatorMenu.setForeground(Color.WHITE);
         linhaSeparatorMenu.setBounds(220, 28, 1, 410);
         linhaSeparatorMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        
+
         scrollableTextArea = new JScrollPane(txaChat = new JEditorPane());
-        
         txaChat.setEditable(false);
-        
-        scrollableTextArea.setBounds(260, 63,600, 320);
+        scrollableTextArea.setBounds(260, 63, 600, 320);
 
         JScrollPane scrollEnviar = new JScrollPane(txaEnviar);
         txaEnviar = new JTextField();
@@ -164,13 +194,11 @@ public class TelaChat extends JFrame {
                 botaoEnviarActionPerformed();
             }
         });
-        
         Action actionTecla = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 //simula o click no botão
                 btnEnviar.doClick();
-
             }
         };
         KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
@@ -205,7 +233,7 @@ public class TelaChat extends JFrame {
         txfStatusServidor.setForeground(Color.WHITE);
         txfStatusServidor.setBackground(null);
         txfStatusServidor.setEditable(false);
-        txfStatusServidor.setBounds(670, 37, 150, 25);
+        txfStatusServidor.setBounds(500, 37, 150, 25);
 
         JButton btnLogoff = new JButton();
         btnLogoff = botoesPadrao.montaBtnPadrao();
@@ -227,12 +255,13 @@ public class TelaChat extends JFrame {
         JSeparator linhaSeparatorLogoff = new JSeparator();
         linhaSeparatorLogoff.setForeground(Color.WHITE);
         linhaSeparatorLogoff.setBounds(30, 420, 162, 1);
-
+        
+        painelChat.add(btnAbrirImagem);
+        painelChat.add(btnAbrirCompartilhar);
         painelChat.add(btnCompartilhar);
         painelChat.add(btnCompartilharImagem);
         painelChat.add(btnCompartilharDoc);
         painelChat.add(linhaSeparatorMenu);
-        //painelChat.add(txaChat);
         painelChat.add(scrollableTextArea);
         painelChat.add(scrollEnviar);
         painelChat.add(txaEnviar);
@@ -248,7 +277,6 @@ public class TelaChat extends JFrame {
     }
 
     public void Chat() {
-
         try {
             socketCliente = new Socket("localhost", 5000);
             txfStatusServidor.setText("Status Servidor: Online");
@@ -259,7 +287,6 @@ public class TelaChat extends JFrame {
     }
 
     private void Thread() {
-
         Thread tr = new Thread(new Runnable() {
 
             @Override
@@ -275,14 +302,12 @@ public class TelaChat extends JFrame {
                         } else {
                             txaChat.setText(txaChat.getText() + "\n" + msgReceb);
                         }
-
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
         });
-
         tr.start();
     }
 
@@ -295,10 +320,8 @@ public class TelaChat extends JFrame {
             ps.println(mensagem);
             ps.flush();
             txaEnviar.setText(null);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }

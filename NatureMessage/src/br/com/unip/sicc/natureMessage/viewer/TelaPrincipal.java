@@ -16,10 +16,7 @@ public class TelaPrincipal extends JFrame{
 	telaPrincipal.setUndecorated(true);
         telaPrincipal.setVisible(true);
     }    
-    
-    
-    
-    
+       
     public JPanel montaPainelInicial() {
         
         
