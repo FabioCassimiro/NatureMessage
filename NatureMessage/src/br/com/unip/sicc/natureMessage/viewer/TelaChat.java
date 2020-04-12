@@ -44,7 +44,7 @@ public class TelaChat extends JFrame {
     public JButton btnCompartilharDoc;
     JScrollPane scrollableTextArea;
     JTextField txaEnviar;
-    JTextArea txaChat;
+    JEditorPane txaChat;
     private String nomeUsuario;
     JTextField txfNome;
     JTextField txfStatusServidor;
@@ -141,7 +141,8 @@ public class TelaChat extends JFrame {
         linhaSeparatorMenu.setBounds(220, 28, 1, 410);
         linhaSeparatorMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
         
-        scrollableTextArea = new JScrollPane(txaChat = new JTextArea());
+        scrollableTextArea = new JScrollPane(txaChat = new JEditorPane());
+        
         txaChat.setEditable(false);
         
         scrollableTextArea.setBounds(260, 63,600, 320);
