@@ -20,6 +20,7 @@ import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +29,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TelaChat extends JFrame {
 
@@ -66,6 +68,7 @@ public class TelaChat extends JFrame {
         telaChat.setLocationRelativeTo(null);
         telaChat.setUndecorated(true);
         telaChat.setVisible(true);
+        botoesPadrao.setIcon(telaChat);
         Chat();
     }
 
@@ -88,6 +91,15 @@ public class TelaChat extends JFrame {
         btnCompartilharImagem.setContentAreaFilled(false);
         btnCompartilharImagem.setIcon(imagemCompartilharImagem);
         btnCompartilharImagem.setVisible(false);
+        btnCompartilharImagem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.showOpenDialog(telaChat);
+                fileChooser.setDialogTitle("Enviar");    
+            }
+        });
+
 
         btnCompartilharDoc = new JButton();
         btnCompartilharDoc.setBounds(821, 290, 40, 40);
@@ -97,6 +109,14 @@ public class TelaChat extends JFrame {
         btnCompartilharDoc.setContentAreaFilled(false);
         btnCompartilharDoc.setIcon(imagemCompartilharDoc);
         btnCompartilharDoc.setVisible(false);
+        btnCompartilharDoc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.showOpenDialog(telaChat);
+                fileChooser.setDialogTitle("Enviar");    
+            }
+        });
 
         JButton btnCompartilhar = new JButton();
         btnCompartilhar.setBounds(822, 345, 40, 40);
@@ -246,13 +266,10 @@ public class TelaChat extends JFrame {
                     bufferedReader = new BufferedReader(inputStreamReader);
 
                     while ((msgReceb = bufferedReader.readLine()) != null) {
-                        System.out.println(txaChat.getText());
                         if (txaChat.getText().equals("")) {
                             txaChat.setText(msgReceb);
-                            System.out.println("Passei");
                         } else {
                             txaChat.setText(txaChat.getText() + "\n" + msgReceb);
-                            System.out.println("Erros");
                         }
 
                     }
@@ -270,7 +287,7 @@ public class TelaChat extends JFrame {
             txfNome.setText("Nome: " + nomeUsuario);
             String mensagem = nomeUsuario;
             PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-            mensagem = nomeUsuario + "\n" + txaEnviar.getText() + "       " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
+            mensagem = nomeUsuario + ": " + txaEnviar.getText() + "       " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
             ps.println(mensagem);
             ps.flush();
             txaEnviar.setText(null);
