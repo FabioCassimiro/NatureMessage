@@ -1,6 +1,7 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -40,8 +42,9 @@ public class TelaChat extends JFrame {
 
     public JButton btnCompartilharImagem;
     public JButton btnCompartilharDoc;
+    JScrollPane scrollableTextArea;
     JTextField txaEnviar;
-    JEditorPane txaChat;
+    JTextArea txaChat;
     private String nomeUsuario;
     JTextField txfNome;
     JTextField txfStatusServidor;
@@ -137,12 +140,11 @@ public class TelaChat extends JFrame {
         linhaSeparatorMenu.setForeground(Color.WHITE);
         linhaSeparatorMenu.setBounds(220, 28, 1, 410);
         linhaSeparatorMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        JScrollPane scroll = new JScrollPane();
-        txaChat = new JEditorPane();
-        txaChat.setBounds(260, 63, 600, 320);
+        
+        scrollableTextArea = new JScrollPane(txaChat = new JTextArea());
         txaChat.setEditable(false);
-        scroll.setViewportView(txaChat);
+        
+        scrollableTextArea.setBounds(260, 63,600, 320);
 
         JScrollPane scrollEnviar = new JScrollPane(txaEnviar);
         txaEnviar = new JTextField();
@@ -229,7 +231,8 @@ public class TelaChat extends JFrame {
         painelChat.add(btnCompartilharImagem);
         painelChat.add(btnCompartilharDoc);
         painelChat.add(linhaSeparatorMenu);
-        painelChat.add(txaChat);
+        //painelChat.add(txaChat);
+        painelChat.add(scrollableTextArea);
         painelChat.add(scrollEnviar);
         painelChat.add(txaEnviar);
         painelChat.add(btnEnviar);
