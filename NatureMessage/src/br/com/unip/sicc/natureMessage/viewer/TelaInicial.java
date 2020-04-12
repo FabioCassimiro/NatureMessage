@@ -28,7 +28,6 @@ public class TelaInicial {
 
 
     public TelaInicial() {
-        
         telaInicial.setSize(900, 500);
         telaInicial.add(montaPainelInicial());
         telaInicial.setLocationRelativeTo(null);
@@ -37,9 +36,8 @@ public class TelaInicial {
     }
 
     public JPanel montaPainelInicial() {
-        
         lblLogo = new JLabel();
-        lblLogo.setBounds(340, 140, 250, 250);
+        lblLogo.setBounds(340, 120, 250, 250);
         lblLogo.setBorder(null);
         lblLogo.setBackground(null);
         lblLogo.setForeground(null);
