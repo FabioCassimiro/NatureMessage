@@ -2,9 +2,7 @@ package br.com.unip.sicc.natureMessage.viewer;
 
 import java.awt.Color;
 import java.awt.Font;
-<<<<<<< HEAD
 import java.awt.Toolkit;
-=======
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,7 +10,6 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
->>>>>>> c2efb1ddb4ebff43582836c36372f06272ccc2f8
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
