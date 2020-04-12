@@ -78,7 +78,7 @@ public class BotoesPadrao {
         txtLblCaixaAviso.setForeground(Color.WHITE);
         txtLblCaixaAviso.setFont(new Font("Arial", Font.BOLD, 15));
         txtLblCaixaAviso.setBounds(5, 30, 300, 25);
-        
+
         btnOkay = new JButton("OK");
         btnOkay.setForeground(Color.WHITE);
         btnOkay.setFont(new Font("Arial", Font.BOLD, 20));
@@ -104,7 +104,6 @@ public class BotoesPadrao {
         ActionMap actionMap = btnOkay.getActionMap();
         actionMap.put("Tecla_Enter", actionTecla);
 
-        
         painelcaixaAviso.add(btnOkay);
         painelcaixaAviso.add(txtLblCaixaAviso);
 
@@ -135,6 +134,5 @@ public class BotoesPadrao {
     public void setIcon(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));
     }
-   
 
 }
