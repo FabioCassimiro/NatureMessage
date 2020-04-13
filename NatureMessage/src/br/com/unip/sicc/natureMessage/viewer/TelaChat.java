@@ -62,7 +62,7 @@ public class TelaChat extends JFrame {
     }
 
     PainelPadrao painelChat = new PainelPadrao();
-    BotoesPadrao botoesPadrao = new BotoesPadrao();
+    Componentes botoesPadrao = new Componentes();
 
     JFrame telaChat = new JFrame();
 

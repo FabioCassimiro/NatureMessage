@@ -14,7 +14,7 @@ import javax.swing.JSeparator;
 public class TelaInicial {
 
     private PainelPadrao pnlInicial = new PainelPadrao();
-    private BotoesPadrao botoesPadrao = new BotoesPadrao();
+    private Componentes botoesPadrao = new Componentes();
     private JFrame telaInicial = new JFrame();
     private JLabel lblLogo;
     private JButton btnInicia;

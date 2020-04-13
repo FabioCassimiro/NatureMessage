@@ -11,22 +11,24 @@ import javax.swing.JPanel;
 
 public class TelaSobre {
 
-    PainelPadrao painelSobre = new PainelPadrao();
-    BotoesPadrao botoesPadrao = new BotoesPadrao();
-    JFrame telaSobre = new JFrame();
-
-    Font fonte = new Font("Arial", Font.BOLD, 15);
-    
-    ImageIcon imagemInstagram = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/instagram.png"));
-    JLabel mostraInstagram = new JLabel(imagemInstagram);
-    
-    ImageIcon imagemGit = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/github.png"));
-    JLabel mostraGit = new JLabel(imagemGit);
-    
-    public JButton btnInstagramWalisson;
-    public JButton btnGitHubWalisson;
-    public JButton btnInstagramFabio;
-    public JButton btnGitHubFabio;
+    private PainelPadrao pnlSobre = new PainelPadrao();
+    private Componentes componentes = new Componentes();
+    private JFrame telaSobre = new JFrame();
+    private Font fonte = new Font("Arial", Font.BOLD, 15);
+    private ImageIcon imgIntagram = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/instagram.png"));
+    private JLabel lblInstagram = new JLabel(imgIntagram);
+    private ImageIcon imgGit = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/github.png"));
+    private JLabel lblGit = new JLabel(imgGit);
+    private JButton btnInstagramWalisson;
+    private JButton btnGitHubWalisson;
+    private JButton btnInstagramFabio;
+    private JButton btnGitHubFabio;
+    private JLabel lblAlunoDois;
+    private JLabel lblFront;
+    private JLabel lblAlunoUm;
+    private JLabel lblFull;
+    private JLabel lblDev;
+    private JLabel lblTexto;
 
     public TelaSobre() {
         telaSobre.add(montaPainelSobre());
@@ -38,43 +40,43 @@ public class TelaSobre {
 
     public JPanel montaPainelSobre() {
 
-        JLabel txtLblTexto = new JLabel("SOBRE");
-        txtLblTexto.setForeground(Color.WHITE);
-        txtLblTexto.setFont(new Font("Arial", Font.BOLD, 25));
-        txtLblTexto.setBounds(400, 50, 350, 100);
+        lblTexto = new JLabel("SOBRE");
+        lblTexto.setForeground(Color.WHITE);
+        lblTexto.setFont(new Font("Arial", Font.BOLD, 25));
+        lblTexto.setBounds(400, 50, 350, 100);
 
-        JLabel txtLblDev = new JLabel("SOFTWARE DESEVOLVIDO POR:");
-        txtLblDev.setForeground(Color.WHITE);
-        txtLblDev.setFont(new Font("Arial", Font.BOLD, 15));
-        txtLblDev.setBounds(330, 70, 350, 100);
-        
-        JLabel txtLblFull = new JLabel("FULLSTACK:");
-        txtLblFull.setForeground(Color.WHITE);
-        txtLblFull.setFont(new Font("Arial", Font.BOLD, 15));
-        txtLblFull.setBounds(290, 100, 350, 100);
-        
-        JLabel txtLblAlunoUm = new JLabel("Fabio Cassimiro  RA:");
-        txtLblAlunoUm.setForeground(Color.WHITE);
-        txtLblAlunoUm.setFont(new Font("Arial", Font.BOLD, 15));
-        txtLblAlunoUm.setBounds(390, 100, 350, 100);
-        
-        JLabel txtLblFront = new JLabel("FRONT-END/DESIGN:");
-        txtLblFront.setForeground(Color.WHITE);
-        txtLblFront.setFont(new Font("Arial", Font.BOLD, 15));
-        txtLblFront.setBounds(227, 120, 350, 100);
-        
-        JLabel txtLblAlunoDois = new JLabel("Walisson Carvalho Ferreira  RA: D62EBA-0");
-        txtLblAlunoDois.setForeground(Color.WHITE);
-        txtLblAlunoDois.setFont(new Font("Arial", Font.BOLD, 15));
-        txtLblAlunoDois.setBounds(390, 120, 350, 100);
-        
+        lblDev = new JLabel("SOFTWARE DESEVOLVIDO POR:");
+        lblDev.setForeground(Color.WHITE);
+        lblDev.setFont(new Font("Arial", Font.BOLD, 15));
+        lblDev.setBounds(330, 70, 350, 100);
+
+        lblFull = new JLabel("FULLSTACK:");
+        lblFull.setForeground(Color.WHITE);
+        lblFull.setFont(new Font("Arial", Font.BOLD, 15));
+        lblFull.setBounds(290, 100, 350, 100);
+
+        lblAlunoUm = new JLabel("Fabio Cassimiro  RA:");
+        lblAlunoUm.setForeground(Color.WHITE);
+        lblAlunoUm.setFont(new Font("Arial", Font.BOLD, 15));
+        lblAlunoUm.setBounds(390, 100, 350, 100);
+
+        lblFront = new JLabel("FRONT-END/DESIGN:");
+        lblFront.setForeground(Color.WHITE);
+        lblFront.setFont(new Font("Arial", Font.BOLD, 15));
+        lblFront.setBounds(227, 120, 350, 100);
+
+        lblAlunoDois = new JLabel("Walisson Carvalho Ferreira  RA: D62EBA-0");
+        lblAlunoDois.setForeground(Color.WHITE);
+        lblAlunoDois.setFont(new Font("Arial", Font.BOLD, 15));
+        lblAlunoDois.setBounds(390, 120, 350, 100);
+
         btnInstagramWalisson = new JButton();
         btnInstagramWalisson.setBounds(480, 170, 40, 40);
         btnInstagramWalisson.setBorder(null);
         btnInstagramWalisson.setBackground(null);
         btnInstagramWalisson.setForeground(null);
         btnInstagramWalisson.setContentAreaFilled(false);
-        btnInstagramWalisson.setIcon(imagemInstagram);
+        btnInstagramWalisson.setIcon(imgIntagram);
         btnInstagramWalisson.setToolTipText("Walisson");
         btnInstagramWalisson.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -86,14 +88,14 @@ public class TelaSobre {
                 }
             }
         });
-        
+
         btnGitHubWalisson = new JButton();
         btnGitHubWalisson.setBounds(505, 170, 40, 40);
         btnGitHubWalisson.setBorder(null);
         btnGitHubWalisson.setBackground(null);
         btnGitHubWalisson.setForeground(null);
         btnGitHubWalisson.setContentAreaFilled(false);
-        btnGitHubWalisson.setIcon(imagemGit);
+        btnGitHubWalisson.setIcon(imgGit);
         btnGitHubWalisson.setToolTipText("Walisson");
         btnGitHubWalisson.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -105,14 +107,14 @@ public class TelaSobre {
                 }
             }
         });
-        
+
         btnInstagramFabio = new JButton();
         btnInstagramFabio.setBounds(330, 170, 40, 40);
         btnInstagramFabio.setBorder(null);
         btnInstagramFabio.setBackground(null);
         btnInstagramFabio.setForeground(null);
         btnInstagramFabio.setContentAreaFilled(false);
-        btnInstagramFabio.setIcon(imagemInstagram);
+        btnInstagramFabio.setIcon(imgIntagram);
         btnInstagramFabio.setToolTipText("Fabio");
         btnInstagramFabio.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -124,14 +126,14 @@ public class TelaSobre {
                 }
             }
         });
-        
+
         btnGitHubFabio = new JButton();
         btnGitHubFabio.setBounds(355, 170, 40, 40);
         btnGitHubFabio.setBorder(null);
         btnGitHubFabio.setBackground(null);
         btnGitHubFabio.setForeground(null);
         btnGitHubFabio.setContentAreaFilled(false);
-        btnGitHubFabio.setIcon(imagemGit);
+        btnGitHubFabio.setIcon(imgGit);
         btnGitHubFabio.setToolTipText("Fabio");
         btnGitHubFabio.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -143,44 +145,18 @@ public class TelaSobre {
                 }
             }
         });
-
-        /*JLabel btnOkay = new JLabel("OK");
-        btnOkay.setForeground(Color.WHITE);
-        btnOkay.setFont(new Font("Arial", Font.BOLD, 20));
-        btnOkay.setBounds(120, 80, 100, 25);
-        btnOkay.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                try {
-                    Runtime.getRuntime().exec("cmd.exe /C start " + "https://www.google.com/");
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
-        });
-
-        JLabel txtLblTexto = new JLabel("Nome:");
-        txtLblTexto.setForeground(Color.WHITE);
-        txtLblTexto.setFont(new Font("Arial", Font.BOLD, 12));
-        txtLblTexto.setBounds(29, 33, 350, 32);
         
-        try { 
-        Runtime.getRuntime().exec("cmd.exe /C start " + "http://www.seusite.com/");
-        } catch (IOException ex) { System.out.println(ex.getMessage()); }
-        
-        
-         */
-        painelSobre.add(txtLblTexto);
-        painelSobre.add(txtLblDev);
-        painelSobre.add(txtLblFull);
-        painelSobre.add(txtLblAlunoUm);
-        painelSobre.add(txtLblFront);
-        painelSobre.add(txtLblAlunoDois);
-        painelSobre.add(btnInstagramWalisson);
-        painelSobre.add(btnGitHubWalisson);
-        painelSobre.add(btnInstagramFabio);
-        painelSobre.add(btnGitHubFabio);
+        pnlSobre.add(lblTexto);
+        pnlSobre.add(lblDev);
+        pnlSobre.add(lblFull);
+        pnlSobre.add(lblAlunoUm);
+        pnlSobre.add(lblFront);
+        pnlSobre.add(lblAlunoDois);
+        pnlSobre.add(btnInstagramWalisson);
+        pnlSobre.add(btnGitHubWalisson);
+        pnlSobre.add(btnInstagramFabio);
+        pnlSobre.add(btnGitHubFabio);
 
-        return painelSobre;
+        return pnlSobre;
     }
 }

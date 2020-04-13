@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.plaf.basic.BasicArrowButton;
 
-public class BotoesPadrao {
+public class Componentes {
 
     Font fonte = new Font("Arial", Font.BOLD, 15);
     JFrame caixaAvisoMsg = new JFrame();
@@ -28,7 +28,7 @@ public class BotoesPadrao {
 
     Color cor;
 
-    public BotoesPadrao() {
+    public Componentes() {
     }
 
     public JButton montaBtnPadrao() {

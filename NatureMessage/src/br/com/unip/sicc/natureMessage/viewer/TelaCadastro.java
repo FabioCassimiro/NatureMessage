@@ -20,16 +20,16 @@ import javax.swing.JTextField;
 
 public class TelaCadastro {
 
-    public JTextField txfNome;
-    public JTextField txfSobrenome;
-    public JTextField txfDtNasc;
-    public JTextField txfEmail;
-    public JTextField txfEndereco;
-    public JTextField txfEmpresa;
-    public JTextField txfCargo;
-    public JTextField txfUsuario;
-    public JPasswordField pwdSenha;
-    public JPasswordField pwdConfirmaSenha;
+    private JTextField txfNome;
+    private JTextField txfSobrenome;
+    private JTextField txfDtNasc;
+    private JTextField txfEmail;
+    private JTextField txfEndereco;
+    private JTextField txfEmpresa;
+    private JTextField txfCargo;
+    private JTextField txfUsuario;
+    private JPasswordField pwdSenha;
+    private JPasswordField pwdConfirmaSenha;
     private JLabel lblNome;
     private JLabel lblSobreNome;
     private JLabel lblDataNasc;
@@ -56,9 +56,9 @@ public class TelaCadastro {
     private ImageIcon imagemVoltar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"));
     private JLabel mostraVoltar = new JLabel(imagemVoltar);
     private JFrame telaCadastro = new JFrame();
-    private PainelPadrao painelCadastro = new PainelPadrao();
-    private PainelPadrao painelPadrao = new PainelPadrao();
-    private BotoesPadrao botoesPadrao = new BotoesPadrao();
+    private PainelPadrao pnlCadastro = new PainelPadrao();
+    private PainelPadrao pnlPadrao = new PainelPadrao();
+    private Componentes compónentes = new Componentes();
     private Cadastro cadastro = new Cadastro();
 
     public TelaCadastro() {
@@ -246,7 +246,7 @@ public class TelaCadastro {
 
         /* Botao */
         btnCadastra = new JButton();
-        btnCadastra = botoesPadrao.montaBtnAlteravel();
+        btnCadastra = compónentes.montaBtnAlteravel();
         btnCadastra.setText("Cadastrar");
         btnCadastra.setBounds(570, 280, 300, 30);
         btnCadastra.setBackground(new Color(0, 255, 127));
@@ -255,16 +255,16 @@ public class TelaCadastro {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                lnsNome.setForeground(botoesPadrao.validaCorCampo(txfNome.getText()));
-                lnsSobrenome.setForeground(botoesPadrao.validaCorCampo(txfSobrenome.getText()));
-                lnsDtNasc.setForeground(botoesPadrao.validaCorCampo(txfDtNasc.getText()));
-                lnsCargo.setForeground(botoesPadrao.validaCorCampo(txfCargo.getText()));
-                lnsEmpresa.setForeground(botoesPadrao.validaCorCampo(txfEmpresa.getText()));
-                lnsEndereco.setForeground(botoesPadrao.validaCorCampo(txfEndereco.getText()));
-                lnsEmail.setForeground(botoesPadrao.validaCorCampo(txfEmail.getText()));
-                lnsSenha.setForeground(botoesPadrao.validaCorCampo(pwdSenha.getText()));
-                lnsUsuario.setForeground(botoesPadrao.validaCorCampo(txfUsuario.getText()));
-                lnsConfirmaSenha.setForeground(botoesPadrao.validaCorCampo(pwdSenha.getText()));
+                lnsNome.setForeground(compónentes.validaCorCampo(txfNome.getText()));
+                lnsSobrenome.setForeground(compónentes.validaCorCampo(txfSobrenome.getText()));
+                lnsDtNasc.setForeground(compónentes.validaCorCampo(txfDtNasc.getText()));
+                lnsCargo.setForeground(compónentes.validaCorCampo(txfCargo.getText()));
+                lnsEmpresa.setForeground(compónentes.validaCorCampo(txfEmpresa.getText()));
+                lnsEndereco.setForeground(compónentes.validaCorCampo(txfEndereco.getText()));
+                lnsEmail.setForeground(compónentes.validaCorCampo(txfEmail.getText()));
+                lnsSenha.setForeground(compónentes.validaCorCampo(pwdSenha.getText()));
+                lnsUsuario.setForeground(compónentes.validaCorCampo(txfUsuario.getText()));
+                lnsConfirmaSenha.setForeground(compónentes.validaCorCampo(pwdSenha.getText()));
 
                 try {
                     cadastro.CadastroUsuario(txfNome.getText(), txfSobrenome.getText(), txfCargo.getText(),
@@ -283,7 +283,7 @@ public class TelaCadastro {
         });
 
         btnLimpar = new JButton();
-        btnLimpar = botoesPadrao.montaBtnAlteravel();
+        btnLimpar = compónentes.montaBtnAlteravel();
         btnLimpar.setText("Limpar");
         btnLimpar.setBounds(570, 320, 300, 30);
         btnLimpar.setBackground(new Color(255, 215, 0));
@@ -297,40 +297,40 @@ public class TelaCadastro {
             }
         });
 
-        painelCadastro.add(btnVoltar);
-        painelCadastro.add(txfNome);
-        painelCadastro.add(txfSobrenome);
-        painelCadastro.add(txfDtNasc);
-        painelCadastro.add(txfEmail);
-        painelCadastro.add(txfEndereco);
-        painelCadastro.add(txfEmpresa);
-        painelCadastro.add(txfCargo);
-        painelCadastro.add(txfUsuario);
-        painelCadastro.add(pwdSenha);
-        painelCadastro.add(pwdConfirmaSenha);
-        painelCadastro.add(lblNome);
-        painelCadastro.add(lblSobreNome);
-        painelCadastro.add(lblDataNasc);
-        painelCadastro.add(lblEmail);
-        painelCadastro.add(lblEndereco);
-        painelCadastro.add(lblEmpresa);
-        painelCadastro.add(lblCargo);
-        painelCadastro.add(lblUsuario);
-        painelCadastro.add(lblSenha);
-        painelCadastro.add(lblConfirmaSenha);
-        painelCadastro.add(lnsNome);
-        painelCadastro.add(lnsSobrenome);
-        painelCadastro.add(lnsDtNasc);
-        painelCadastro.add(lnsEmail);
-        painelCadastro.add(lnsEndereco);
-        painelCadastro.add(lnsEmpresa);
-        painelCadastro.add(lnsCargo);
-        painelCadastro.add(lnsUsuario);
-        painelCadastro.add(lnsSenha);
-        painelCadastro.add(lnsConfirmaSenha);
-        painelCadastro.add(btnCadastra);
-        painelCadastro.add(btnLimpar);
+        pnlCadastro.add(btnVoltar);
+        pnlCadastro.add(txfNome);
+        pnlCadastro.add(txfSobrenome);
+        pnlCadastro.add(txfDtNasc);
+        pnlCadastro.add(txfEmail);
+        pnlCadastro.add(txfEndereco);
+        pnlCadastro.add(txfEmpresa);
+        pnlCadastro.add(txfCargo);
+        pnlCadastro.add(txfUsuario);
+        pnlCadastro.add(pwdSenha);
+        pnlCadastro.add(pwdConfirmaSenha);
+        pnlCadastro.add(lblNome);
+        pnlCadastro.add(lblSobreNome);
+        pnlCadastro.add(lblDataNasc);
+        pnlCadastro.add(lblEmail);
+        pnlCadastro.add(lblEndereco);
+        pnlCadastro.add(lblEmpresa);
+        pnlCadastro.add(lblCargo);
+        pnlCadastro.add(lblUsuario);
+        pnlCadastro.add(lblSenha);
+        pnlCadastro.add(lblConfirmaSenha);
+        pnlCadastro.add(lnsNome);
+        pnlCadastro.add(lnsSobrenome);
+        pnlCadastro.add(lnsDtNasc);
+        pnlCadastro.add(lnsEmail);
+        pnlCadastro.add(lnsEndereco);
+        pnlCadastro.add(lnsEmpresa);
+        pnlCadastro.add(lnsCargo);
+        pnlCadastro.add(lnsUsuario);
+        pnlCadastro.add(lnsSenha);
+        pnlCadastro.add(lnsConfirmaSenha);
+        pnlCadastro.add(btnCadastra);
+        pnlCadastro.add(btnLimpar);
 
-        return painelCadastro;
+        return pnlCadastro;
     }
 }

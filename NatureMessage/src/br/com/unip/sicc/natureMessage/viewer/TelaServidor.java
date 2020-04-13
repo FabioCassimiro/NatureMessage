@@ -22,7 +22,7 @@ import javax.swing.KeyStroke;
 public class TelaServidor {
     
     private PainelPadrao pnlServidor = new PainelPadrao();
-    private BotoesPadrao componente = new BotoesPadrao();
+    private Componentes componente = new Componentes();
     private String nomeUsuario;
     private JLabel lblTitulo;
     private JButton btnEntra;

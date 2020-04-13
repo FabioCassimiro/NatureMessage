@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 public class TelaConexao {
 
     PainelPadrao painelConexao = new PainelPadrao();
-    BotoesPadrao botoesPadrao = new BotoesPadrao();
+    Componentes botoesPadrao = new Componentes();
     JFrame telaConexao = new JFrame();
 
     public TelaConexao() {

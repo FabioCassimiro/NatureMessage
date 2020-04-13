@@ -28,7 +28,7 @@ public class TelaLogin {
     private ConfigLogin login = new ConfigLogin();
     private JButton btnEntra;
     private PainelPadrao pnlLogin = new PainelPadrao();
-    private BotoesPadrao componentes = new BotoesPadrao();
+    private Componentes componentes = new Componentes();
     private JFrame telaLogin = new JFrame();
     private JLabel lblTitulo;
     private JTextField txfUsuario;
