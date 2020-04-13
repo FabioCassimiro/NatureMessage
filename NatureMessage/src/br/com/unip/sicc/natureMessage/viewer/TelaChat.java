@@ -316,7 +316,7 @@ public class TelaChat extends JFrame {
             txfNome.setText("Nome: " + nomeUsuario);
             String mensagem = nomeUsuario;
             PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-            mensagem = nomeUsuario + ": " + txaEnviar.getText() + "       " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
+            mensagem = nomeUsuario + " " + txaEnviar.getText() + " " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
             ps.println(mensagem);
             ps.flush();
             txaEnviar.setText(null);
