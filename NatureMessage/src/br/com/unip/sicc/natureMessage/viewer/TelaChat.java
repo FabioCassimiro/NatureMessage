@@ -278,7 +278,7 @@ public class TelaChat extends JFrame {
 
     public void Chat() {
         try {
-            socketCliente = new Socket("localhost", 5000);
+            socketCliente = new Socket("10.0.0.103", 5000);
             txfStatusServidor.setText("Status Servidor: Online");
         } catch (IOException ex) {
             ex.printStackTrace();
