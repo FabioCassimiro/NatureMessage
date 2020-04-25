@@ -81,7 +81,7 @@ public class PainelPadrao extends JPanel {
         return txtLblTituloDois;
     }
 
-    public JButton montaBtnInfo() {
+   public JButton montaBtnInfo() {
         btnInfo = new JButton();
         btnInfo.setBounds(866, 466, 25, 25);
         btnInfo.setBorder(null);

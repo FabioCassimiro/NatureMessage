@@ -52,6 +52,8 @@ public class TelaChat extends JFrame {
     JButton btnCompartilhar;
     public JButton btnAbrirCompartilhar;
     public JButton btnAbrirImagem;
+    public JButton btnAbrirDoc;
+    public JButton btnPerfil;
 
     public String getNomeUsuario() {
         return nomeUsuario;
@@ -82,8 +84,18 @@ public class TelaChat extends JFrame {
     JLabel mostraCompartilharImagem = new JLabel(imagemCompartilharImagem);
     ImageIcon imagemCompartilharDoc = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/compartilharDoc.png"));
     JLabel mostraCompartilharDoc = new JLabel(imagemCompartilharDoc);
+    ImageIcon imagemPerfil = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/perfil.png"));
+    JLabel mostraPerfil = new JLabel(imagemPerfil);
 
     public JPanel montaPainelChat() {
+        
+        btnPerfil = new JButton();
+        btnPerfil.setBounds(60, 45, 100, 100);
+        btnPerfil.setBorder(null);
+        btnPerfil.setBackground(null);
+        btnPerfil.setForeground(null);
+        btnPerfil.setContentAreaFilled(false);
+        btnPerfil.setIcon(imagemPerfil);
 
         btnCompartilharImagem = new JButton();
         btnCompartilharImagem.setBounds(1, 180, 40, 40);
@@ -120,7 +132,7 @@ public class TelaChat extends JFrame {
         });
 
         btnCompartilharDoc = new JButton();
-        btnCompartilharDoc.setBounds(821, 290, 40, 40);
+        btnCompartilharDoc.setBounds(0, 210, 40, 40);
         btnCompartilharDoc.setBorder(null);
         btnCompartilharDoc.setBackground(null);
         btnCompartilharDoc.setForeground(null);
@@ -135,7 +147,24 @@ public class TelaChat extends JFrame {
                 fileChooser.setDialogTitle("Enviar");
             }
         });
-
+        
+        btnAbrirDoc = new JButton();
+        btnAbrirDoc = botoesPadrao.montaBtnPadrao();
+        btnAbrirDoc.setText("Documento");
+        btnAbrirDoc.setForeground(Color.WHITE);
+        btnAbrirDoc.setFont(new Font("Arial", Font.BOLD, 12));
+        btnAbrirDoc.setBounds(20, 220, 100, 25);
+        btnAbrirDoc.setContentAreaFilled(false);
+        btnAbrirDoc.setVisible(false);
+        btnAbrirDoc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.showOpenDialog(telaChat);
+                fileChooser.setDialogTitle("Enviar");
+            }
+        });      
+        
         btnCompartilhar = new JButton();
         btnCompartilhar.setBounds(1, 150, 40, 40);
         btnCompartilhar.setBorder(null);
@@ -149,6 +178,7 @@ public class TelaChat extends JFrame {
                 btnCompartilharImagem.setVisible(true);
                 btnCompartilharDoc.setVisible(true);
                 btnAbrirImagem.setVisible(true);
+                btnAbrirDoc.setVisible(true);
             }
         });
 
@@ -165,6 +195,7 @@ public class TelaChat extends JFrame {
                 btnCompartilharImagem.setVisible(true);
                 btnCompartilharDoc.setVisible(true);
                 btnAbrirImagem.setVisible(true);
+                btnAbrirDoc.setVisible(true);
             }
         });
 
@@ -219,13 +250,12 @@ public class TelaChat extends JFrame {
         txtLblMessageChat.setBounds(72, 38, 350, 25);
 
         txfNome = new JTextField();
-
         txfNome.setBorder(null);
         txfNome.setFont(new Font("Arial", Font.BOLD, 11));
         txfNome.setForeground(Color.WHITE);
         txfNome.setBackground(null);
         txfNome.setEditable(false);
-        txfNome.setBounds(260, 37, 150, 25);
+        txfNome.setBounds(50, 130, 150, 25);
 
         txfStatusServidor = new JTextField("Status Servidor:");
         txfStatusServidor.setBorder(null);
@@ -233,7 +263,7 @@ public class TelaChat extends JFrame {
         txfStatusServidor.setForeground(Color.WHITE);
         txfStatusServidor.setBackground(null);
         txfStatusServidor.setEditable(false);
-        txfStatusServidor.setBounds(500, 37, 150, 25);
+        txfStatusServidor.setBounds(260, 37, 150, 25);
 
         JButton btnLogoff = new JButton();
         btnLogoff = botoesPadrao.montaBtnPadrao();
@@ -256,10 +286,12 @@ public class TelaChat extends JFrame {
         linhaSeparatorLogoff.setForeground(Color.WHITE);
         linhaSeparatorLogoff.setBounds(30, 420, 162, 1);
         
+        painelChat.add(btnPerfil);
         painelChat.add(btnAbrirImagem);
         painelChat.add(btnAbrirCompartilhar);
         painelChat.add(btnCompartilhar);
         painelChat.add(btnCompartilharImagem);
+        painelChat.add(btnAbrirDoc);
         painelChat.add(btnCompartilharDoc);
         painelChat.add(linhaSeparatorMenu);
         painelChat.add(scrollableTextArea);
@@ -272,7 +304,7 @@ public class TelaChat extends JFrame {
         painelChat.add(txfStatusServidor);
         painelChat.add(btnLogoff);
         painelChat.add(linhaSeparatorLogoff);
-
+        
         return painelChat;
     }
 
@@ -313,7 +345,7 @@ public class TelaChat extends JFrame {
 
     private void botaoEnviarActionPerformed() {
         try {
-            txfNome.setText("Nome: " + nomeUsuario);
+            txfNome.setText("Usuário: " + nomeUsuario);
             String mensagem = nomeUsuario;
             PrintStream ps = new PrintStream(socketCliente.getOutputStream());
             mensagem = nomeUsuario + " " + txaEnviar.getText() + " " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);

@@ -2,11 +2,14 @@ package br.com.unip.sicc.natureMessage.viewer;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class TelaSobre {
@@ -29,6 +32,9 @@ public class TelaSobre {
     private JLabel lblFull;
     private JLabel lblDev;
     private JLabel lblTexto;
+    private JButton btnVoltar;
+    private ImageIcon imagemVoltar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"));
+    private JLabel mostraVoltar = new JLabel(imagemVoltar);
 
     public TelaSobre() {
         telaSobre.add(montaPainelSobre());
@@ -39,6 +45,20 @@ public class TelaSobre {
     }
 
     public JPanel montaPainelSobre() {
+
+        btnVoltar = new JButton();
+        btnVoltar.setBounds(15, 10, 25, 25);
+        btnVoltar.setBorder(null);
+        btnVoltar.setBackground(null);
+        btnVoltar.setForeground(null);
+        btnVoltar.setContentAreaFilled(false);
+        btnVoltar.setIcon(imagemVoltar);
+        btnVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaSobre.dispose();
+            }
+        });
 
         lblTexto = new JLabel("SOBRE");
         lblTexto.setForeground(Color.WHITE);
@@ -55,7 +75,7 @@ public class TelaSobre {
         lblFull.setFont(new Font("Arial", Font.BOLD, 15));
         lblFull.setBounds(290, 100, 350, 100);
 
-        lblAlunoUm = new JLabel("Fabio Cassimiro  RA:");
+        lblAlunoUm = new JLabel("Fabio Cassimiro  RA: N359838");
         lblAlunoUm.setForeground(Color.WHITE);
         lblAlunoUm.setFont(new Font("Arial", Font.BOLD, 15));
         lblAlunoUm.setBounds(390, 100, 350, 100);
@@ -65,7 +85,7 @@ public class TelaSobre {
         lblFront.setFont(new Font("Arial", Font.BOLD, 15));
         lblFront.setBounds(227, 120, 350, 100);
 
-        lblAlunoDois = new JLabel("Walisson Carvalho Ferreira  RA: D62EBA-0");
+        lblAlunoDois = new JLabel("Walisson Carvalho Ferreira  RA: D62EBA0");
         lblAlunoDois.setForeground(Color.WHITE);
         lblAlunoDois.setFont(new Font("Arial", Font.BOLD, 15));
         lblAlunoDois.setBounds(390, 120, 350, 100);
@@ -145,7 +165,8 @@ public class TelaSobre {
                 }
             }
         });
-        
+
+        pnlSobre.add(btnVoltar);
         pnlSobre.add(lblTexto);
         pnlSobre.add(lblDev);
         pnlSobre.add(lblFull);

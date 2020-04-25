@@ -8,8 +8,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,12 +23,13 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 public class TelaCadastro {
 
     private JTextField txfNome;
     private JTextField txfSobrenome;
-    private JTextField txfDtNasc;
+    private JFormattedTextField txfDtNasc;
     private JTextField txfEmail;
     private JTextField txfEndereco;
     private JTextField txfEmpresa;
@@ -104,7 +111,11 @@ public class TelaCadastro {
         txfSobrenome.setBackground(null);
         txfSobrenome.setBounds(30, 120, 300, 25);
 
-        txfDtNasc = new JTextField("");
+        try {
+            txfDtNasc = new JFormattedTextField(new MaskFormatter("##/##/####"));
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
         txfDtNasc.setBorder(null);
         txfDtNasc.setForeground(Color.WHITE);
         txfDtNasc.setBackground(null);
