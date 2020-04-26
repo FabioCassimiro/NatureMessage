@@ -54,6 +54,12 @@ public class TelaChat extends JFrame {
     public JButton btnAbrirImagem;
     public JButton btnAbrirDoc;
     public JButton btnPerfil;
+    private int porta; 
+
+    public void setPorta(int porta) {
+        this.porta = porta;
+    }
+   
 
     public String getNomeUsuario() {
         return nomeUsuario;

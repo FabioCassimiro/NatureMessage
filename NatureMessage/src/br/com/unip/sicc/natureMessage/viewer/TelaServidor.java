@@ -96,6 +96,7 @@ public class TelaServidor {
                 telaServidor.dispose();
                 TelaChat telaChat =  new TelaChat();
                 telaChat.setNomeUsuario(nomeUsuario);
+                telaChat.setPorta(servidor.getPortaServidor());
                 componente.montaAvisoMensagem(nomeUsuario + " Conectado a: " +servidor.getNoHostname(), "SUCESSO");
             }
         });

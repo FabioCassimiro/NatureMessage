@@ -8,12 +8,19 @@ import java.util.logging.Logger;
 
 public class ConfigConexaoServidor {
     private String noHostname;
-    Socket socket;
-    AcoesBancoDeDados dados = new AcoesBancoDeDados();
+    private int portaServidor;
+    private Socket socket;
+    private AcoesBancoDeDados dados = new AcoesBancoDeDados();
 
     public String getNoHostname() {
         return noHostname;
     }
+
+    public int getPortaServidor() {
+        return portaServidor;
+    }
+    
+    
     
     
     
@@ -22,29 +29,11 @@ public class ConfigConexaoServidor {
         dados.ConsultaServidor("SELECT * FROM TB_SERVIDOR WHERE CDSERVIDOR =" + "'" + cdHostname + "'");
         
         if(!dados.getResulIpServidor().equals("")){
-            conexaoChat(dados.getResulIpServidor(), Integer.parseInt(dados.getResulPortaServidor()));
             noHostname = dados.getResultNoHostname();
+            portaServidor = Integer.parseInt(dados.getResulPortaServidor());
         }
 
     }
-    
-    public void entrarServidor(){
-        
-            
-    }
-    
-    public void conexaoChat(String cdIp, int cdPorta){
-        
-        try{
-            socket = new Socket(cdIp,cdPorta);
-            System.out.println("deu");
-        } catch (IOException ex) {
-           ex.printStackTrace();
-        }  
-        
-        
-    }
-    
-    
-        
 }
+    
+   
