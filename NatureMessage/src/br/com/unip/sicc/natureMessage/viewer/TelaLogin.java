@@ -114,7 +114,7 @@ public class TelaLogin {
                         telaLogin.dispose();
                         TelaServidor telaServidor = new TelaServidor();
                         telaServidor.setNomeUsuario(result);
-                        componentes.montaAvisoMensagem("Bem-Vindo  " + result, "SUCESSO");
+                        componentes.montaAvisoMensagem("Bem-Vindo " + result, "SUCESSO");
                     }
 
                 } catch (UserInvalidException usuarioInvalido) {

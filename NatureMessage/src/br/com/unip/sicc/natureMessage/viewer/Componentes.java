@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -18,6 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 public class Componentes {
+    
+    JLabel img = new JLabel();
+    JLabel imgBorda = new JLabel();
 
     Font fonte = new Font("Arial", Font.BOLD, 15);
     JFrame caixaAvisoMsg = new JFrame();
@@ -25,6 +29,15 @@ public class Componentes {
     JButton btnOkay;
 
     Color cor;
+
+    ImageIcon imagemSucesso = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/sucesso.png"));
+    JLabel mostraSucesso = new JLabel(imagemSucesso);
+    ImageIcon imagemAlerta = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/alerta.png"));
+    JLabel mostraAlerta = new JLabel(imagemAlerta);
+    ImageIcon imagemErro = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/erro.png"));
+    JLabel mostraErro = new JLabel(imagemErro);
+    ImageIcon imagemBorda = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/borda.png"));
+    JLabel mostraBorda = new JLabel(imagemBorda);
 
     public Componentes() {
     }
@@ -96,12 +109,18 @@ public class Componentes {
         JLabel txtLblCaixaAviso = new JLabel(texto);
         txtLblCaixaAviso.setForeground(Color.WHITE);
         txtLblCaixaAviso.setFont(new Font("Arial", Font.BOLD, 15));
-        txtLblCaixaAviso.setBounds(5, 30, 300, 25);
+        txtLblCaixaAviso.setBounds(11, 48, 300, 25);
+        
+        imgBorda.setIcon(imagemBorda);
+        imgBorda.setBounds(0, 0, 275, 125);
 
-        btnOkay = new JButton("OK");
-        btnOkay.setForeground(Color.WHITE);
+        btnOkay = new JButton();
+        btnOkay = montaBtnAlteravel();//
+        btnOkay.setText("OK");
         btnOkay.setFont(new Font("Arial", Font.BOLD, 20));
-        btnOkay.setBounds(120, 80, 100, 25);
+        btnOkay.setBounds(86, 90, 100, 25);
+        btnOkay.setBackground(null);
+        btnOkay.setForeground(Color.WHITE);
         btnOkay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -123,9 +142,11 @@ public class Componentes {
         ActionMap actionMap = btnOkay.getActionMap();
         actionMap.put("Tecla_Enter", actionTecla);
 
+        
         painelcaixaAviso.add(btnOkay);
         painelcaixaAviso.add(txtLblCaixaAviso);
-
+        painelcaixaAviso.add(imgBorda);
+        
         caixaAvisoMsg.add(painelcaixaAviso);
 
         return caixaAvisoMsg;
@@ -134,16 +155,23 @@ public class Componentes {
 
     public Color corTipoAviso(String TipoAviso) {
         Color corAviso = null;
+        img.setBounds(106, 1, 44, 40);
 
         switch (TipoAviso) {
             case "SUCESSO":
-                corAviso = new Color(0, 255, 127);
+                corAviso = new Color(0, 255, 127);               
+                img.setIcon(imagemSucesso);
+                painelcaixaAviso.add(img);
                 break;
             case "AVISO":
                 corAviso = new Color(255, 215, 0);
+                img.setIcon(imagemAlerta);
+                painelcaixaAviso.add(img);
                 break;
             case "ERRO":
                 corAviso = new Color(255, 99, 71);
+                img.setIcon(imagemErro);
+                painelcaixaAviso.add(img);        
                 break;
         }
 
