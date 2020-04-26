@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,10 +26,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TelaChat extends JFrame {
 
@@ -47,13 +44,14 @@ public class TelaChat extends JFrame {
     private String nomeUsuario;
     public JTextField txfNome;
     public JTextField txfStatusServidor;
-    public String actionName = "TECLA_ENTER";
+    public final String actionName = "TECLA_ENTER";
     public JButton btnEnviar;
     JButton btnCompartilhar;
     public JButton btnAbrirCompartilhar;
     public JButton btnAbrirImagem;
     public JButton btnAbrirDoc;
     public JButton btnPerfil;
+    public int porta;
 
     public String getNomeUsuario() {
         return nomeUsuario;
@@ -68,14 +66,14 @@ public class TelaChat extends JFrame {
 
     JFrame telaChat = new JFrame();
 
-    public TelaChat() {
+    public TelaChat(int portaServidor) {
         telaChat.add(montaPainelChat());
         telaChat.setSize(900, 500);
         telaChat.setLocationRelativeTo(null);
         telaChat.setUndecorated(true);
         telaChat.setVisible(true);
         botoesPadrao.setIcon(telaChat);
-        Chat();
+        Chat(portaServidor);
     }
 
     ImageIcon imagemCompartilhar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/compartilhar.png"));
@@ -307,16 +305,15 @@ public class TelaChat extends JFrame {
         
         return painelChat;
     }
-    public void atualiza(){
-        txfNome.setText("Usuário: " + nomeUsuario);
-    }
 
-    public void Chat() {
+    public void Chat(int porta) {
         try {
-            socketCliente = new Socket("10.0.0.103", 5000);
+            socketCliente = new Socket("10.0.0.103", porta);
             txfStatusServidor.setText("Status Servidor: Online");
+            
         } catch (IOException ex) {
             ex.printStackTrace();
+            System.out.println("erro");
         }
         Thread();
     }
@@ -327,7 +324,7 @@ public class TelaChat extends JFrame {
             @Override
             public void run() {
                 try {
-                    
+                    txfNome.setText("Usuário: " + nomeUsuario);
                     String msgReceb;
                     inputStreamReader = new InputStreamReader(socketCliente.getInputStream());
                     bufferedReader = new BufferedReader(inputStreamReader);
@@ -349,7 +346,6 @@ public class TelaChat extends JFrame {
 
     private void botaoEnviarActionPerformed() {
         try {
-            txfNome.setText("Usuário: " + nomeUsuario);
             String mensagem = nomeUsuario;
             PrintStream ps = new PrintStream(socketCliente.getOutputStream());
             mensagem = nomeUsuario + " " + txaEnviar.getText() + " " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);

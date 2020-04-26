@@ -1,50 +1,48 @@
 package br.com.unip.sicc.natureMessage.control;
 
 import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
-import java.io.IOException;
+import br.com.unip.sicc.natureMessage.exception.ServerNotFoundException;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConfigConexaoServidor {
+
     private String noHostname;
-    Socket socket;
-    AcoesBancoDeDados dados = new AcoesBancoDeDados();
+    private int portaServidor;
+    private Socket socket;
+    private String nomeServidor;
+    private AcoesBancoDeDados dados = new AcoesBancoDeDados();
 
     public String getNoHostname() {
         return noHostname;
     }
-    
-    
-    
-    public void ValidaServidor(String cdHostname){
-        
-        dados.ConsultaServidor("SELECT * FROM TB_SERVIDOR WHERE CDSERVIDOR =" + "'" + cdHostname + "'");
-        
-        if(!dados.getResulIpServidor().equals("")){
-            conexaoChat(dados.getResulIpServidor(), Integer.parseInt(dados.getResulPortaServidor()));
-            noHostname = dados.getResultNoHostname();
-        }
 
+    public int getPortaServidor() {
+        return portaServidor;
+    }
+
+    public String getNomeServidor() {
+        return nomeServidor;
     }
     
-    public void entrarServidor(){
-        
+
+    public void ValidaServidor(String cdHostname) throws ServerNotFoundException{
+
+        dados.ConsultaServidor("SELECT * FROM TB_SERVIDOR WHERE CDSERVIDOR = " + "'" + cdHostname + "'");
+        if(cdHostname.equals(dados.getResultNoHostname())){
+            noHostname = dados.getResultNoHostname();
+            portaServidor = Integer.parseInt(dados.getResulPortaServidor());
+            nomeServidor = dados.getNomeServidor();
             
+        }else{
+            throw new ServerNotFoundException("Erro");
+        }
+        
+        //noHostname = dados.getResultNoHostname();
+        //portaServidor = Integer.parseInt(dados.getResulPortaServidor());
     }
     
-    public void conexaoChat(String cdIp, int cdPorta){
-        
-        try{
-            socket = new Socket(cdIp,cdPorta);
-            System.out.println("deu");
-        } catch (IOException ex) {
-           ex.printStackTrace();
-        }  
-        
-        
-    }
-    
-    
+                
         
 }
