@@ -2,7 +2,7 @@ package br.com.unip.sicc.natureMessage.viewer;
 
 import br.com.unip.sicc.natureMessage.control.ConfigCadastro;
 import br.com.unip.sicc.natureMessage.exception.InsufficientCharactersException;
-import br.com.unip.sicc.natureMessage.exception.PasswordsDontMatch;
+import br.com.unip.sicc.natureMessage.exception.PasswordsDontMatchException;
 import br.com.unip.sicc.natureMessage.exception.UserRegisteredException;
 import br.com.unip.sicc.natureMessage.model.Cadastro;
 import java.awt.Color;
@@ -297,7 +297,7 @@ public class TelaCadastro {
                             txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
                     telaCadastro.dispose();
                     new TelaLogin();
-                } catch (InsufficientCharactersException | UserRegisteredException | PasswordsDontMatch ex) {
+                } catch (InsufficientCharactersException | UserRegisteredException | PasswordsDontMatchException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
             }

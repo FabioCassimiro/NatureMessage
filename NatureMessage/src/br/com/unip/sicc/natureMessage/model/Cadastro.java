@@ -3,7 +3,7 @@ package br.com.unip.sicc.natureMessage.model;
 import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.control.ConfigCadastro;
 import br.com.unip.sicc.natureMessage.exception.InsufficientCharactersException;
-import br.com.unip.sicc.natureMessage.exception.PasswordsDontMatch;
+import br.com.unip.sicc.natureMessage.exception.PasswordsDontMatchException;
 import br.com.unip.sicc.natureMessage.exception.UserRegisteredException;
 import javax.swing.JTextField;
 
@@ -14,11 +14,11 @@ public class Cadastro {
     AcoesBancoDeDados banco = new AcoesBancoDeDados();
 
     public void CadastroUsuario(String noPessoa, String noSobrenome, String noCargo, String noEmpresa, String noEndereco,
-            String dtNascimento, String noEmail, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatch {
+            String dtNascimento, String noEmail, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatchException {
 
         banco.ConsultaLoginSenha("SELECT * FROM TB_USUARIO WHERE NOLOGIN = '" + noLogin + "'");
         if (!noPessoa.equals("") && !noSobrenome.equals("") && !noCargo.equals("") && !noEmpresa.equals("") && !noEndereco.equals("")
-                && !dtNascimento.equals("") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
+                && !dtNascimento.equals("  /  /    ") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
 
             if (!noLogin.equals(banco.getNome())) {
                 if (noSenha.equals(confirmacaoSenha)) {
@@ -31,7 +31,7 @@ public class Cadastro {
                     banco.CriaCadastroUsuario(criaPessoa);
 
                 } else {
-                    throw new PasswordsDontMatch("Senhas não conferemem");
+                    throw new PasswordsDontMatchException("Senhas não conferemem");
                 }
 
             } else {

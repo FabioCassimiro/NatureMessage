@@ -13,11 +13,16 @@ public class AcoesBancoDeDados {
     private String resulIpServidor;
     private String resulPortaServidor;
     private String resultNoHostname;
+    private String nomeServidor;
     private String nomeUsuario;
     ConexaoBancoDeDados conexao = new ConexaoBancoDeDados();
 
     public String getResulIpServidor() {
         return resulIpServidor;
+    }
+
+    public String getNomeServidor() {
+        return nomeServidor;
     }
 
     public String getResulPortaServidor() {
@@ -58,6 +63,7 @@ public class AcoesBancoDeDados {
             }
 
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "erro");
             e.printStackTrace();
         }
     }
@@ -82,13 +88,15 @@ public class AcoesBancoDeDados {
         try {
             PreparedStatement servidor = conexao.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
-
+            
             while (resultado.next()) {
-
-                resulIpServidor = resultado.getString("IPSERVIDOR");
-                resulPortaServidor = resultado.getString("PTSERVIDOR");
-                resultNoHostname = resultado.getString("NOSERVIDOR");
-
+                if (!resultado.equals("")) {
+                    resulIpServidor = resultado.getString("IPSERVIDOR");
+                    resulPortaServidor = resultado.getString("PTSERVIDOR");
+                    resultNoHostname = resultado.getString("CDSERVIDOR");
+                    nomeServidor = resultado.getString("NOSERVIDOR");
+                    
+                }
             }
 
         } catch (SQLException e) {

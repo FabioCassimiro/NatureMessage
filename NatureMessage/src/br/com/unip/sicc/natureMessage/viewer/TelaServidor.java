@@ -1,11 +1,14 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
 import br.com.unip.sicc.natureMessage.control.ConfigConexaoServidor;
+import br.com.unip.sicc.natureMessage.exception.ServerNotFoundException;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -20,7 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 public class TelaServidor {
-    
+
     private PainelPadrao pnlServidor = new PainelPadrao();
     private Componentes componente = new Componentes();
     private String nomeUsuario;
@@ -29,8 +32,8 @@ public class TelaServidor {
     private JFrame telaServidor = new JFrame();
     private JTextField txfEnderecoIP;
     private JLabel lblEnderecoIP;
-    private JSeparator lnsUsuario;;
-    
+    private JSeparator lnsUsuario;
+
     public String getNomeUsuario() {
         return nomeUsuario;
     }
@@ -38,14 +41,13 @@ public class TelaServidor {
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
     }
-    
+
     public TelaServidor() {
         telaServidor.add(montaPainelServidor());
         telaServidor.setSize(900, 500);
         telaServidor.setLocationRelativeTo(null);
-	telaServidor.setUndecorated(true);
+        telaServidor.setUndecorated(true);
         telaServidor.setVisible(true);
-        
     }
 
     public JPanel montaPainelServidor() {
@@ -60,7 +62,7 @@ public class TelaServidor {
         txfEnderecoIP.setForeground(Color.WHITE);
         txfEnderecoIP.setBackground(null);
         txfEnderecoIP.setBounds(277, 225, 350, 30);
-        
+
         lblEnderecoIP = new JLabel("Informe endereço IP:");
         lblEnderecoIP.setForeground(Color.WHITE);
         lblEnderecoIP.setFont(new Font("Arial", Font.BOLD, 12));
@@ -91,13 +93,18 @@ public class TelaServidor {
         btnEntra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ConfigConexaoServidor servidor = new ConfigConexaoServidor();
-                servidor.ValidaServidor(txfEnderecoIP.getText());
-                telaServidor.dispose();
-                TelaChat telaChat =  new TelaChat();
-                telaChat.setNomeUsuario(nomeUsuario);
-                telaChat.setPorta(servidor.getPortaServidor());
-                componente.montaAvisoMensagem(nomeUsuario + " Conectado a: " +servidor.getNoHostname(), "SUCESSO");
+
+                try {
+                    ConfigConexaoServidor servidor = new ConfigConexaoServidor();
+                    servidor.ValidaServidor(txfEnderecoIP.getText().toUpperCase());
+                    telaServidor.dispose();
+                    TelaChat telaChat = new TelaChat(servidor.getPortaServidor());
+                    telaChat.setNomeUsuario(nomeUsuario);
+                    componente.montaAvisoMensagem(nomeUsuario + " Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
+                } catch (ServerNotFoundException ex) {
+                    Logger.getLogger(TelaServidor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         });
 
