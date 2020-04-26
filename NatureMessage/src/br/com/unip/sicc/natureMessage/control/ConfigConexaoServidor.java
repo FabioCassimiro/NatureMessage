@@ -19,7 +19,7 @@ public class ConfigConexaoServidor {
     
     public void ValidaServidor(String cdHostname){
         
-        dados.ConsultaServidor("SELECT * FROM TB_SERVIDOR WHERE CDHOSTNAME =" + "'" + cdHostname + "'");
+        dados.ConsultaServidor("SELECT * FROM TB_SERVIDOR WHERE CDSERVIDOR =" + "'" + cdHostname + "'");
         
         if(!dados.getResulIpServidor().equals("")){
             conexaoChat(dados.getResulIpServidor(), Integer.parseInt(dados.getResulPortaServidor()));

@@ -14,10 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import javax.swing.plaf.basic.BasicArrowButton;
 
 public class Componentes {
 
@@ -59,10 +57,31 @@ public class Componentes {
         return cor;
     }
 
-    /* public JFrame novaCaixa() {
-        
-        
-    }*/
+    public Color resetaCorCampo(String campo) {
+        cor = Color.WHITE;
+        return cor;
+    }
+
+    public Color validaCorCampoSenha(String campo) {
+        if (campo.length() <= 7) {
+            cor = Color.RED;
+        } else {
+            cor = Color.GREEN;
+        }
+
+        return cor;
+    }
+
+    public Color validaCorCampoUsuario(String campo) {
+        if (campo.length() <= 7) {
+            cor = Color.RED;
+        } else {
+            cor = Color.GREEN;
+        }
+
+        return cor;
+    }
+
     public JFrame montaAvisoMensagem(String texto, String tipoAviso) {
         caixaAvisoMsg.setUndecorated(true);
         caixaAvisoMsg.setVisible(true);

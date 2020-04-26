@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class ConexaoBancoDeDados {
 
-    private String url = "jdbc:mysql://localhost:3306/naturemessage?useTimeZone=true&serverTimezone=UTC";
+    private final String url = "jdbc:mysql://localhost:3306/teste?useTimeZone=true&serverTimezone=UTC";
     private final String noLoginBanco = "root" ;
     private final String noSenhaBanco  = "";
     private Connection conect = null;

@@ -307,6 +307,9 @@ public class TelaChat extends JFrame {
         
         return painelChat;
     }
+    public void atualiza(){
+        txfNome.setText("Usuário: " + nomeUsuario);
+    }
 
     public void Chat() {
         try {
@@ -324,6 +327,7 @@ public class TelaChat extends JFrame {
             @Override
             public void run() {
                 try {
+                    
                     String msgReceb;
                     inputStreamReader = new InputStreamReader(socketCliente.getInputStream());
                     bufferedReader = new BufferedReader(inputStreamReader);

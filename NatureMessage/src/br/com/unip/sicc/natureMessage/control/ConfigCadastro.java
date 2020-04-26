@@ -1,8 +1,6 @@
 package br.com.unip.sicc.natureMessage.control;
 
 import br.com.unip.sicc.natureMessage.exception.InsufficientCharactersException;
-import br.com.unip.sicc.natureMessage.exception.PasswordsDontMatch;
-import javax.swing.JTextField;
 
 public class ConfigCadastro {
 

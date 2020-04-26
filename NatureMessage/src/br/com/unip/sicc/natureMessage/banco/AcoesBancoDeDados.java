@@ -16,7 +16,6 @@ public class AcoesBancoDeDados {
     private String nomeUsuario;
     ConexaoBancoDeDados conexao = new ConexaoBancoDeDados();
 
-
     public String getResulIpServidor() {
         return resulIpServidor;
     }
@@ -55,13 +54,11 @@ public class AcoesBancoDeDados {
             while (resultado.next()) {
                 nome = resultado.getString("noLogin");
                 senha = resultado.getString("noSenha");
-                nomeUsuario = resultado.getString("noPessoa");
+                nomeUsuario = resultado.getString("noLogin");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("sss");
-            //JOptionPane.showMessageDialog(null, e.getMessage() + " Erro de Banco de dados");
         }
     }
     //->Fim Consulta usuário.
@@ -76,6 +73,7 @@ public class AcoesBancoDeDados {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage() + " Erro de Banco de dados");
+            e.printStackTrace();
         }
     }
     //->Fim criação usuario.
@@ -86,10 +84,10 @@ public class AcoesBancoDeDados {
             ResultSet resultado = servidor.executeQuery();
 
             while (resultado.next()) {
-                
-                resulIpServidor = resultado.getString("cdIp");
-                resulPortaServidor = resultado.getString("cdPorta");
-                resultNoHostname = resultado.getString("noHostname");
+
+                resulIpServidor = resultado.getString("IPSERVIDOR");
+                resulPortaServidor = resultado.getString("PTSERVIDOR");
+                resultNoHostname = resultado.getString("NOSERVIDOR");
 
             }
 

@@ -1,5 +1,6 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
+import br.com.unip.sicc.natureMessage.control.ConfigCadastro;
 import br.com.unip.sicc.natureMessage.exception.InsufficientCharactersException;
 import br.com.unip.sicc.natureMessage.exception.PasswordsDontMatch;
 import br.com.unip.sicc.natureMessage.exception.UserRegisteredException;
@@ -8,9 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -65,8 +64,10 @@ public class TelaCadastro {
     private JFrame telaCadastro = new JFrame();
     private PainelPadrao pnlCadastro = new PainelPadrao();
     private PainelPadrao pnlPadrao = new PainelPadrao();
-    private Componentes compónentes = new Componentes();
+    private Componentes componentes = new Componentes();
     private Cadastro cadastro = new Cadastro();
+    ConfigCadastro configCad = new ConfigCadastro();
+    MaskFormatter mascara;
 
     public TelaCadastro() {
         telaCadastro.add(montaPainelCadastro());
@@ -89,12 +90,23 @@ public class TelaCadastro {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?") == 0) {
-                    cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc, txfEmail, txfUsuario, pwdSenha, pwdConfirmaSenha);
+                if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
+                        || !txfEmpresa.getText().equals("") || !txfEndereco.getText().equals("") || !txfEmail.getText().equals("")
+                        || !txfUsuario.getText().equals("") || !pwdSenha.getText().equals("") || !pwdConfirmaSenha.getText().equals("")) {
+                    if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?") == 0) {
+                        cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
+                                txfEmail, txfUsuario, pwdSenha, pwdConfirmaSenha);
+
+                        telaCadastro.dispose();
+                        new TelaLogin();
+
+                    }
+
+                } else {
                     telaCadastro.dispose();
                     new TelaLogin();
-                }
 
+                }
             }
         });
 
@@ -110,10 +122,10 @@ public class TelaCadastro {
         txfSobrenome.setForeground(Color.WHITE);
         txfSobrenome.setBackground(null);
         txfSobrenome.setBounds(30, 120, 300, 25);
-
+        
         try {
             txfDtNasc = new JFormattedTextField(new MaskFormatter("##/##/####"));
-        } catch (ParseException ex) {
+            } catch (ParseException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
         txfDtNasc.setBorder(null);
@@ -257,7 +269,7 @@ public class TelaCadastro {
 
         /* Botao */
         btnCadastra = new JButton();
-        btnCadastra = compónentes.montaBtnAlteravel();
+        btnCadastra = componentes.montaBtnAlteravel();
         btnCadastra.setText("Cadastrar");
         btnCadastra.setBounds(570, 280, 300, 30);
         btnCadastra.setBackground(new Color(0, 255, 127));
@@ -266,35 +278,33 @@ public class TelaCadastro {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                lnsNome.setForeground(compónentes.validaCorCampo(txfNome.getText()));
-                lnsSobrenome.setForeground(compónentes.validaCorCampo(txfSobrenome.getText()));
-                lnsDtNasc.setForeground(compónentes.validaCorCampo(txfDtNasc.getText()));
-                lnsCargo.setForeground(compónentes.validaCorCampo(txfCargo.getText()));
-                lnsEmpresa.setForeground(compónentes.validaCorCampo(txfEmpresa.getText()));
-                lnsEndereco.setForeground(compónentes.validaCorCampo(txfEndereco.getText()));
-                lnsEmail.setForeground(compónentes.validaCorCampo(txfEmail.getText()));
-                lnsSenha.setForeground(compónentes.validaCorCampo(pwdSenha.getText()));
-                lnsUsuario.setForeground(compónentes.validaCorCampo(txfUsuario.getText()));
-                lnsConfirmaSenha.setForeground(compónentes.validaCorCampo(pwdSenha.getText()));
+                lnsNome.setForeground(componentes.validaCorCampo(txfNome.getText()));
+                lnsSobrenome.setForeground(componentes.validaCorCampo(txfSobrenome.getText()));
+                lnsDtNasc.setForeground(componentes.validaCorCampo(txfDtNasc.getText()));
+                lnsCargo.setForeground(componentes.validaCorCampo(txfCargo.getText()));
+                lnsEmpresa.setForeground(componentes.validaCorCampo(txfEmpresa.getText()));
+                lnsEndereco.setForeground(componentes.validaCorCampo(txfEndereco.getText()));
+                lnsEmail.setForeground(componentes.validaCorCampo(txfEmail.getText()));
+                lnsSenha.setForeground(componentes.validaCorCampoSenha(pwdSenha.getText()));
+                lnsUsuario.setForeground(componentes.validaCorCampoUsuario(txfUsuario.getText()));
+                lnsConfirmaSenha.setForeground(componentes.validaCorCampoSenha(pwdSenha.getText()));
 
                 try {
+                    //Validações do cadastro.
+                    configCad.ConfigCadastroValida(txfUsuario.getText(), pwdSenha.getText());
                     cadastro.CadastroUsuario(txfNome.getText(), txfSobrenome.getText(), txfCargo.getText(),
-                            txfEmpresa.getText(), txfEndereco.getText(), txfDtNasc.getText(), txfEmail.getText(), txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
-                } catch (InsufficientCharactersException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                } catch (UserRegisteredException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                } catch (PasswordsDontMatch ex) {
+                            txfEmpresa.getText(), txfEndereco.getText(), txfDtNasc.getText(), txfEmail.getText(),
+                            txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
+                    telaCadastro.dispose();
+                    new TelaLogin();
+                } catch (InsufficientCharactersException | UserRegisteredException | PasswordsDontMatch ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
-
-                telaCadastro.dispose();
-                new TelaLogin();
             }
         });
 
         btnLimpar = new JButton();
-        btnLimpar = compónentes.montaBtnAlteravel();
+        btnLimpar = componentes.montaBtnAlteravel();
         btnLimpar.setText("Limpar");
         btnLimpar.setBounds(570, 320, 300, 30);
         btnLimpar.setBackground(new Color(255, 215, 0));
@@ -303,7 +313,8 @@ public class TelaCadastro {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?") == 0) {
-                    cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc, txfEmail, txfUsuario, pwdSenha, pwdConfirmaSenha);
+                    cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
+                            txfEmail, txfUsuario, pwdSenha, pwdConfirmaSenha);
                 }
             }
         });

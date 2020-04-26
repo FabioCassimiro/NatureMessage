@@ -9,9 +9,9 @@ import javax.swing.JTextField;
 
 public class Cadastro {
 
-    private String criaQuerySql;
+    private String criaPessoa;
+    private String criaUsuario;
     AcoesBancoDeDados banco = new AcoesBancoDeDados();
-    ConfigCadastro configCad = new ConfigCadastro();
 
     public void CadastroUsuario(String noPessoa, String noSobrenome, String noCargo, String noEmpresa, String noEndereco,
             String dtNascimento, String noEmail, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatch {
@@ -22,8 +22,14 @@ public class Cadastro {
 
             if (!noLogin.equals(banco.getNome())) {
                 if (noSenha.equals(confirmacaoSenha)) {
-                    criaQuerySql = "INSERT INTO TB_USUARIO VALUES(" + "'" + noPessoa + "'" + "," + "'" + noSobrenome + "'" + "," + "'" + noCargo + "'" + "," + "'" + noEmpresa + "'" + "," + "'" + noEndereco + "'" + "," + "'" + dtNascimento + "'" + "," + "'" + noEmail + "'" + "," + "'" + noLogin + "'" + "," + "'" + noSenha + "'" + ")";
-                    banco.CriaCadastroUsuario(criaQuerySql);
+                    criaPessoa = "INSERT INTO TB_PESSOA(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(" + "'" + noPessoa + "'" + "," + "'"
+                            + noSobrenome + "'" + "," + "'" + noCargo + "'" + "," + "'" + noEmpresa + "'" + "," + "'" + noEndereco + "'"
+                            + "," + "'" + dtNascimento + "'" + "," + "'" + noEmail + "'" + ")";
+
+                    criaUsuario = "INSERT INTO TB_USUARIO (NOLOGIN,NOSENHA) VALUES(" + "'" + noLogin + "'" + "," + "'" + noSenha + "'" + ")";
+                    banco.CriaCadastroUsuario(criaUsuario);
+                    banco.CriaCadastroUsuario(criaPessoa);
+
                 } else {
                     throw new PasswordsDontMatch("Senhas não conferemem");
                 }
