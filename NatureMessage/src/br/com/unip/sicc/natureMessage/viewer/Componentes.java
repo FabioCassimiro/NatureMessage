@@ -177,6 +177,7 @@ public class Componentes {
 
         return corAviso;
     }
+    //
 
     public void setIcon(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));
