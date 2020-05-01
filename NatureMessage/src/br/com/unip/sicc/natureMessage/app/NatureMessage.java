@@ -14,7 +14,7 @@ public class NatureMessage {
 
     public static void main(String[] args) {
         //new TelaCadastro();
-        //new TelaInicial();
+        new TelaServidor();
        //new TelaChat();
         //new TelaConexao();
        //new TelaChat();
@@ -24,10 +24,8 @@ public class NatureMessage {
      //  new TelaSobre();
        //new TelaConexao();
        //new TelaLogin();
-       new TelaServidor();
+      // new TelaServidor();
         // ConfigConexaoServidor  chat = new ConfigConexaoServidor();
         // chat.conexaoChat("127.0.0.1",5000);
-        Componentes comp = new Componentes();
-        comp.montaAvisoMensagem("teste", "AVISO");
-    }
+        }
 }

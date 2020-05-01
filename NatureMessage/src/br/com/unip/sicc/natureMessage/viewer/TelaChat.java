@@ -1,11 +1,14 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
+import br.com.unip.sicc.natureMessage.model.Arquivo;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -35,6 +38,8 @@ public class TelaChat extends JFrame {
     private BufferedReader bufferedReader;
     private InputStreamReader inputStreamReader;
     Calendar dataHora = Calendar.getInstance();
+    private Arquivo arquivo;
+    private FileInputStream fileInputStream;
 
     public JButton btnCompartilharImagem;
     public JButton btnCompartilharDoc;
@@ -86,7 +91,7 @@ public class TelaChat extends JFrame {
     JLabel mostraPerfil = new JLabel(imagemPerfil);
 
     public JPanel montaPainelChat() {
-        
+
         btnPerfil = new JButton();
         btnPerfil.setBounds(60, 45, 100, 100);
         btnPerfil.setBorder(null);
@@ -106,12 +111,25 @@ public class TelaChat extends JFrame {
         btnCompartilharImagem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
+                /*JFileChooser fileChooser = new JFileChooser();
                 fileChooser.showOpenDialog(telaChat);
                 fileChooser.setDialogTitle("Enviar");
+                File arquivoEnviar = fileChooser.getSelectedFile();
+                byte[] conteudo = new byte[(int) arquivoEnviar.length()];
+                long tamanho = arquivoEnviar.length() / 1024;
+                
+                try {
+                    fileInputStream = new FileInputStream(arquivoEnviar);
+                    fileInputStream.read(conteudo);
+                    fileInputStream.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                arquivo = new Arquivo(arquivoEnviar.getName(), conteudo, tamanho);
+*/
             }
         });
-        
+
         btnAbrirImagem = new JButton();
         btnAbrirImagem = botoesPadrao.montaBtnPadrao();
         btnAbrirImagem.setText("Imagem");
@@ -130,22 +148,24 @@ public class TelaChat extends JFrame {
         });
 
         btnCompartilharDoc = new JButton();
-        btnCompartilharDoc.setBounds(0, 210, 40, 40);
+        btnCompartilharDoc.setBounds(0, 210, 60, 40);
         btnCompartilharDoc.setBorder(null);
         btnCompartilharDoc.setBackground(null);
         btnCompartilharDoc.setForeground(null);
         btnCompartilharDoc.setContentAreaFilled(false);
         btnCompartilharDoc.setIcon(imagemCompartilharDoc);
+        btnCompartilharDoc.setText("Doc");
         btnCompartilharDoc.setVisible(false);
         btnCompartilharDoc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
+                /*JFileChooser fileChooser = new JFileChooser();
                 fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");
+                fileChooser.setDialogTitle("Enviar");*/
+                enviaArquivo();
             }
         });
-        
+
         btnAbrirDoc = new JButton();
         btnAbrirDoc = botoesPadrao.montaBtnPadrao();
         btnAbrirDoc.setText("Documento");
@@ -157,12 +177,13 @@ public class TelaChat extends JFrame {
         btnAbrirDoc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
+                /*JFileChooser fileChooser = new JFileChooser();
                 fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");
+                fileChooser.setDialogTitle("Enviar");*/
+                enviaArquivo();
             }
-        });      
-        
+        });
+
         btnCompartilhar = new JButton();
         btnCompartilhar.setBounds(1, 150, 40, 40);
         btnCompartilhar.setBorder(null);
@@ -283,13 +304,13 @@ public class TelaChat extends JFrame {
         JSeparator linhaSeparatorLogoff = new JSeparator();
         linhaSeparatorLogoff.setForeground(Color.WHITE);
         linhaSeparatorLogoff.setBounds(30, 420, 162, 1);
-        
+
         painelChat.add(btnPerfil);
         painelChat.add(btnAbrirImagem);
         painelChat.add(btnAbrirCompartilhar);
         painelChat.add(btnCompartilhar);
         painelChat.add(btnCompartilharImagem);
-        painelChat.add(btnAbrirDoc);
+        //painelChat.add(btnAbrirDoc);
         painelChat.add(btnCompartilharDoc);
         painelChat.add(linhaSeparatorMenu);
         painelChat.add(scrollableTextArea);
@@ -302,15 +323,15 @@ public class TelaChat extends JFrame {
         painelChat.add(txfStatusServidor);
         painelChat.add(btnLogoff);
         painelChat.add(linhaSeparatorLogoff);
-        
+
         return painelChat;
     }
 
     public void Chat(int porta) {
         try {
-            socketCliente = new Socket("10.0.0.103", porta);
+            socketCliente = new Socket("localhost", porta);
             txfStatusServidor.setText("Status Servidor: Online");
-            
+
         } catch (IOException ex) {
             ex.printStackTrace();
             System.out.println("erro");
@@ -355,5 +376,23 @@ public class TelaChat extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void enviaArquivo(){
+        JFileChooser fileChooser = new JFileChooser();
+                fileChooser.showOpenDialog(telaChat);
+                fileChooser.setDialogTitle("Enviar");
+                File arquivoEnviar = fileChooser.getSelectedFile();
+                byte[] conteudo = new byte[(int) arquivoEnviar.length()];
+                long tamanho = arquivoEnviar.length() / 1024;
+                
+                try {
+                    fileInputStream = new FileInputStream(arquivoEnviar);
+                    fileInputStream.read(conteudo);
+                    fileInputStream.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                arquivo = new Arquivo(arquivoEnviar.getName(), conteudo, tamanho);
     }
 }
