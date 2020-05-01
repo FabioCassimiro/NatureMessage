@@ -31,6 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TelaChat extends JFrame {
 
@@ -41,8 +42,8 @@ public class TelaChat extends JFrame {
     private Arquivo arquivo;
     private FileInputStream fileInputStream;
 
-    public JButton btnCompartilharImagem;
-    public JButton btnCompartilharDoc;
+    public JButton btnImagem;
+    public JButton btnDocumento;
     public JScrollPane scrollableTextArea;
     public JTextField txaEnviar;
     public JEditorPane txaChat;
@@ -97,59 +98,38 @@ public class TelaChat extends JFrame {
         btnPerfil.setContentAreaFilled(false);
         btnPerfil.setIcon(imagemPerfil);
 
-        btnCompartilharImagem = new JButton();
-        btnCompartilharImagem.setBounds(-29, 180, 150, 40);
-        btnCompartilharImagem.setBorder(null);
-        btnCompartilharImagem.setBackground(null);
-        btnCompartilharImagem.setForeground(null);
-        btnCompartilharImagem.setContentAreaFilled(false);
-        btnCompartilharImagem.setIcon(imagemCompartilharImagem);
-        btnCompartilharImagem.setText("Imagem");
-        btnCompartilharImagem.setForeground(Color.WHITE);
-        btnCompartilharImagem.setFont(new Font("Arial", Font.BOLD, 12));
-        btnCompartilharImagem.setVisible(false);
-        btnCompartilharImagem.addActionListener(new ActionListener() {
+        btnImagem = new JButton();
+        btnImagem.setBounds(-29, 180, 150, 40);
+        btnImagem.setBorder(null);
+        btnImagem.setBackground(null);
+        btnImagem.setForeground(null);
+        btnImagem.setContentAreaFilled(false);
+        btnImagem.setIcon(imagemCompartilharImagem);
+        btnImagem.setText("Imagem");
+        btnImagem.setForeground(Color.WHITE);
+        btnImagem.setFont(new Font("Arial", Font.BOLD, 12));
+        btnImagem.setVisible(false);
+        btnImagem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*JFileChooser fileChooser = new JFileChooser();
-                fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");
-                File arquivoEnviar = fileChooser.getSelectedFile();
-                byte[] conteudo = new byte[(int) arquivoEnviar.length()];
-                long tamanho = arquivoEnviar.length() / 1024;
-                
-                try {
-                    fileInputStream = new FileInputStream(arquivoEnviar);
-                    fileInputStream.read(conteudo);
-                    fileInputStream.close();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                arquivo = new Arquivo(arquivoEnviar.getName(), conteudo, tamanho);
-*/              
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");
+                enviaArquivo();
             }
         });
 
-        btnCompartilharDoc = new JButton();
-        btnCompartilharDoc.setBounds(-20, 210, 150, 40);
-        btnCompartilharDoc.setBorder(null);
-        btnCompartilharDoc.setBackground(null);
-        btnCompartilharDoc.setForeground(null);
-        btnCompartilharDoc.setContentAreaFilled(false);
-        btnCompartilharDoc.setIcon(imagemCompartilharDoc);
-        btnCompartilharDoc.setText("Documento");
-        btnCompartilharDoc.setForeground(Color.WHITE);
-        btnCompartilharDoc.setFont(new Font("Arial", Font.BOLD, 12));
-        btnCompartilharDoc.setVisible(false);
-        btnCompartilharDoc.addActionListener(new ActionListener() {
+        btnDocumento = new JButton();
+        btnDocumento.setBounds(-20, 210, 150, 40);
+        btnDocumento.setBorder(null);
+        btnDocumento.setBackground(null);
+        btnDocumento.setForeground(null);
+        btnDocumento.setContentAreaFilled(false);
+        btnDocumento.setIcon(imagemCompartilharDoc);
+        btnDocumento.setText("Documento");
+        btnDocumento.setForeground(Color.WHITE);
+        btnDocumento.setFont(new Font("Arial", Font.BOLD, 12));
+        btnDocumento.setVisible(false);
+        btnDocumento.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*JFileChooser fileChooser = new JFileChooser();
-                fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");*/
                 enviaArquivo();
             }
         });
@@ -167,8 +147,8 @@ public class TelaChat extends JFrame {
         btnCompartilhar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnCompartilharImagem.setVisible(true);
-                btnCompartilharDoc.setVisible(true);
+                btnImagem.setVisible(true);
+                btnDocumento.setVisible(true);
             }
         });
 
@@ -261,8 +241,8 @@ public class TelaChat extends JFrame {
 
         painelChat.add(btnPerfil);
         painelChat.add(btnCompartilhar);
-        painelChat.add(btnCompartilharImagem);
-        painelChat.add(btnCompartilharDoc);
+        painelChat.add(btnImagem);
+        painelChat.add(btnDocumento);
         painelChat.add(linhaSeparatorMenu);
         painelChat.add(scrollableTextArea);
         painelChat.add(scrollEnviar);
@@ -328,22 +308,30 @@ public class TelaChat extends JFrame {
             e.printStackTrace();
         }
     }
-    
-    public void enviaArquivo(){
+
+    public void enviaArquivo() {
         JFileChooser fileChooser = new JFileChooser();
-                fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");
-                File arquivoEnviar = fileChooser.getSelectedFile();
-                byte[] conteudo = new byte[(int) arquivoEnviar.length()];
-                long tamanho = arquivoEnviar.length() / 1024;
-                
-                try {
-                    fileInputStream = new FileInputStream(arquivoEnviar);
-                    fileInputStream.read(conteudo);
-                    fileInputStream.close();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                arquivo = new Arquivo(arquivoEnviar.getName(), conteudo, tamanho);
+        Componentes componentes = new Componentes();
+        fileChooser.showOpenDialog(null);
+        fileChooser.setDialogTitle("Enviar");
+
+        
+        if (fileChooser.getSelectedFile() != null) {
+            File arquivoEnviar = fileChooser.getSelectedFile();
+            byte[] conteudo = new byte[(int) arquivoEnviar.length()];
+            long tamanho = arquivoEnviar.length() / 1024;
+
+            try {
+                fileInputStream = new FileInputStream(arquivoEnviar);
+                fileInputStream.read(conteudo);
+                fileInputStream.close();
+                componentes.montaAvisoMensagem("Arquivo " + arquivoEnviar.getName() + " enviado!", "SUCESSO");
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            arquivo = new Arquivo(arquivoEnviar.getName(), conteudo, tamanho);
+        }
+
     }
 }

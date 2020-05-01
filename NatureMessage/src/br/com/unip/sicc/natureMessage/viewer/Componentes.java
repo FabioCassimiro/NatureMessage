@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 public class Componentes {
-    
+
     JLabel img = new JLabel();
     JLabel imgBorda = new JLabel();
 
@@ -110,7 +110,7 @@ public class Componentes {
         txtLblCaixaAviso.setForeground(Color.WHITE);
         txtLblCaixaAviso.setFont(new Font("Arial", Font.BOLD, 15));
         txtLblCaixaAviso.setBounds(11, 48, 300, 25);
-        
+
         imgBorda.setIcon(imagemBorda);
         imgBorda.setBounds(0, 0, 275, 125);
 
@@ -142,11 +142,10 @@ public class Componentes {
         ActionMap actionMap = btnOkay.getActionMap();
         actionMap.put("Tecla_Enter", actionTecla);
 
-        
         painelcaixaAviso.add(btnOkay);
         painelcaixaAviso.add(txtLblCaixaAviso);
         painelcaixaAviso.add(imgBorda);
-        
+
         caixaAvisoMsg.add(painelcaixaAviso);
 
         return caixaAvisoMsg;
@@ -159,7 +158,7 @@ public class Componentes {
 
         switch (TipoAviso) {
             case "SUCESSO":
-                corAviso = new Color(0, 255, 127);               
+                corAviso = new Color(0, 255, 127);
                 img.setIcon(imagemSucesso);
                 painelcaixaAviso.add(img);
                 break;
@@ -171,7 +170,7 @@ public class Componentes {
             case "ERRO":
                 corAviso = new Color(255, 99, 71);
                 img.setIcon(imagemErro);
-                painelcaixaAviso.add(img);        
+                painelcaixaAviso.add(img);
                 break;
         }
 

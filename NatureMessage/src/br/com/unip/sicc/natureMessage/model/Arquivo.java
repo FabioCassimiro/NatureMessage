@@ -16,13 +16,7 @@ public class Arquivo implements Serializable {
         this.nomeArquivo = nomeArquivo;
         this.tamanhoArquivo = tamanhoArquivo;
         this.arquivo = arquivo;
-        imprime();
     }
-    
-    public void imprime(){
-        System.out.println(nomeArquivo);
-        System.out.println(tamanhoArquivo);
-        System.out.println(arquivo);
-    }
+
 
 }
