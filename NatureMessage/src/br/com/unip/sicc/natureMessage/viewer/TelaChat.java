@@ -52,9 +52,6 @@ public class TelaChat extends JFrame {
     public final String actionName = "TECLA_ENTER";
     public JButton btnEnviar;
     JButton btnCompartilhar;
-    public JButton btnAbrirCompartilhar;
-    public JButton btnAbrirImagem;
-    public JButton btnAbrirDoc;
     public JButton btnPerfil;
     public int porta;
 
@@ -101,12 +98,15 @@ public class TelaChat extends JFrame {
         btnPerfil.setIcon(imagemPerfil);
 
         btnCompartilharImagem = new JButton();
-        btnCompartilharImagem.setBounds(1, 180, 40, 40);
+        btnCompartilharImagem.setBounds(-29, 180, 150, 40);
         btnCompartilharImagem.setBorder(null);
         btnCompartilharImagem.setBackground(null);
         btnCompartilharImagem.setForeground(null);
         btnCompartilharImagem.setContentAreaFilled(false);
         btnCompartilharImagem.setIcon(imagemCompartilharImagem);
+        btnCompartilharImagem.setText("Imagem");
+        btnCompartilharImagem.setForeground(Color.WHITE);
+        btnCompartilharImagem.setFont(new Font("Arial", Font.BOLD, 12));
         btnCompartilharImagem.setVisible(false);
         btnCompartilharImagem.addActionListener(new ActionListener() {
             @Override
@@ -126,21 +126,7 @@ public class TelaChat extends JFrame {
                     ex.printStackTrace();
                 }
                 arquivo = new Arquivo(arquivoEnviar.getName(), conteudo, tamanho);
-*/
-            }
-        });
-
-        btnAbrirImagem = new JButton();
-        btnAbrirImagem = botoesPadrao.montaBtnPadrao();
-        btnAbrirImagem.setText("Imagem");
-        btnAbrirImagem.setForeground(Color.WHITE);
-        btnAbrirImagem.setFont(new Font("Arial", Font.BOLD, 12));
-        btnAbrirImagem.setBounds(13, 187, 100, 25);
-        btnAbrirImagem.setContentAreaFilled(false);
-        btnAbrirImagem.setVisible(false);
-        btnAbrirImagem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+*/              
                 JFileChooser fileChooser = new JFileChooser();
                 fileChooser.showOpenDialog(telaChat);
                 fileChooser.setDialogTitle("Enviar");
@@ -148,13 +134,15 @@ public class TelaChat extends JFrame {
         });
 
         btnCompartilharDoc = new JButton();
-        btnCompartilharDoc.setBounds(0, 210, 60, 40);
+        btnCompartilharDoc.setBounds(-20, 210, 150, 40);
         btnCompartilharDoc.setBorder(null);
         btnCompartilharDoc.setBackground(null);
         btnCompartilharDoc.setForeground(null);
         btnCompartilharDoc.setContentAreaFilled(false);
         btnCompartilharDoc.setIcon(imagemCompartilharDoc);
-        btnCompartilharDoc.setText("Doc");
+        btnCompartilharDoc.setText("Documento");
+        btnCompartilharDoc.setForeground(Color.WHITE);
+        btnCompartilharDoc.setFont(new Font("Arial", Font.BOLD, 12));
         btnCompartilharDoc.setVisible(false);
         btnCompartilharDoc.addActionListener(new ActionListener() {
             @Override
@@ -166,55 +154,21 @@ public class TelaChat extends JFrame {
             }
         });
 
-        btnAbrirDoc = new JButton();
-        btnAbrirDoc = botoesPadrao.montaBtnPadrao();
-        btnAbrirDoc.setText("Documento");
-        btnAbrirDoc.setForeground(Color.WHITE);
-        btnAbrirDoc.setFont(new Font("Arial", Font.BOLD, 12));
-        btnAbrirDoc.setBounds(20, 220, 100, 25);
-        btnAbrirDoc.setContentAreaFilled(false);
-        btnAbrirDoc.setVisible(false);
-        btnAbrirDoc.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                /*JFileChooser fileChooser = new JFileChooser();
-                fileChooser.showOpenDialog(telaChat);
-                fileChooser.setDialogTitle("Enviar");*/
-                enviaArquivo();
-            }
-        });
-
         btnCompartilhar = new JButton();
-        btnCompartilhar.setBounds(1, 150, 40, 40);
+        btnCompartilhar.setBounds(-16, 150, 150, 40);
         btnCompartilhar.setBorder(null);
         btnCompartilhar.setBackground(null);
         btnCompartilhar.setForeground(null);
         btnCompartilhar.setContentAreaFilled(false);
         btnCompartilhar.setIcon(imagemCompartilhar);
+        btnCompartilhar.setText("Compartilhar");
+        btnCompartilhar.setForeground(Color.WHITE);
+        btnCompartilhar.setFont(new Font("Arial", Font.BOLD, 12));
         btnCompartilhar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 btnCompartilharImagem.setVisible(true);
                 btnCompartilharDoc.setVisible(true);
-                btnAbrirImagem.setVisible(true);
-                btnAbrirDoc.setVisible(true);
-            }
-        });
-
-        btnAbrirCompartilhar = new JButton();
-        btnAbrirCompartilhar = botoesPadrao.montaBtnPadrao();
-        btnAbrirCompartilhar.setText("Compartilhar");
-        btnAbrirCompartilhar.setForeground(Color.WHITE);
-        btnAbrirCompartilhar.setFont(new Font("Arial", Font.BOLD, 12));
-        btnAbrirCompartilhar.setBounds(25, 158, 100, 25);
-        btnAbrirCompartilhar.setContentAreaFilled(false);
-        btnAbrirCompartilhar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnCompartilharImagem.setVisible(true);
-                btnCompartilharDoc.setVisible(true);
-                btnAbrirImagem.setVisible(true);
-                btnAbrirDoc.setVisible(true);
             }
         });
 
@@ -306,11 +260,8 @@ public class TelaChat extends JFrame {
         linhaSeparatorLogoff.setBounds(30, 420, 162, 1);
 
         painelChat.add(btnPerfil);
-        painelChat.add(btnAbrirImagem);
-        painelChat.add(btnAbrirCompartilhar);
         painelChat.add(btnCompartilhar);
         painelChat.add(btnCompartilharImagem);
-        //painelChat.add(btnAbrirDoc);
         painelChat.add(btnCompartilharDoc);
         painelChat.add(linhaSeparatorMenu);
         painelChat.add(scrollableTextArea);
