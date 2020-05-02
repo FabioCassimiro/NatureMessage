@@ -6,13 +6,11 @@ import br.com.unip.sicc.natureMessage.exception.PasswordsDontMatchException;
 import br.com.unip.sicc.natureMessage.exception.UserRegisteredException;
 import br.com.unip.sicc.natureMessage.model.Cadastro;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -36,16 +34,6 @@ public class TelaCadastro {
     private JTextField txfUsuario;
     private JPasswordField pwdSenha;
     private JPasswordField pwdConfirmaSenha;
-    private JLabel lblNome;
-    private JLabel lblSobreNome;
-    private JLabel lblDataNasc;
-    private JLabel lblEmail;
-    private JLabel lblEndereco;
-    private JLabel lblEmpresa;
-    private JLabel lblCargo;
-    private JLabel lblUsuario;
-    private JLabel lblSenha;
-    private JLabel lblConfirmaSenha;
     private JSeparator lnsNome;
     private JSeparator lnsSobrenome;
     private JSeparator lnsDtNasc;
@@ -59,15 +47,11 @@ public class TelaCadastro {
     private JButton btnCadastra;
     private JButton btnLimpar;
     private JButton btnVoltar;
-    private ImageIcon imagemVoltar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"));
-    private JLabel mostraVoltar = new JLabel(imagemVoltar);
     private JFrame telaCadastro = new JFrame();
     private PainelPadrao pnlCadastro = new PainelPadrao();
-    private PainelPadrao pnlPadrao = new PainelPadrao();
     private Componentes componentes = new Componentes();
     private Cadastro cadastro = new Cadastro();
     ConfigCadastro configCad = new ConfigCadastro();
-    MaskFormatter mascara;
 
     public TelaCadastro() {
         telaCadastro.add(montaPainelCadastro());
@@ -79,18 +63,11 @@ public class TelaCadastro {
 
     public JPanel montaPainelCadastro() {
 
-        btnVoltar = new JButton();
-        btnVoltar.setBounds(15, 10, 25, 25);
-        btnVoltar.setBorder(null);
-        btnVoltar.setBackground(null);
-        btnVoltar.setForeground(null);
-        btnVoltar.setContentAreaFilled(false);
-        btnVoltar.setIcon(imagemVoltar);
-        btnVoltar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
+       
+      btnVoltar = Componentes.btnVoltar(componentes.image("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
                         || !txfEmpresa.getText().equals("") || !txfEndereco.getText().equals("") || !txfEmail.getText().equals("")
                         || !txfUsuario.getText().equals("") || !pwdSenha.getText().equals("") || !pwdConfirmaSenha.getText().equals("")) {
                     if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?") == 0) {
@@ -107,25 +84,18 @@ public class TelaCadastro {
                     new TelaLogin();
 
                 }
-            }
-        });
+           }
+       });
+      
+      
 
         /* TextField */
-        txfNome = new JTextField("");
-        txfNome.setBorder(null);
-        txfNome.setForeground(Color.WHITE);
-        txfNome.setBackground(null);
-        txfNome.setBounds(30, 60, 300, 25);
+        txfNome = Componentes.montaTxfPadrao(60, "ESQUERDA");
+        txfSobrenome = Componentes.montaTxfPadrao(120, "ESQUERDA");
 
-        txfSobrenome = new JTextField("");
-        txfSobrenome.setBorder(null);
-        txfSobrenome.setForeground(Color.WHITE);
-        txfSobrenome.setBackground(null);
-        txfSobrenome.setBounds(30, 120, 300, 25);
-        
         try {
             txfDtNasc = new JFormattedTextField(new MaskFormatter("##/##/####"));
-            } catch (ParseException ex) {
+        } catch (ParseException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
         txfDtNasc.setBorder(null);
@@ -133,35 +103,11 @@ public class TelaCadastro {
         txfDtNasc.setBackground(null);
         txfDtNasc.setBounds(30, 180, 300, 25);
 
-        txfEmail = new JTextField("");
-        txfEmail.setBorder(null);
-        txfEmail.setForeground(Color.WHITE);
-        txfEmail.setBackground(null);
-        txfEmail.setBounds(30, 240, 300, 25);
-
-        txfEndereco = new JTextField("");
-        txfEndereco.setBorder(null);
-        txfEndereco.setForeground(Color.WHITE);
-        txfEndereco.setBackground(null);
-        txfEndereco.setBounds(30, 300, 300, 25);
-
-        txfEmpresa = new JTextField("");
-        txfEmpresa.setBorder(null);
-        txfEmpresa.setForeground(Color.WHITE);
-        txfEmpresa.setBackground(null);
-        txfEmpresa.setBounds(30, 360, 300, 25);
-
-        txfCargo = new JTextField("");
-        txfCargo.setBorder(null);
-        txfCargo.setForeground(Color.WHITE);
-        txfCargo.setBackground(null);
-        txfCargo.setBounds(570, 60, 300, 25);
-
-        txfUsuario = new JTextField("");
-        txfUsuario.setBorder(null);
-        txfUsuario.setForeground(Color.WHITE);
-        txfUsuario.setBackground(null);
-        txfUsuario.setBounds(570, 120, 300, 25);
+        txfEmail = Componentes.montaTxfPadrao(240, "ESQUERDA");
+        txfEndereco = Componentes.montaTxfPadrao(300, "ESQUERDA");
+        txfEmpresa = Componentes.montaTxfPadrao(360, "ESQUERDA");
+        txfCargo = Componentes.montaTxfPadrao(60, "DIREITA");
+        txfUsuario = Componentes.montaTxfPadrao(120, "DIREITA");
 
         pwdSenha = new JPasswordField("");
         pwdSenha.setBorder(null);
@@ -176,96 +122,29 @@ public class TelaCadastro {
         pwdConfirmaSenha.setBounds(570, 240, 300, 25);
 
         /* Labels */
-        lblNome = new JLabel("Nome:");
-        lblNome.setForeground(Color.WHITE);
-        lblNome.setFont(new Font("Arial", Font.BOLD, 12));
-        lblNome.setBounds(29, 33, 350, 32);
-
-        lblSobreNome = new JLabel("Sobrenome:");
-        lblSobreNome.setForeground(Color.WHITE);
-        lblSobreNome.setFont(new Font("Arial", Font.BOLD, 12));
-        lblSobreNome.setBounds(29, 93, 350, 32);
-
-        lblDataNasc = new JLabel("Data de nascimento:");
-        lblDataNasc.setForeground(Color.WHITE);
-        lblDataNasc.setFont(new Font("Arial", Font.BOLD, 12));
-        lblDataNasc.setBounds(29, 153, 350, 32);
-
-        lblEmail = new JLabel("Email:");
-        lblEmail.setForeground(Color.WHITE);
-        lblEmail.setFont(new Font("Arial", Font.BOLD, 12));
-        lblEmail.setBounds(29, 213, 350, 32);
-
-        lblEndereco = new JLabel("Endereço:");
-        lblEndereco.setForeground(Color.WHITE);
-        lblEndereco.setFont(new Font("Arial", Font.BOLD, 12));
-        lblEndereco.setBounds(29, 273, 350, 32);
-
-        lblEmpresa = new JLabel("Empresa:");
-        lblEmpresa.setForeground(Color.WHITE);
-        lblEmpresa.setFont(new Font("Arial", Font.BOLD, 12));
-        lblEmpresa.setBounds(29, 333, 350, 32);
-
-        lblCargo = new JLabel("Cargo:");
-        lblCargo.setForeground(Color.WHITE);
-        lblCargo.setFont(new Font("Arial", Font.BOLD, 12));
-        lblCargo.setBounds(570, 33, 350, 32);
-
-        lblUsuario = new JLabel("Nome de usuario:");
-        lblUsuario.setForeground(Color.WHITE);
-        lblUsuario.setFont(new Font("Arial", Font.BOLD, 12));
-        lblUsuario.setBounds(570, 93, 350, 32);
-
-        lblSenha = new JLabel("Senha:");
-        lblSenha.setForeground(Color.WHITE);
-        lblSenha.setFont(new Font("Arial", Font.BOLD, 12));
-        lblSenha.setBounds(570, 153, 350, 32);
-
-        lblConfirmaSenha = new JLabel("Confirme sua senha:");
-        lblConfirmaSenha.setForeground(Color.WHITE);
-        lblConfirmaSenha.setFont(new Font("Arial", Font.BOLD, 12));
-        lblConfirmaSenha.setBounds(570, 213, 350, 32);
+        JLabel lblNome = Componentes.montaLabelPadrao("Nome:", "ESQUERDA", 33);
+        JLabel lblSobreNome = Componentes.montaLabelPadrao("Sobrenome:", "ESQUERDA", 93);
+        JLabel lblDataNasc = Componentes.montaLabelPadrao("Data de Nascimento:", "ESQUERDA", 153);
+        JLabel lblEmail = Componentes.montaLabelPadrao("Email:", "ESQUERDA", 213);
+        JLabel lblEndereco = Componentes.montaLabelPadrao("Endereco:", "ESQUERDA", 273);
+        JLabel lblEmpresa = Componentes.montaLabelPadrao("Empresa:", "ESQUERDA", 333);
+        JLabel lblCargo = Componentes.montaLabelPadrao("Cargo:", "DIREITA", 33);
+        JLabel lblUsuario = Componentes.montaLabelPadrao("Usuario:", "DIREITA", 93);
+        JLabel lblSenha = Componentes.montaLabelPadrao("Senha:", "DIREITA", 153);
+        JLabel lblConfirmaSenha = Componentes.montaLabelPadrao("Confirme a senha:", "DIREITA", 213);
 
         /* Separadores */
-        lnsNome = new JSeparator();
-        lnsNome.setForeground(Color.WHITE);
-        lnsNome.setBounds(30, 85, 300, 1);
+        lnsNome = Componentes.linhaSeparadora(85, "ESQUERDA");
+        lnsSobrenome = Componentes.linhaSeparadora(145, "ESQUERDA");
+        lnsDtNasc = Componentes.linhaSeparadora(205, "ESQUERDA");
+        lnsEmail = Componentes.linhaSeparadora(265, "ESQUERDA");
+        lnsEndereco = Componentes.linhaSeparadora(325, "ESQUERDA");
+        lnsEmpresa = Componentes.linhaSeparadora(385, "ESQUERDA");
+        lnsCargo = Componentes.linhaSeparadora(85, "DIREITO");
+        lnsUsuario = Componentes.linhaSeparadora(145, "DIREITO");
+        lnsSenha = Componentes.linhaSeparadora(205, "DIREITO");
+        lnsConfirmaSenha = Componentes.linhaSeparadora(265, "DIREITO");
 
-        lnsSobrenome = new JSeparator();
-        lnsSobrenome.setForeground(Color.WHITE);
-        lnsSobrenome.setBounds(30, 145, 300, 1);
-
-        lnsDtNasc = new JSeparator();
-        lnsDtNasc.setForeground(Color.WHITE);
-        lnsDtNasc.setBounds(30, 205, 300, 1);
-
-        lnsEmail = new JSeparator();
-        lnsEmail.setForeground(Color.WHITE);
-        lnsEmail.setBounds(30, 265, 300, 1);
-
-        lnsEndereco = new JSeparator();
-        lnsEndereco.setForeground(Color.WHITE);
-        lnsEndereco.setBounds(30, 325, 300, 1);
-
-        lnsEmpresa = new JSeparator();
-        lnsEmpresa.setForeground(Color.WHITE);
-        lnsEmpresa.setBounds(30, 385, 300, 1);
-
-        lnsCargo = new JSeparator();
-        lnsCargo.setForeground(Color.WHITE);
-        lnsCargo.setBounds(570, 85, 300, 1);
-
-        lnsUsuario = new JSeparator();
-        lnsUsuario.setForeground(Color.WHITE);
-        lnsUsuario.setBounds(570, 145, 300, 1);
-
-        lnsSenha = new JSeparator();
-        lnsSenha.setForeground(Color.WHITE);
-        lnsSenha.setBounds(570, 205, 300, 1);
-
-        lnsConfirmaSenha = new JSeparator();
-        lnsConfirmaSenha.setForeground(Color.WHITE);
-        lnsConfirmaSenha.setBounds(570, 265, 300, 1);
 
         /* Botao */
         btnCadastra = new JButton();

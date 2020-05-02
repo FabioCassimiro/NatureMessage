@@ -31,34 +31,30 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TelaChat extends JFrame {
 
     private Socket socketCliente;
     private BufferedReader bufferedReader;
     private InputStreamReader inputStreamReader;
-    Calendar dataHora = Calendar.getInstance();
+    private Calendar dataHora = Calendar.getInstance();
     private Arquivo arquivo;
     private FileInputStream fileInputStream;
+    Componentes componentes = new Componentes();
 
-    public JButton btnImagem;
-    public JButton btnDocumento;
-    public JScrollPane scrollableTextArea;
-    public JTextField txaEnviar;
-    public JEditorPane txaChat;
+    private JButton btnImagem;
+    private JButton btnDocumento;
+    private JScrollPane scrollableTextArea;
+    private JTextField txaEnviar;
+    private JEditorPane txaChat;
     private String nomeUsuario;
-    public JTextField txfNome;
-    public JTextField txfStatusServidor;
-    public final String actionName = "TECLA_ENTER";
-    public JButton btnEnviar;
-    JButton btnCompartilhar;
-    public JButton btnPerfil;
-    public int porta;
-
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
+    private JTextField txfNome;
+    private JTextField txfStatusServidor;
+    private final String actionName = "TECLA_ENTER";
+    private JButton btnEnviar;
+    private JButton btnCompartilhar;
+    private JButton btnPerfil;
+    private int porta;
 
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
@@ -90,24 +86,15 @@ public class TelaChat extends JFrame {
 
     public JPanel montaPainelChat() {
 
-        btnPerfil = new JButton();
+        btnPerfil = componentes.montaBtnPadrao();
         btnPerfil.setBounds(60, 45, 100, 100);
-        btnPerfil.setBorder(null);
-        btnPerfil.setBackground(null);
-        btnPerfil.setForeground(null);
-        btnPerfil.setContentAreaFilled(false);
         btnPerfil.setIcon(imagemPerfil);
 
-        btnImagem = new JButton();
+        btnImagem = componentes.montaBtnPadrao();
         btnImagem.setBounds(-29, 180, 150, 40);
-        btnImagem.setBorder(null);
-        btnImagem.setBackground(null);
-        btnImagem.setForeground(null);
-        btnImagem.setContentAreaFilled(false);
         btnImagem.setIcon(imagemCompartilharImagem);
         btnImagem.setText("Imagem");
         btnImagem.setForeground(Color.WHITE);
-        btnImagem.setFont(new Font("Arial", Font.BOLD, 12));
         btnImagem.setVisible(false);
         btnImagem.addActionListener(new ActionListener() {
             @Override
@@ -116,16 +103,11 @@ public class TelaChat extends JFrame {
             }
         });
 
-        btnDocumento = new JButton();
+        btnDocumento = componentes.montaBtnPadrao();
         btnDocumento.setBounds(-20, 210, 150, 40);
-        btnDocumento.setBorder(null);
-        btnDocumento.setBackground(null);
-        btnDocumento.setForeground(null);
-        btnDocumento.setContentAreaFilled(false);
         btnDocumento.setIcon(imagemCompartilharDoc);
         btnDocumento.setText("Documento");
         btnDocumento.setForeground(Color.WHITE);
-        btnDocumento.setFont(new Font("Arial", Font.BOLD, 12));
         btnDocumento.setVisible(false);
         btnDocumento.addActionListener(new ActionListener() {
             @Override
@@ -134,16 +116,11 @@ public class TelaChat extends JFrame {
             }
         });
 
-        btnCompartilhar = new JButton();
+        btnCompartilhar = componentes.montaBtnPadrao();
         btnCompartilhar.setBounds(-16, 150, 150, 40);
-        btnCompartilhar.setBorder(null);
-        btnCompartilhar.setBackground(null);
-        btnCompartilhar.setForeground(null);
-        btnCompartilhar.setContentAreaFilled(false);
         btnCompartilhar.setIcon(imagemCompartilhar);
         btnCompartilhar.setText("Compartilhar");
         btnCompartilhar.setForeground(Color.WHITE);
-        btnCompartilhar.setFont(new Font("Arial", Font.BOLD, 12));
         btnCompartilhar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
