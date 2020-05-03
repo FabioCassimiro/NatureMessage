@@ -72,9 +72,7 @@ public class TelaServidor {
         lnsUsuario.setForeground(Color.WHITE);
         lnsUsuario.setBounds(277, 255, 350, 1);
 
-        btnEntra = new JButton();
-        btnEntra = componente.montaBtnAlteravel();
-        btnEntra.setText("Entrar");
+        btnEntra = componente.montaBtnAlteravel("Entrar");
         btnEntra.setBounds(277, 268, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
         btnEntra.setForeground(Color.WHITE);

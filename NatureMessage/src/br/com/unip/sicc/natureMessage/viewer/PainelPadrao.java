@@ -14,10 +14,8 @@ import javax.swing.JSeparator;
 
 public class PainelPadrao extends JPanel {
 
-    public JButton btnInfo;
-    
-    ImageIcon imagemInfo = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/informacao.png"));
-    JLabel mostraImageInfo = new JLabel(imagemInfo);
+    private JButton btnInfo;
+    private Componentes componentes = new Componentes();
 
     public PainelPadrao() {
         this.setLayout(null);
@@ -89,7 +87,7 @@ public class PainelPadrao extends JPanel {
         btnInfo.setForeground(null);
         btnInfo.setContentAreaFilled(false);
         btnInfo .setToolTipText("Sobre");
-        btnInfo.setIcon(imagemInfo);
+        btnInfo.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/informacao.png"));
         btnInfo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

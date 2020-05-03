@@ -25,24 +25,19 @@ public class ConfigConexaoServidor {
     public String getNomeServidor() {
         return nomeServidor;
     }
-    
 
-    public void ValidaServidor(String cdHostname) throws ServerNotFoundException{
+    public void ValidaServidor(String cdHostname) throws ServerNotFoundException {
 
         dados.ConsultaServidor("SELECT * FROM TB_SERVIDOR WHERE CDSERVIDOR = " + "'" + cdHostname + "'");
-        if(cdHostname.equals(dados.getResultNoHostname())){
+        if (cdHostname.equals(dados.getResultNoHostname())) {
             noHostname = dados.getResultNoHostname();
             portaServidor = Integer.parseInt(dados.getResulPortaServidor());
             nomeServidor = dados.getNomeServidor();
-            
-        }else{
+
+        } else {
             throw new ServerNotFoundException("Erro");
         }
-        
-        //noHostname = dados.getResultNoHostname();
-        //portaServidor = Integer.parseInt(dados.getResulPortaServidor());
+
     }
-    
-                
-        
+
 }

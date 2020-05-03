@@ -64,9 +64,8 @@ public class TelaConexao {
         JSeparator linhaSeparatorSenha = new JSeparator();
         linhaSeparatorSenha.setForeground(Color.WHITE);
         linhaSeparatorSenha.setBounds(277, 355, 350, 1);
-
-        JButton btnEntraBanco = new JButton();
-        btnEntraBanco = botoesPadrao.montaBtnAlteravel();
+        
+        JButton btnEntraBanco = botoesPadrao.montaBtnAlteravel("Entrar");
         btnEntraBanco.setText("Entrar");
         btnEntraBanco.setBounds(277, 375, 350, 30);
         btnEntraBanco.setBackground(new Color(0, 255, 127));

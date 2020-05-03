@@ -19,9 +19,7 @@ public class TelaSobre {
     private JFrame telaSobre = new JFrame();
     private Font fonte = new Font("Arial", Font.BOLD, 15);
     private ImageIcon imgIntagram = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/instagram.png"));
-    private JLabel lblInstagram = new JLabel(imgIntagram);
     private ImageIcon imgGit = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/github.png"));
-    private JLabel lblGit = new JLabel(imgGit);
     private JButton btnInstagramWalisson;
     private JButton btnGitHubWalisson;
     private JButton btnInstagramFabio;
@@ -46,18 +44,13 @@ public class TelaSobre {
 
     public JPanel montaPainelSobre() {
 
-        btnVoltar = new JButton();
-        btnVoltar.setBounds(15, 10, 25, 25);
-        btnVoltar.setBorder(null);
-        btnVoltar.setBackground(null);
-        btnVoltar.setForeground(null);
-        btnVoltar.setContentAreaFilled(false);
-        btnVoltar.setIcon(imagemVoltar);
-        btnVoltar.addActionListener(new ActionListener() {
+
+        btnVoltar = Componentes.btnIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaSobre.dispose();
-            }
+            };
+            
         });
 
         lblTexto = new JLabel("SOBRE");
@@ -79,16 +72,16 @@ public class TelaSobre {
         lblAlunoUm.setForeground(Color.WHITE);
         lblAlunoUm.setFont(new Font("Arial", Font.BOLD, 15));
         lblAlunoUm.setBounds(390, 100, 350, 100);
+         
+        String apresentacao = "Atividade Pratica Supervisionada desenvolvida na materia de Redes de Computadores, \n"
+                + "essa aplicacao tem como objetivo entender como\n" +
+                "funcinam as comunicacoes entre clientes e Servidores atraves da rede ultilizando sockets.";
+        
+        pnlSobre.add(Componentes.texto(apresentacao, 11, Color.white, 150, 100, 600,300));
+        pnlSobre.add(Componentes.texto("FRONT-END/DESIGN:", 15, Color.WHITE, 227, 120, 350, 100));
 
-        lblFront = new JLabel("FRONT-END/DESIGN:");
-        lblFront.setForeground(Color.WHITE);
-        lblFront.setFont(new Font("Arial", Font.BOLD, 15));
-        lblFront.setBounds(227, 120, 350, 100);
-
-        lblAlunoDois = new JLabel("Walisson Carvalho Ferreira  RA: D62EBA0");
-        lblAlunoDois.setForeground(Color.WHITE);
-        lblAlunoDois.setFont(new Font("Arial", Font.BOLD, 15));
-        lblAlunoDois.setBounds(390, 120, 350, 100);
+        
+        pnlSobre.add(Componentes.texto("Walisson Carvalho Ferreira  RA: D62EBA0", 15, Color.WHITE, 390, 120, 350, 100));
 
         btnInstagramWalisson = new JButton();
         btnInstagramWalisson.setBounds(480, 170, 40, 40);
@@ -171,8 +164,7 @@ public class TelaSobre {
         pnlSobre.add(lblDev);
         pnlSobre.add(lblFull);
         pnlSobre.add(lblAlunoUm);
-        pnlSobre.add(lblFront);
-        pnlSobre.add(lblAlunoDois);
+
         pnlSobre.add(btnInstagramWalisson);
         pnlSobre.add(btnGitHubWalisson);
         pnlSobre.add(btnInstagramFabio);

@@ -142,9 +142,8 @@ public class TelaChat extends JFrame {
         txaEnviar = new JTextField();
         txaEnviar.setBounds(260, 390, 515, 35);
 
-        btnEnviar = new JButton();
-        btnEnviar = botoesPadrao.montaBtnAlteravel();
-        btnEnviar.setText("Enviar");
+        
+        btnEnviar = botoesPadrao.montaBtnAlteravel("Enviar");
         btnEnviar.setBounds(782, 390, 79, 35);
         btnEnviar.setBackground(new Color(0, 255, 127));
         btnEnviar.setFont(new Font("Arial", Font.BOLD, 12));

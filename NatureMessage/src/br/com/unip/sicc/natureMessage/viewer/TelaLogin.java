@@ -84,9 +84,7 @@ public class TelaLogin {
         lnsSenha.setForeground(Color.WHITE);
         lnsSenha.setBounds(277, 318, 350, 1);
 
-        btnEntra = new JButton();
-        btnEntra = componentes.montaBtnAlteravel();
-        btnEntra.setText("Entrar");
+        btnEntra = componentes.montaBtnAlteravel("Entrar");
         btnEntra.setBounds(277, 342, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
         btnEntra.setForeground(Color.WHITE);

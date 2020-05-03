@@ -53,7 +53,7 @@ public class AcoesBancoDeDados {
     public void ConsultaLoginSenha(String sqlquery) {
         try {
 
-            PreparedStatement pesquisa = conexao.conexao().prepareStatement(sqlquery);
+            PreparedStatement pesquisa = ConexaoBancoDeDados.conexao().prepareStatement(sqlquery);
             ResultSet resultado = pesquisa.executeQuery();
 
             while (resultado.next()) {
@@ -73,7 +73,7 @@ public class AcoesBancoDeDados {
     public void CriaCadastroUsuario(String sqlquery) {
 
         try {
-            Statement cadatastro = conexao.conexao().createStatement();
+            Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
             JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!");
 
@@ -86,7 +86,7 @@ public class AcoesBancoDeDados {
 
     public void ConsultaServidor(String sqlQuery) {
         try {
-            PreparedStatement servidor = conexao.conexao().prepareStatement(sqlQuery);
+            PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
             
             while (resultado.next()) {

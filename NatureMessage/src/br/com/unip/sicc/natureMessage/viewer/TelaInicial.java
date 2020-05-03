@@ -52,9 +52,7 @@ public class TelaInicial {
         lblSubTitulo.setFont(new Font("Arial", Font.BOLD, 22));
         lblSubTitulo.setBounds(396, 124, 350, 32);
 
-        btnInicia = new JButton();
-        btnInicia = botoesPadrao.montaBtnAlteravel();
-        btnInicia.setText("Iniciar");
+        btnInicia = botoesPadrao.montaBtnAlteravel("Iniciar");
         btnInicia.setBounds(277, 342, 350, 30);
         btnInicia.setBackground(new Color(0, 255, 127));
         btnInicia.setForeground(Color.WHITE);

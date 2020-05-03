@@ -63,15 +63,14 @@ public class TelaCadastro {
 
     public JPanel montaPainelCadastro() {
 
-       
-      btnVoltar = Componentes.btnVoltar(componentes.image("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
+        btnVoltar = Componentes.btnIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
                         || !txfEmpresa.getText().equals("") || !txfEndereco.getText().equals("") || !txfEmail.getText().equals("")
                         || !txfUsuario.getText().equals("") || !pwdSenha.getText().equals("") || !pwdConfirmaSenha.getText().equals("")) {
                     if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?") == 0) {
-                        cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
+                        Cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
                                 txfEmail, txfUsuario, pwdSenha, pwdConfirmaSenha);
 
                         telaCadastro.dispose();
@@ -84,10 +83,8 @@ public class TelaCadastro {
                     new TelaLogin();
 
                 }
-           }
-       });
-      
-      
+            }
+        });
 
         /* TextField */
         txfNome = Componentes.montaTxfPadrao(60, "ESQUERDA");
@@ -109,13 +106,13 @@ public class TelaCadastro {
         txfCargo = Componentes.montaTxfPadrao(60, "DIREITA");
         txfUsuario = Componentes.montaTxfPadrao(120, "DIREITA");
 
-        pwdSenha = new JPasswordField("");
+        pwdSenha = new JPasswordField();
         pwdSenha.setBorder(null);
         pwdSenha.setForeground(Color.WHITE);
         pwdSenha.setBackground(null);
         pwdSenha.setBounds(570, 180, 300, 25);
 
-        pwdConfirmaSenha = new JPasswordField("");
+        pwdConfirmaSenha = new JPasswordField();
         pwdConfirmaSenha.setBorder(null);
         pwdConfirmaSenha.setForeground(Color.WHITE);
         pwdConfirmaSenha.setBackground(null);
@@ -140,34 +137,21 @@ public class TelaCadastro {
         lnsEmail = Componentes.linhaSeparadora(265, "ESQUERDA");
         lnsEndereco = Componentes.linhaSeparadora(325, "ESQUERDA");
         lnsEmpresa = Componentes.linhaSeparadora(385, "ESQUERDA");
-        lnsCargo = Componentes.linhaSeparadora(85, "DIREITO");
-        lnsUsuario = Componentes.linhaSeparadora(145, "DIREITO");
-        lnsSenha = Componentes.linhaSeparadora(205, "DIREITO");
-        lnsConfirmaSenha = Componentes.linhaSeparadora(265, "DIREITO");
+        lnsCargo = Componentes.linhaSeparadora(85, "DIREITA");
+        lnsUsuario = Componentes.linhaSeparadora(145, "DIREITA");
+        lnsSenha = Componentes.linhaSeparadora(205, "DIREITA");
+        lnsConfirmaSenha = Componentes.linhaSeparadora(265, "DIREITA");
 
 
         /* Botao */
-        btnCadastra = new JButton();
-        btnCadastra = componentes.montaBtnAlteravel();
-        btnCadastra.setText("Cadastrar");
+        btnCadastra = componentes.montaBtnAlteravel("Cadastrar");
         btnCadastra.setBounds(570, 280, 300, 30);
         btnCadastra.setBackground(new Color(0, 255, 127));
         btnCadastra.setForeground(Color.WHITE);
         btnCadastra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                lnsNome.setForeground(componentes.validaCorCampo(txfNome.getText()));
-                lnsSobrenome.setForeground(componentes.validaCorCampo(txfSobrenome.getText()));
-                lnsDtNasc.setForeground(componentes.validaCorCampo(txfDtNasc.getText()));
-                lnsCargo.setForeground(componentes.validaCorCampo(txfCargo.getText()));
-                lnsEmpresa.setForeground(componentes.validaCorCampo(txfEmpresa.getText()));
-                lnsEndereco.setForeground(componentes.validaCorCampo(txfEndereco.getText()));
-                lnsEmail.setForeground(componentes.validaCorCampo(txfEmail.getText()));
-                lnsSenha.setForeground(componentes.validaCorCampoSenha(pwdSenha.getText()));
-                lnsUsuario.setForeground(componentes.validaCorCampoUsuario(txfUsuario.getText()));
-                lnsConfirmaSenha.setForeground(componentes.validaCorCampoSenha(pwdSenha.getText()));
-
+                validacaoCampos();
                 try {
                     //Validações do cadastro.
                     configCad.ConfigCadastroValida(txfUsuario.getText(), pwdSenha.getText());
@@ -182,9 +166,7 @@ public class TelaCadastro {
             }
         });
 
-        btnLimpar = new JButton();
-        btnLimpar = componentes.montaBtnAlteravel();
-        btnLimpar.setText("Limpar");
+        btnLimpar = componentes.montaBtnAlteravel("Limpar");
         btnLimpar.setBounds(570, 320, 300, 30);
         btnLimpar.setBackground(new Color(255, 215, 0));
         btnLimpar.setForeground(Color.WHITE);
@@ -192,7 +174,7 @@ public class TelaCadastro {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?") == 0) {
-                    cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
+                    Cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
                             txfEmail, txfUsuario, pwdSenha, pwdConfirmaSenha);
                 }
             }
@@ -233,5 +215,18 @@ public class TelaCadastro {
         pnlCadastro.add(btnLimpar);
 
         return pnlCadastro;
+    }
+
+    public void validacaoCampos() {
+        lnsNome.setForeground(Componentes.validaCampo(txfNome.getText(), "VALIDAR"));
+        lnsSobrenome.setForeground(Componentes.validaCampo(txfSobrenome.getText(), "VALIDAR"));
+        lnsDtNasc.setForeground(Componentes.validaCampo(txfDtNasc.getText(), "VALIDAR"));
+        lnsCargo.setForeground(Componentes.validaCampo(txfCargo.getText(), "VALIDAR"));
+        lnsEmpresa.setForeground(Componentes.validaCampo(txfEmpresa.getText(), "VALIDAR"));
+        lnsEndereco.setForeground(Componentes.validaCampo(txfEndereco.getText(), "VALIDAR"));
+        lnsEmail.setForeground(Componentes.validaCampo(txfEmail.getText(), "VALIDAR"));
+        lnsSenha.setForeground(Componentes.validaCampoSenha(pwdSenha.getText(), pwdConfirmaSenha.getText(), "VALIDA"));
+        lnsUsuario.setForeground(Componentes.validaCampo(txfUsuario.getText(), "VALIDAR"));
+        lnsConfirmaSenha.setForeground(Componentes.validaCampoSenha(pwdSenha.getText(), pwdConfirmaSenha.getText(), "VALIDA"));
     }
 }
