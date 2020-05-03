@@ -87,8 +87,8 @@ public class TelaCadastro {
         });
 
         /* TextField */
-        txfNome = Componentes.montaTxfPadrao(60, "ESQUERDA");
-        txfSobrenome = Componentes.montaTxfPadrao(120, "ESQUERDA");
+        txfNome = Componentes.montaTxfPadrao(30, 60, 300, 25);
+        txfSobrenome = Componentes.montaTxfPadrao(30, 120, 300, 25);
 
         try {
             txfDtNasc = new JFormattedTextField(new MaskFormatter("##/##/####"));
@@ -100,11 +100,11 @@ public class TelaCadastro {
         txfDtNasc.setBackground(null);
         txfDtNasc.setBounds(30, 180, 300, 25);
 
-        txfEmail = Componentes.montaTxfPadrao(240, "ESQUERDA");
-        txfEndereco = Componentes.montaTxfPadrao(300, "ESQUERDA");
-        txfEmpresa = Componentes.montaTxfPadrao(360, "ESQUERDA");
-        txfCargo = Componentes.montaTxfPadrao(60, "DIREITA");
-        txfUsuario = Componentes.montaTxfPadrao(120, "DIREITA");
+        txfEmail = Componentes.montaTxfPadrao(30, 240, 300, 25);
+        txfEndereco = Componentes.montaTxfPadrao(30, 300, 300, 25);
+        txfEmpresa = Componentes.montaTxfPadrao(30, 360, 300, 25);
+        txfCargo = Componentes.montaTxfPadrao(570, 60, 300, 25);
+        txfUsuario = Componentes.montaTxfPadrao(570, 120, 300, 25);
 
         pwdSenha = new JPasswordField();
         pwdSenha.setBorder(null);

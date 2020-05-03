@@ -39,7 +39,7 @@ public class Componentes {
         return texto;
     }
 
-    public static JSeparator linhaSeparadora(int x,int y,int altura,int largura) {
+    public static JSeparator linhaSeparadora(int x, int y, int altura, int largura) {
         JSeparator linha = new JSeparator();
         linha.setForeground(Color.WHITE);
         linha.setBounds(x, y, altura, largura);
@@ -73,16 +73,12 @@ public class Componentes {
         return btnPadrao;
     }
 
-    public static JTextField montaTxfPadrao(int posicao, String lado) {
+    public static JTextField montaTxfPadrao(int x, int y, int altura, int largura) {
         JTextField txfPadrao = new JTextField();
         txfPadrao.setBorder(null);
         txfPadrao.setForeground(Color.WHITE);
         txfPadrao.setBackground(null);
-        if (lado.equals("ESQUERDA")) {
-            txfPadrao.setBounds(30, posicao, 300, 25);
-        } else {
-            txfPadrao.setBounds(570, posicao, 300, 25);
-        }
+        txfPadrao.setBounds(x,y,altura,largura);
 
         return txfPadrao;
     }

@@ -27,12 +27,9 @@ public class TelaServidor {
     private PainelPadrao pnlServidor = new PainelPadrao();
     private Componentes componente = new Componentes();
     private String nomeUsuario;
-    private JLabel lblTitulo;
     private JButton btnEntra;
     private JFrame telaServidor = new JFrame();
     private JTextField txfEnderecoIP;
-    private JLabel lblEnderecoIP;
-    private JSeparator lnsUsuario;
 
     public String getNomeUsuario() {
         return nomeUsuario;
@@ -52,30 +49,17 @@ public class TelaServidor {
 
     public JPanel montaPainelServidor() {
 
-        lblTitulo = new JLabel("SERVIDOR");
-        lblTitulo.setForeground(Color.WHITE);
-        lblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
-        lblTitulo.setBounds(361, 100, 350, 32);
-
-        txfEnderecoIP = new JTextField();
-        txfEnderecoIP.setBorder(null);
-        txfEnderecoIP.setForeground(Color.WHITE);
-        txfEnderecoIP.setBackground(null);
-        txfEnderecoIP.setBounds(277, 225, 350, 30);
-
-        lblEnderecoIP = new JLabel("Informe endereço IP:");
-        lblEnderecoIP.setForeground(Color.WHITE);
-        lblEnderecoIP.setFont(new Font("Arial", Font.BOLD, 12));
-        lblEnderecoIP.setBounds(277, 202, 350, 25);
-
-        lnsUsuario = new JSeparator();
-        lnsUsuario.setForeground(Color.WHITE);
-        lnsUsuario.setBounds(277, 255, 350, 1);
+        //Label's
+        pnlServidor.add(Componentes.lblTexto("Servidor", 35, Color.white, 361, 100, 350, 32));
+        pnlServidor.add(Componentes.lblTexto("Informe endereço IP:", 12, Color.white, 277, 202, 350, 25));
+        //JTextFilde's
+        txfEnderecoIP = Componentes.montaTxfPadrao(277, 225, 350, 30);
+        //JSeparator
+        pnlServidor.add(Componentes.linhaSeparadora(277, 255, 350, 1));
 
         btnEntra = componente.montaBtnAlteravel("Entrar");
         btnEntra.setBounds(277, 268, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
-        btnEntra.setForeground(Color.WHITE);
         Action actionTecla = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -106,10 +90,7 @@ public class TelaServidor {
             }
         });
 
-        pnlServidor.add(lblTitulo);
         pnlServidor.add(txfEnderecoIP);
-        pnlServidor.add(lblEnderecoIP);
-        pnlServidor.add(lnsUsuario);
         pnlServidor.add(btnEntra);
 
         return pnlServidor;
