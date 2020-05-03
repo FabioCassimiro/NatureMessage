@@ -86,8 +86,8 @@ public class TelaSobre {
         imgFabio.setBounds(100, 200, 90, 125);
         
         JLabel imgDaniel = new JLabel();
-        imgFabio.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Daniel.jpeg"));
-        imgFabio.setBounds(300, 200, 90, 125);
+        imgDaniel.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Daniel.jpeg"));
+        imgDaniel.setBounds(300, 200, 90, 125);
         
         
         pnlSobre.add(imgFabio);
