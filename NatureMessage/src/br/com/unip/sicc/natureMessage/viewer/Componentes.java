@@ -203,5 +203,4 @@ public class Componentes {
     public void setIcon(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));
     }
-
 }

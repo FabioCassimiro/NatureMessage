@@ -31,8 +31,6 @@ public class TelaSobre {
     private JLabel lblDev;
     private JLabel lblTexto;
     private JButton btnVoltar;
-    private ImageIcon imagemVoltar = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"));
-    private JLabel mostraVoltar = new JLabel(imagemVoltar);
 
     public TelaSobre() {
         telaSobre.add(montaPainelSobre());
@@ -43,35 +41,17 @@ public class TelaSobre {
     }
 
     public JPanel montaPainelSobre() {
-
-
         btnVoltar = Componentes.btnIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaSobre.dispose();
-            };
-            
+            };       
         });
 
         lblTexto = new JLabel("SOBRE");
         lblTexto.setForeground(Color.WHITE);
         lblTexto.setFont(new Font("Arial", Font.BOLD, 25));
         lblTexto.setBounds(400, 50, 350, 100);
-
-        /*lblDev = new JLabel("SOFTWARE DESEVOLVIDO POR:");
-        lblDev.setForeground(Color.WHITE);
-        lblDev.setFont(new Font("Arial", Font.BOLD, 15));
-        lblDev.setBounds(330, 70, 350, 100);
-
-        lblFull = new JLabel("FULLSTACK:");
-        lblFull.setForeground(Color.WHITE);
-        lblFull.setFont(new Font("Arial", Font.BOLD, 15));
-        lblFull.setBounds(290, 100, 350, 100);
-
-        lblAlunoUm = new JLabel("Fabio Cassimiro  RA: N359838");
-        lblAlunoUm.setForeground(Color.WHITE);
-        lblAlunoUm.setFont(new Font("Arial", Font.BOLD, 15));
-        lblAlunoUm.setBounds(390, 100, 350, 100);*/
          
         String apresentacao = "<html>Esse programa tem como principal objetivo estabelecer a comunicação <br>"
                 + "entre duas ou mais pessoas conectadas a um mesmo servidor, e <br>"
@@ -83,107 +63,41 @@ public class TelaSobre {
         
         JLabel imgFabio = new JLabel();
         imgFabio.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Fabio.jpeg"));
-        imgFabio.setBounds(100, 200, 90, 125);
+        imgFabio.setBounds(195, 300, 90, 125);
+        imgFabio.setToolTipText("<html>\"Cada adversidade, cada fracasso, cada dor<br>"
+                + " de cabeça carrega consigo a semente<br>"
+                + " de um benefício igual ou maior.\"</html>");
+        
+        JLabel imgWalisson = new JLabel();
+        imgWalisson.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Walisson.jpg"));
+        imgWalisson.setBounds(305, 300, 90, 125);
+        imgWalisson.setToolTipText("Isso ai é detalhe.");
+        
+        JLabel imgJoao = new JLabel();
+        imgJoao.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Joao.jpeg"));
+        imgJoao.setBounds(415, 300, 90, 125);
+        imgJoao.setToolTipText("<html>\"Perder Tempo aprendendo coisas que não nos<br>"
+                + "interessam, priva-nos de aprender coisas interessantes\".</html>");
         
         JLabel imgDaniel = new JLabel();
         imgDaniel.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Daniel.jpeg"));
-        imgDaniel.setBounds(300, 200, 90, 125);
+        imgDaniel.setBounds(525, 300, 90, 125);
+        imgDaniel.setToolTipText("<html>\"Quanto mais certeza temos de quem somos,<br>"
+                + " menos importa o que pensam sobre quem a gente é\".</html>");
         
-        
+        JLabel imgMarcos = new JLabel();
+        imgMarcos.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Marcos.jpeg"));
+        imgMarcos.setBounds(635, 300, 90, 125);
+        imgMarcos.setToolTipText("<html>\"Aos outros, dou o direito de ser como são.<br>"
+                + "A mim, dou o dever de ser cada dia melhor\".</html>");        
+             
+        pnlSobre.add(imgMarcos);
+        pnlSobre.add(imgJoao);
+        pnlSobre.add(imgWalisson);
         pnlSobre.add(imgFabio);
         pnlSobre.add(imgDaniel);
-        
-        
-        //pnlSobre.add(Componentes.lblTexto("FRONT-END/DESIGN:", 15, Color.WHITE, 227, 120, 350, 100));
-
-        //pnlSobre.add(Componentes.lblTexto("Walisson Carvalho Ferreira  RA: D62EBA0", 15, Color.WHITE, 390, 120, 350, 100));
-
-        /*btnInstagramWalisson = new JButton();
-        btnInstagramWalisson.setBounds(480, 170, 40, 40);
-        btnInstagramWalisson.setBorder(null);
-        btnInstagramWalisson.setBackground(null);
-        btnInstagramWalisson.setForeground(null);
-        btnInstagramWalisson.setContentAreaFilled(false);
-        btnInstagramWalisson.setIcon(imgIntagram);
-        btnInstagramWalisson.setToolTipText("Walisson");
-        btnInstagramWalisson.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                try {
-                    Runtime.getRuntime().exec("cmd.exe /C start " + "https://www.instagram.com/walisoull/");
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
-        });
-
-        btnGitHubWalisson = new JButton();
-        btnGitHubWalisson.setBounds(505, 170, 40, 40);
-        btnGitHubWalisson.setBorder(null);
-        btnGitHubWalisson.setBackground(null);
-        btnGitHubWalisson.setForeground(null);
-        btnGitHubWalisson.setContentAreaFilled(false);
-        btnGitHubWalisson.setIcon(imgGit);
-        btnGitHubWalisson.setToolTipText("Walisson");
-        btnGitHubWalisson.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                try {
-                    Runtime.getRuntime().exec("cmd.exe /C start " + "https://github.com/WalissonCF");
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
-        });
-
-        btnInstagramFabio = new JButton();
-        btnInstagramFabio.setBounds(330, 170, 40, 40);
-        btnInstagramFabio.setBorder(null);
-        btnInstagramFabio.setBackground(null);
-        btnInstagramFabio.setForeground(null);
-        btnInstagramFabio.setContentAreaFilled(false);
-        btnInstagramFabio.setIcon(imgIntagram);
-        btnInstagramFabio.setToolTipText("Fabio");
-        btnInstagramFabio.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                try {
-                    Runtime.getRuntime().exec("cmd.exe /C start " + "https://www.instagram.com/");
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
-        });
-
-        btnGitHubFabio = new JButton();
-        btnGitHubFabio.setBounds(355, 170, 40, 40);
-        btnGitHubFabio.setBorder(null);
-        btnGitHubFabio.setBackground(null);
-        btnGitHubFabio.setForeground(null);
-        btnGitHubFabio.setContentAreaFilled(false);
-        btnGitHubFabio.setIcon(imgGit);
-        btnGitHubFabio.setToolTipText("Fabio");
-        btnGitHubFabio.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                try {
-                    Runtime.getRuntime().exec("cmd.exe /C start " + "https://github.com/");
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
-        });*/
-
         pnlSobre.add(btnVoltar);
         pnlSobre.add(lblTexto);
-        /*pnlSobre.add(lblDev);
-        pnlSobre.add(lblFull);
-        pnlSobre.add(lblAlunoUm);*/
-
-        /*pnlSobre.add(btnInstagramWalisson);
-        pnlSobre.add(btnGitHubWalisson);
-        pnlSobre.add(btnInstagramFabio);
-        pnlSobre.add(btnGitHubFabio);*/
 
         return pnlSobre;
     }
