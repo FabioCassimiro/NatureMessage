@@ -124,13 +124,8 @@ public class TelaLogin {
 
         });
 
-        btnCadastro = new JButton();
-        btnCadastro = componentes.montaBtnPadrao();
-        btnCadastro.setText("Cadastre-se!");
-        btnCadastro.setForeground(Color.WHITE);
-        btnCadastro.setFont(new Font("Arial", Font.BOLD, 12));
+        btnCadastro = componentes.montaBtnPadrao("Cadastre-se!");
         btnCadastro.setBounds(404, 377, 100, 25);
-        btnCadastro.setContentAreaFilled(false);
         btnCadastro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -138,11 +133,8 @@ public class TelaLogin {
                 new TelaCadastro();
             }
         });
-
-        lblTalkNow = new JLabel("TALK NOW!");
-        lblTalkNow.setForeground(Color.WHITE);
-        lblTalkNow.setFont(new Font("Arial", Font.BOLD, 15));
-        lblTalkNow.setBounds(418, 127, 350, 25);
+        
+        pnlLogin.add(Componentes.lblTexto("TALK NOW!", 15, Color.white, 418, 127, 350, 25));
 
         pnlLogin.add(lblTitulo);
         pnlLogin.add(txfUsuario);

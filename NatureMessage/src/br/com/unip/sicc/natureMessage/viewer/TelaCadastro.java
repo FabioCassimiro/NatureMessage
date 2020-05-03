@@ -132,16 +132,17 @@ public class TelaCadastro {
         
 
         /* Separadores */
-        lnsNome = Componentes.linhaSeparadora(85, "ESQUERDA");
-        lnsSobrenome = Componentes.linhaSeparadora(145, "ESQUERDA");
-        lnsDtNasc = Componentes.linhaSeparadora(205, "ESQUERDA");
-        lnsEmail = Componentes.linhaSeparadora(265, "ESQUERDA");
-        lnsEndereco = Componentes.linhaSeparadora(325, "ESQUERDA");
-        lnsEmpresa = Componentes.linhaSeparadora(385, "ESQUERDA");
-        lnsCargo = Componentes.linhaSeparadora(85, "DIREITA");
-        lnsUsuario = Componentes.linhaSeparadora(145, "DIREITA");
-        lnsSenha = Componentes.linhaSeparadora(205, "DIREITA");
-        lnsConfirmaSenha = Componentes.linhaSeparadora(265, "DIREITA");
+        //lnsNome = Componentes.linhaSeparadora(85, "ESQUERDA");
+        lnsNome = Componentes.linhaSeparadora(30, 85, 300, 1 );
+        lnsSobrenome = Componentes.linhaSeparadora(30, 145, 300, 1 );
+        lnsDtNasc = Componentes.linhaSeparadora(30, 205, 300, 1 );
+        lnsEmail = Componentes.linhaSeparadora(30, 265, 300, 1 );
+        lnsEndereco = Componentes.linhaSeparadora(30, 325, 300, 1 );
+        lnsEmpresa = Componentes.linhaSeparadora(30, 385, 300, 1 );
+        lnsCargo = Componentes.linhaSeparadora(570, 85, 300, 1);
+        lnsUsuario = Componentes.linhaSeparadora(570, 145, 300, 1);
+        lnsSenha = Componentes.linhaSeparadora(570, 205, 300, 1);
+        lnsConfirmaSenha = Componentes.linhaSeparadora(570, 265, 300, 1);
 
 
         /* Botao */
