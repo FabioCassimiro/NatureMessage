@@ -64,11 +64,7 @@ public class TelaInicial {
             }
         });
         
-        btnManual = new JButton();
-        btnManual = botoesPadrao.montaBtnPadrao();
-        btnManual.setText("Manual de funcionamento");
-        btnManual.setForeground(Color.WHITE);
-        btnManual.setFont(new Font("Arial", Font.BOLD, 12));
+        btnManual = botoesPadrao.montaBtnPadrao("Manual de funcionamento");
         btnManual.setBounds(378, 377, 150, 35);
         btnManual.setContentAreaFilled(false);
         btnManual.addActionListener(new ActionListener() {

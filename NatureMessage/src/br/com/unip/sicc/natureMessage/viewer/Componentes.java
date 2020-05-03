@@ -39,28 +39,10 @@ public class Componentes {
         return texto;
     }
 
-    public static JLabel montaLabelPadrao(String conteudo, String lado, int posicao) {
-        JLabel lblPadrao = new JLabel(conteudo);
-        lblPadrao.setForeground(Color.WHITE);
-        lblPadrao.setFont(new Font("Arial", Font.BOLD, 12));
-        if (lado.equals("ESQUERDA")) {
-            lblPadrao.setBounds(29, posicao, 350, 32);
-        } else {
-            lblPadrao.setBounds(570, posicao, 350, 32);
-        }
-
-        return lblPadrao;
-    }
-
-    public static JSeparator linhaSeparadora(int posicao, String lado) {
+    public static JSeparator linhaSeparadora(int x,int y,int altura,int largura) {
         JSeparator linha = new JSeparator();
         linha.setForeground(Color.WHITE);
-        if (lado.equals("ESQUERDA")) {
-            linha.setBounds(30, posicao, 300, 1);
-        }
-        if (lado.equals("DIREITA")) {
-            linha.setBounds(570, posicao, 300, 1);
-        }
+        linha.setBounds(x, y, altura, largura);
 
         return linha;
     }
@@ -77,9 +59,9 @@ public class Componentes {
         return voltar;
     }
 
-    public static JButton montaBtnPadrao() {
+    public static JButton montaBtnPadrao(String nome) {
 
-        JButton btnPadrao = new JButton();
+        JButton btnPadrao = new JButton(nome);
         btnPadrao.setBorder(null);
         btnPadrao.setBackground(null);
         btnPadrao.setForeground(null);
@@ -87,6 +69,7 @@ public class Componentes {
         btnPadrao.setFocusPainted(false);
         btnPadrao.setFont(new Font("Arial", Font.BOLD, 12));
         btnPadrao.setForeground(Color.WHITE);
+        btnPadrao.setContentAreaFilled(false);
         return btnPadrao;
     }
 
