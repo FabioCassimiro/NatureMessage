@@ -3,7 +3,6 @@ package br.com.unip.sicc.natureMessage.viewer;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.color.ColorSpace;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -27,31 +26,43 @@ public class Componentes {
     JPanel painelcaixaAviso = new JPanel();
     JButton btnOkay;
 
+    public ImageIcon image(String caminho) {
+        ImageIcon imagem = new ImageIcon(getClass().getResource(caminho));
+        return imagem;
+    }
+
+    public static JLabel lblTexto(String conteudo, int tamanhoFonte, Color corfonte, int x, int y, int altura, int largura) {
+        JLabel texto = new JLabel(conteudo);
+        texto.setForeground(corfonte);
+        texto.setFont(new Font("Arial", Font.BOLD, tamanhoFonte));
+        texto.setBounds(x, y, altura, largura);
+        return texto;
+    }
+
+    public static JLabel montaLabelPadrao(String conteudo, String lado, int posicao) {
+        JLabel lblPadrao = new JLabel(conteudo);
+        lblPadrao.setForeground(Color.WHITE);
+        lblPadrao.setFont(new Font("Arial", Font.BOLD, 12));
+        if (lado.equals("ESQUERDA")) {
+            lblPadrao.setBounds(29, posicao, 350, 32);
+        } else {
+            lblPadrao.setBounds(570, posicao, 350, 32);
+        }
+
+        return lblPadrao;
+    }
 
     public static JSeparator linhaSeparadora(int posicao, String lado) {
         JSeparator linha = new JSeparator();
         linha.setForeground(Color.WHITE);
         if (lado.equals("ESQUERDA")) {
             linha.setBounds(30, posicao, 300, 1);
-        } 
-        if(lado.equals("DIREITA")){
+        }
+        if (lado.equals("DIREITA")) {
             linha.setBounds(570, posicao, 300, 1);
         }
 
         return linha;
-    }
-
-    public ImageIcon image(String caminho) {
-        ImageIcon imagem = new ImageIcon(getClass().getResource(caminho));
-        return imagem;
-    }
-
-    public static JLabel texto(String conteudo, int tamanhoFonte, Color corfonte, int x, int y, int altura, int largura) {
-        JLabel texto = new JLabel(conteudo);
-        texto.setForeground(corfonte);
-        texto.setFont(new Font("Arial", Font.BOLD, tamanhoFonte));
-        texto.setBounds(x, y, altura, largura);
-        return texto;
     }
 
     public static JButton btnIcon(ImageIcon icone, ActionListener acao) {
@@ -93,19 +104,6 @@ public class Componentes {
         return txfPadrao;
     }
 
-    public static JLabel montaLabelPadrao(String conteudo, String lado, int posicao) {
-        JLabel lblPadrao = new JLabel(conteudo);
-        lblPadrao.setForeground(Color.WHITE);
-        lblPadrao.setFont(new Font("Arial", Font.BOLD, 12));
-        if (lado.equals("ESQUERDA")) {
-            lblPadrao.setBounds(29, posicao, 350, 32);
-        } else {
-            lblPadrao.setBounds(570, posicao, 350, 32);
-        }
-
-        return lblPadrao;
-    }
-
     public static JButton montaBtnAlteravel(String nome) {
         JButton btnPadrao = new JButton(nome);
         btnPadrao.setBorder(null);
@@ -114,39 +112,8 @@ public class Componentes {
         return btnPadrao;
     }
 
-    public static Color validaCampoSenha(String campoSenha,String campoConfirmaSenha,String acao) {
-        Color cor = null;
-        
-        if(acao.equals("VALIDA")){
-            cor = campoSenha.equals(campoConfirmaSenha)?Color.GREEN:Color.RED;
-        }
-        if(acao.equals("RESETA")){
-            cor = Color.white;
-        }
-        
-        
-        return cor;
-    }
-
-    
-    public static Color validaCampo(String campo,String acao) {
-        Color cor = null;
-        
-        if(acao.equals("VALIDAR")){
-           cor  = campo.length() <=7 ? Color.red: Color.GREEN;
-        }
-        if(acao.equals("RESETAR")){
-            
-            cor = Color.white;
-        }
-        return cor;
-    }
-
-   
-    
-
     public JFrame montaAvisoMensagem(String texto, String tipoAviso) {
-        
+
         caixaAvisoMsg.setUndecorated(true);
         caixaAvisoMsg.setVisible(true);
         caixaAvisoMsg.setSize(275, 125);
@@ -227,7 +194,32 @@ public class Componentes {
 
         return corAviso;
     }
-    
+
+    public static Color validaCampoSenha(String campoSenha, String campoConfirmaSenha, String acao) {
+        Color cor = null;
+
+        if (acao.equals("VALIDA")) {
+            cor = campoSenha.equals(campoConfirmaSenha) ? Color.GREEN : Color.RED;
+        }
+        if (acao.equals("RESETA")) {
+            cor = Color.white;
+        }
+
+        return cor;
+    }
+
+    public static Color validaCampo(String campo, String acao) {
+        Color cor = null;
+
+        if (acao.equals("VALIDAR")) {
+            cor = campo.length() <= 7 ? Color.red : Color.GREEN;
+        }
+        if (acao.equals("RESETAR")) {
+
+            cor = Color.white;
+        }
+        return cor;
+    }
 
     public void setIcon(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));

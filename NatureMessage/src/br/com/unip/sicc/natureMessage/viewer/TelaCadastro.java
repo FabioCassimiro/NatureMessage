@@ -119,16 +119,17 @@ public class TelaCadastro {
         pwdConfirmaSenha.setBounds(570, 240, 300, 25);
 
         /* Labels */
-        JLabel lblNome = Componentes.montaLabelPadrao("Nome:", "ESQUERDA", 33);
-        JLabel lblSobreNome = Componentes.montaLabelPadrao("Sobrenome:", "ESQUERDA", 93);
-        JLabel lblDataNasc = Componentes.montaLabelPadrao("Data de Nascimento:", "ESQUERDA", 153);
-        JLabel lblEmail = Componentes.montaLabelPadrao("Email:", "ESQUERDA", 213);
-        JLabel lblEndereco = Componentes.montaLabelPadrao("Endereco:", "ESQUERDA", 273);
-        JLabel lblEmpresa = Componentes.montaLabelPadrao("Empresa:", "ESQUERDA", 333);
-        JLabel lblCargo = Componentes.montaLabelPadrao("Cargo:", "DIREITA", 33);
-        JLabel lblUsuario = Componentes.montaLabelPadrao("Usuario:", "DIREITA", 93);
-        JLabel lblSenha = Componentes.montaLabelPadrao("Senha:", "DIREITA", 153);
-        JLabel lblConfirmaSenha = Componentes.montaLabelPadrao("Confirme a senha:", "DIREITA", 213);
+        pnlCadastro.add(Componentes.lblTexto("Nome:", 12, Color.WHITE, 29, 33, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Sobrenome:", 12, Color.WHITE, 29, 93, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Data de Nascimento:", 12, Color.WHITE, 29, 153, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Email:", 12, Color.WHITE, 29, 213, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Endereco:", 12, Color.WHITE, 29, 273, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Empresa:", 12, Color.WHITE, 29, 333, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Cargo:", 12, Color.WHITE, 570, 33, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Usuario:", 12, Color.WHITE, 570, 93, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Senha:", 12, Color.WHITE, 570, 153, 350, 32));
+        pnlCadastro.add(Componentes.lblTexto("Confirme sua senha:", 12, Color.WHITE, 570, 213, 350, 32));
+        
 
         /* Separadores */
         lnsNome = Componentes.linhaSeparadora(85, "ESQUERDA");
@@ -191,16 +192,6 @@ public class TelaCadastro {
         pnlCadastro.add(txfUsuario);
         pnlCadastro.add(pwdSenha);
         pnlCadastro.add(pwdConfirmaSenha);
-        pnlCadastro.add(lblNome);
-        pnlCadastro.add(lblSobreNome);
-        pnlCadastro.add(lblDataNasc);
-        pnlCadastro.add(lblEmail);
-        pnlCadastro.add(lblEndereco);
-        pnlCadastro.add(lblEmpresa);
-        pnlCadastro.add(lblCargo);
-        pnlCadastro.add(lblUsuario);
-        pnlCadastro.add(lblSenha);
-        pnlCadastro.add(lblConfirmaSenha);
         pnlCadastro.add(lnsNome);
         pnlCadastro.add(lnsSobrenome);
         pnlCadastro.add(lnsDtNasc);

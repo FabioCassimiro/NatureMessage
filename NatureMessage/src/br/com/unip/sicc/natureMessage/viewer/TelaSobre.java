@@ -77,11 +77,11 @@ public class TelaSobre {
                 + "essa aplicacao tem como objetivo entender como\n" +
                 "funcinam as comunicacoes entre clientes e Servidores atraves da rede ultilizando sockets.";
         
-        pnlSobre.add(Componentes.texto(apresentacao, 11, Color.white, 150, 100, 600,300));
-        pnlSobre.add(Componentes.texto("FRONT-END/DESIGN:", 15, Color.WHITE, 227, 120, 350, 100));
+        pnlSobre.add(Componentes.lblTexto(apresentacao, 11, Color.white, 150, 100, 600,300));
+        pnlSobre.add(Componentes.lblTexto("FRONT-END/DESIGN:", 15, Color.WHITE, 227, 120, 350, 100));
 
         
-        pnlSobre.add(Componentes.texto("Walisson Carvalho Ferreira  RA: D62EBA0", 15, Color.WHITE, 390, 120, 350, 100));
+        pnlSobre.add(Componentes.lblTexto("Walisson Carvalho Ferreira  RA: D62EBA0", 15, Color.WHITE, 390, 120, 350, 100));
 
         btnInstagramWalisson = new JButton();
         btnInstagramWalisson.setBounds(480, 170, 40, 40);
