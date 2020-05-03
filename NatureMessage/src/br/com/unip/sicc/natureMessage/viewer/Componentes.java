@@ -16,6 +16,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -78,9 +79,18 @@ public class Componentes {
         txfPadrao.setBorder(null);
         txfPadrao.setForeground(Color.WHITE);
         txfPadrao.setBackground(null);
-        txfPadrao.setBounds(x,y,altura,largura);
+        txfPadrao.setBounds(x, y, altura, largura);
 
         return txfPadrao;
+    }
+
+    public static JPasswordField montaPwdPadrao(int x, int y, int altura, int largura) {
+        JPasswordField jPasswordField = new JPasswordField();
+        jPasswordField.setBorder(null);
+        jPasswordField.setForeground(Color.WHITE);
+        jPasswordField.setBackground(null);
+        jPasswordField.setBounds(x, y, altura, largura);
+        return jPasswordField;
     }
 
     public static JButton montaBtnAlteravel(String nome) {

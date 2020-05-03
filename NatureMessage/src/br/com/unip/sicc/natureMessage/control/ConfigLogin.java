@@ -7,12 +7,10 @@ import br.com.unip.sicc.natureMessage.viewer.Componentes;
 
 public class ConfigLogin {
 
-    
-    private AcoesBancoDeDados AcoesBD = new AcoesBancoDeDados();
-    private Componentes componentes = new Componentes();
-    
     //Faz a validação do login e da senha digitada pelo usuário e retorna um aviso!
-    public String ValidaUsuarioSenha(String usuario, String senha) throws UserInvalidException, InvalidPasswordException {
+    public static String ValidaUsuarioSenha(String usuario, String senha) throws UserInvalidException, InvalidPasswordException {
+        AcoesBancoDeDados AcoesBD = new AcoesBancoDeDados();
+        Componentes componentes = new Componentes();
         AcoesBD.ConsultaLoginSenha("SELECT * FROM TB_USUARIO WHERE NOLOGIN = '" + usuario + "' AND NOSENHA = '" + senha + "'");
 
         if (usuario.equals(AcoesBD.getNome()) && senha.equals(AcoesBD.getSenha())) {
@@ -23,8 +21,8 @@ public class ConfigLogin {
             return null;
         }
         if (!usuario.equals(AcoesBD.getNome())) {
-           componentes.montaAvisoMensagem("Senha ou usuário informado invalido!", "ERRO");
-           return null;
+            componentes.montaAvisoMensagem("Senha ou usuário informado invalido!", "ERRO");
+            return null;
         }
         return null;
     }

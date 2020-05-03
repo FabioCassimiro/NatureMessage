@@ -55,6 +55,7 @@ public class TelaServidor {
         btnEntra = componente.montaBtnAlteravel("Entrar");
         btnEntra.setBounds(277, 268, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
+        btnEntra.setForeground(Color.white);
         Action actionTecla = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent arg0) {

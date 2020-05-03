@@ -14,19 +14,14 @@ import javax.swing.JSeparator;
 
 public class PainelPadrao extends JPanel {
 
-    private JButton btnInfo;
     private Componentes componentes = new Componentes();
 
     public PainelPadrao() {
         this.setLayout(null);
         this.setBackground(new Color(138, 43, 226));
-
         this.add(btnFechar());
-        this.add(lnSeparator());
-        this.add(lblUnip());
-        this.add(lblTitulo());
-        this.add(lblTituloDois());
         this.add(montaBtnInfo());
+        montaRodaPe();
     }
 
     public JLabel btnFechar() {
@@ -44,49 +39,20 @@ public class PainelPadrao extends JPanel {
         return btnFechar;
     }
 
-    public JSeparator lnSeparator() {
-        JSeparator linha = new JSeparator();
-        linha.setForeground(Color.WHITE);
-        linha.setBounds(123, 466, 650, 1);
+    public void montaRodaPe() {
 
-        return linha;
+        JLabel lblDesenvolvimento = Componentes.lblTexto("DESENVOLVIDO POR ALUNOS DA UNIVERSIDADE PAULISTA (UNIP)", 10, Color.WHITE, 285, 468, 350, 15);
+        lblDesenvolvimento.setFont(new Font("Arial", Font.PLAIN, 10));
+        this.add(lblDesenvolvimento);
+        this.add(Componentes.lblTexto("NATURE", 10, Color.WHITE, 406, 451, 250, 15));
+        this.add(Componentes.lblTexto("MESSAGE", 10, Color.WHITE, 451, 451, 250, 15));
+        this.add(Componentes.linhaSeparadora(123, 466, 650, 1));
     }
 
-    public JLabel lblUnip() {
-        JLabel txtLblUnip = new JLabel("DESENVOLVIDO POR ALUNOS DA UNIVERSIDADE PAULISTA (UNIP)");
-        txtLblUnip.setForeground(Color.WHITE);
-        txtLblUnip.setFont(new Font("Arial", Font.PLAIN, 10));
-        txtLblUnip.setBounds(285, 468, 350, 15);
-
-        return txtLblUnip;
-    }
-
-    public JLabel lblTitulo() {
-        JLabel txtLblTitulo = new JLabel("NATURE");
-        txtLblTitulo.setForeground(Color.WHITE);
-        txtLblTitulo.setFont(new Font("Arial", Font.BOLD, 10));
-        txtLblTitulo.setBounds(406, 451, 250, 15);
-
-        return txtLblTitulo;
-    }
-
-    public JLabel lblTituloDois() {
-        JLabel txtLblTituloDois = new JLabel("MESSAGE");
-        txtLblTituloDois.setForeground(Color.WHITE);
-        txtLblTituloDois.setFont(new Font("Arial", Font.PLAIN, 10));
-        txtLblTituloDois.setBounds(451, 451, 250, 15);
-
-        return txtLblTituloDois;
-    }
-
-   public JButton montaBtnInfo() {
-        btnInfo = new JButton();
+    public JButton montaBtnInfo() {
+        JButton btnInfo = Componentes.montaBtnPadrao("");
         btnInfo.setBounds(866, 466, 25, 25);
-        btnInfo.setBorder(null);
-        btnInfo.setBackground(null);
-        btnInfo.setForeground(null);
-        btnInfo.setContentAreaFilled(false);
-        btnInfo .setToolTipText("Sobre");
+        btnInfo.setToolTipText("Sobre");
         btnInfo.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/informacao.png"));
         btnInfo.addActionListener(new ActionListener() {
             @Override
