@@ -58,7 +58,7 @@ public class TelaSobre {
         lblTexto.setFont(new Font("Arial", Font.BOLD, 25));
         lblTexto.setBounds(400, 50, 350, 100);
 
-        lblDev = new JLabel("SOFTWARE DESEVOLVIDO POR:");
+        /*lblDev = new JLabel("SOFTWARE DESEVOLVIDO POR:");
         lblDev.setForeground(Color.WHITE);
         lblDev.setFont(new Font("Arial", Font.BOLD, 15));
         lblDev.setBounds(330, 70, 350, 100);
@@ -71,19 +71,34 @@ public class TelaSobre {
         lblAlunoUm = new JLabel("Fabio Cassimiro  RA: N359838");
         lblAlunoUm.setForeground(Color.WHITE);
         lblAlunoUm.setFont(new Font("Arial", Font.BOLD, 15));
-        lblAlunoUm.setBounds(390, 100, 350, 100);
+        lblAlunoUm.setBounds(390, 100, 350, 100);*/
          
-        String apresentacao = "Atividade Pratica Supervisionada desenvolvida na materia de Redes de Computadores, \n"
-                + "essa aplicacao tem como objetivo entender como\n" +
-                "funcinam as comunicacoes entre clientes e Servidores atraves da rede ultilizando sockets.";
+        String apresentacao = "<html>Esse programa tem como principal objetivo estabelecer a comunicação <br>"
+                + "entre duas ou mais pessoas conectadas a um mesmo servidor, e <br>"
+                + "principalmente trazer à visibilidade de como funciona a comunicação entre <br>"
+                + "clientes e servidores através da rede, utilizando os sockets de Berkeley.</html>";
+      
+        pnlSobre.add(Componentes.lblTexto(apresentacao, 15, Color.white, 208, 10, 1000,300));
+        componentes.image("/br/com/unip/sicc/natureMessage/image/setaVoltar.png");
         
-        pnlSobre.add(Componentes.lblTexto(apresentacao, 11, Color.white, 150, 100, 600,300));
-        pnlSobre.add(Componentes.lblTexto("FRONT-END/DESIGN:", 15, Color.WHITE, 227, 120, 350, 100));
-
+        JLabel imgFabio = new JLabel();
+        imgFabio.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Fabio.jpeg"));
+        imgFabio.setBounds(100, 200, 90, 125);
         
-        pnlSobre.add(Componentes.lblTexto("Walisson Carvalho Ferreira  RA: D62EBA0", 15, Color.WHITE, 390, 120, 350, 100));
+        JLabel imgDaniel = new JLabel();
+        imgFabio.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/Daniel.jpeg"));
+        imgFabio.setBounds(300, 200, 90, 125);
+        
+        
+        pnlSobre.add(imgFabio);
+        pnlSobre.add(imgDaniel);
+        
+        
+        //pnlSobre.add(Componentes.lblTexto("FRONT-END/DESIGN:", 15, Color.WHITE, 227, 120, 350, 100));
 
-        btnInstagramWalisson = new JButton();
+        //pnlSobre.add(Componentes.lblTexto("Walisson Carvalho Ferreira  RA: D62EBA0", 15, Color.WHITE, 390, 120, 350, 100));
+
+        /*btnInstagramWalisson = new JButton();
         btnInstagramWalisson.setBounds(480, 170, 40, 40);
         btnInstagramWalisson.setBorder(null);
         btnInstagramWalisson.setBackground(null);
@@ -157,18 +172,18 @@ public class TelaSobre {
                     System.out.println(ex.getMessage());
                 }
             }
-        });
+        });*/
 
         pnlSobre.add(btnVoltar);
         pnlSobre.add(lblTexto);
-        pnlSobre.add(lblDev);
+        /*pnlSobre.add(lblDev);
         pnlSobre.add(lblFull);
-        pnlSobre.add(lblAlunoUm);
+        pnlSobre.add(lblAlunoUm);*/
 
-        pnlSobre.add(btnInstagramWalisson);
+        /*pnlSobre.add(btnInstagramWalisson);
         pnlSobre.add(btnGitHubWalisson);
         pnlSobre.add(btnInstagramFabio);
-        pnlSobre.add(btnGitHubFabio);
+        pnlSobre.add(btnGitHubFabio);*/
 
         return pnlSobre;
     }

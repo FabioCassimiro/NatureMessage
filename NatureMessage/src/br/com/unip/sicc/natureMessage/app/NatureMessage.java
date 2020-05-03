@@ -12,8 +12,8 @@ public class NatureMessage {
     public static void main(String[] args) {
         //new TelaServidor();
         //new TelaChat(5000);
-        new TelaCadastro();
+        //new TelaCadastro();
        //new TelaLogin();
-       //new TelaSobre();
+       new TelaSobre();
     }
 }
