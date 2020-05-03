@@ -2,6 +2,7 @@ package br.com.unip.sicc.natureMessage.control;
 
 import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.exception.ServerNotFoundException;
+import br.com.unip.sicc.natureMessage.viewer.Componentes;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ public class ConfigConexaoServidor {
     private Socket socket;
     private String nomeServidor;
     private AcoesBancoDeDados dados = new AcoesBancoDeDados();
+    private Componentes componentes = new Componentes();
 
     public String getNoHostname() {
         return noHostname;
@@ -35,7 +37,9 @@ public class ConfigConexaoServidor {
             nomeServidor = dados.getNomeServidor();
 
         } else {
+            componentes.montaAvisoMensagem("Servidor nao encontrado", "ERRO");
             throw new ServerNotFoundException("Erro");
+            
         }
 
     }

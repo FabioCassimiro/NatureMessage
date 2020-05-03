@@ -27,8 +27,6 @@ public class Componentes {
     JPanel painelcaixaAviso = new JPanel();
     JButton btnOkay;
 
-    public Componentes() {
-    }
 
     public static JSeparator linhaSeparadora(int posicao, String lado) {
         JSeparator linha = new JSeparator();
@@ -148,6 +146,7 @@ public class Componentes {
     
 
     public JFrame montaAvisoMensagem(String texto, String tipoAviso) {
+        
         caixaAvisoMsg.setUndecorated(true);
         caixaAvisoMsg.setVisible(true);
         caixaAvisoMsg.setSize(275, 125);
@@ -228,7 +227,7 @@ public class Componentes {
 
         return corAviso;
     }
-    //
+    
 
     public void setIcon(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));

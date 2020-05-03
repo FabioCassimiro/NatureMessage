@@ -100,7 +100,7 @@ public class TelaServidor {
                     telaChat.setNomeUsuario(nomeUsuario);
                     componente.montaAvisoMensagem(nomeUsuario + " Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
                 } catch (ServerNotFoundException ex) {
-                    Logger.getLogger(TelaServidor.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
 
             }
