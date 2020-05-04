@@ -16,6 +16,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -47,12 +48,12 @@ public class Componentes {
         return linha;
     }
 
-    public static JButton btnIcon(ImageIcon icone,int x, int y, int altura, int largura, ActionListener acao) {
+    public static JButton btnIcon(ImageIcon icone, int x, int y, int altura, int largura, ActionListener acao) {
         JButton btnIcon = new JButton();
         btnIcon.setBounds(x, y, altura, largura);
         btnIcon.setBorder(null);
         btnIcon.setBackground(null);
-        btnIcon.setForeground(null);
+        btnIcon.setForeground(Color.WHITE);
         btnIcon.setContentAreaFilled(false);
         btnIcon.setIcon(icone);
         btnIcon.addActionListener(acao);
@@ -78,9 +79,18 @@ public class Componentes {
         txfPadrao.setBorder(null);
         txfPadrao.setForeground(Color.WHITE);
         txfPadrao.setBackground(null);
-        txfPadrao.setBounds(x,y,altura,largura);
+        txfPadrao.setBounds(x, y, altura, largura);
 
         return txfPadrao;
+    }
+
+    public static JPasswordField montaPwdPadrao(int x, int y, int altura, int largura) {
+        JPasswordField pwdPadrao = new JPasswordField();
+        pwdPadrao.setBorder(null);
+        pwdPadrao.setForeground(Color.WHITE);
+        pwdPadrao.setBackground(null);
+        pwdPadrao.setBounds(x, y, altura, largura);
+        return pwdPadrao;
     }
 
     public static JButton montaBtnAlteravel(String nome) {
@@ -88,6 +98,7 @@ public class Componentes {
         btnPadrao.setBorder(null);
         btnPadrao.setFocusPainted(false);
         btnPadrao.setFont(new Font("Arial", Font.BOLD, 15));
+        btnPadrao.setForeground(Color.WHITE);
         return btnPadrao;
     }
 

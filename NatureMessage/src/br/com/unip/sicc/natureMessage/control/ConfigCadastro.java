@@ -5,7 +5,7 @@ import br.com.unip.sicc.natureMessage.exception.InsufficientCharactersException;
 public class ConfigCadastro {
 
 
-    public void ConfigCadastroValida(String noLogin, String noSenha) throws InsufficientCharactersException {
+    public static void ConfigCadastroValida(String noLogin, String noSenha) throws InsufficientCharactersException {
 
         if (noLogin.length() < 8) {
 

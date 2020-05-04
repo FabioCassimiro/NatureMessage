@@ -11,7 +11,6 @@ public class ConfigConexaoServidor {
 
     private String noHostname;
     private int portaServidor;
-    private Socket socket;
     private String nomeServidor;
     private AcoesBancoDeDados dados = new AcoesBancoDeDados();
     private Componentes componentes = new Componentes();
@@ -39,7 +38,7 @@ public class ConfigConexaoServidor {
         } else {
             componentes.montaAvisoMensagem("Servidor nao encontrado", "ERRO");
             throw new ServerNotFoundException("Erro");
-            
+
         }
 
     }

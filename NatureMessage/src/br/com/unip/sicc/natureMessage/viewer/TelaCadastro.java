@@ -51,7 +51,6 @@ public class TelaCadastro {
     private PainelPadrao pnlCadastro = new PainelPadrao();
     private Componentes componentes = new Componentes();
     private Cadastro cadastro = new Cadastro();
-    ConfigCadastro configCad = new ConfigCadastro();
 
     public TelaCadastro() {
         telaCadastro.add(montaPainelCadastro());
@@ -156,7 +155,7 @@ public class TelaCadastro {
                 validacaoCampos();
                 try {
                     //Validações do cadastro.
-                    configCad.ConfigCadastroValida(txfUsuario.getText(), pwdSenha.getText());
+                    ConfigCadastro.ConfigCadastroValida(txfUsuario.getText(), pwdSenha.getText());
                     cadastro.CadastroUsuario(txfNome.getText(), txfSobrenome.getText(), txfCargo.getText(),
                             txfEmpresa.getText(), txfEndereco.getText(), txfDtNasc.getText(), txfEmail.getText(),
                             txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());

@@ -4,7 +4,6 @@ import br.com.unip.sicc.natureMessage.control.ConfigLogin;
 import br.com.unip.sicc.natureMessage.exception.InvalidPasswordException;
 import br.com.unip.sicc.natureMessage.exception.UserInvalidException;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -15,30 +14,20 @@ import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 public class TelaLogin {
 
     private ConfigLogin login = new ConfigLogin();
-    private JButton btnEntra;
     private PainelPadrao pnlLogin = new PainelPadrao();
     private Componentes componentes = new Componentes();
     private JFrame telaLogin = new JFrame();
-    private JLabel lblTitulo;
     private JTextField txfUsuario;
     private JPasswordField pwdSenha;
-    private JLabel lblUsuario;
-    private JLabel lblSenha;
-    private JSeparator lnsUsuario;
-    private JSeparator lnsSenha;
-    private JButton btnCadastro;
-    private JLabel lblTalkNow;
     public static String nomeUsuario;
 
     public TelaLogin() {
@@ -50,46 +39,20 @@ public class TelaLogin {
     }
 
     public JPanel montaPainelLogin() {
-        lblTitulo = new JLabel("LOGIN");
-        lblTitulo.setForeground(Color.WHITE);
-        lblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
-        lblTitulo.setBounds(405, 100, 350, 32);
+        pnlLogin.add(Componentes.lblTexto("LOGIN", 35, Color.WHITE, 405, 100, 350, 32));
+        pnlLogin.add(Componentes.lblTexto("TALK NOW!", 15, Color.white, 418, 127, 350, 25));
+        pnlLogin.add(Componentes.lblTexto("Usuario:", 12, Color.WHITE, 277, 202, 350, 25));
+        pnlLogin.add(Componentes.lblTexto("Senha:", 12, Color.WHITE, 277, 260, 350, 25));
+        pnlLogin.add(Componentes.linhaSeparadora(277, 255, 350, 1));
+        pnlLogin.add(Componentes.linhaSeparadora(277, 318, 350, 1));
 
-        txfUsuario = new JTextField();
-        txfUsuario.setBorder(null);
-        txfUsuario.setForeground(Color.WHITE);
-        txfUsuario.setBackground(null);
-        txfUsuario.setBounds(277, 225, 350, 30);
+        txfUsuario = Componentes.montaTxfPadrao(277, 225, 350, 30);
+        pwdSenha = Componentes.montaPwdPadrao(277, 285, 350, 30);
 
-        pwdSenha = new JPasswordField();
-        pwdSenha.setBorder(null);
-        pwdSenha.setForeground(Color.WHITE);
-        pwdSenha.setBackground(null);
-        pwdSenha.setBounds(277, 285, 350, 30);
-      
-        lblUsuario = new JLabel("Usuario:");
-        lblUsuario.setForeground(Color.WHITE);
-        lblUsuario.setFont(new Font("Arial", Font.BOLD, 12));
-        lblUsuario.setBounds(277, 202, 350, 25);
-
-        lblSenha = new JLabel("Senha:");
-        lblSenha.setForeground(Color.WHITE);
-        lblSenha.setFont(new Font("Arial", Font.BOLD, 12));
-        lblSenha.setBounds(277, 260, 350, 25);
-
-        lnsUsuario = new JSeparator();
-        lnsUsuario.setForeground(Color.WHITE);
-        lnsUsuario.setBounds(277, 255, 350, 1);
-
-        lnsSenha = new JSeparator();
-        lnsSenha.setForeground(Color.WHITE);
-        lnsSenha.setBounds(277, 318, 350, 1);
-
-        btnEntra = componentes.montaBtnAlteravel("Entrar");
+        JButton btnEntra = Componentes.montaBtnAlteravel("Entrar");
         btnEntra.setBounds(277, 342, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
-        btnEntra.setForeground(Color.WHITE);
-        
+
         Action actionTecla = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -124,7 +87,7 @@ public class TelaLogin {
 
         });
 
-        btnCadastro = componentes.montaBtnPadrao("Cadastre-se!");
+        JButton btnCadastro = Componentes.montaBtnPadrao("Cadastre-se!");
         btnCadastro.setBounds(404, 377, 100, 25);
         btnCadastro.addActionListener(new ActionListener() {
             @Override
@@ -133,16 +96,9 @@ public class TelaLogin {
                 new TelaCadastro();
             }
         });
-        
-        pnlLogin.add(Componentes.lblTexto("TALK NOW!", 15, Color.white, 418, 127, 350, 25));
 
-        pnlLogin.add(lblTitulo);
         pnlLogin.add(txfUsuario);
         pnlLogin.add(pwdSenha);
-        pnlLogin.add(lblUsuario);
-        pnlLogin.add(lblSenha);
-        pnlLogin.add(lnsUsuario);
-        pnlLogin.add(lnsSenha);
         pnlLogin.add(btnEntra);
         pnlLogin.add(btnCadastro);
 
