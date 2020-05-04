@@ -144,7 +144,6 @@ public class TelaLogin {
         pnlLogin.add(lnsUsuario);
         pnlLogin.add(lnsSenha);
         pnlLogin.add(btnEntra);
-        pnlLogin.add(lblTalkNow);
         pnlLogin.add(btnCadastro);
 
         return pnlLogin;

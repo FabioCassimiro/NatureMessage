@@ -47,16 +47,16 @@ public class Componentes {
         return linha;
     }
 
-    public static JButton btnIcon(ImageIcon icone, ActionListener acao) {
-        JButton voltar = new JButton();
-        voltar.setBounds(15, 10, 25, 25);
-        voltar.setBorder(null);
-        voltar.setBackground(null);
-        voltar.setForeground(null);
-        voltar.setContentAreaFilled(false);
-        voltar.setIcon(icone);
-        voltar.addActionListener(acao);
-        return voltar;
+    public static JButton btnIcon(ImageIcon icone,int x, int y, int altura, int largura, ActionListener acao) {
+        JButton btnIcon = new JButton();
+        btnIcon.setBounds(x, y, altura, largura);
+        btnIcon.setBorder(null);
+        btnIcon.setBackground(null);
+        btnIcon.setForeground(null);
+        btnIcon.setContentAreaFilled(false);
+        btnIcon.setIcon(icone);
+        btnIcon.addActionListener(acao);
+        return btnIcon;
     }
 
     public static JButton montaBtnPadrao(String nome) {
