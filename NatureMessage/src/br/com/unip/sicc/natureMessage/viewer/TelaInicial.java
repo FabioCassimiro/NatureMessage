@@ -24,14 +24,14 @@ public class TelaInicial {
 
     public JPanel montaPainelInicial() {
 
-        JLabel lblLogo = Componentes.lblTexto("", 35, Color.WHITE, 340, 120, 250, 250);
-        lblLogo.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/logo.png"));
+        JLabel lblLogo = Componentes.montaTexto("", 35, Color.WHITE, 340, 120, 250, 250);
+        lblLogo.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/logo.png"));
 
-        pnlInicial.add(Componentes.lblTexto("NATURE", 35, Color.WHITE, 378, 100, 350, 32));
-        pnlInicial.add(Componentes.lblTexto("MESSAGE", 22, Color.WHITE, 396, 124, 350, 32));
-        pnlInicial.add(Componentes.linhaSeparadora(352, 380, 200, 1));
+        pnlInicial.add(Componentes.montaTexto("NATURE", 35, Color.WHITE, 378, 100, 350, 32));
+        pnlInicial.add(Componentes.montaTexto("MESSAGE", 22, Color.WHITE, 396, 124, 350, 32));
+        pnlInicial.add(Componentes.montaSeparadora(352, 380, 200, 1));
 
-        JButton btnInicia = componentes.montaBtnAlteravel("Iniciar");
+        JButton btnInicia = componentes.montaBotaoAlteravel("Iniciar");
         btnInicia.setBounds(277, 342, 350, 30);
         btnInicia.setBackground(new Color(0, 255, 127));
         btnInicia.addActionListener(new ActionListener() {
@@ -42,7 +42,7 @@ public class TelaInicial {
             }
         });
 
-        JButton btnManual = Componentes.montaBtnPadrao("Manual de funcionamento");
+        JButton btnManual = Componentes.montaBotaoPadrao("Manual de funcionamento");
         btnManual.setBounds(378, 377, 150, 35);
         btnManual.addActionListener(new ActionListener() {
             @Override

@@ -34,12 +34,12 @@ public class TelaServidor {
 
     public JPanel montaPainelServidor() {
 
-        pnlServidor.add(Componentes.lblTexto("Servidor", 35, Color.white, 361, 100, 350, 32));
-        pnlServidor.add(Componentes.lblTexto("Informe endereço IP:", 12, Color.white, 277, 202, 350, 25));
+        pnlServidor.add(Componentes.montaTexto("Servidor", 35, Color.white, 361, 100, 350, 32));
+        pnlServidor.add(Componentes.montaTexto("Informe endereço IP:", 12, Color.white, 277, 202, 350, 25));
         txfEnderecoIP = Componentes.montaTxfPadrao(277, 225, 350, 30);
-        pnlServidor.add(Componentes.linhaSeparadora(277, 255, 350, 1));
+        pnlServidor.add(Componentes.montaSeparadora(277, 255, 350, 1));
 
-        JButton btnEntra = componente.montaBtnAlteravel("Entrar");
+        JButton btnEntra = componente.montaBotaoAlteravel("Entrar");
         btnEntra.setBounds(277, 268, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
         Action actionTecla = new AbstractAction() {
@@ -63,7 +63,7 @@ public class TelaServidor {
                     servidor.ValidaServidor(txfEnderecoIP.getText().toUpperCase());
                     telaServidor.dispose();
                     new TelaChat(servidor.getPortaServidor());
-                    componente.montaAvisoMensagem(TelaLogin.nomeUsuario + " Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
+                    componente.montaMensagemAviso(TelaLogin.nomeUsuario + " Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
                 } catch (ServerNotFoundException ex) {
                     ex.printStackTrace();
                 }

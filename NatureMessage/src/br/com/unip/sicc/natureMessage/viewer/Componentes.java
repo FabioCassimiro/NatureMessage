@@ -27,12 +27,12 @@ public class Componentes {
     JPanel painelcaixaAviso = new JPanel();
     JButton btnOkay;
 
-    public ImageIcon image(String caminho) {
+    public ImageIcon buscaImagem(String caminho) {
         ImageIcon imagem = new ImageIcon(getClass().getResource(caminho));
         return imagem;
     }
 
-    public static JLabel lblTexto(String conteudo, int tamanhoFonte, Color corfonte, int x, int y, int altura, int largura) {
+    public static JLabel montaTexto(String conteudo, int tamanhoFonte, Color corfonte, int x, int y, int altura, int largura) {
         JLabel texto = new JLabel(conteudo);
         texto.setForeground(corfonte);
         texto.setFont(new Font("Arial", Font.BOLD, tamanhoFonte));
@@ -40,7 +40,7 @@ public class Componentes {
         return texto;
     }
 
-    public static JSeparator linhaSeparadora(int x, int y, int altura, int largura) {
+    public static JSeparator montaSeparadora(int x, int y, int altura, int largura) {
         JSeparator linha = new JSeparator();
         linha.setForeground(Color.WHITE);
         linha.setBounds(x, y, altura, largura);
@@ -48,7 +48,7 @@ public class Componentes {
         return linha;
     }
 
-    public static JButton btnIcon(ImageIcon icone, int x, int y, int altura, int largura, ActionListener acao) {
+    public static JButton montaBotaoIcone(ImageIcon icone, int x, int y, int altura, int largura, ActionListener acao) {
         JButton btnIcon = new JButton();
         btnIcon.setBounds(x, y, altura, largura);
         btnIcon.setBorder(null);
@@ -60,7 +60,7 @@ public class Componentes {
         return btnIcon;
     }
 
-    public static JButton montaBtnPadrao(String nome) {
+    public static JButton montaBotaoPadrao(String nome) {
 
         JButton btnPadrao = new JButton(nome);
         btnPadrao.setBorder(null);
@@ -93,7 +93,7 @@ public class Componentes {
         return pwdPadrao;
     }
 
-    public static JButton montaBtnAlteravel(String nome) {
+    public static JButton montaBotaoAlteravel(String nome) {
         JButton btnPadrao = new JButton(nome);
         btnPadrao.setBorder(null);
         btnPadrao.setFocusPainted(false);
@@ -102,7 +102,7 @@ public class Componentes {
         return btnPadrao;
     }
 
-    public JFrame montaAvisoMensagem(String texto, String tipoAviso) {
+    public JFrame montaMensagemAviso(String texto, String tipoAviso) {
 
         caixaAvisoMsg.setUndecorated(true);
         caixaAvisoMsg.setVisible(true);
@@ -120,10 +120,10 @@ public class Componentes {
         txtLblCaixaAviso.setBounds(11, 48, 300, 25);
 
         JLabel imgBorda = new JLabel();
-        imgBorda.setIcon(image("/br/com/unip/sicc/natureMessage/image/borda.png"));
+        imgBorda.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/borda.png"));
         imgBorda.setBounds(0, 0, 275, 125);
 
-        btnOkay = montaBtnAlteravel("OK!");//;
+        btnOkay = montaBotaoAlteravel("OK!");//;
         btnOkay.setFont(new Font("Arial", Font.BOLD, 20));
         btnOkay.setBounds(86, 90, 100, 25);
         btnOkay.setBackground(null);
@@ -167,17 +167,17 @@ public class Componentes {
         switch (TipoAviso) {
             case "SUCESSO":
                 corAviso = new Color(0, 255, 127);
-                img.setIcon(image("/br/com/unip/sicc/natureMessage/image/sucesso.png"));
+                img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/sucesso.png"));
                 painelcaixaAviso.add(img);
                 break;
             case "AVISO":
                 corAviso = new Color(255, 215, 0);
-                img.setIcon(image("/br/com/unip/sicc/natureMessage/image/alerta.png"));
+                img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/alerta.png"));
                 painelcaixaAviso.add(img);
                 break;
             case "ERRO":
                 corAviso = new Color(255, 99, 71);
-                img.setIcon(image("/br/com/unip/sicc/natureMessage/image/erro.png"));
+                img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/erro.png"));
                 painelcaixaAviso.add(img);
                 break;
         }
@@ -211,7 +211,7 @@ public class Componentes {
         return cor;
     }
 
-    public void setIcon(JFrame icone) {
+    public void montaIconeFrame(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));
     }
 }

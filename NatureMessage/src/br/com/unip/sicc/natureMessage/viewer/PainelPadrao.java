@@ -29,19 +29,19 @@ public class PainelPadrao extends JPanel {
             }
         });
 
-        JButton btnInfo = Componentes.btnIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/informacao.png"), 866, 466, 25, 25, new ActionListener() {
+        JButton btnInfo = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/informacao.png"), 866, 466, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new TelaSobre();
             }
         });
 
-        JLabel lblDesenvolvimento = Componentes.lblTexto("DESENVOLVIDO POR ALUNOS DA UNIVERSIDADE PAULISTA (UNIP)", 10, Color.WHITE, 285, 468, 350, 15);
+        JLabel lblDesenvolvimento = Componentes.montaTexto("DESENVOLVIDO POR ALUNOS DA UNIVERSIDADE PAULISTA (UNIP)", 10, Color.WHITE, 285, 468, 350, 15);
         lblDesenvolvimento.setFont(new Font("Arial", Font.PLAIN, 10));
         this.add(lblDesenvolvimento);
-        this.add(Componentes.lblTexto("NATURE", 10, Color.WHITE, 406, 451, 250, 15));
-        this.add(Componentes.lblTexto("MESSAGE", 10, Color.WHITE, 451, 451, 250, 15));
-        this.add(Componentes.linhaSeparadora(123, 466, 650, 1));
+        this.add(Componentes.montaTexto("NATURE", 10, Color.WHITE, 406, 451, 250, 15));
+        this.add(Componentes.montaTexto("MESSAGE", 10, Color.WHITE, 451, 451, 250, 15));
+        this.add(Componentes.montaSeparadora(123, 466, 650, 1));
         this.add(btnInfo);
         this.add(btnFechar);
         this.setLayout(null);

@@ -62,19 +62,19 @@ public class TelaChat extends JFrame {
         telaChat.setLocationRelativeTo(null);
         telaChat.setUndecorated(true);
         telaChat.setVisible(true);
-        botoesPadrao.setIcon(telaChat);
+        botoesPadrao.montaIconeFrame(telaChat);
         Chat(portaServidor);
     }
 
     public JPanel montaPainelChat() {
 
-        JButton btnPerfil = Componentes.montaBtnPadrao("");
+        JButton btnPerfil = Componentes.montaBotaoPadrao("");
         btnPerfil.setBounds(60, 45, 100, 100);
-        btnPerfil.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/perfil.png"));
+        btnPerfil.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/perfil.png"));
 
-        JButton  btnImagem = Componentes.montaBtnPadrao("Imagem");
+        JButton  btnImagem = Componentes.montaBotaoPadrao("Imagem");
         btnImagem.setBounds(-29, 180, 150, 40);
-        btnImagem.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/compartilharImagem.png"));
+        btnImagem.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/compartilharImagem.png"));
         btnImagem.setVisible(false);
         btnImagem.addActionListener(new ActionListener() {
             @Override
@@ -83,9 +83,9 @@ public class TelaChat extends JFrame {
             }
         });
 
-        JButton btnDocumento = Componentes.montaBtnPadrao("Documento");
+        JButton btnDocumento = Componentes.montaBotaoPadrao("Documento");
         btnDocumento.setBounds(-20, 210, 150, 40);
-        btnDocumento.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/compartilharDoc.png"));
+        btnDocumento.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/compartilharDoc.png"));
         btnDocumento.setVisible(false);
         btnDocumento.addActionListener(new ActionListener() {
             @Override
@@ -94,9 +94,9 @@ public class TelaChat extends JFrame {
             }
         });
 
-        JButton btnCompartilhar = Componentes.montaBtnPadrao("Compatilhar");
+        JButton btnCompartilhar = Componentes.montaBotaoPadrao("Compatilhar");
         btnCompartilhar.setBounds(-16, 150, 150, 40);
-        btnCompartilhar.setIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/compartilhar.png"));
+        btnCompartilhar.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/compartilhar.png"));
         btnCompartilhar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,7 +105,7 @@ public class TelaChat extends JFrame {
             }
         });
         
-        JButton btnEnviar = botoesPadrao.montaBtnAlteravel("Enviar");
+        JButton btnEnviar = botoesPadrao.montaBotaoAlteravel("Enviar");
         btnEnviar.setBounds(782, 390, 79, 35);
         btnEnviar.setBackground(new Color(0, 255, 127));
         btnEnviar.addActionListener(new ActionListener() {
@@ -128,7 +128,7 @@ public class TelaChat extends JFrame {
         ActionMap actionMap = btnEnviar.getActionMap();
         actionMap.put(actionName, actionTecla);
         
-        JButton btnLogoff = Componentes.montaBtnPadrao("Logoff");
+        JButton btnLogoff = Componentes.montaBotaoPadrao("Logoff");
         btnLogoff.setFont(new Font("Arial", Font.BOLD, 12));
         btnLogoff.setBounds(60, 420, 100, 25);
         btnLogoff.addActionListener(new ActionListener() {
@@ -141,8 +141,8 @@ public class TelaChat extends JFrame {
             }
         });
 
-        pnlChat.add(Componentes.linhaSeparadora(30, 420, 162, 1));
-        JSeparator linhaSeparatorMenu = Componentes.linhaSeparadora(220, 28, 1, 410);
+        pnlChat.add(Componentes.montaSeparadora(30, 420, 162, 1));
+        JSeparator linhaSeparatorMenu = Componentes.montaSeparadora(220, 28, 1, 410);
         linhaSeparatorMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
         
         JScrollPane barraChat = new JScrollPane(txaChat = new JEditorPane());
@@ -153,10 +153,10 @@ public class TelaChat extends JFrame {
         txaEnviar = new JTextField();
         txaEnviar.setBounds(260, 390, 515, 35);
         
-        pnlChat.add(Componentes.lblTexto("NATURE", 25, Color.WHITE, 60, 20, 350, 32));    
-        pnlChat.add(Componentes.lblTexto("MESSAGE CHAT", 10, Color.WHITE, 72, 38, 350, 25));
-        pnlChat.add(Componentes.lblTexto("Usuário: "+TelaLogin.nomeUsuario, 11, Color.WHITE, 50, 130, 150, 25));
-        lblStatus = Componentes.lblTexto("" +TelaLogin.nomeUsuario, 11, Color.WHITE, 260, 37, 150, 25);
+        pnlChat.add(Componentes.montaTexto("NATURE", 25, Color.WHITE, 60, 20, 350, 32));    
+        pnlChat.add(Componentes.montaTexto("MESSAGE CHAT", 10, Color.WHITE, 72, 38, 350, 25));
+        pnlChat.add(Componentes.montaTexto("Usuário: "+TelaLogin.nomeUsuario, 11, Color.WHITE, 50, 130, 150, 25));
+        lblStatus = Componentes.montaTexto("" +TelaLogin.nomeUsuario, 11, Color.WHITE, 260, 37, 150, 25);
 
         pnlChat.add(btnPerfil);
         pnlChat.add(btnCompartilhar);
@@ -239,7 +239,7 @@ public class TelaChat extends JFrame {
                 fileInputStream = new FileInputStream(arquivoEnviar);
                 fileInputStream.read(conteudo);
                 fileInputStream.close();
-                componentes.montaAvisoMensagem("Arquivo " + arquivoEnviar.getName() + " enviado!", "SUCESSO");
+                componentes.montaMensagemAviso("Arquivo " + arquivoEnviar.getName() + " enviado!", "SUCESSO");
 
             } catch (IOException ex) {
                 ex.printStackTrace();

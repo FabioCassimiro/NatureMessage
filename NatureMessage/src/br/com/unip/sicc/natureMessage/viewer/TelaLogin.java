@@ -39,17 +39,17 @@ public class TelaLogin {
     }
 
     public JPanel montaPainelLogin() {
-        pnlLogin.add(Componentes.lblTexto("LOGIN", 35, Color.WHITE, 405, 100, 350, 32));
-        pnlLogin.add(Componentes.lblTexto("TALK NOW!", 15, Color.white, 418, 127, 350, 25));
-        pnlLogin.add(Componentes.lblTexto("Usuario:", 12, Color.WHITE, 277, 202, 350, 25));
-        pnlLogin.add(Componentes.lblTexto("Senha:", 12, Color.WHITE, 277, 260, 350, 25));
-        pnlLogin.add(Componentes.linhaSeparadora(277, 255, 350, 1));
-        pnlLogin.add(Componentes.linhaSeparadora(277, 318, 350, 1));
+        pnlLogin.add(Componentes.montaTexto("LOGIN", 35, Color.WHITE, 405, 100, 350, 32));
+        pnlLogin.add(Componentes.montaTexto("TALK NOW!", 15, Color.white, 418, 127, 350, 25));
+        pnlLogin.add(Componentes.montaTexto("Usuario:", 12, Color.WHITE, 277, 202, 350, 25));
+        pnlLogin.add(Componentes.montaTexto("Senha:", 12, Color.WHITE, 277, 260, 350, 25));
+        pnlLogin.add(Componentes.montaSeparadora(277, 255, 350, 1));
+        pnlLogin.add(Componentes.montaSeparadora(277, 318, 350, 1));
 
         txfUsuario = Componentes.montaTxfPadrao(277, 225, 350, 30);
         pwdSenha = Componentes.montaPwdPadrao(277, 285, 350, 30);
 
-        JButton btnEntra = Componentes.montaBtnAlteravel("Entrar");
+        JButton btnEntra = Componentes.montaBotaoAlteravel("Entrar");
         btnEntra.setBounds(277, 342, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
 
@@ -75,7 +75,7 @@ public class TelaLogin {
                     if (nomeUsuario != null) {
                         telaLogin.dispose();
                         new TelaServidor();
-                        componentes.montaAvisoMensagem("Bem-Vindo " + nomeUsuario, "SUCESSO");
+                        componentes.montaMensagemAviso("Bem-Vindo " + nomeUsuario, "SUCESSO");
                     }
 
                 } catch (UserInvalidException usuarioInvalido) {
@@ -87,7 +87,7 @@ public class TelaLogin {
 
         });
 
-        JButton btnCadastro = Componentes.montaBtnPadrao("Cadastre-se!");
+        JButton btnCadastro = Componentes.montaBotaoPadrao("Cadastre-se!");
         btnCadastro.setBounds(404, 377, 100, 25);
         btnCadastro.addActionListener(new ActionListener() {
             @Override

@@ -36,7 +36,7 @@ public class ConfigConexaoServidor {
             nomeServidor = dados.getNomeServidor();
 
         } else {
-            componentes.montaAvisoMensagem("Servidor nao encontrado", "ERRO");
+            componentes.montaMensagemAviso("Servidor nao encontrado", "ERRO");
             throw new ServerNotFoundException("Erro");
 
         }

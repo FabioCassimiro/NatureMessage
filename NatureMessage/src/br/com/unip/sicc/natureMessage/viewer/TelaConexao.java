@@ -28,16 +28,16 @@ public class TelaConexao {
 
     public JPanel montaPainelConexaoBancoDeDados() {
 
-        pnlConexao.add(Componentes.lblTexto("CONEXÃO", 35, Color.WHITE, 360, 100, 350, 37));
-        pnlConexao.add(Componentes.lblTexto("BANCO DE DADOS", 15, Color.WHITE, 380, 128, 350, 25));
-        pnlConexao.add(Componentes.lblTexto("Usuario:", 12, Color.WHITE, 277, 258, 350, 25));
-        pnlConexao.add(Componentes.lblTexto("Senha", 12, Color.WHITE, 277, 306, 350, 25));
-        pnlConexao.add(Componentes.linhaSeparadora(277, 305, 350, 1));
-        pnlConexao.add(Componentes.linhaSeparadora(277, 355, 350, 1));
+        pnlConexao.add(Componentes.montaTexto("CONEXÃO", 35, Color.WHITE, 360, 100, 350, 37));
+        pnlConexao.add(Componentes.montaTexto("BANCO DE DADOS", 15, Color.WHITE, 380, 128, 350, 25));
+        pnlConexao.add(Componentes.montaTexto("Usuario:", 12, Color.WHITE, 277, 258, 350, 25));
+        pnlConexao.add(Componentes.montaTexto("Senha", 12, Color.WHITE, 277, 306, 350, 25));
+        pnlConexao.add(Componentes.montaSeparadora(277, 305, 350, 1));
+        pnlConexao.add(Componentes.montaSeparadora(277, 355, 350, 1));
         txfUsuario = Componentes.montaTxfPadrao(277, 275, 350, 30);
         pwdSenha = Componentes.montaPwdPadrao(277, 325, 350, 30);
 
-        JButton btnEntraBanco = Componentes.montaBtnAlteravel("Entrar");
+        JButton btnEntraBanco = Componentes.montaBotaoAlteravel("Entrar");
         btnEntraBanco.setBounds(277, 375, 350, 30);
         btnEntraBanco.setBackground(new Color(0, 255, 127));
         btnEntraBanco.addActionListener(new ActionListener() {

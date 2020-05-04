@@ -61,7 +61,7 @@ public class TelaCadastro {
 
     public JPanel montaPainelCadastro() {
 
-        btnVoltar = Componentes.btnIcon(componentes.image("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"),15, 10, 25, 25, new ActionListener() {
+        btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"),15, 10, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
@@ -107,34 +107,34 @@ public class TelaCadastro {
         pwdConfirmaSenha = Componentes.montaPwdPadrao(570, 240, 300, 25);
         
         /* Labels */
-        pnlCadastro.add(Componentes.lblTexto("Nome:", 12, Color.WHITE, 29, 33, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Sobrenome:", 12, Color.WHITE, 29, 93, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Data de Nascimento:", 12, Color.WHITE, 29, 153, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Email:", 12, Color.WHITE, 29, 213, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Endereco:", 12, Color.WHITE, 29, 273, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Empresa:", 12, Color.WHITE, 29, 333, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Cargo:", 12, Color.WHITE, 570, 33, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Usuario:", 12, Color.WHITE, 570, 93, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Senha:", 12, Color.WHITE, 570, 153, 350, 32));
-        pnlCadastro.add(Componentes.lblTexto("Confirme sua senha:", 12, Color.WHITE, 570, 213, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Nome:", 12, Color.WHITE, 29, 33, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Sobrenome:", 12, Color.WHITE, 29, 93, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Data de Nascimento:", 12, Color.WHITE, 29, 153, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Email:", 12, Color.WHITE, 29, 213, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Endereco:", 12, Color.WHITE, 29, 273, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Empresa:", 12, Color.WHITE, 29, 333, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Cargo:", 12, Color.WHITE, 570, 33, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Usuario:", 12, Color.WHITE, 570, 93, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Senha:", 12, Color.WHITE, 570, 153, 350, 32));
+        pnlCadastro.add(Componentes.montaTexto("Confirme sua senha:", 12, Color.WHITE, 570, 213, 350, 32));
         
 
         /* Separadores */
         //lnsNome = Componentes.linhaSeparadora(85, "ESQUERDA");
-        lnsNome = Componentes.linhaSeparadora(30, 85, 300, 1 );
-        lnsSobrenome = Componentes.linhaSeparadora(30, 145, 300, 1 );
-        lnsDtNasc = Componentes.linhaSeparadora(30, 205, 300, 1 );
-        lnsEmail = Componentes.linhaSeparadora(30, 265, 300, 1 );
-        lnsEndereco = Componentes.linhaSeparadora(30, 325, 300, 1 );
-        lnsEmpresa = Componentes.linhaSeparadora(30, 385, 300, 1 );
-        lnsCargo = Componentes.linhaSeparadora(570, 85, 300, 1);
-        lnsUsuario = Componentes.linhaSeparadora(570, 145, 300, 1);
-        lnsSenha = Componentes.linhaSeparadora(570, 205, 300, 1);
-        lnsConfirmaSenha = Componentes.linhaSeparadora(570, 265, 300, 1);
+        lnsNome = Componentes.montaSeparadora(30, 85, 300, 1 );
+        lnsSobrenome = Componentes.montaSeparadora(30, 145, 300, 1 );
+        lnsDtNasc = Componentes.montaSeparadora(30, 205, 300, 1 );
+        lnsEmail = Componentes.montaSeparadora(30, 265, 300, 1 );
+        lnsEndereco = Componentes.montaSeparadora(30, 325, 300, 1 );
+        lnsEmpresa = Componentes.montaSeparadora(30, 385, 300, 1 );
+        lnsCargo = Componentes.montaSeparadora(570, 85, 300, 1);
+        lnsUsuario = Componentes.montaSeparadora(570, 145, 300, 1);
+        lnsSenha = Componentes.montaSeparadora(570, 205, 300, 1);
+        lnsConfirmaSenha = Componentes.montaSeparadora(570, 265, 300, 1);
 
 
         /* Botao */
-        btnCadastra = componentes.montaBtnAlteravel("Cadastrar");
+        btnCadastra = componentes.montaBotaoAlteravel("Cadastrar");
         btnCadastra.setBounds(570, 280, 300, 30);
         btnCadastra.setBackground(new Color(0, 255, 127));
         btnCadastra.setForeground(Color.WHITE);
@@ -156,7 +156,7 @@ public class TelaCadastro {
             }
         });
 
-        btnLimpar = componentes.montaBtnAlteravel("Limpar");
+        btnLimpar = componentes.montaBotaoAlteravel("Limpar");
         btnLimpar.setBounds(570, 320, 300, 30);
         btnLimpar.setBackground(new Color(255, 215, 0));
         btnLimpar.setForeground(Color.WHITE);

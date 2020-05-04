@@ -19,11 +19,11 @@ public class ConfigLogin {
             return AcoesBD.getNomeUsuario();
         }
         if (usuario.equals(AcoesBD.getNome()) && !senha.equals(AcoesBD.getSenha())) {
-            componentes.montaAvisoMensagem("Senha ou usuário informado invalido!", "ERRO");
+            componentes.montaMensagemAviso("Senha ou usuário informado invalido!", "ERRO");
             return null;
         }
         if (!usuario.equals(AcoesBD.getNome())) {
-           componentes.montaAvisoMensagem("Senha ou usuário informado invalido!", "ERRO");
+           componentes.montaMensagemAviso("Senha ou usuário informado invalido!", "ERRO");
            return null;
         }
         return null;
