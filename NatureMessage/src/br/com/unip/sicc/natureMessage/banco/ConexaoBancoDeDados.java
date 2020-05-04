@@ -1,6 +1,7 @@
 package br.com.unip.sicc.natureMessage.banco;
 
 import br.com.unip.sicc.natureMessage.viewer.Componentes;
+import br.com.unip.sicc.natureMessage.viewer.TelaConexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,8 +15,8 @@ public class ConexaoBancoDeDados {
             Connection conect = null;
             final String url = "jdbc:mysql://localhost:3306/teste?useTimeZone=true&serverTimezone=UTC";
             final String drive = "com.mysql.jdbc.Driver";
-            final String noLoginBanco = "root";
-            final String noSenhaBanco = "";
+            final String noLoginBanco = TelaConexao.usuarioBD;
+            final String noSenhaBanco = TelaConexao.senhaBD;
             Class.forName(drive);
             return conect = DriverManager.getConnection(url, noLoginBanco, noSenhaBanco);
         } catch (SQLException e) {

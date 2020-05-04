@@ -38,7 +38,7 @@ public class TelaInicial {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaInicial.dispose();
-                new TelaLogin();
+                new TelaConexao();
             }
         });
 
