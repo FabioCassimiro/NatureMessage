@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -104,19 +103,9 @@ public class TelaCadastro {
         txfEmpresa = Componentes.montaTxfPadrao(30, 360, 300, 25);
         txfCargo = Componentes.montaTxfPadrao(570, 60, 300, 25);
         txfUsuario = Componentes.montaTxfPadrao(570, 120, 300, 25);
-
-        pwdSenha = new JPasswordField();
-        pwdSenha.setBorder(null);
-        pwdSenha.setForeground(Color.WHITE);
-        pwdSenha.setBackground(null);
-        pwdSenha.setBounds(570, 180, 300, 25);
-
-        pwdConfirmaSenha = new JPasswordField();
-        pwdConfirmaSenha.setBorder(null);
-        pwdConfirmaSenha.setForeground(Color.WHITE);
-        pwdConfirmaSenha.setBackground(null);
-        pwdConfirmaSenha.setBounds(570, 240, 300, 25);
-
+        pwdSenha = Componentes.montaPwdPadrao(570, 180, 300, 25);
+        pwdConfirmaSenha = Componentes.montaPwdPadrao(570, 240, 300, 25);
+        
         /* Labels */
         pnlCadastro.add(Componentes.lblTexto("Nome:", 12, Color.WHITE, 29, 33, 350, 32));
         pnlCadastro.add(Componentes.lblTexto("Sobrenome:", 12, Color.WHITE, 29, 93, 350, 32));

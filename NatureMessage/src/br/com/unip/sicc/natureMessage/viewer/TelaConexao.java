@@ -49,7 +49,7 @@ public class TelaConexao {
                 new TelaLogin();
             }
         });
-
+        pnlConexao.add(btnEntraBanco);
         pnlConexao.add(txfUsuario);
         pnlConexao.add(pwdSenha);
 
