@@ -22,7 +22,6 @@ public class TelaServidor {
     private PainelPadrao pnlServidor = new PainelPadrao();
     private Componentes componente = new Componentes();
     private String nomeUsuario;
-    private JButton btnEntra;
     private JFrame telaServidor = new JFrame();
     private JTextField txfEnderecoIP;
 
@@ -52,7 +51,7 @@ public class TelaServidor {
         //JSeparator
         pnlServidor.add(Componentes.linhaSeparadora(277, 255, 350, 1));
 
-        btnEntra = componente.montaBtnAlteravel("Entrar");
+       JButton btnEntra = componente.montaBtnAlteravel("Entrar");
         btnEntra.setBounds(277, 268, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
         Action actionTecla = new AbstractAction() {
@@ -76,8 +75,7 @@ public class TelaServidor {
                     servidor.ValidaServidor(txfEnderecoIP.getText().toUpperCase());
                     telaServidor.dispose();
                     TelaChat telaChat = new TelaChat(servidor.getPortaServidor());
-                    telaChat.setNomeUsuario(nomeUsuario);
-                    componente.montaAvisoMensagem(nomeUsuario + " Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
+                    componente.montaAvisoMensagem(TelaLogin.nomeUsuario + " Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
                 } catch (ServerNotFoundException ex) {
                     ex.printStackTrace();
                 }

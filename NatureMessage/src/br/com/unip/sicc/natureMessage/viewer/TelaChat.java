@@ -47,7 +47,6 @@ public class TelaChat extends JFrame {
     private JScrollPane scrollableTextArea;
     private JTextField txaEnviar;
     private JEditorPane txaChat;
-    private String nomeUsuario;
     private JTextField txfNome;
     private JTextField txfStatusServidor;
     private final String actionName = "TECLA_ENTER";
@@ -56,9 +55,6 @@ public class TelaChat extends JFrame {
     private JButton btnPerfil;
     private int porta;
 
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
-    }
 
     PainelPadrao pnlChat = new PainelPadrao();
     Componentes botoesPadrao = new Componentes();
@@ -222,7 +218,7 @@ public class TelaChat extends JFrame {
             @Override
             public void run() {
                 try {
-                    txfNome.setText("Usuário: " + nomeUsuario);
+                    txfNome.setText("Usuário: " + TelaLogin.nomeUsuario);
                     String msgReceb;
                     inputStreamReader = new InputStreamReader(socketCliente.getInputStream());
                     bufferedReader = new BufferedReader(inputStreamReader);
@@ -244,9 +240,9 @@ public class TelaChat extends JFrame {
 
     private void botaoEnviarActionPerformed() {
         try {
-            String mensagem = nomeUsuario;
+            String mensagem = TelaLogin.nomeUsuario;
             PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-            mensagem = nomeUsuario + " " + txaEnviar.getText() + " " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
+            mensagem = TelaLogin.nomeUsuario + " " + txaEnviar.getText() + " " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
             ps.println(mensagem);
             ps.flush();
             txaEnviar.setText(null);

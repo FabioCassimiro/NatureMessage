@@ -14,6 +14,6 @@ public class NatureMessage {
         //new TelaChat(5000);
         //new TelaCadastro();
        //new TelaLogin();
-       new TelaSobre();
+       new TelaLogin();
     }
 }

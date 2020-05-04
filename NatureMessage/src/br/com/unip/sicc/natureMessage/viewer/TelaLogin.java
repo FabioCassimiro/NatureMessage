@@ -39,6 +39,7 @@ public class TelaLogin {
     private JSeparator lnsSenha;
     private JButton btnCadastro;
     private JLabel lblTalkNow;
+    public static String nomeUsuario;
 
     public TelaLogin() {
         telaLogin.add(montaPainelLogin());
@@ -107,12 +108,11 @@ public class TelaLogin {
 
                 try {
 
-                    String result = login.ValidaUsuarioSenha(txfUsuario.getText(), pwdSenha.getText());
-                    if (result != null) {
+                    nomeUsuario = login.ValidaUsuarioSenha(txfUsuario.getText(), pwdSenha.getText());
+                    if (nomeUsuario != null) {
                         telaLogin.dispose();
-                        TelaServidor telaServidor = new TelaServidor();
-                        telaServidor.setNomeUsuario(result);
-                        componentes.montaAvisoMensagem("Bem-Vindo " + result, "SUCESSO");
+                        new TelaServidor();
+                        componentes.montaAvisoMensagem("Bem-Vindo " + nomeUsuario, "SUCESSO");
                     }
 
                 } catch (UserInvalidException usuarioInvalido) {
