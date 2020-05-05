@@ -14,7 +14,9 @@ public class ConfigConexaoServidor {
     private String nomeServidor;
     private AcoesBancoDeDados dados = new AcoesBancoDeDados();
     private Componentes componentes = new Componentes();
-
+    String [] camposServidor = {"CDSERVIDOR"};
+    
+    
     public String getNoHostname() {
         return noHostname;
     }
@@ -28,8 +30,8 @@ public class ConfigConexaoServidor {
     }
 
     public void ValidaServidor(String cdHostname) throws ServerNotFoundException {
-
-        //dados.ConsultaServidor(AcoesBancoDeDados.comandoSelect(cdHostname));
+        String [] dadosServidor = {cdHostname};
+        dados.ConsultaServidor(AcoesBancoDeDados.comandoSelect(camposServidor, dadosServidor, "TB_SERVIDOR"));
         if (cdHostname.equals(dados.getResultNoHostname())) {
             noHostname = dados.getResultNoHostname();
             portaServidor = Integer.parseInt(dados.getResulPortaServidor());

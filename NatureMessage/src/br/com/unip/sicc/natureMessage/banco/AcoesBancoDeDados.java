@@ -49,57 +49,60 @@ public class AcoesBancoDeDados {
         this.nomeUsuario = nomeUsuario;
     }
 
-    public static String comandoSelect(String[] campos,String[] dados,  String tabela) {
-        String comando = "SELECT * FROM ";
-        
-        switch(tabela){
-            case "TB_USUARIO":
-                for (int i = 0; i < campos.length; i++) {
-                    comando+= tabela +campos[i] ;
+    public static String comandoSelect(String[] campos, String[] dados, String tabela) {
+        String comando = "SELECT * FROM " + tabela + " WHERE ";
+
+        for (int i = 0; i < campos.length; i++) {
+            //Somente uma Condicao
+            if (campos.length == 1) {
+                comando += campos[i] + " = " + "'" + dados[i] + "'";
+            }
+            //Varias condicoes
+            if (campos.length > 1) {
+                if (i == campos.length) {
+                    comando += campos[i] + " = " + "'" + dados[i] + "'";
+                } else if (i == campos.length - 1) {
+                    comando += campos[i] + " = " + "'" + dados[i] + "'";
+                } else {
+                    comando += campos[i] + " = " + "'" + dados[i] + "'" + " AND ";
                 }
-                
-            
+
+            }
+
         }
+
         return comando;
     }
 
     public static String comandoInsert(String[] campos, String tabela) {
-        String comando = "INSERT INTO ";
+        String comando = tabela.equals("TB_USUARIO")
+                ? "INSERT INTO TB_USUARIO (NOLOGIN,NOSENHA) VALUES("
+                : "INSERT INTO TB_PESSOA(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(";
 
-        switch (tabela) {
-            case "TB_USUARIO":
-                comando += tabela + "(NOLOGIN,NOSENHA) VALUES(";
-                for (int i = 0; i < campos.length; i++) {
-                    if (i == 1) {
-                        comando += "'" + campos[i] + "'";
-                    } else {
-                        comando += "'" + campos[i] + "'" + ",";
-                    }
-                }
-                break;
-            case "TB_PESSOA":
-                comando += tabela + "(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(";
-                for (int i = 0; i < campos.length; i++) {
-                    if (i == 6) {
-                        comando += "'" + campos[i] + "'";
-                    } else {
-                        comando += "'" + campos[i] + "'" + ",";
-                    }
-                }
-                break;
+        for (int i = 0; i < campos.length; i++) {
+            if (i == campos.length - 1) {
+                comando += "'" + campos[i] + "'";
+            } else {
+                comando += "'" + campos[i] + "'" + ",";
+            }
         }
-
-        comando += ")";
+        for (int i = 0; i < campos.length; i++) {
+            if (i == campos.length - 1) {
+                comando += "'" + campos[i] + "'" + ")";
+            } else {
+                comando += "'" + campos[i] + "'" + ",";
+            }
+        }
 
         System.out.println(comando);
         return comando;
     }
 
-    //->Consulta usuário no banco de dados.
+//->Consulta usuário no banco de dados.
     public void ConsultaLoginSenha(String sqlquery) {
         try {
 
-            PreparedStatement pesquisa = ConexaoBancoDeDados.conexao().prepareStatement(sqlquery);
+            PreparedStatement pesquisa = conexao.conexao().prepareStatement(sqlquery);
             ResultSet resultado = pesquisa.executeQuery();
 
             while (resultado.next()) {
@@ -116,10 +119,10 @@ public class AcoesBancoDeDados {
     //->Fim Consulta usuário.
 
     //->Cria usuario no banco de dados
-    public static void CriaCadastroUsuario(String sqlquery) {
+    public  void CriaCadastroUsuario(String sqlquery) {
 
         try {
-            Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
+            Statement cadatastro = conexao.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
             JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!");
 
@@ -132,7 +135,7 @@ public class AcoesBancoDeDados {
 
     public void ConsultaServidor(String sqlQuery) {
         try {
-            PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
+            PreparedStatement servidor = conexao.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
 
             while (resultado.next()) {

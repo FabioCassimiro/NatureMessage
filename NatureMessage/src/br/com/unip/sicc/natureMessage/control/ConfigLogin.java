@@ -13,8 +13,10 @@ public class ConfigLogin {
     
     //Faz a validação do login e da senha digitada pelo usuário e retorna um aviso!
     public String ValidaUsuarioSenha(String usuario, String senha) throws UserInvalidException, InvalidPasswordException {
-        AcoesBD.ConsultaLoginSenha("SELECT * FROM TB_USUARIO WHERE NOLOGIN = '" + usuario + "' AND NOSENHA = '" + senha + "'");
-
+        String[] camposUsuario = {"NOLOGIN","NOSENHA"};
+        String[] camposDados = {usuario,senha};
+        AcoesBD.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, camposDados, "TB_USUARIO"));
+        
         if (usuario.equals(AcoesBD.getNome()) && senha.equals(AcoesBD.getSenha())) {
             return AcoesBD.getNomeUsuario();
         }
