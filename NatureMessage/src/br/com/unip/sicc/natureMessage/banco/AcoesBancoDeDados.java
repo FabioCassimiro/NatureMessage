@@ -49,6 +49,52 @@ public class AcoesBancoDeDados {
         this.nomeUsuario = nomeUsuario;
     }
 
+    public static String comandoSelect(String[] campos,String[] dados,  String tabela) {
+        String comando = "SELECT * FROM ";
+        
+        switch(tabela){
+            case "TB_USUARIO":
+                for (int i = 0; i < campos.length; i++) {
+                    comando+= tabela +campos[i] ;
+                }
+                
+            
+        }
+        return comando;
+    }
+
+    public static String comandoInsert(String[] campos, String tabela) {
+        String comando = "INSERT INTO ";
+
+        switch (tabela) {
+            case "TB_USUARIO":
+                comando += tabela + "(NOLOGIN,NOSENHA) VALUES(";
+                for (int i = 0; i < campos.length; i++) {
+                    if (i == 1) {
+                        comando += "'" + campos[i] + "'";
+                    } else {
+                        comando += "'" + campos[i] + "'" + ",";
+                    }
+                }
+                break;
+            case "TB_PESSOA":
+                comando += tabela + "(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(";
+                for (int i = 0; i < campos.length; i++) {
+                    if (i == 6) {
+                        comando += "'" + campos[i] + "'";
+                    } else {
+                        comando += "'" + campos[i] + "'" + ",";
+                    }
+                }
+                break;
+        }
+
+        comando += ")";
+
+        System.out.println(comando);
+        return comando;
+    }
+
     //->Consulta usuário no banco de dados.
     public void ConsultaLoginSenha(String sqlquery) {
         try {
@@ -70,7 +116,7 @@ public class AcoesBancoDeDados {
     //->Fim Consulta usuário.
 
     //->Cria usuario no banco de dados
-    public void CriaCadastroUsuario(String sqlquery) {
+    public static void CriaCadastroUsuario(String sqlquery) {
 
         try {
             Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
@@ -88,14 +134,14 @@ public class AcoesBancoDeDados {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
-            
+
             while (resultado.next()) {
                 if (!resultado.equals("")) {
                     resulIpServidor = resultado.getString("IPSERVIDOR");
                     resulPortaServidor = resultado.getString("PTSERVIDOR");
                     resultNoHostname = resultado.getString("CDSERVIDOR");
                     nomeServidor = resultado.getString("NOSERVIDOR");
-                    
+
                 }
             }
 

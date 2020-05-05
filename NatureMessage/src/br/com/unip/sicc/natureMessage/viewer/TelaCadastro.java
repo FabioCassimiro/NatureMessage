@@ -61,7 +61,7 @@ public class TelaCadastro {
 
     public JPanel montaPainelCadastro() {
 
-        btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"),15, 10, 25, 25, new ActionListener() {
+        btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
@@ -105,7 +105,7 @@ public class TelaCadastro {
         txfUsuario = Componentes.montaTxfPadrao(570, 120, 300, 25);
         pwdSenha = Componentes.montaPwdPadrao(570, 180, 300, 25);
         pwdConfirmaSenha = Componentes.montaPwdPadrao(570, 240, 300, 25);
-        
+
         /* Labels */
         pnlCadastro.add(Componentes.montaTexto("Nome:", 12, Color.WHITE, 29, 33, 350, 32));
         pnlCadastro.add(Componentes.montaTexto("Sobrenome:", 12, Color.WHITE, 29, 93, 350, 32));
@@ -117,16 +117,16 @@ public class TelaCadastro {
         pnlCadastro.add(Componentes.montaTexto("Usuario:", 12, Color.WHITE, 570, 93, 350, 32));
         pnlCadastro.add(Componentes.montaTexto("Senha:", 12, Color.WHITE, 570, 153, 350, 32));
         pnlCadastro.add(Componentes.montaTexto("Confirme sua senha:", 12, Color.WHITE, 570, 213, 350, 32));
-        
+
 
         /* Separadores */
         //lnsNome = Componentes.linhaSeparadora(85, "ESQUERDA");
-        lnsNome = Componentes.montaSeparadora(30, 85, 300, 1 );
-        lnsSobrenome = Componentes.montaSeparadora(30, 145, 300, 1 );
-        lnsDtNasc = Componentes.montaSeparadora(30, 205, 300, 1 );
-        lnsEmail = Componentes.montaSeparadora(30, 265, 300, 1 );
-        lnsEndereco = Componentes.montaSeparadora(30, 325, 300, 1 );
-        lnsEmpresa = Componentes.montaSeparadora(30, 385, 300, 1 );
+        lnsNome = Componentes.montaSeparadora(30, 85, 300, 1);
+        lnsSobrenome = Componentes.montaSeparadora(30, 145, 300, 1);
+        lnsDtNasc = Componentes.montaSeparadora(30, 205, 300, 1);
+        lnsEmail = Componentes.montaSeparadora(30, 265, 300, 1);
+        lnsEndereco = Componentes.montaSeparadora(30, 325, 300, 1);
+        lnsEmpresa = Componentes.montaSeparadora(30, 385, 300, 1);
         lnsCargo = Componentes.montaSeparadora(570, 85, 300, 1);
         lnsUsuario = Componentes.montaSeparadora(570, 145, 300, 1);
         lnsSenha = Componentes.montaSeparadora(570, 205, 300, 1);
