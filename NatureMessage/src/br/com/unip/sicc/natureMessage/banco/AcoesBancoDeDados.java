@@ -16,6 +16,8 @@ public class AcoesBancoDeDados {
     private String nomeServidor;
     private String nomeUsuario;
     ConexaoBancoDeDados conexao = new ConexaoBancoDeDados();
+    public static String mensagem; 
+    public static String mensagemCompleta; 
 
     public String getResulIpServidor() {
         return resulIpServidor;
@@ -50,7 +52,7 @@ public class AcoesBancoDeDados {
     }
 
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
-        String comando = "SELECT * FROM " + tabela + " WHERE ";
+        String comando = dados.length == 0?"SELECT * FROM " :"SELECT * FROM " + tabela + " WHERE ";
 
         for (int i = 0; i < campos.length; i++) {
             //Somente uma Condicao
@@ -67,6 +69,9 @@ public class AcoesBancoDeDados {
                     comando += campos[i] + " = " + "'" + dados[i] + "'" + " AND ";
                 }
 
+            }
+            if(campos.length == 1 && dados.length == 0){
+                comando+= campos[i];
             }
 
         }
@@ -145,6 +150,25 @@ public class AcoesBancoDeDados {
                     resultNoHostname = resultado.getString("CDSERVIDOR");
                     nomeServidor = resultado.getString("NOSERVIDOR");
 
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void carregaMensagem(String sqlQuery) {
+        try {
+            PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
+            ResultSet resultado = servidor.executeQuery();
+
+            while (resultado.next()) {
+                if (!resultado.equals("")) {
+                    mensagem = resultado.getString("NOMENSAGEM");
+                    String usuario = resultado.getString("NOUSUARIO");
+                    String data = resultado.getString("DTENVIO");
+                   mensagemCompleta+= "\n" + usuario + "  " +mensagem + "  " +data;
                 }
             }
 

@@ -1,5 +1,6 @@
 package br.com.unip.sicc.natureMessage.control;
 
+import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,27 +9,25 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Calendar;
 import javax.swing.JEditorPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class ConfigChat {
-    
-    static Socket socketCliente;
-    
 
-    public static void Chat( JEditorPane txaChat,int porta) {
+    static Socket socketCliente;
+
+    public static void Chat(JEditorPane txaChat, int porta) {
         try {
             ;
-             socketCliente = new Socket("localhost", porta);
-             Thread(txaChat,socketCliente);
+            socketCliente = new Socket("localhost", porta);
+            Thread(txaChat, socketCliente);
         } catch (IOException ex) {
             ex.printStackTrace();
             System.out.println("erro");
         }
-        
+
     }
 
-    private static void Thread(JEditorPane txaChat,Socket socketCliente) {
+    private static void Thread(JEditorPane txaChat, Socket socketCliente) {
         Thread tr = new Thread(new Runnable() {
 
             @Override
@@ -58,12 +57,22 @@ public class ConfigChat {
         try {
             String mensagem = TelaLogin.nomeUsuario;
             PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-            mensagem = TelaLogin.nomeUsuario + " " + txaEnviar.getText() + " " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
+            mensagem = TelaLogin.nomeUsuario + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
             ps.println(mensagem);
             ps.flush();
             txaEnviar.setText(null);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    
+    public static String carregaMensagem(){
+        String [] campos = {"NOMENSGAM"};
+        String [] dados = {};
+        AcoesBancoDeDados.carregaMensagem("SELECT * FROM TB_MENSAGEM");
+        String mensagem = AcoesBancoDeDados.mensagemCompleta;
+         
+         return mensagem;
     }
 }
