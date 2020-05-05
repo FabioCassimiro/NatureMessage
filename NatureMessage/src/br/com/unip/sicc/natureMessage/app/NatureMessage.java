@@ -1,6 +1,7 @@
 package br.com.unip.sicc.natureMessage.app;
 
 import br.com.unip.sicc.natureMessage.viewer.Componentes;
+import br.com.unip.sicc.natureMessage.viewer.TelaBiografia;
 import br.com.unip.sicc.natureMessage.viewer.TelaCadastro;
 import br.com.unip.sicc.natureMessage.viewer.TelaChat;
 import br.com.unip.sicc.natureMessage.viewer.TelaConexao;
@@ -15,7 +16,9 @@ public class NatureMessage {
         //new TelaServidor();
 //        new TelaChat(5000);
         //new TelaCadastro();
-       //new TelaLogin();
-     new TelaInicial();
+        //new TelaLogin();
+        //new TelaInicial();
+        new TelaSobre();
+        //new TelaBiografia();
     }
 }
