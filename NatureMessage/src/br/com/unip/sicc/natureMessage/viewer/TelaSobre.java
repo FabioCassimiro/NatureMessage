@@ -40,31 +40,35 @@ public class TelaSobre {
 
         pnlSobre.add(Componentes.montaTexto(apresentacao, 15, Color.WHITE, 208, 10, 1000, 300));
 
-        JLabel imgFabio = new JLabel();
+        JButton imgFabio = new JButton();
         imgFabio.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Fabio.jpeg"));
         imgFabio.setBounds(195, 300, 90, 125);
-        imgFabio.setToolTipText("<html>\"Cada adversidade, cada fracasso, cada dor<br>"
-                + " de cabeça carrega consigo a semente<br>"
-                + " de um benefício igual ou maior.\"</html>");
+        imgFabio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                TelaBiografia fabio = new TelaBiografia("Fabio");
+                //telaSobre.dispose();
+            }
+        });
 
-        JLabel imgWalisson = new JLabel();
+        JButton imgWalisson = new JButton();
         imgWalisson.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Walisson.jpg"));
         imgWalisson.setBounds(305, 300, 90, 125);
         imgWalisson.setToolTipText("Isso ai é detalhe.");
 
-        JLabel imgJoao = new JLabel();
+        JButton imgJoao = new JButton();
         imgJoao.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Joao.jpeg"));
         imgJoao.setBounds(415, 300, 90, 125);
         imgJoao.setToolTipText("<html>\"Perder Tempo aprendendo coisas que não nos<br>"
                 + "interessam, priva-nos de aprender coisas interessantes\".</html>");
 
-        JLabel imgDaniel = new JLabel();
+        JButton imgDaniel = new JButton();
         imgDaniel.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Daniel.jpeg"));
         imgDaniel.setBounds(525, 300, 90, 125);
         imgDaniel.setToolTipText("<html>\"Quanto mais certeza temos de quem somos,<br>"
                 + " menos importa o que pensam sobre quem a gente é\".</html>");
 
-        JLabel imgMarcos = new JLabel();
+        JButton imgMarcos = new JButton();
         imgMarcos.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Marcos.jpeg"));
         imgMarcos.setBounds(635, 300, 90, 125);
         imgMarcos.setToolTipText("<html>\"Aos outros, dou o direito de ser como são.<br>"
