@@ -24,7 +24,7 @@ import javax.swing.KeyStroke;
 public class Componentes {
 
     JFrame caixaAvisoMsg = new JFrame();
-    JPanel painelcaixaAviso = new JPanel();
+    JPanel painelCaixaAviso = new JPanel();
     JButton btnOkay;
 
     public ImageIcon buscaImagem(String caminho) {
@@ -44,7 +44,6 @@ public class Componentes {
         JSeparator linha = new JSeparator();
         linha.setForeground(Color.WHITE);
         linha.setBounds(x, y, altura, largura);
-
         return linha;
     }
 
@@ -110,9 +109,9 @@ public class Componentes {
         caixaAvisoMsg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         caixaAvisoMsg.setLocationRelativeTo(null);
 
-        painelcaixaAviso.setSize(275, 125);
-        painelcaixaAviso.setBackground(corTipoAviso(tipoAviso));
-        painelcaixaAviso.setLayout(null);
+        painelCaixaAviso.setSize(275, 125);
+        painelCaixaAviso.setBackground(corTipoAviso(tipoAviso));
+        painelCaixaAviso.setLayout(null);
 
         JLabel txtLblCaixaAviso = new JLabel(texto);
         txtLblCaixaAviso.setForeground(Color.WHITE);
@@ -149,11 +148,11 @@ public class Componentes {
         ActionMap actionMap = btnOkay.getActionMap();
         actionMap.put("Tecla_Enter", actionTecla);
 
-        painelcaixaAviso.add(btnOkay);
-        painelcaixaAviso.add(txtLblCaixaAviso);
-        painelcaixaAviso.add(imgBorda);
+        painelCaixaAviso.add(btnOkay);
+        painelCaixaAviso.add(txtLblCaixaAviso);
+        painelCaixaAviso.add(imgBorda);
 
-        caixaAvisoMsg.add(painelcaixaAviso);
+        caixaAvisoMsg.add(painelCaixaAviso);
 
         return caixaAvisoMsg;
 
@@ -168,17 +167,17 @@ public class Componentes {
             case "SUCESSO":
                 corAviso = new Color(0, 255, 127);
                 img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/sucesso.png"));
-                painelcaixaAviso.add(img);
+                painelCaixaAviso.add(img);
                 break;
             case "AVISO":
                 corAviso = new Color(255, 215, 0);
                 img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/alerta.png"));
-                painelcaixaAviso.add(img);
+                painelCaixaAviso.add(img);
                 break;
             case "ERRO":
                 corAviso = new Color(255, 99, 71);
                 img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/erro.png"));
-                painelcaixaAviso.add(img);
+                painelCaixaAviso.add(img);
                 break;
         }
 
