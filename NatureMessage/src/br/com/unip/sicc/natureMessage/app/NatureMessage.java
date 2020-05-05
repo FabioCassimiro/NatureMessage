@@ -13,6 +13,6 @@ import br.com.unip.sicc.natureMessage.viewer.TelaSobre;
 public class NatureMessage {
 
     public static void main(String[] args) {
-        new TelaInicial();
+        new TelaChat(5000);
     }
 }

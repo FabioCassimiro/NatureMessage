@@ -1,5 +1,6 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
+import br.com.unip.sicc.natureMessage.control.ConfigChat;
 import br.com.unip.sicc.natureMessage.model.Arquivo;
 import java.awt.Color;
 import java.awt.Font;
@@ -17,7 +18,6 @@ import java.util.Calendar;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
-import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -33,15 +33,9 @@ import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 public class TelaChat extends JFrame {
-
-    private Socket socketCliente;
-    private BufferedReader bufferedReader;
-    private InputStreamReader inputStreamReader;
-    private Calendar dataHora = Calendar.getInstance();
+    
     private Arquivo arquivo;
-    private FileInputStream fileInputStream;
     Componentes componentes = new Componentes();
-
     private JTextField txaEnviar;
     private JEditorPane txaChat;
     private JTextField txfNome;
@@ -49,6 +43,7 @@ public class TelaChat extends JFrame {
     private final String actionName = "TECLA_ENTER";
     private int porta;
     private JLabel lblStatus;
+
 
 
     PainelPadrao pnlChat = new PainelPadrao();
@@ -63,7 +58,7 @@ public class TelaChat extends JFrame {
         telaChat.setUndecorated(true);
         telaChat.setVisible(true);
         botoesPadrao.montaIconeFrame(telaChat);
-        Chat(portaServidor);
+        ConfigChat.Chat(txaChat,portaServidor);
     }
 
     public JPanel montaPainelChat() {
@@ -79,7 +74,7 @@ public class TelaChat extends JFrame {
         btnImagem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                enviaArquivo();
+                //enviaArquivo();
             }
         });
 
@@ -90,7 +85,7 @@ public class TelaChat extends JFrame {
         btnDocumento.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                enviaArquivo();
+               // enviaArquivo();
             }
         });
 
@@ -111,7 +106,7 @@ public class TelaChat extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                botaoEnviarActionPerformed();
+               ConfigChat.botaoEnviarActionPerformed(txaEnviar);
             }
         });
         Action actionTecla = new AbstractAction() {
@@ -173,56 +168,8 @@ public class TelaChat extends JFrame {
         return pnlChat;
     }
 
-    public void Chat(int porta) {
-        try {
-            socketCliente = new Socket("localhost", porta);
-            lblStatus.setText("Status Servidor: Online");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            System.out.println("erro");
-        }
-        Thread();
-    }
-
-    private void Thread() {
-        Thread tr = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    String msgReceb;
-                    inputStreamReader = new InputStreamReader(socketCliente.getInputStream());
-                    bufferedReader = new BufferedReader(inputStreamReader);
-
-                    while ((msgReceb = bufferedReader.readLine()) != null) {
-                        if (txaChat.getText().equals("")) {
-                            txaChat.setText(msgReceb);
-                        } else {
-                            txaChat.setText(txaChat.getText() + "\n" + msgReceb);
-                        }
-                    }
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-        tr.start();
-    }
-
-    private void botaoEnviarActionPerformed() {
-        try {
-            String mensagem = TelaLogin.nomeUsuario;
-            PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-            mensagem = TelaLogin.nomeUsuario + " " + txaEnviar.getText() + " " + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
-            ps.println(mensagem);
-            ps.flush();
-            txaEnviar.setText(null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    //Desenvolvimento pausado
+/*
     public void enviaArquivo() {
         JFileChooser fileChooser = new JFileChooser();
         Componentes componentes = new Componentes();
@@ -247,5 +194,7 @@ public class TelaChat extends JFrame {
             arquivo = new Arquivo(arquivoEnviar.getName(), conteudo, tamanho);
         }
 
-    }
+    }*/
+    
+    
 }
