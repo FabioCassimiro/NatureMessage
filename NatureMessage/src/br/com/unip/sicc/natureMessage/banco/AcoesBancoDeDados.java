@@ -8,14 +8,12 @@ import javax.swing.JOptionPane;
 
 public class AcoesBancoDeDados {
 
-    public static String nome;
-    public static String senha;
+    public static String resultNoLogin;
+    public static String resultNoSenha;
     public static String resulIpServidor;
-    public static String resulPortaServidor;
-    public static String resultNoHostname;
-    public static String nomeServidor;
-    public static String nomeUsuario;
-    public static String mensagem;
+    public static String resulPtServidor;
+    public static String resultCdServidor;
+    public static String resultNoServidor;
     public static String mensagemCompleta;
 
 
@@ -74,14 +72,12 @@ public class AcoesBancoDeDados {
             ResultSet resultado = pesquisa.executeQuery();
 
             while (resultado.next()) {
-                nome = resultado.getString("noLogin");
-                senha = resultado.getString("noSenha");
-                nomeUsuario = resultado.getString("noLogin");
+                resultNoLogin = resultado.getString("noLogin");
+                resultNoSenha = resultado.getString("noSenha");
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "erro");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null," Erro consulta de Usuario.\n Exception Banco de dados");
         }
     }
     //->Fim Consulta usuário.
@@ -93,8 +89,7 @@ public class AcoesBancoDeDados {
             Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage() + " Erro de Banco de dados");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null," Erro criação de Usuario/Pessoa .\n Exception Banco de dados");
         }
     }
     //->Fim criação usuario.
@@ -107,15 +102,14 @@ public class AcoesBancoDeDados {
             while (resultado.next()) {
                 if (!resultado.equals("")) {
                     resulIpServidor = resultado.getString("IPSERVIDOR");
-                    resulPortaServidor = resultado.getString("PTSERVIDOR");
-                    resultNoHostname = resultado.getString("CDSERVIDOR");
-                    nomeServidor = resultado.getString("NOSERVIDOR");
-
+                    resulPtServidor = resultado.getString("PTSERVIDOR");
+                    resultCdServidor = resultado.getString("CDSERVIDOR");
+                    resultNoServidor = resultado.getString("NOSERVIDOR");
                 }
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null," Erro consulta de Servidor.\n Exception Banco de dados");
         }
     }
 
@@ -126,15 +120,15 @@ public class AcoesBancoDeDados {
 
             while (resultado.next()) {
                 if (!resultado.equals("")) {
-                    mensagem = resultado.getString("NOMENSAGEM");
-                    String usuario = resultado.getString("NOUSUARIO");
-                    String data = resultado.getString("DTENVIO");
-                    mensagemCompleta += "\n" + usuario + "  " + mensagem + "  " + data;
+                    String resultNoMensagem = resultado.getString("NOMENSAGEM");
+                    String resultNoUsuario = resultado.getString("NOUSUARIO");
+                    String resultHrEnvio = resultado.getString("HRENVIO");
+                    mensagemCompleta += "\n" + resultNoUsuario + "  " + resultNoMensagem + "  " + resultHrEnvio;
                 }
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null," Erro ao carregar mensagens.\n Exception Banco de dados");
         }
     }
 

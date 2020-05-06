@@ -31,7 +31,7 @@ public class ConfigCadastro {
         if (!noPessoa.equals("") && !noSobrenome.equals("") && !noCargo.equals("") && !noEmpresa.equals("") && !noEndereco.equals("")
                 && !dtNascimento.equals("  /  /    ") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
 
-            if (!noLogin.equals(AcoesBancoDeDados.nome)) {
+            if (!noLogin.equals(AcoesBancoDeDados.resultNoLogin)) {
                 if (noSenha.equals(confirmacaoSenha)) {
                     String[] usuario = {noLogin, noSenha};
                     String[] pessoa = {noPessoa, noSobrenome, noCargo, noEmpresa, noEndereco, dtNascimento, noEmail};
