@@ -4,7 +4,6 @@ import br.com.unip.sicc.natureMessage.control.ConfigCadastro;
 import br.com.unip.sicc.natureMessage.exception.InsufficientCharactersException;
 import br.com.unip.sicc.natureMessage.exception.PasswordsDontMatchException;
 import br.com.unip.sicc.natureMessage.exception.UserRegisteredException;
-import br.com.unip.sicc.natureMessage.model.Cadastro;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,7 +48,7 @@ public class TelaCadastro {
     private JFrame telaCadastro = new JFrame();
     private PainelPadrao pnlCadastro = new PainelPadrao();
     private Componentes componentes = new Componentes();
-    private Cadastro cadastro = new Cadastro();
+    ConfigCadastro cadastro = new ConfigCadastro();
 
     public TelaCadastro() {
         telaCadastro.add(montaPainelCadastro());
@@ -61,14 +60,14 @@ public class TelaCadastro {
 
     public JPanel montaPainelCadastro() {
 
-        btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
+        btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
                         || !txfEmpresa.getText().equals("") || !txfEndereco.getText().equals("") || !txfEmail.getText().equals("")
                         || !txfUsuario.getText().equals("") || !pwdSenha.getText().equals("") || !pwdConfirmaSenha.getText().equals("")) {
                     if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?") == 0) {
-                        Cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
+                        ConfigCadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
                                 txfEmail, txfUsuario, pwdSenha, pwdConfirmaSenha);
 
                         telaCadastro.dispose();
@@ -164,7 +163,7 @@ public class TelaCadastro {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?") == 0) {
-                    Cadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
+                    ConfigCadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,
                             txfEmail, txfUsuario, pwdSenha, pwdConfirmaSenha);
                 }
             }

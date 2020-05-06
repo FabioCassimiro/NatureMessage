@@ -23,7 +23,7 @@ public class TelaSobre {
 
     public JPanel montaPainelSobre() {
 
-        JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
+        JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaSobre.dispose();
@@ -40,7 +40,7 @@ public class TelaSobre {
         pnlSobre.add(Componentes.montaTexto(apresentacao, 15, Color.WHITE, 208, 10, 1000, 300));
 
         JButton imgFabio = new JButton();
-        imgFabio.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Fabio.jpeg"));
+        imgFabio.setIcon(componentes.buscaImagem("Fabio.jpeg"));
         imgFabio.setBounds(195, 300, 90, 125);
         imgFabio.addActionListener(new ActionListener() {
             @Override
@@ -51,7 +51,7 @@ public class TelaSobre {
         });
 
         JButton imgWalisson = new JButton();
-        imgWalisson.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Walisson.jpg"));
+        imgWalisson.setIcon(componentes.buscaImagem("Walisson.jpg"));
         imgWalisson.setBounds(305, 300, 90, 125);
         imgWalisson.addActionListener(new ActionListener() {
             @Override
@@ -61,7 +61,7 @@ public class TelaSobre {
         });
 
         JButton imgJoao = new JButton();
-        imgJoao.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Joao.jpeg"));
+        imgJoao.setIcon(componentes.buscaImagem("Joao.jpeg"));
         imgJoao.setBounds(415, 300, 90, 125);
         imgJoao.addActionListener(new ActionListener() {
             @Override
@@ -71,7 +71,7 @@ public class TelaSobre {
         });
 
         JButton imgDaniel = new JButton();
-        imgDaniel.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Daniel.jpeg"));
+        imgDaniel.setIcon(componentes.buscaImagem("Daniel.jpeg"));
         imgDaniel.setBounds(525, 300, 90, 125);
         imgDaniel.addActionListener(new ActionListener() {
             @Override
@@ -81,7 +81,7 @@ public class TelaSobre {
         });
 
         JButton imgMarcos = new JButton();
-        imgMarcos.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/Marcos.jpeg"));
+        imgMarcos.setIcon(componentes.buscaImagem("Marcos.jpeg"));
         imgMarcos.setBounds(635, 300, 90, 125);
         imgMarcos.addActionListener(new ActionListener() {
             @Override

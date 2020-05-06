@@ -27,8 +27,8 @@ public class Componentes {
     JPanel painelCaixaAviso = new JPanel();
     JButton btnOkay;
 
-    public ImageIcon buscaImagem(String caminho) {
-        ImageIcon imagem = new ImageIcon(getClass().getResource(caminho));
+    public ImageIcon buscaImagem(String nomeArquivo) {
+        ImageIcon imagem = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/" + nomeArquivo));
         return imagem;
     }
 

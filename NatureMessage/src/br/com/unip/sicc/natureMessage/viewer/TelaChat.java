@@ -7,14 +7,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.net.Socket;
-import java.util.Calendar;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -22,7 +14,6 @@ import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -65,11 +56,11 @@ public class TelaChat extends JFrame {
 
         JButton btnPerfil = Componentes.montaBotaoPadrao("");
         btnPerfil.setBounds(60, 45, 100, 100);
-        btnPerfil.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/perfil.png"));
+        btnPerfil.setIcon(componentes.buscaImagem("perfil.png"));
 
         JButton  btnImagem = Componentes.montaBotaoPadrao("Imagem");
         btnImagem.setBounds(-29, 180, 150, 40);
-        btnImagem.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/compartilharImagem.png"));
+        btnImagem.setIcon(componentes.buscaImagem("compartilharImagem.png"));
         btnImagem.setVisible(false);
         btnImagem.addActionListener(new ActionListener() {
             @Override
@@ -80,7 +71,7 @@ public class TelaChat extends JFrame {
 
         JButton btnDocumento = Componentes.montaBotaoPadrao("Documento");
         btnDocumento.setBounds(-20, 210, 150, 40);
-        btnDocumento.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/compartilharDoc.png"));
+        btnDocumento.setIcon(componentes.buscaImagem("compartilharDoc.png"));
         btnDocumento.setVisible(false);
         btnDocumento.addActionListener(new ActionListener() {
             @Override
@@ -91,7 +82,7 @@ public class TelaChat extends JFrame {
 
         JButton btnCompartilhar = Componentes.montaBotaoPadrao("Compatilhar");
         btnCompartilhar.setBounds(-16, 150, 150, 40);
-        btnCompartilhar.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/compartilhar.png"));
+        btnCompartilhar.setIcon(componentes.buscaImagem("compartilhar.png"));
         btnCompartilhar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

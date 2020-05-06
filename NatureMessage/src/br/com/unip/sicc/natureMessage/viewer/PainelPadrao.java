@@ -29,7 +29,7 @@ public class PainelPadrao extends JPanel {
             }
         });
 
-        JButton btnInfo = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/informacao.png"), 866, 466, 25, 25, new ActionListener() {
+        JButton btnInfo = Componentes.montaBotaoIcone(componentes.buscaImagem("informacao.png"), 866, 466, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new TelaSobre();

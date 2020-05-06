@@ -48,11 +48,11 @@ public class TelaBiografia {
         
        
         JLabel imgAluno = new JLabel();
-        imgAluno.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/" + aluno + ".jpeg"));
+        imgAluno.setIcon(componentes.buscaImagem(aluno + ".jpeg"));
         imgAluno.setBounds(50, 50, 90, 125);
         
 
-        JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
+        JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaBiografia.dispose();

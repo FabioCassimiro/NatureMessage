@@ -25,7 +25,7 @@ public class TelaInicial {
     public JPanel montaPainelInicial() {
 
         JLabel lblLogo = Componentes.montaTexto("", 35, Color.WHITE, 340, 120, 250, 250);
-        lblLogo.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/logo.png"));
+        lblLogo.setIcon(componentes.buscaImagem("logo.png"));
 
         pnlInicial.add(Componentes.montaTexto("NATURE", 35, Color.WHITE, 378, 100, 350, 32));
         pnlInicial.add(Componentes.montaTexto("MESSAGE", 22, Color.WHITE, 396, 124, 350, 32));
@@ -38,7 +38,7 @@ public class TelaInicial {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaInicial.dispose();
-                new TelaConexao();
+                new TelaLogin();
             }
         });
 
