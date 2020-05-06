@@ -46,9 +46,11 @@ public class TelaBiografia {
                 break;
         }
         
+       
         JLabel imgAluno = new JLabel();
         imgAluno.setIcon(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/" + aluno + ".jpeg"));
         imgAluno.setBounds(50, 50, 90, 125);
+        
 
         JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("/br/com/unip/sicc/natureMessage/image/setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override

@@ -13,6 +13,7 @@ import br.com.unip.sicc.natureMessage.viewer.TelaSobre;
 public class NatureMessage {
 
     public static void main(String[] args) {
-        new TelaServidor();
+        //new TelaServidor();
+        new TelaSobre();
     }
 }
