@@ -51,7 +51,7 @@ public class TelaSobre {
         });
 
         JButton imgWalisson = new JButton();
-        imgWalisson.setIcon(componentes.buscaImagem("Walisson.jpg"));
+        imgWalisson.setIcon(componentes.buscaImagem("Walisson.jpeg"));
         imgWalisson.setBounds(305, 300, 90, 125);
         imgWalisson.addActionListener(new ActionListener() {
             @Override
