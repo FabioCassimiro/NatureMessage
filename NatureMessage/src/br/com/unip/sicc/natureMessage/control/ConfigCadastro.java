@@ -8,6 +8,9 @@ import javax.swing.JTextField;
 
 public class ConfigCadastro {
 
+    AcoesBancoDeDados banco = new AcoesBancoDeDados();
+    String[] camposUsuario = {"NOLOGIN", "NOSENHA"};
+
     public static void ConfigCadastroValida(String noLogin, String noSenha) throws InsufficientCharactersException {
 
         if (noLogin.length() < 8) {
@@ -20,23 +23,19 @@ public class ConfigCadastro {
             throw new InsufficientCharactersException("A senha deve ter pelo menos 8(oito) caracteres!");
         }
     }
-    
-        AcoesBancoDeDados banco = new AcoesBancoDeDados();
-    String [] camposUsuario = {"NOLOGIN","NOSENHA"};
-    
-    
+
     public void CadastroUsuario(String noPessoa, String noSobrenome, String noCargo, String noEmpresa, String noEndereco,
             String dtNascimento, String noEmail, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatchException {
-            String [] dadosUsuario = {noLogin,noSenha};
-        banco.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario,dadosUsuario,"TB_USUARIO"));
+        String[] dadosUsuario = {noLogin, noSenha};
+        banco.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, dadosUsuario, "TB_USUARIO"));
         if (!noPessoa.equals("") && !noSobrenome.equals("") && !noCargo.equals("") && !noEmpresa.equals("") && !noEndereco.equals("")
                 && !dtNascimento.equals("  /  /    ") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
 
             if (!noLogin.equals(banco.getNome())) {
                 if (noSenha.equals(confirmacaoSenha)) {
-                    String [] usuario = {noLogin,noSenha}; 
-                    String [] pessoa = {noPessoa,noSobrenome,noCargo,noEmpresa,noEndereco,dtNascimento,noEmail};
-                    
+                    String[] usuario = {noLogin, noSenha};
+                    String[] pessoa = {noPessoa, noSobrenome, noCargo, noEmpresa, noEndereco, dtNascimento, noEmail};
+
                     banco.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(usuario, "TB_USUARIO"));
                     banco.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(pessoa, "TB_PESSOA"));
 
@@ -68,7 +67,6 @@ public class ConfigCadastro {
         pwdSenha.setText("");
         pwdConfirmaSenha.setText("");
 
-        }
-
+    }
 
 }

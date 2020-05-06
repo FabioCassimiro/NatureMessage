@@ -52,7 +52,7 @@ public class AcoesBancoDeDados {
     }
 
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
-        String comando = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " +tabela  : "SELECT * FROM " + tabela + " WHERE ";
+        String comando = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " + tabela : "SELECT * FROM " + tabela + " WHERE ";
 
         if (campos.length != 0 && dados.length != 0) {
 
@@ -86,21 +86,15 @@ public class AcoesBancoDeDados {
                 : "INSERT INTO TB_PESSOA(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(";
 
         for (int i = 0; i < campos.length; i++) {
+
             if (i == campos.length - 1) {
-                comando += "'" + campos[i] + "'";
+                comando += "'" + campos[i] + "')";
             } else {
                 comando += "'" + campos[i] + "'" + ",";
             }
-        }
-        for (int i = 0; i < campos.length; i++) {
-            if (i == campos.length - 1) {
-                comando += "'" + campos[i] + "'" + ")";
-            } else {
-                comando += "'" + campos[i] + "'" + ",";
-            }
+
         }
 
-        System.out.println(comando);
         return comando;
     }
 
@@ -130,8 +124,6 @@ public class AcoesBancoDeDados {
         try {
             Statement cadatastro = conexao.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
-            JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!");
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage() + " Erro de Banco de dados");
             e.printStackTrace();

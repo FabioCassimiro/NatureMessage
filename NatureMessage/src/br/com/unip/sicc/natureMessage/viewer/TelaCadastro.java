@@ -147,6 +147,7 @@ public class TelaCadastro {
                     cadastro.CadastroUsuario(txfNome.getText(), txfSobrenome.getText(), txfCargo.getText(),
                             txfEmpresa.getText(), txfEndereco.getText(), txfDtNasc.getText(), txfEmail.getText(),
                             txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
+                    JOptionPane.showMessageDialog(null, "Cadastrado!!");
                     telaCadastro.dispose();
                     new TelaLogin();
                 } catch (InsufficientCharactersException | UserRegisteredException | PasswordsDontMatchException ex) {
