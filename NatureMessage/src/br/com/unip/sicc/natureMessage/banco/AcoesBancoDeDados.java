@@ -16,8 +16,8 @@ public class AcoesBancoDeDados {
     private String nomeServidor;
     private String nomeUsuario;
     ConexaoBancoDeDados conexao = new ConexaoBancoDeDados();
-    public static String mensagem; 
-    public static String mensagemCompleta; 
+    public static String mensagem;
+    public static String mensagemCompleta;
 
     public String getResulIpServidor() {
         return resulIpServidor;
@@ -52,26 +52,27 @@ public class AcoesBancoDeDados {
     }
 
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
-        String comando = dados.length == 0?"SELECT * FROM " :"SELECT * FROM " + tabela + " WHERE ";
+        String comando = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " +tabela  : "SELECT * FROM " + tabela + " WHERE ";
 
-        for (int i = 0; i < campos.length; i++) {
-            //Somente uma Condicao
-            if (campos.length == 1) {
-                comando += campos[i] + " = " + "'" + dados[i] + "'";
-            }
-            //Varias condicoes
-            if (campos.length > 1) {
-                if (i == campos.length) {
+        if (campos.length != 0 && dados.length != 0) {
+
+            for (int i = 0; i < campos.length; i++) {
+                //Somente uma Condicao
+                if (campos.length == 1) {
                     comando += campos[i] + " = " + "'" + dados[i] + "'";
-                } else if (i == campos.length - 1) {
-                    comando += campos[i] + " = " + "'" + dados[i] + "'";
-                } else {
-                    comando += campos[i] + " = " + "'" + dados[i] + "'" + " AND ";
+                }
+                //Varias condicoes
+                if (campos.length > 1) {
+                    if (i == campos.length) {
+                        comando += campos[i] + " = " + "'" + dados[i] + "'";
+                    } else if (i == campos.length - 1) {
+                        comando += campos[i] + " = " + "'" + dados[i] + "'";
+                    } else {
+                        comando += campos[i] + " = " + "'" + dados[i] + "'" + " AND ";
+                    }
+
                 }
 
-            }
-            if(campos.length == 1 && dados.length == 0){
-                comando+= campos[i];
             }
 
         }
@@ -124,7 +125,7 @@ public class AcoesBancoDeDados {
     //->Fim Consulta usuário.
 
     //->Cria usuario no banco de dados
-    public  void CriaCadastroUsuario(String sqlquery) {
+    public void CriaCadastroUsuario(String sqlquery) {
 
         try {
             Statement cadatastro = conexao.conexao().createStatement();
@@ -157,7 +158,7 @@ public class AcoesBancoDeDados {
             e.printStackTrace();
         }
     }
-    
+
     public static void carregaMensagem(String sqlQuery) {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
@@ -168,7 +169,7 @@ public class AcoesBancoDeDados {
                     mensagem = resultado.getString("NOMENSAGEM");
                     String usuario = resultado.getString("NOUSUARIO");
                     String data = resultado.getString("DTENVIO");
-                   mensagemCompleta+= "\n" + usuario + "  " +mensagem + "  " +data;
+                    mensagemCompleta += "\n" + usuario + "  " + mensagem + "  " + data;
                 }
             }
 

@@ -68,9 +68,9 @@ public class ConfigChat {
     
     
     public static String carregaMensagem(){
-        String [] campos = {"NOMENSGAM"};
+        String [] campos = {};
         String [] dados = {};
-        AcoesBancoDeDados.carregaMensagem("SELECT * FROM TB_MENSAGEM");
+        AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(campos, dados, "TB_MENSAGEM"));
         String mensagem = AcoesBancoDeDados.mensagemCompleta;
          
          return mensagem;

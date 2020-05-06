@@ -11,10 +11,10 @@ public class ConexaoBancoDeDados {
         try {
             Connection conect = null;
             final String url = "jdbc:mysql://localhost:3306/teste?useTimeZone=true&serverTimezone=UTC";
-            final String noLoginBanco = TelaConexao.usuarioBD;
-            final String noSenhaBanco = TelaConexao.senhaBD;
-            //final String noLoginBanco = "root";
-            //final String noSenhaBanco = "";
+            //final String noLoginBanco = TelaConexao.usuarioBD;
+            //final String noSenhaBanco = TelaConexao.senhaBD;
+            final String noLoginBanco = "root";
+            final String noSenhaBanco = "";
             return conect = DriverManager.getConnection(url, noLoginBanco, noSenhaBanco);
         } catch (SQLException e) {
             e.printStackTrace();
