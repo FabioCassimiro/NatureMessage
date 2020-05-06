@@ -17,8 +17,7 @@ public class ConfigChat {
 
     public static void Chat(JEditorPane txaChat, int porta) {
         try {
-            ;
-            socketCliente = new Socket("localhost", porta);
+            socketCliente = new Socket(AcoesBancoDeDados.resulIpServidor, porta);
             Thread(txaChat, socketCliente);
         } catch (IOException ex) {
             ex.printStackTrace();
