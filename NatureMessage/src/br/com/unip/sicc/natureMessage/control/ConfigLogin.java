@@ -17,14 +17,14 @@ public class ConfigLogin {
         String[] camposDados = {usuario,senha};
         AcoesBD.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, camposDados, "TB_USUARIO"));
         
-        if (usuario.equals(AcoesBD.getNome()) && senha.equals(AcoesBD.getSenha())) {
-            return AcoesBD.getNomeUsuario();
+        if (usuario.equals(AcoesBancoDeDados.nome) && senha.equals(AcoesBancoDeDados.senha)) {
+            return AcoesBancoDeDados.nomeUsuario;
         }
-        if (usuario.equals(AcoesBD.getNome()) && !senha.equals(AcoesBD.getSenha())) {
+        if (usuario.equals(AcoesBancoDeDados.nome) && !senha.equals(AcoesBancoDeDados.senha)) {
             componentes.montaMensagemAviso("Senha ou usuário informado invalido!", "ERRO");
             return null;
         }
-        if (!usuario.equals(AcoesBD.getNome())) {
+        if (!usuario.equals(AcoesBancoDeDados.nome)) {
            componentes.montaMensagemAviso("Senha ou usuário informado invalido!", "ERRO");
            return null;
         }

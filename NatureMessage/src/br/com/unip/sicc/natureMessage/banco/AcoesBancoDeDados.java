@@ -8,48 +8,16 @@ import javax.swing.JOptionPane;
 
 public class AcoesBancoDeDados {
 
-    private String nome;
-    private String senha;
-    private String resulIpServidor;
-    private String resulPortaServidor;
-    private String resultNoHostname;
-    private String nomeServidor;
-    private String nomeUsuario;
-    ConexaoBancoDeDados conexao = new ConexaoBancoDeDados();
+    public static String nome;
+    public static String senha;
+    public static String resulIpServidor;
+    public static String resulPortaServidor;
+    public static String resultNoHostname;
+    public static String nomeServidor;
+    public static String nomeUsuario;
     public static String mensagem;
     public static String mensagemCompleta;
 
-    public String getResulIpServidor() {
-        return resulIpServidor;
-    }
-
-    public String getNomeServidor() {
-        return nomeServidor;
-    }
-
-    public String getResulPortaServidor() {
-        return resulPortaServidor;
-    }
-
-    public String getResultNoHostname() {
-        return resultNoHostname;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
-
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
-    }
 
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
         String comando = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " + tabela : "SELECT * FROM " + tabela + " WHERE ";
@@ -102,7 +70,7 @@ public class AcoesBancoDeDados {
     public void ConsultaLoginSenha(String sqlquery) {
         try {
 
-            PreparedStatement pesquisa = conexao.conexao().prepareStatement(sqlquery);
+            PreparedStatement pesquisa = ConexaoBancoDeDados.conexao().prepareStatement(sqlquery);
             ResultSet resultado = pesquisa.executeQuery();
 
             while (resultado.next()) {
@@ -122,7 +90,7 @@ public class AcoesBancoDeDados {
     public void CriaCadastroUsuario(String sqlquery) {
 
         try {
-            Statement cadatastro = conexao.conexao().createStatement();
+            Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage() + " Erro de Banco de dados");
@@ -133,7 +101,7 @@ public class AcoesBancoDeDados {
 
     public void ConsultaServidor(String sqlQuery) {
         try {
-            PreparedStatement servidor = conexao.conexao().prepareStatement(sqlQuery);
+            PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
 
             while (resultado.next()) {

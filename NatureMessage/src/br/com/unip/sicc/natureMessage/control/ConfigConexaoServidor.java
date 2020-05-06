@@ -32,10 +32,10 @@ public class ConfigConexaoServidor {
     public void ValidaServidor(String cdHostname) throws ServerNotFoundException {
         String [] dadosServidor = {cdHostname};
         dados.ConsultaServidor(AcoesBancoDeDados.comandoSelect(camposServidor, dadosServidor, "TB_SERVIDOR"));
-        if (cdHostname.equals(dados.getResultNoHostname())) {
-            noHostname = dados.getResultNoHostname();
-            portaServidor = Integer.parseInt(dados.getResulPortaServidor());
-            nomeServidor = dados.getNomeServidor();
+        if (cdHostname.equals(AcoesBancoDeDados.resultNoHostname)) {
+           // noHostname = dados.getResultNoHostname();
+            portaServidor = Integer.parseInt(AcoesBancoDeDados.resulPortaServidor);
+            nomeServidor = AcoesBancoDeDados.nomeServidor;
 
         } else {
             componentes.montaMensagemAviso("Servidor nao encontrado", "ERRO");

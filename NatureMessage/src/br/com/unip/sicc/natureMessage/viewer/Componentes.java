@@ -119,7 +119,7 @@ public class Componentes {
         txtLblCaixaAviso.setBounds(11, 48, 300, 25);
 
         JLabel imgBorda = new JLabel();
-        imgBorda.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/borda.png"));
+        imgBorda.setIcon(buscaImagem("borda.png"));
         imgBorda.setBounds(0, 0, 275, 125);
 
         btnOkay = montaBotaoAlteravel("OK!");//;
@@ -166,17 +166,17 @@ public class Componentes {
         switch (TipoAviso) {
             case "SUCESSO":
                 corAviso = new Color(0, 255, 127);
-                img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/sucesso.png"));
+                img.setIcon(buscaImagem("sucesso.png"));
                 painelCaixaAviso.add(img);
                 break;
             case "AVISO":
                 corAviso = new Color(255, 215, 0);
-                img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/alerta.png"));
+                img.setIcon(buscaImagem("alerta.png"));
                 painelCaixaAviso.add(img);
                 break;
             case "ERRO":
                 corAviso = new Color(255, 99, 71);
-                img.setIcon(buscaImagem("/br/com/unip/sicc/natureMessage/image/erro.png"));
+                img.setIcon(buscaImagem("erro.png"));
                 painelCaixaAviso.add(img);
                 break;
         }
