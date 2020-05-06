@@ -197,7 +197,7 @@ public class Componentes {
         return cor;
     }
 
-    public static Color validaCampo(String campo, String acao) {
+    public static Color validaCampoEspecial(String campo, String acao) {
         Color cor = null;
 
         if (acao.equals("VALIDAR")) {
@@ -209,6 +209,19 @@ public class Componentes {
         }
         return cor;
     }
+    
+    public static Color validaCampo(String campo, String acao) {
+        Color cor = null;
+
+        if (acao.equals("VALIDAR")) {
+            cor = campo.equals("")? Color.red : Color.GREEN;
+        }
+        if (acao.equals("RESETAR")) {
+            cor = Color.white;
+        }
+        return cor;
+    }
+
 
     public void montaIconeFrame(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));
