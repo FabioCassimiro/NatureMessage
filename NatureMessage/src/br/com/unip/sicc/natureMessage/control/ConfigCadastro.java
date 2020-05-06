@@ -26,8 +26,10 @@ public class ConfigCadastro {
 
     public void CadastroUsuario(String noPessoa, String noSobrenome, String noCargo, String noEmpresa, String noEndereco,
             String dtNascimento, String noEmail, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatchException {
+        
         String[] dadosUsuario = {noLogin, noSenha};
         banco.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, dadosUsuario, "TB_USUARIO"));
+        
         if (!noPessoa.equals("") && !noSobrenome.equals("") && !noCargo.equals("") && !noEmpresa.equals("") && !noEndereco.equals("")
                 && !dtNascimento.equals("  /  /    ") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
 
