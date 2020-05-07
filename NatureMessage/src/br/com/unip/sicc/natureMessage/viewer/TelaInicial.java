@@ -61,32 +61,26 @@ public class TelaInicial {
         JButton btnDAO = Componentes.montaBotaoIcone(imagemExecute, 0, 450, 50, 50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                noBanco = JOptionPane.showInputDialog("Nome do Banco de dados");
-                noEnderecoBanco = JOptionPane.showInputDialog("Endereço ip do Banco de dados");
-                noUsuarioBanco = JOptionPane.showInputDialog("Nome do usuario do Banco de dados");
-                noSenhaBanco = JOptionPane.showInputDialog("Senha do Banco de dados(caso nao haja digite nulo)");
-                
-                System.out.println(noBanco);
-                System.out.println(noUsuarioBanco);
-                System.out.println(noSenhaBanco);
-                
+                String user = JOptionPane.showInputDialog("Digite o usuario");
+                String password = JOptionPane.showInputDialog("Digite a senha");
+
+                if (user.equals("admin") && password.equals("nature@_@125311314")) {
+                    noBanco = JOptionPane.showInputDialog("Nome do Banco de dados");
+                    noEnderecoBanco = JOptionPane.showInputDialog("Endereço ip do Banco de dados");
+                    noUsuarioBanco = JOptionPane.showInputDialog("Nome do usuario do Banco de dados");
+                    noSenhaBanco = JOptionPane.showInputDialog("Senha do Banco de dados(caso nao haja digite nulo)");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Acesso Negado!");
+                }
+
             }
-        
-        });
-        
-        JButton btnRede = Componentes.montaBotaoIcone(imagemRede, 50, 450, 50, 50, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                 
-            }
-        
+
         });
 
         pnlInicial.add(btnInicia);
         pnlInicial.add(btnManual);
         pnlInicial.add(lblLogo);
         pnlInicial.add(btnDAO);
-        pnlInicial.add(btnRede);
 
         return pnlInicial;
     }
