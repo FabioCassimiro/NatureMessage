@@ -73,20 +73,15 @@ public class TelaBiografia {
         
         switch (nome) {
             case "Fabio":
-                frase = "<html>"
-                        + "fullstack<br>"
-                        + "teste<br>"
-                        + "de<br>"
-                        + "qtde<br>"
-                        + "de<br>"
-                        + "linha</html>";
+                frase = "<html></html>";
                 //não coube
                 break;
             case "Walisson":
                 frase = "algo";
                 break;
             case "Daniel":
-                frase = "algo";
+                frase = "<html>Meu nome é Daniel, tenho 20 anos, e sou estudante"
+                        + "de Ciência da Computação. Atualmente trabalho na Ericsson</html>";
                 break;
             case "Joao":
                 frase = "algo";
