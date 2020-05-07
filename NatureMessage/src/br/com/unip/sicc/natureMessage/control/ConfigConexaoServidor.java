@@ -39,7 +39,7 @@ public class ConfigConexaoServidor {
 
         } else {
             componentes.montaMensagemAviso("Servidor nao encontrado", "ERRO");
-            throw new ServerNotFoundException("Erro");
+            throw new ServerNotFoundException("Erro de SQL");
 
         }
 

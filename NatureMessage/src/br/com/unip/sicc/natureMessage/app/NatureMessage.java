@@ -9,6 +9,6 @@ public class NatureMessage {
     public static void main(String[] args) {
         //new TelaServidor();
         //new TelaLogin();
-        new TelaSobre();
+        new TelaInicial();
     }
 }

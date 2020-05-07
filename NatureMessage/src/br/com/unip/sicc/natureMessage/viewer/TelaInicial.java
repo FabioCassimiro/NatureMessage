@@ -3,9 +3,11 @@ package br.com.unip.sicc.natureMessage.viewer;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class TelaInicial {
@@ -13,6 +15,12 @@ public class TelaInicial {
     private PainelPadrao pnlInicial = new PainelPadrao();
     private Componentes componentes = new Componentes();
     private JFrame telaInicial = new JFrame();
+    public static String noBanco;
+    public static String noSenhaBanco;
+    public static String noUsuarioBanco;
+    public static String noEnderecoBanco;
+    ImageIcon imagemExecute = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/execute.png"));
+    ImageIcon imagemRede = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/rede.png"));
 
     public TelaInicial() {
         telaInicial.setSize(900, 500);
@@ -50,10 +58,35 @@ public class TelaInicial {
                 //Acao invoca manual.
             }
         });
+        JButton btnDAO = Componentes.montaBotaoIcone(imagemExecute, 0, 450, 50, 50, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                noBanco = JOptionPane.showInputDialog("Nome do Banco de dados");
+                noEnderecoBanco = JOptionPane.showInputDialog("Endereço ip do Banco de dados");
+                noUsuarioBanco = JOptionPane.showInputDialog("Nome do usuario do Banco de dados");
+                noSenhaBanco = JOptionPane.showInputDialog("Senha do Banco de dados(caso nao haja digite nulo)");
+                
+                System.out.println(noBanco);
+                System.out.println(noUsuarioBanco);
+                System.out.println(noSenhaBanco);
+                
+            }
+        
+        });
+        
+        JButton btnRede = Componentes.montaBotaoIcone(imagemRede, 50, 450, 50, 50, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 
+            }
+        
+        });
 
         pnlInicial.add(btnInicia);
         pnlInicial.add(btnManual);
         pnlInicial.add(lblLogo);
+        pnlInicial.add(btnDAO);
+        pnlInicial.add(btnRede);
 
         return pnlInicial;
     }
