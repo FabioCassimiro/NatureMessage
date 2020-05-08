@@ -36,7 +36,7 @@ public class ConfigCadastro {
             if (!noLogin.equals(AcoesBancoDeDados.resultNoLogin)) {
                 if (noSenha.equals(confirmacaoSenha)) {
                     String[] usuario = {noLogin, noSenha};
-                    String[] pessoa = {noPessoa, noSobrenome, noCargo, noEmpresa, noEndereco, dtNascimento, noEmail};
+                    String[] pessoa = {noPessoa, noSobrenome, dtNascimento, noEmail, noEndereco, noEmpresa, noCargo};
 
                     banco.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(usuario, "TB_USUARIO"));
                     banco.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(pessoa, "TB_PESSOA"));
