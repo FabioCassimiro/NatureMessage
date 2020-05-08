@@ -11,8 +11,8 @@ public class ConexaoBancoDeDados {
             ? "jdbc:mysql://25.104.205.56:3306/teste?useTimeZone=true&serverTimezone=UTC"
             : "jdbc:mysql://" + TelaInicial.noEnderecoBanco + ":3306/" + TelaInicial.noBanco + "?useTimeZone=true&serverTimezone=UTC";
     public static final String noUsuarioBanco = TelaInicial.noUsuarioBanco.equals("") ? "admin" : TelaInicial.noUsuarioBanco;
-    public static final String noSenhaBanco = !TelaInicial.noSenhaBanco.equals("") ? "naturemessage@_@125311314" : TelaInicial.noSenhaBanco;
-    public static final String noBanco = TelaInicial.noBanco.equals("nulo") ? "teste" : TelaInicial.noSenhaBanco.equals("nulo")?"":TelaInicial.noSenhaBanco;
+    public static final String noSenhaBanco = !TelaInicial.noSenhaBanco.equals("nulo") ? "naturemessage@_@125311314" : "";
+    public static final String noBanco = TelaInicial.noBanco.equals("") ? "teste" : TelaInicial.noBanco;
 
     public static Connection conexao() {
         try {

@@ -15,10 +15,10 @@ public class TelaInicial {
     private PainelPadrao pnlInicial = new PainelPadrao();
     private Componentes componentes = new Componentes();
     private JFrame telaInicial = new JFrame();
-    public static String noBanco;
-    public static String noSenhaBanco;
-    public static String noUsuarioBanco;
-    public static String noEnderecoBanco;
+    public static String noBanco = "";
+    public static String noSenhaBanco = "";
+    public static String noUsuarioBanco = "";
+    public static String noEnderecoBanco = "";
     ImageIcon imagemExecute = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/execute.png"));
     ImageIcon imagemRede = new ImageIcon(getClass().getResource("/br/com/unip/sicc/natureMessage/image/rede.png"));
 

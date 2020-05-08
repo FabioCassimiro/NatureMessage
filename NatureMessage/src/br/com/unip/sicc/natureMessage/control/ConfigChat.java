@@ -2,6 +2,7 @@ package br.com.unip.sicc.natureMessage.control;
 
 import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
+import br.com.unip.sicc.natureMessage.viewer.TelaServidor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -56,7 +57,8 @@ public class ConfigChat {
         try {
             String mensagem = TelaLogin.nomeUsuario;
             PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-            mensagem = TelaLogin.nomeUsuario + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE);
+            mensagem = TelaLogin.nomeUsuario + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
+             + "----" + dataHora.get(Calendar.DAY_OF_WEEK) +  "/" + dataHora.get(Calendar.DAY_OF_MONTH) + "----" + AcoesBancoDeDados.resultNoServidor;
             ps.println(mensagem);
             ps.flush();
             txaEnviar.setText(null);
@@ -67,10 +69,10 @@ public class ConfigChat {
     
     
     public static String carregaMensagem(){
-        String [] campos = {};
-        String [] dados = {};
+        String [] campos = {"NOSERVIDOR"};
+        String [] dados = {AcoesBancoDeDados.resultNoServidor};
         AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(campos, dados, "TB_MENSAGEM"));
-        String mensagem = AcoesBancoDeDados.mensagemCompleta;
+        String mensagem = "";
          
          return mensagem;
     }
