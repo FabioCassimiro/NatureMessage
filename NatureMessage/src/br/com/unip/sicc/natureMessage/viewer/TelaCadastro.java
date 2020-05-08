@@ -144,9 +144,10 @@ public class TelaCadastro {
                 try {
                     //Validações do cadastro.
                     ConfigCadastro.ConfigCadastroValida(txfUsuario.getText(), pwdSenha.getText());
-                    cadastro.CadastroUsuario(txfNome.getText(), txfSobrenome.getText(), txfCargo.getText(),
-                            txfEmpresa.getText(), txfEndereco.getText(), txfDtNasc.getText(), txfEmail.getText(),
-                            txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
+                    //NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO
+                    cadastro.CadastroUsuario(txfNome.getText(),txfSobrenome.getText(),txfDtNasc.getText(),txfEmail.getText(),
+                            txfEmail.getText(),txfEndereco.getText(),txfCargo.getText(),txfUsuario.getText(),pwdSenha.getText(),pwdConfirmaSenha.getText());
+                    
                     JOptionPane.showMessageDialog(null, "Cadastrado!!");
                     telaCadastro.dispose();
                     new TelaLogin();

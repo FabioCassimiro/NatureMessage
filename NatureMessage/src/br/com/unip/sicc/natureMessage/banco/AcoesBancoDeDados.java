@@ -15,6 +15,8 @@ public class AcoesBancoDeDados {
     public static String resultCdServidor;
     public static String resultNoServidor;
     public static String mensagemCompleta;
+    String noPessoa;
+    String noSobrenome;
 
 
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
@@ -95,6 +97,25 @@ public class AcoesBancoDeDados {
     //->Fim criação usuario.
 
     public void ConsultaServidor(String sqlQuery) {
+        try {
+            PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
+            ResultSet resultado = servidor.executeQuery();
+
+            while (resultado.next()) {
+                if (!resultado.equals("")) {
+                    resulIpServidor = resultado.getString("IPSERVIDOR");
+                    resulPtServidor = resultado.getString("PTSERVIDOR");
+                    resultCdServidor = resultado.getString("CDSERVIDOR");
+                    resultNoServidor = resultado.getString("NOSERVIDOR");
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null," Erro consulta de Servidor.\n Exception Banco de dados");
+        }
+    }
+    
+    public void ConsultaPessoa(String sqlQuery) {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
