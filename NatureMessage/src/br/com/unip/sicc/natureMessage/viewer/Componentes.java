@@ -188,7 +188,7 @@ public class Componentes {
         Color cor = null;
 
         if (acao.equals("VALIDA")) {
-            cor = campoSenha.equals(campoConfirmaSenha) ? Color.GREEN : Color.RED;
+            cor = campoSenha.equals(campoConfirmaSenha) && campoSenha.length() !=0 ? Color.GREEN : Color.RED;
         }
         if (acao.equals("RESETA")) {
             cor = Color.white;

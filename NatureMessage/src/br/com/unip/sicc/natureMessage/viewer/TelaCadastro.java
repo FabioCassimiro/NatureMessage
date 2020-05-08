@@ -199,12 +199,12 @@ public class TelaCadastro {
     }
 
     public void validacaoCampos() {
-        lnsNome.setForeground(Componentes.validaCampoEspecial(txfNome.getText(), "VALIDAR"));
-        lnsSobrenome.setForeground(Componentes.validaCampoEspecial(txfSobrenome.getText(), "VALIDAR"));
-        lnsDtNasc.setForeground(Componentes.validaCampo(txfDtNasc.getText(), "VALIDAR"));
-        lnsCargo.setForeground(Componentes.validaCampoEspecial(txfCargo.getText(), "VALIDAR"));
-        lnsEmpresa.setForeground(Componentes.validaCampoEspecial(txfEmpresa.getText(), "VALIDAR"));
-        lnsEndereco.setForeground(Componentes.validaCampoEspecial(txfEndereco.getText(), "VALIDAR"));
+        lnsNome.setForeground(Componentes.validaCampo(txfNome.getText(), "VALIDAR"));
+        lnsSobrenome.setForeground(Componentes.validaCampo(txfSobrenome.getText(), "VALIDAR"));
+        lnsDtNasc.setForeground(Componentes.validaCampoEspecial(txfDtNasc.getText(), "VALIDAR"));
+        lnsCargo.setForeground(Componentes.validaCampo(txfCargo.getText(), "VALIDAR"));
+        lnsEmpresa.setForeground(Componentes.validaCampo(txfEmpresa.getText(), "VALIDAR"));
+        lnsEndereco.setForeground(Componentes.validaCampo(txfEndereco.getText(), "VALIDAR"));
         lnsEmail.setForeground(Componentes.validaCampo(txfEmail.getText(), "VALIDAR"));
         lnsSenha.setForeground(Componentes.validaCampoSenha(pwdSenha.getText(), pwdConfirmaSenha.getText(), "VALIDA"));
         lnsUsuario.setForeground(Componentes.validaCampo(txfUsuario.getText(), "VALIDAR"));
