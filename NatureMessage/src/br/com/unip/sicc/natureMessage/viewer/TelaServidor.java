@@ -63,7 +63,7 @@ public class TelaServidor {
                     servidor.ValidaServidor(txfEnderecoIP.getText().toUpperCase());
                     telaServidor.dispose();
                     new TelaChat(servidor.getPortaServidor());
-                    componente.montaMensagemAviso(TelaLogin.nomeUsuario + " Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
+                    componente.montaMensagemAviso("Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
                 } catch (ServerNotFoundException ex) {
                     ex.printStackTrace();
                 }

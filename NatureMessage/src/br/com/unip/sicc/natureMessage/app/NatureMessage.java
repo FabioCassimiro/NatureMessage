@@ -5,6 +5,8 @@ import br.com.unip.sicc.natureMessage.viewer.TelaInicial;
 import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
 import br.com.unip.sicc.natureMessage.viewer.TelaServidor;
 import br.com.unip.sicc.natureMessage.viewer.TelaSobre;
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
 
 public class NatureMessage {
 

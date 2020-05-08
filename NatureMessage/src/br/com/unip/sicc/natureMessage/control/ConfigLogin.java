@@ -4,6 +4,8 @@ import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.exception.InvalidPasswordException;
 import br.com.unip.sicc.natureMessage.exception.UserInvalidException;
 import br.com.unip.sicc.natureMessage.viewer.Componentes;
+import static br.com.unip.sicc.natureMessage.viewer.TelaLogin.nomeUsuario;
+import java.util.Calendar;
 
 public class ConfigLogin {
 
@@ -18,6 +20,10 @@ public class ConfigLogin {
         AcoesBD.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, camposDados, "TB_USUARIO"));
         
         if (usuario.equals(AcoesBancoDeDados.resultNoLogin) && senha.equals(AcoesBancoDeDados.resultNoSenha)) {
+            Calendar dataHora = Calendar.getInstance();
+            String data = dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
+             + "  " + dataHora.get(Calendar.DAY_OF_WEEK) +  "/" + dataHora.get(Calendar.DAY_OF_MONTH) ;
+            AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO","Entrada no sistema: " + data," NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'" ,"TB_USUARIO"));
             return AcoesBancoDeDados.resultNoLogin;
         }
         if (usuario.equals(AcoesBancoDeDados.resultNoLogin) && !senha.equals(AcoesBancoDeDados.resultNoSenha)) {

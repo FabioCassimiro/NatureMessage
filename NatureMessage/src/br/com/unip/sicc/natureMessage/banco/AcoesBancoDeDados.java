@@ -65,6 +65,12 @@ public class AcoesBancoDeDados {
 
         return comando;
     }
+    
+    //UPDATE tb_usuario SET VISTO = "08/05 as 00:46" WHERE NOLOGIN = "fcassimiro";
+    public static String comandoUpdate(String campo,String valor,String condicao,String tabela){
+     String comando = "UPDATE " +tabela+ " SET " + campo + " = "+ "'" + valor + "'" +" WHERE " + condicao;
+        return comando;
+    }
 
 //->Consulta usuário no banco de dados.
     public void ConsultaLoginSenha(String sqlquery) {
@@ -112,6 +118,16 @@ public class AcoesBancoDeDados {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null," Erro consulta de Servidor.\n Exception Banco de dados");
+        }
+    }
+    
+    public static void atualizaUltimoLogin(String sqlquery) {
+
+        try {
+            Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
+            cadatastro.executeUpdate(sqlquery);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null," Erro atualizar visto por ultimo.\n Exception Banco de dados");
         }
     }
     
