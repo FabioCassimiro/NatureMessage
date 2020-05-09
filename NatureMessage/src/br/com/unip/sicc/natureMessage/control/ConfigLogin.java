@@ -4,7 +4,6 @@ import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.exception.InvalidPasswordException;
 import br.com.unip.sicc.natureMessage.exception.UserInvalidException;
 import br.com.unip.sicc.natureMessage.viewer.Componentes;
-import static br.com.unip.sicc.natureMessage.viewer.TelaLogin.nomeUsuario;
 import java.util.Calendar;
 
 public class ConfigLogin {

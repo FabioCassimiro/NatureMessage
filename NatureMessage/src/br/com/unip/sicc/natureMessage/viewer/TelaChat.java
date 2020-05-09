@@ -122,7 +122,6 @@ public class TelaChat extends JFrame {
                     String data = dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
                             + "  " + dataHora.get(Calendar.DAY_OF_WEEK) + "/" + dataHora.get(Calendar.DAY_OF_MONTH);
                     AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Ultimo acesso: " + data, " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
-
                     telaChat.dispose();
                     new TelaLogin();
                 }

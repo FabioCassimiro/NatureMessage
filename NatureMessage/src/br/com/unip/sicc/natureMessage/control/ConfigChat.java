@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 
@@ -26,7 +28,7 @@ public class ConfigChat {
         }
 
     }
-
+    
     private static void Thread(JEditorPane txaChat, Socket socketCliente) {
         Thread tr = new Thread(new Runnable() {
 
@@ -72,8 +74,6 @@ public class ConfigChat {
         String [] campos = {"NOSERVIDOR"};
         String [] dados = {AcoesBancoDeDados.resultNoServidor};
         AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(campos, dados, "TB_MENSAGEM"));
-        String mensagem = "";
-         
-         return mensagem;
+        return AcoesBancoDeDados.mensagemCompleta;
     }
 }
