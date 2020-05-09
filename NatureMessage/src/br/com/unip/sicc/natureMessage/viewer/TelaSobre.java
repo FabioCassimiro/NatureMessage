@@ -12,13 +12,21 @@ public class TelaSobre {
     private PainelPadrao pnlSobre = new PainelPadrao();
     private Componentes componentes = new Componentes();
     private JFrame telaSobre = new JFrame();
-
+    private static TelaSobre instancia;
+    
     public TelaSobre() {
         telaSobre.add(montaPainelSobre());
         telaSobre.setSize(900, 500);
         telaSobre.setLocationRelativeTo(null);
         telaSobre.setUndecorated(true);
         telaSobre.setVisible(true);
+    }
+    
+    public static TelaSobre getInstance() {
+        if(instancia == null) {
+            instancia = new TelaSobre();
+        }
+        return instancia;
     }
 
     public JPanel montaPainelSobre() {
