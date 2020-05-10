@@ -29,6 +29,7 @@ public class TelaBiografia {
         imgAluno.setBounds(50, 50, 90, 125);
         String linkInstagram = null;
         String linkGitHub = null;
+        String linkLinkedin = null;
 
         JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
@@ -52,6 +53,7 @@ public class TelaBiografia {
                         + "Desenvolvimento do software, front-end e design</html>", 15, Color.WHITE, 150, 25, 400, 150));
                 linkInstagram = "walisoull/";
                 linkGitHub = "WalissonCF";
+                linkLinkedin = "in/walisson-carvalho-80b33215b/";
                 break;
             case "Fabio":
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 80, 600, 300));
@@ -72,12 +74,17 @@ public class TelaBiografia {
                         + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
                 break;
         }
-        
+
         pnlBiografia.add(imgAluno);
         pnlBiografia.add(btnVoltar);
-        pnlBiografia.add(componentes.redesSociais("INSTAGRAM", "instagram.png", linkInstagram, aluno, 40, 168, 100 ,50));
-        pnlBiografia.add(componentes.redesSociais("GITHUB", "github.png", linkGitHub, aluno, 30, 195, 100, 50));
-
+        pnlBiografia.add(componentes.redesSociais("INSTAGRAM", "instagram.png", linkInstagram, aluno, 40, 175, 100, 30));
+        if (aluno.equals("Fabio") || aluno.equals("Walisson")) {
+            pnlBiografia.add(componentes.redesSociais("GITHUB", "github.png", linkGitHub, aluno, 30, 203, 100, 30));
+            pnlBiografia.add(componentes.redesSociais("LINKEDIN", "linkedin.png", linkLinkedin, aluno, 37, 231, 100, 30));
+        } else {
+        }
+        
+        
         return pnlBiografia;
     }
 
