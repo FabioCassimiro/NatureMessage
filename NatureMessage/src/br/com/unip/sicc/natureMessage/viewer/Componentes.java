@@ -6,6 +6,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.io.IOException;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -70,6 +72,7 @@ public class Componentes {
         btnPadrao.setFont(new Font("Arial", Font.BOLD, 12));
         btnPadrao.setForeground(Color.WHITE);
         btnPadrao.setContentAreaFilled(false);
+
         return btnPadrao;
     }
 
@@ -155,7 +158,6 @@ public class Componentes {
         caixaAvisoMsg.add(painelCaixaAviso);
 
         return caixaAvisoMsg;
-
     }
 
     public Color corTipoAviso(String TipoAviso) {
@@ -188,7 +190,7 @@ public class Componentes {
         Color cor = null;
 
         if (acao.equals("VALIDA")) {
-            cor = campoSenha.equals(campoConfirmaSenha) && campoSenha.length() !=0 ? Color.GREEN : Color.RED;
+            cor = campoSenha.equals(campoConfirmaSenha) && campoSenha.length() != 0 ? Color.GREEN : Color.RED;
         }
         if (acao.equals("RESETA")) {
             cor = Color.white;
@@ -209,19 +211,49 @@ public class Componentes {
         }
         return cor;
     }
-    
+
     public static Color validaCampo(String campo, String acao) {
         Color cor = null;
 
         if (acao.equals("VALIDAR")) {
-            cor = campo.equals("")? Color.red : Color.GREEN;
+            cor = campo.equals("") ? Color.red : Color.GREEN;
         }
         if (acao.equals("RESETAR")) {
             cor = Color.white;
         }
         return cor;
     }
-
+    
+    public JButton redesSociais(String urlSite, String image, String link, String aluno, int x, int y, int width, int heigth) {
+        
+        String redeSocial = urlSite.equals("INSTAGRAM")? "Instagram": urlSite.equals("GITHUB")? "GitHub": "LinkedIn";
+        
+        JButton linkRedesSociais = montaBotaoPadrao(redeSocial);
+        linkRedesSociais.setBounds(x, y, width, heigth);
+        linkRedesSociais.setFont(new Font("Arial", Font.BOLD, 11));
+        linkRedesSociais.setIcon(buscaImagem(image));
+        linkRedesSociais.setToolTipText(aluno);
+        linkRedesSociais.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                try {
+                    if(urlSite.equals("INSTAGRAM")) {
+                        Runtime.getRuntime().exec("cmd.exe /C start " + "https://instagram.com/" + link);
+                    }
+                    if(urlSite.equals("GITHUB")) {
+                        Runtime.getRuntime().exec("cmd.exe /C start " + "https://github.com/" + link);
+                    }
+                    if(urlSite.equals("LINKEDIN")) {
+                        Runtime.getRuntime().exec("cmd.exe /C start " + "https://www.linkedin.com/" + link);
+                    }
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        });
+            
+        return linkRedesSociais;
+    }
 
     public void montaIconeFrame(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));

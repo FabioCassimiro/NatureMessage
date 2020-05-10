@@ -27,6 +27,8 @@ public class TelaBiografia {
         JLabel imgAluno = new JLabel();
         imgAluno.setIcon(componentes.buscaImagem(aluno + ".jpeg"));
         imgAluno.setBounds(50, 50, 90, 125);
+        String linkInstagram = null;
+        String linkGitHub = null;
 
         JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
@@ -37,35 +39,44 @@ public class TelaBiografia {
 
         pnlBiografia.add(Componentes.montaSeparadora(150, 75, 380, 1));
         pnlBiografia.add(Componentes.montaTexto(aluno.toUpperCase() + montaSobrenome(aluno).toUpperCase(), 20, Color.WHITE, 150, 10, 500, 100));
-        
+
         switch (aluno) {
-            case "Daniel":         
-                pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 80, 600, 300));
+            case "Daniel":
+                pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 85, 600, 300));
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br> "
-                        + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 30, 400, 150));
+                        + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
                 break;
             case "Walisson":
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 99, 600, 300));
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br> "
                         + "Desenvolvimento do software, front-end e design</html>", 15, Color.WHITE, 150, 25, 400, 150));
+                linkInstagram = "walisoull/";
+                linkGitHub = "WalissonCF";
                 break;
             case "Fabio":
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 80, 600, 300));
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br> "
                         + "Desenvolvimento do software, front-end/back-end<br>"
                         + "e documentação.</html>", 15, Color.WHITE, 150, 33, 400, 150));
+                linkInstagram = "fabio_cassimiro19/";
+                linkGitHub = "fabiocassimiro";
                 break;
             case "Joao":
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 80, 600, 300));
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br>"
                         + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
                 break;
+            case "Marcos":
+                pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 100, 600, 300));
+                pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br>"
+                        + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
+                break;
         }
-
-        //singleton - somente uma instancia
         
         pnlBiografia.add(imgAluno);
         pnlBiografia.add(btnVoltar);
+        pnlBiografia.add(componentes.redesSociais("INSTAGRAM", "instagram.png", linkInstagram, aluno, 40, 168, 100 ,50));
+        pnlBiografia.add(componentes.redesSociais("GITHUB", "github.png", linkGitHub, aluno, 30, 195, 100, 50));
 
         return pnlBiografia;
     }
@@ -108,12 +119,19 @@ public class TelaBiografia {
                 frase = "<html>Meu nome é Joao, tenho 19 anos, e sou estudante"
                         + " de Ciência da Computação. Trabalho atualmente  com análise e gestão"
                         + " de dados no Bradesco.<br><br>"
-                        + "\"Quanto mais certeza temos de quem somos, menos importa o que pensam sobre quem a gente é.\"   <br>"
+                        + "\"Perder tempo aprendendo coisas que não nos interessam, priva-nos de aprender coisas interessantes.\"   <br>"
                         + "&emsp; 05/2020</html>";
                 break;
             case "Marcos":
-                frase = "algo";
-                break;
+                frase = "<html>Meu nome é Marcos, tenho 29 anos, e sou estudante"
+                        + " de Ciência da Computação. Atualmente trabalho como Analista de Contas"
+                        + " Médicas em uma multinacional de convênio médico.<br><br>"
+                        + "\"Aos outros, dou o direito de ser como são. A mim dou o dever de ser cada dia melhor.\"   <br>"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&thinsp;"
+                        + "&thinsp;&thinsp;&thinsp;Chico Xavier <br>"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Cadastrato em: 05/2020</html>";
         }
         return frase;
     }
