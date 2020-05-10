@@ -2,15 +2,12 @@ package br.com.unip.sicc.natureMessage.control;
 
 import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
-import br.com.unip.sicc.natureMessage.viewer.TelaServidor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
