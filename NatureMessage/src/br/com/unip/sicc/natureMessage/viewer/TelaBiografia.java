@@ -46,6 +46,8 @@ public class TelaBiografia {
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 85, 600, 300));
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br> "
                         + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
+                linkLinkedin = "/in/daniel-c-a49ab2122/";
+                linkInstagram = "danielcrruz_/";
                 break;
             case "Walisson":
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 99, 600, 300));
@@ -67,11 +69,13 @@ public class TelaBiografia {
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 80, 600, 300));
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br>"
                         + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
+                linkInstagram = "joaocesar168/";
                 break;
             case "Marcos":
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 100, 600, 300));
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br>"
                         + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
+                linkInstagram = "marcosnews/";
                 break;
         }
 
@@ -82,9 +86,9 @@ public class TelaBiografia {
             pnlBiografia.add(componentes.redesSociais("GITHUB", "github.png", linkGitHub, aluno, 30, 203, 100, 30));
             pnlBiografia.add(componentes.redesSociais("LINKEDIN", "linkedin.png", linkLinkedin, aluno, 37, 231, 100, 30));
         } else {
+            pnlBiografia.add(componentes.redesSociais("LINKEDIN", "linkedin.png", linkLinkedin, aluno, 37, 203, 100, 30));
         }
-        
-        
+          
         return pnlBiografia;
     }
 
