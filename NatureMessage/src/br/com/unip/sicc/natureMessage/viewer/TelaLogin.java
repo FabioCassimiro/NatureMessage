@@ -5,6 +5,7 @@ import br.com.unip.sicc.natureMessage.control.ConfigLogin;
 import br.com.unip.sicc.natureMessage.exception.InvalidPasswordException;
 import br.com.unip.sicc.natureMessage.exception.UserInvalidException;
 import java.awt.Color;
+import java.awt.JobAttributes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -76,13 +77,11 @@ public class TelaLogin {
                     if (nomeUsuario != null) {
                         telaLogin.dispose();
                         new TelaServidor();
-                        componentes.montaMensagemAviso("Bem-Vindo " + nomeUsuario, "SUCESSO");
+                        JOptionPane.showMessageDialog(null, "Bem-Vindo ao NatureMessage \n","Nature Message",JOptionPane.INFORMATION_MESSAGE);
                     }
 
-                } catch (UserInvalidException usuarioInvalido) {
-                    JOptionPane.showMessageDialog(null, usuarioInvalido.getMessage());
-                } catch (InvalidPasswordException senhaInvalida) {
-                    JOptionPane.showMessageDialog(null, senhaInvalida.getMessage());
+                } catch (UserInvalidException | InvalidPasswordException ex) {
+                    
                 }
             }
 

@@ -4,8 +4,8 @@ import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.exception.InvalidPasswordException;
 import br.com.unip.sicc.natureMessage.exception.UserInvalidException;
 import br.com.unip.sicc.natureMessage.viewer.Componentes;
-import static br.com.unip.sicc.natureMessage.viewer.TelaLogin.nomeUsuario;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 public class ConfigLogin {
 
@@ -27,11 +27,11 @@ public class ConfigLogin {
             return AcoesBancoDeDados.resultNoLogin;
         }
         if (usuario.equals(AcoesBancoDeDados.resultNoLogin) && !senha.equals(AcoesBancoDeDados.resultNoSenha)) {
-            componentes.montaMensagemAviso("Senha ou usuário informado invalido!", "ERRO");
+            JOptionPane.showMessageDialog(null, "Senha ou usuário informado invalido!","Login",JOptionPane.ERROR_MESSAGE);
             return null;
         }
         if (!usuario.equals(AcoesBancoDeDados.resultNoLogin)) {
-           componentes.montaMensagemAviso("Senha ou usuário informado invalido!", "ERRO");
+           JOptionPane.showMessageDialog(null, "Senha ou usuário informado invalido!","Login",JOptionPane.ERROR_MESSAGE);
            return null;
         }
         return null;

@@ -9,8 +9,11 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class ConfigChat {
 
@@ -28,8 +31,8 @@ public class ConfigChat {
     }
 
     private static void Thread(JEditorPane txaChat, Socket socketCliente) {
-        Thread tr = new Thread(new Runnable() {
 
+        Thread tr = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -41,7 +44,13 @@ public class ConfigChat {
                         if (txaChat.getText().equals("")) {
                             txaChat.setText(msgReceb);
                         } else {
-                            txaChat.setText(txaChat.getText() + "\n" + msgReceb);
+                            String msg = txaChat.getText() + "\n" + msgReceb;
+                            SwingUtilities.invokeLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    txaChat.setText(msg);
+                                }
+                            });
                         }
                     }
                 } catch (IOException ex) {
@@ -58,7 +67,7 @@ public class ConfigChat {
             String mensagem = TelaLogin.nomeUsuario;
             PrintStream ps = new PrintStream(socketCliente.getOutputStream());
             mensagem = TelaLogin.nomeUsuario + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
-             + "----" + dataHora.get(Calendar.DAY_OF_WEEK) +  "/" + dataHora.get(Calendar.DAY_OF_MONTH) + "----" + AcoesBancoDeDados.resultNoServidor;
+                    + "----" + dataHora.get(Calendar.DAY_OF_WEEK) + "/" + dataHora.get(Calendar.DAY_OF_MONTH) + "----" + AcoesBancoDeDados.resultNoServidor;
             ps.println(mensagem);
             ps.flush();
             txaEnviar.setText(null);
@@ -66,14 +75,11 @@ public class ConfigChat {
             e.printStackTrace();
         }
     }
-    
-    
-    public static String carregaMensagem(){
-        String [] campos = {"NOSERVIDOR"};
-        String [] dados = {AcoesBancoDeDados.resultNoServidor};
+
+    public static String carregaMensagem() {
+        String[] campos = {"NOSERVIDOR"};
+        String[] dados = {AcoesBancoDeDados.resultNoServidor};
         AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(campos, dados, "TB_MENSAGEM"));
-        String mensagem = "";
-         
-         return mensagem;
+        return AcoesBancoDeDados.mensagemCompleta;
     }
 }

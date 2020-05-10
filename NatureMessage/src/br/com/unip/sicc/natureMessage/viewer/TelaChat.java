@@ -122,7 +122,6 @@ public class TelaChat extends JFrame {
                     String data = dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
                             + "  " + dataHora.get(Calendar.DAY_OF_WEEK) + "/" + dataHora.get(Calendar.DAY_OF_MONTH);
                     AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Ultimo acesso: " + data, " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
-
                     telaChat.dispose();
                     new TelaLogin();
                 }
@@ -134,7 +133,7 @@ public class TelaChat extends JFrame {
         linhaSeparatorMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         JScrollPane barraChat = new JScrollPane(txaChat = new JEditorPane());
-        txaChat.setEditable(false);
+        txaChat.setEditable(true);
         txaChat.setText(ConfigChat.carregaMensagem());
         barraChat.setBounds(260, 63, 600, 320);
 

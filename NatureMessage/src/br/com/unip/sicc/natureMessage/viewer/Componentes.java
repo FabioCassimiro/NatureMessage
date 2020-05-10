@@ -192,7 +192,7 @@ public class Componentes {
         if (acao.equals("VALIDA")) {
             cor = campoSenha.equals(campoConfirmaSenha) && campoSenha.length() != 0 ? Color.GREEN : Color.RED;
         }
-        if (acao.equals("RESETA")) {
+        if (acao.equals("RESETAR")) {
             cor = Color.white;
         }
 
