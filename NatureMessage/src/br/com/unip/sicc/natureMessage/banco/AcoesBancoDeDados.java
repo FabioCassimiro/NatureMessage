@@ -14,10 +14,9 @@ public class AcoesBancoDeDados {
     public static String resulPtServidor;
     public static String resultCdServidor;
     public static String resultNoServidor;
-    public static String mensagemCompleta;
+    public static String mensagemCompleta = "";
     String noPessoa;
     String noSobrenome;
-
 
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
         String comando = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " + tabela : "SELECT * FROM " + tabela + " WHERE ";
@@ -65,10 +64,10 @@ public class AcoesBancoDeDados {
 
         return comando;
     }
-    
+
     //UPDATE tb_usuario SET VISTO = "08/05 as 00:46" WHERE NOLOGIN = "fcassimiro";
-    public static String comandoUpdate(String campo,String valor,String condicao,String tabela){
-     String comando = "UPDATE " +tabela+ " SET " + campo + " = "+ "'" + valor + "'" +" WHERE " + condicao;
+    public static String comandoUpdate(String campo, String valor, String condicao, String tabela) {
+        String comando = "UPDATE " + tabela + " SET " + campo + " = " + "'" + valor + "'" + " WHERE " + condicao;
         return comando;
     }
 
@@ -85,7 +84,7 @@ public class AcoesBancoDeDados {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null," Erro consulta de Usuario.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro consulta de Usuario.\n Exception Banco de dados");
         }
     }
     //->Fim Consulta usuário.
@@ -97,7 +96,7 @@ public class AcoesBancoDeDados {
             Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null," Erro criação de Usuario/Pessoa .\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro criação de Usuario/Pessoa .\n Exception Banco de dados");
         }
     }
     //->Fim criação usuario.
@@ -117,20 +116,20 @@ public class AcoesBancoDeDados {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null," Erro consulta de Servidor.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro consulta de Servidor.\n Exception Banco de dados");
         }
     }
-    
+
     public static void atualizaUltimoLogin(String sqlquery) {
 
         try {
             Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null," Erro atualizar visto por ultimo.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro atualizar visto por ultimo.\n Exception Banco de dados");
         }
     }
-    
+
     public void ConsultaPessoa(String sqlQuery) {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
@@ -146,7 +145,7 @@ public class AcoesBancoDeDados {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null," Erro consulta de Servidor.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro consulta de Servidor.\n Exception Banco de dados");
         }
     }
 
@@ -160,12 +159,17 @@ public class AcoesBancoDeDados {
                     String resultNoMensagem = resultado.getString("NOMENSAGEM");
                     String resultNoUsuario = resultado.getString("NOUSUARIO");
                     String resultHrEnvio = resultado.getString("HRENVIO");
-                    mensagemCompleta += "\n" + resultNoUsuario + "  " + resultNoMensagem + "  " + resultHrEnvio;
+                    if (mensagemCompleta.equals("")) {
+                        mensagemCompleta = resultNoUsuario + "  " + resultNoMensagem + "  " + resultHrEnvio;
+                    } else {
+                        mensagemCompleta += "\n" + resultNoUsuario + "  " + resultNoMensagem + "  " + resultHrEnvio;
+
+                    }
                 }
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null," Erro ao carregar mensagens.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro ao carregar mensagens.\n Exception Banco de dados");
         }
     }
 

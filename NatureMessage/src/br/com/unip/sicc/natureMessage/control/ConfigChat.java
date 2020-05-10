@@ -63,16 +63,18 @@ public class ConfigChat {
 
     public static void botaoEnviarActionPerformed(JTextField txaEnviar) {
         Calendar dataHora = Calendar.getInstance();
-        try {
-            String mensagem = TelaLogin.nomeUsuario;
-            PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-            mensagem = TelaLogin.nomeUsuario + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
-                    + "----" + dataHora.get(Calendar.DAY_OF_WEEK) + "/" + dataHora.get(Calendar.DAY_OF_MONTH) + "----" + AcoesBancoDeDados.resultNoServidor;
-            ps.println(mensagem);
-            ps.flush();
-            txaEnviar.setText(null);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!txaEnviar.getText().equals("")) {
+            try {
+                String mensagem = TelaLogin.nomeUsuario;
+                PrintStream ps = new PrintStream(socketCliente.getOutputStream());
+                mensagem = TelaLogin.nomeUsuario + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
+                        + "----" + dataHora.get(Calendar.DAY_OF_WEEK) + "/" + dataHora.get(Calendar.DAY_OF_MONTH) + "----" + AcoesBancoDeDados.resultNoServidor;
+                ps.println(mensagem);
+                ps.flush();
+                txaEnviar.setText(null);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -80,6 +82,7 @@ public class ConfigChat {
         String[] campos = {"NOSERVIDOR"};
         String[] dados = {AcoesBancoDeDados.resultNoServidor};
         AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(campos, dados, "TB_MENSAGEM"));
+        
         return AcoesBancoDeDados.mensagemCompleta;
     }
 }
