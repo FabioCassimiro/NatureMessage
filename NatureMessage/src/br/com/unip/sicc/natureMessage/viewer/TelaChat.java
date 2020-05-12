@@ -55,7 +55,7 @@ public class TelaChat extends JFrame {
         btnPerfil.setBounds(60, 45, 100, 100);
         btnPerfil.setIcon(componentes.buscaImagem("perfil.png"));
 
-        JButton btnImagem = Componentes.montaBotaoPadrao("Imagem");
+        /*JButton btnImagem = Componentes.montaBotaoPadrao("Imagem");
         btnImagem.setBounds(-29, 180, 150, 40);
         btnImagem.setIcon(componentes.buscaImagem("compartilharImagem.png"));
         btnImagem.setVisible(false);
@@ -86,7 +86,7 @@ public class TelaChat extends JFrame {
                 btnImagem.setVisible(true);
                 btnDocumento.setVisible(true);
             }
-        });
+        });*/
 
         JButton btnEnviar = botoesPadrao.montaBotaoAlteravel("Enviar");
         btnEnviar.setBounds(782, 390, 79, 35);
@@ -147,9 +147,9 @@ public class TelaChat extends JFrame {
         lblStatus = Componentes.montaTexto("Conectado a: " + AcoesBancoDeDados.resultNoServidor, 11, Color.WHITE, 260, 37, 150, 25);
 
         pnlChat.add(btnPerfil);
-        pnlChat.add(btnCompartilhar);
+        /*pnlChat.add(btnCompartilhar);
         pnlChat.add(btnImagem);
-        pnlChat.add(btnDocumento);
+        pnlChat.add(btnDocumento);*/
         pnlChat.add(linhaSeparatorMenu);
         pnlChat.add(barraChat);
         pnlChat.add(scrollEnviar);

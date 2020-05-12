@@ -64,6 +64,7 @@ public class TelaBiografia {
                         + "e documentação.</html>", 15, Color.WHITE, 150, 33, 400, 150));
                 linkInstagram = "fabio_cassimiro19/";
                 linkGitHub = "fabiocassimiro";
+                linkLinkedin = "in/fabio-cassimiro-6a26021a5/";
                 break;
             case "Joao":
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 80, 600, 300));
@@ -124,14 +125,22 @@ public class TelaBiografia {
                         + " de Ciência da Computação. Atualmente trabalho na Ericsson, atuando como"
                         + " desenvolvedor RPA.<br><br>"
                         + "\"Quanto mais certeza temos de quem somos, menos importa o que pensam sobre quem a gente é.\"   <br>"
-                        + "&emsp; 05/2020</html>";
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Daniel Cruz<br>"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+                        + "&thinsp;&thinsp;&thinsp;&thinsp;Cadastrato em: 05/2020</html>";
                 break;
             case "Joao":
                 frase = "<html>Meu nome é Joao, tenho 19 anos, e sou estudante"
                         + " de Ciência da Computação. Trabalho atualmente  com análise e gestão"
                         + " de dados no Bradesco.<br><br>"
                         + "\"Perder tempo aprendendo coisas que não nos interessam, priva-nos de aprender coisas interessantes.\"   <br>"
-                        + "&emsp; 05/2020</html>";
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Carlos Drummond de Andrade<br>"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+                        + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+                        + "&thinsp;&thinsp;Cadastrato em: 05/2020</html>";
                 break;
             case "Marcos":
                 frase = "<html>Meu nome é Marcos, tenho 29 anos, e sou estudante"
@@ -165,7 +174,7 @@ public class TelaBiografia {
                 sobrenome = " César Silva do Nascimento";
                 break;
             case "Marcos":
-                sobrenome = " Algo";
+                sobrenome = " Paulo";
                 break;
             default:
                 break;
