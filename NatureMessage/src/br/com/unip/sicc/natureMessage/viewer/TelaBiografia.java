@@ -71,6 +71,7 @@ public class TelaBiografia {
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br>"
                         + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
                 linkInstagram = "joaocesar168/";
+                linkLinkedin = "in/joão-césar-5b095b16a/";
                 break;
             case "Marcos":
                 pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 100, 600, 300));

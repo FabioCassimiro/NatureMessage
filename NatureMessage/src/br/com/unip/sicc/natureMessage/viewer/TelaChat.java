@@ -127,6 +127,18 @@ public class TelaChat extends JFrame {
                 }
             }
         });
+       
+        JButton desconectServidor = botoesPadrao.montaBotaoAlteravel("Desconectar do servidor");
+        desconectServidor.setBounds(34, 385, 150, 35);
+        desconectServidor.setFont(new Font("Arial", Font.BOLD, 12));
+        desconectServidor.setBackground(null);
+        desconectServidor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaChat.dispose();
+                new TelaServidor();
+            }
+        });
 
         pnlChat.add(Componentes.montaSeparadora(30, 420, 162, 1));
         JSeparator linhaSeparatorMenu = Componentes.montaSeparadora(220, 28, 1, 410);
@@ -148,7 +160,11 @@ public class TelaChat extends JFrame {
         pnlChat.add(Componentes.montaTexto("Usuário: " + TelaLogin.nomeUsuario, 11, Color.WHITE, 50, 130, 150, 25));
         lblStatus = Componentes.montaTexto("Conectado a: " + AcoesBancoDeDados.resultNoServidor, 11, Color.WHITE, 260, 37, 150, 25);
 
+        pnlChat.add(Componentes.montaTexto("Empresa: ", 12, Color.WHITE, 16, 155, 200, 35));
+        pnlChat.add(Componentes.montaTexto("Cargo: ", 12, Color.WHITE, 16, 175, 200, 35));
+        
         pnlChat.add(btnPerfil);
+        pnlChat.add(desconectServidor);
         /*pnlChat.add(btnCompartilhar);
         pnlChat.add(btnImagem);
         pnlChat.add(btnDocumento);*/
