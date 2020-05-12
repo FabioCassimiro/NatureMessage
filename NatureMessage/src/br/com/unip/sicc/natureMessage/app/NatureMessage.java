@@ -1,6 +1,7 @@
 package br.com.unip.sicc.natureMessage.app;
 
 import br.com.unip.sicc.natureMessage.viewer.TelaChat;
+import br.com.unip.sicc.natureMessage.viewer.TelaConsultaRelatorio;
 import br.com.unip.sicc.natureMessage.viewer.TelaInicial;
 import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
 import br.com.unip.sicc.natureMessage.viewer.TelaServidor;
@@ -13,8 +14,8 @@ public class NatureMessage {
     public static void main(String[] args) {
         //new TelaServidor();
         //new TelaLogin();
-       new TelaChat(5000);
-        
+       //new TelaChat(5000);
+        new TelaConsultaRelatorio();
         //new TelaSobre();
     }
 }
