@@ -67,7 +67,7 @@ public class TelaBiografia {
                 linkLinkedin = "in/fabio-cassimiro-6a26021a5/";
                 break;
             case "Joao":
-                pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 80, 600, 300));
+                pnlBiografia.add(Componentes.montaTexto(montaFrase(aluno), 15, Color.WHITE, 150, 90, 600, 300));
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br>"
                         + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
                 linkInstagram = "joaocesar168/";

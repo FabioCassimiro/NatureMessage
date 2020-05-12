@@ -162,7 +162,7 @@ public class AcoesBancoDeDados {
                     if (mensagemCompleta.equals("")) {
                         mensagemCompleta = resultNoUsuario + "  " + resultNoMensagem + "  " + resultHrEnvio;
                     } else {
-                        mensagemCompleta += "\n" + resultNoUsuario + "  " + resultNoMensagem + "  " + resultHrEnvio;
+                        mensagemCompleta += "\n\n" + resultNoUsuario + "  " + resultNoMensagem + "  " + resultHrEnvio;
 
                     }
                 }

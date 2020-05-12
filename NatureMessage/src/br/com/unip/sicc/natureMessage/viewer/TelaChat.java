@@ -135,6 +135,8 @@ public class TelaChat extends JFrame {
         JScrollPane barraChat = new JScrollPane(txaChat = new JEditorPane());
         txaChat.setEditable(false);
         txaChat.setText(ConfigChat.carregaMensagem());
+        txaChat.setForeground(new Color(138, 43, 226));
+        txaChat.setFont(new Font("Arial", Font.PLAIN, 15));
         barraChat.setBounds(260, 63, 600, 320);
 
         JScrollPane scrollEnviar = new JScrollPane(txaEnviar);

@@ -41,7 +41,7 @@ public class ConfigChat {
                         if (txaChat.getText().equals("")) {
                             txaChat.setText(msgReceb);
                         } else {
-                            String msg = txaChat.getText() + "\n" + msgReceb;
+                            String msg = txaChat.getText() + "\n\n" + msgReceb;
                             SwingUtilities.invokeLater(new Runnable() {
                                 @Override
                                 public void run() {
@@ -64,7 +64,7 @@ public class ConfigChat {
             try {
                 String mensagem = TelaLogin.nomeUsuario;
                 PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-                mensagem = TelaLogin.nomeUsuario + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
+                mensagem = TelaLogin.nomeUsuario + ":" + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
                         + "----" + dataHora.get(Calendar.DAY_OF_WEEK) + "/" + dataHora.get(Calendar.DAY_OF_MONTH) + "----" + AcoesBancoDeDados.resultNoServidor;
                 ps.println(mensagem);
                 ps.flush();
