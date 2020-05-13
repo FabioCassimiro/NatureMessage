@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
@@ -21,6 +22,9 @@ public class TelaConsultaRelatorio {
     JFrame telaConsultaRelatorio = new JFrame();
     public String [] relatorio;
     
+    ButtonGroup grupoPerguntaUm = new ButtonGroup();
+    ButtonGroup grupoPerguntaDois = new ButtonGroup();
+    
     public TelaConsultaRelatorio() {
         telaConsultaRelatorio.add(montaPainelConsultaRelatorio());
         telaConsultaRelatorio.setSize(900, 500);
@@ -32,7 +36,7 @@ public class TelaConsultaRelatorio {
     public JPanel montaPainelConsultaRelatorio() {
         String engajamento = "Nivel de enjamento ambiental";
         
-        pnlConsultaRelatorio.add(Componentes.montaTexto("Relatório", 35, Color.WHITE, 370, 0, 350, 50));
+        pnlConsultaRelatorio.add(Componentes.montaTexto("Relatório", 35, Color.WHITE, 370, 12, 350, 50));
         
         JScrollPane scrollRelatorio = new JScrollPane(txaRelatorio = new JEditorPane());
         txaRelatorio.setEditable(true);
@@ -58,6 +62,26 @@ public class TelaConsultaRelatorio {
             }
         });
         
+        pnlConsultaRelatorio.add(Componentes.montaTexto("<html>A empresa está reciclando os materiais que podem"
+                + " ser reutilizados?</html>", 12, Color.WHITE, 44, 110, 300, 100));
+        JRadioButton perguntaUmSim = Componentes.montaRadio("Sim", 44, 178);
+        JRadioButton perguntaUmNao = Componentes.montaRadio("Não", 95, 178);
+        grupoPerguntaUm.add(perguntaUmSim);
+        grupoPerguntaUm.add(perguntaUmNao);
+     
+        pnlConsultaRelatorio.add(Componentes.montaTexto("<html>Quanto a empresa se mostra integrada com ações "
+                + "benéficas ao meio ambiente?</html>", 12, Color.WHITE, 44, 180, 300, 100));
+        JRadioButton pergutaDoisUmPonto = Componentes.montaRadio("1", 44, 250);
+        JRadioButton pergutaDoisDoisPontos = Componentes.montaRadio("2", 83, 250);
+        JRadioButton pergutaDoisTresPontos = Componentes.montaRadio("3", 122, 250);
+        JRadioButton pergutaDoisQuatroPontos = Componentes.montaRadio("4", 160, 250);
+        JRadioButton pergutaDoisCincoPontos = Componentes.montaRadio("5", 198, 250);
+        grupoPerguntaDois.add(pergutaDoisUmPonto);
+        grupoPerguntaDois.add(pergutaDoisDoisPontos);
+        grupoPerguntaDois.add(pergutaDoisTresPontos);
+        grupoPerguntaDois.add(pergutaDoisQuatroPontos);
+        grupoPerguntaDois.add(pergutaDoisCincoPontos);
+        
         JButton btnConsultar = Componentes.montaBotaoAlteravel("Consultar");
         btnConsultar.setBounds(150, 390, 79, 35);
         btnConsultar.setBackground(new Color(255, 215, 0));
@@ -67,13 +91,18 @@ public class TelaConsultaRelatorio {
             }
         });
  
-        pnlConsultaRelatorio.add(Componentes.montaTexto("Empresa: ", 12, Color.WHITE, 44, 33, 350, 20));
-        JTextField txfEmpresa = Componentes.montaTxfPadrao(45, 60, 300, 25);
+        pnlConsultaRelatorio.add(Componentes.montaTexto("Empresa: ", 12, Color.WHITE, 44, 80, 350, 20));
+        JTextField txfEmpresa = Componentes.montaTxfPadrao(45, 100, 300, 25);
         pnlConsultaRelatorio.add(txfEmpresa);
-        pnlConsultaRelatorio.add(Componentes.montaSeparadora(45, 85, 300, 1));
-        
-        
+        pnlConsultaRelatorio.add(Componentes.montaSeparadora(45, 125, 300, 1));     
      
+        pnlConsultaRelatorio.add(perguntaUmSim);
+        pnlConsultaRelatorio.add(perguntaUmNao);
+        pnlConsultaRelatorio.add(pergutaDoisUmPonto);
+        pnlConsultaRelatorio.add(pergutaDoisDoisPontos);
+        pnlConsultaRelatorio.add(pergutaDoisTresPontos);
+        pnlConsultaRelatorio.add(pergutaDoisQuatroPontos);
+        pnlConsultaRelatorio.add(pergutaDoisCincoPontos); 
         pnlConsultaRelatorio.add(btnConsultar);
         pnlConsultaRelatorio.add(btnEnviar);
         pnlConsultaRelatorio.add(btnLimpar);

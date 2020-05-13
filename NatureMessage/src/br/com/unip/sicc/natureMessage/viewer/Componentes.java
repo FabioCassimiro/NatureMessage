@@ -267,8 +267,8 @@ public class Componentes {
         radio.setForeground(Color.WHITE);
         radio.setBorder(null);
         radio.setFocusPainted(false);
-        radio.setFont(new Font("Arial", Font.BOLD, 15));
-        radio.setBounds(x, y, 50, 20);
+        radio.setFont(new Font("Arial", Font.BOLD, 12));
+        radio.setBounds(x, y, 39, 20);
         return radio;  
     }
     
