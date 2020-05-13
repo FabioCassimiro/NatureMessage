@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -223,11 +225,11 @@ public class Componentes {
         }
         return cor;
     }
-    
+
     public JButton redesSociais(String urlSite, String image, String link, String aluno, int x, int y, int width, int heigth) {
-        
-        String redeSocial = urlSite.equals("INSTAGRAM")? "Instagram": urlSite.equals("GITHUB")? "GitHub": "LinkedIn";
-        
+
+        String redeSocial = urlSite.equals("INSTAGRAM") ? "Instagram" : urlSite.equals("GITHUB") ? "GitHub" : "LinkedIn";
+
         JButton linkRedesSociais = montaBotaoPadrao(redeSocial);
         linkRedesSociais.setBounds(x, y, width, heigth);
         linkRedesSociais.setFont(new Font("Arial", Font.BOLD, 11));
@@ -237,13 +239,13 @@ public class Componentes {
             @Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 try {
-                    if(urlSite.equals("INSTAGRAM")) {
+                    if (urlSite.equals("INSTAGRAM")) {
                         Runtime.getRuntime().exec("cmd.exe /C start " + "https://instagram.com/" + link);
                     }
-                    if(urlSite.equals("GITHUB")) {
+                    if (urlSite.equals("GITHUB")) {
                         Runtime.getRuntime().exec("cmd.exe /C start " + "https://github.com/" + link);
                     }
-                    if(urlSite.equals("LINKEDIN")) {
+                    if (urlSite.equals("LINKEDIN")) {
                         Runtime.getRuntime().exec("cmd.exe /C start " + "https://www.linkedin.com/" + link);
                     }
                 } catch (IOException ex) {
@@ -251,8 +253,19 @@ public class Componentes {
                 }
             }
         });
-            
+
         return linkRedesSociais;
+    }
+
+    public static JRadioButton montaRadio(String conteudo,int x, int y) {
+        JRadioButton radio = new JRadioButton(conteudo);
+        radio.setBackground(null);
+        radio.setForeground(Color.WHITE);
+        radio.setBorder(null);
+        radio.setFocusPainted(false);
+        radio.setFont(new Font("Arial", Font.BOLD, 15));
+        radio.setBounds(x, y, 50, 20);
+        return radio;  
     }
 
     public void montaIconeFrame(JFrame icone) {
