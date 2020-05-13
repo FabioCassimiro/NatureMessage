@@ -55,39 +55,6 @@ public class TelaChat extends JFrame {
         btnPerfil.setBounds(60, 45, 100, 100);
         btnPerfil.setIcon(componentes.buscaImagem("perfil.png"));
 
-        /*JButton btnImagem = Componentes.montaBotaoPadrao("Imagem");
-        btnImagem.setBounds(-29, 180, 150, 40);
-        btnImagem.setIcon(componentes.buscaImagem("compartilharImagem.png"));
-        btnImagem.setVisible(false);
-        btnImagem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //enviaArquivo();
-            }
-        });
-
-        JButton btnDocumento = Componentes.montaBotaoPadrao("Documento");
-        btnDocumento.setBounds(-20, 210, 150, 40);
-        btnDocumento.setIcon(componentes.buscaImagem("compartilharDoc.png"));
-        btnDocumento.setVisible(false);
-        btnDocumento.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // enviaArquivo();
-            }
-        });
-
-        JButton btnCompartilhar = Componentes.montaBotaoPadrao("Compatilhar");
-        btnCompartilhar.setBounds(-16, 150, 150, 40);
-        btnCompartilhar.setIcon(componentes.buscaImagem("compartilhar.png"));
-        btnCompartilhar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnImagem.setVisible(true);
-                btnDocumento.setVisible(true);
-            }
-        });*/
-
         JButton btnEnviar = botoesPadrao.montaBotaoAlteravel("Enviar");
         btnEnviar.setBounds(782, 390, 79, 35);
         btnEnviar.setBackground(new Color(0, 255, 127));
@@ -118,10 +85,7 @@ public class TelaChat extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Logoff", JOptionPane.YES_OPTION) == 0) {
-                    Calendar dataHora = Calendar.getInstance();
-                    String data = dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
-                            + "  " + dataHora.get(Calendar.DAY_OF_WEEK) + "/" + dataHora.get(Calendar.DAY_OF_MONTH);
-                    AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Ultimo acesso: " + data, " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
+                    AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Ultimo acesso: " + Componentes.dataHoraAtual() , " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
                     telaChat.dispose();
                     new TelaLogin();
                 }
@@ -165,9 +129,6 @@ public class TelaChat extends JFrame {
         
         pnlChat.add(btnPerfil);
         pnlChat.add(desconectServidor);
-        /*pnlChat.add(btnCompartilhar);
-        pnlChat.add(btnImagem);
-        pnlChat.add(btnDocumento);*/
         pnlChat.add(linhaSeparatorMenu);
         pnlChat.add(barraChat);
         pnlChat.add(scrollEnviar);
@@ -179,31 +140,4 @@ public class TelaChat extends JFrame {
         return pnlChat;
     }
 
-    //Desenvolvimento pausado
-/*
-    public void enviaArquivo() {
-        JFileChooser fileChooser = new JFileChooser();
-        Componentes componentes = new Componentes();
-        fileChooser.showOpenDialog(null);
-        fileChooser.setDialogTitle("Enviar");
-
-        
-        if (fileChooser.getSelectedFile() != null) {
-            File arquivoEnviar = fileChooser.getSelectedFile();
-            byte[] conteudo = new byte[(int) arquivoEnviar.length()];
-            long tamanho = arquivoEnviar.length() / 1024;
-
-            try {
-                fileInputStream = new FileInputStream(arquivoEnviar);
-                fileInputStream.read(conteudo);
-                fileInputStream.close();
-                componentes.montaMensagemAviso("Arquivo " + arquivoEnviar.getName() + " enviado!", "SUCESSO");
-
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            arquivo = new Arquivo(arquivoEnviar.getName(), conteudo, tamanho);
-        }
-
-    }*/
 }

@@ -8,6 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -266,6 +270,15 @@ public class Componentes {
         radio.setFont(new Font("Arial", Font.BOLD, 15));
         radio.setBounds(x, y, 50, 20);
         return radio;  
+    }
+    
+    public static String dataHoraAtual(){
+        Date data = new Date();
+        Calendar dataAtual = new GregorianCalendar();
+        data.setTime(data.getTime());
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM");
+        SimpleDateFormat formata = new SimpleDateFormat("h:mm a");
+        return formata.format(data) + "|"+ formatador.format(data);
     }
 
     public void montaIconeFrame(JFrame icone) {

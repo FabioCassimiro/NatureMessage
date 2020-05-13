@@ -1,6 +1,7 @@
 package br.com.unip.sicc.natureMessage.control;
 
 import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
+import br.com.unip.sicc.natureMessage.viewer.Componentes;
 import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -64,8 +65,7 @@ public class ConfigChat {
             try {
                 String mensagem = TelaLogin.nomeUsuario;
                 PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-                mensagem = TelaLogin.nomeUsuario + ":" + "----" + txaEnviar.getText() + "----" + dataHora.get(Calendar.HOUR_OF_DAY) + ":" + dataHora.get(Calendar.MINUTE)
-                        + "----" + dataHora.get(Calendar.DAY_OF_WEEK) + "/" + dataHora.get(Calendar.DAY_OF_MONTH) + "----" + AcoesBancoDeDados.resultNoServidor;
+                mensagem = TelaLogin.nomeUsuario + ":" + "----" + txaEnviar.getText() + "----" + Componentes.dataHoraAtual() + "----" + AcoesBancoDeDados.resultNoServidor;
                 ps.println(mensagem);
                 ps.flush();
                 txaEnviar.setText(null);

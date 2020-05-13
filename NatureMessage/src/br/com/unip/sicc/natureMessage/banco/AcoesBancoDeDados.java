@@ -151,6 +151,7 @@ public class AcoesBancoDeDados {
 
     public static void carregaMensagem(String sqlQuery) {
         try {
+            System.out.println(sqlQuery);
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
 
@@ -158,7 +159,7 @@ public class AcoesBancoDeDados {
                 if (!resultado.equals("")) {
                     String resultNoMensagem = resultado.getString("NOMENSAGEM");
                     String resultNoUsuario = resultado.getString("NOUSUARIO");
-                    String resultHrEnvio = resultado.getString("HRENVIO");
+                    String resultHrEnvio = resultado.getString("DTENVIO");
                     if (mensagemCompleta.equals("")) {
                         mensagemCompleta = resultNoUsuario + "  " + resultNoMensagem + "  " + resultHrEnvio;
                     } else {

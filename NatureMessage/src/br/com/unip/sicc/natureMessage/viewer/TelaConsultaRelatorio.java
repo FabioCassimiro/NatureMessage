@@ -19,6 +19,7 @@ public class TelaConsultaRelatorio {
     private JEditorPane txaRelatorio;
     PainelPadrao pnlConsultaRelatorio = new PainelPadrao();
     JFrame telaConsultaRelatorio = new JFrame();
+    public String [] relatorio;
     
     public TelaConsultaRelatorio() {
         telaConsultaRelatorio.add(montaPainelConsultaRelatorio());
@@ -29,6 +30,7 @@ public class TelaConsultaRelatorio {
     }
     
     public JPanel montaPainelConsultaRelatorio() {
+        String engajamento = "Nivel de enjamento ambiental";
         
         pnlConsultaRelatorio.add(Componentes.montaTexto("Relatório", 35, Color.WHITE, 370, 0, 350, 50));
         
@@ -65,20 +67,13 @@ public class TelaConsultaRelatorio {
             }
         });
  
-        pnlConsultaRelatorio.add(Componentes.montaTexto("Empresa: ", 12, Color.WHITE, 29, 33, 350, 20));
-        JTextField txfPorcentDescarte = Componentes.montaTxfPadrao(30, 60, 300, 25);
-        pnlConsultaRelatorio.add(txfPorcentDescarte);
-        pnlConsultaRelatorio.add(Componentes.montaSeparadora(30, 85, 300, 1));
+        pnlConsultaRelatorio.add(Componentes.montaTexto("Empresa: ", 12, Color.WHITE, 44, 33, 350, 20));
+        JTextField txfEmpresa = Componentes.montaTxfPadrao(45, 60, 300, 25);
+        pnlConsultaRelatorio.add(txfEmpresa);
+        pnlConsultaRelatorio.add(Componentes.montaSeparadora(45, 85, 300, 1));
         
-        JRadioButton sim = Componentes.montaRadio("SIM",100,100);
-        JRadioButton nao = Componentes.montaRadio("NÃO",150,100); 
-       pnlConsultaRelatorio.add(sim);
-        pnlConsultaRelatorio.add(nao);
-        ButtonGroup grupo = new ButtonGroup();
-        grupo.add(sim);
-        grupo.add(nao);
-      
-//      pnlConsultaRelatorio.add(scrollRelatorio);
+        
+     
         pnlConsultaRelatorio.add(btnConsultar);
         pnlConsultaRelatorio.add(btnEnviar);
         pnlConsultaRelatorio.add(btnLimpar);
