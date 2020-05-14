@@ -17,7 +17,11 @@ public class ConfigRelatorio {
     private String Observacao;
     private String situacaoEmpresa;
     public String [] relatorio;
-
+    
+    public ConfigRelatorio(String empresa,String observacao){
+        this.empresa = empresa;
+        this.Observacao = observacao;
+    }
     
     public String[] montaRelatorio(String [] dadosRelatorio){
         this.nome = nomeRelatorio(TelaLogin.nomeUsuario, dadosRelatorio[0], Componentes.dataHoraAtual());
@@ -28,6 +32,17 @@ public class ConfigRelatorio {
         
         
         return relatorio;
+    }
+    
+    public String situacaoEmpresa(int avaliacao){
+        
+        if(avaliacao <=30){
+            return "RUIM";
+        }else if(avaliacao > 30 && avaliacao <=60){
+            return "SATISFATORIO";
+        }else{
+            return "EXCELENTE";
+        }
     }
     
     public String nomeRelatorio(String nome,String empresa,String data){
