@@ -1,40 +1,27 @@
 package br.com.unip.sicc.natureMessage.control;
 
+import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.viewer.Componentes;
 import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class ConfigRelatorio {
     
     
-    private String nome;
-    private String autor;
-    private String empresa;
-    private String dataCriacao;
-    private String Observacao;
-    private String situacaoEmpresa;
-    public String [] relatorio;
+    private static String nome;
+    private static String dataCriacao;
+    private static String situacaoEmpresa;
+
     
-    public ConfigRelatorio(String empresa,String observacao){
-        this.empresa = empresa;
-        this.Observacao = observacao;
+    public static void montaRelatorio( String empresa, int avaliacao, String observacao){
+        nome = nomeRelatorio(empresa, TelaLogin.nomeUsuario);
+        situacaoEmpresa = situacaoEmpresa(avaliacao);
+        dataCriacao = Componentes.dataHoraAtual();
+        String [] relatorio = {nome,TelaLogin.nomeUsuario,empresa,dataCriacao,situacaoEmpresa,observacao};
+        AcoesBancoDeDados.comandoInsert(relatorio, "TB_RELATORIO");
     }
     
-    public String[] montaRelatorio(String [] dadosRelatorio){
-        this.nome = nomeRelatorio(TelaLogin.nomeUsuario, dadosRelatorio[0], Componentes.dataHoraAtual());
-        this.autor = TelaLogin.nomeUsuario;
-        this.empresa = dadosRelatorio[0];
-        this.dataCriacao = Componentes.dataHoraAtual();
-        this.Observacao = dadosRelatorio[1];
-        
-        
-        return relatorio;
-    }
     
-    public String situacaoEmpresa(int avaliacao){
+    public static String situacaoEmpresa(int avaliacao){
         
         if(avaliacao <=30){
             return "RUIM";
@@ -45,8 +32,8 @@ public class ConfigRelatorio {
         }
     }
     
-    public String nomeRelatorio(String nome,String empresa,String data){
-        String nomeRelatorio = "RL" + empresa + data;
+    public static String nomeRelatorio(String empresa,String data){
+        String nomeRelatorio = "RL" + empresa.trim() + data;
         return nomeRelatorio;
     }
     

@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 
 public class ConfigCadastro {
 
-    AcoesBancoDeDados banco = new AcoesBancoDeDados();
     String[] camposUsuario = {"NOLOGIN", "NOSENHA"};
 
     public static void ConfigCadastroValida(String noLogin, String noSenha) throws InsufficientCharactersException {
@@ -28,7 +27,7 @@ public class ConfigCadastro {
              String noCargo, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatchException {
         
         String[] dadosUsuario = {noLogin, noSenha};
-        banco.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, dadosUsuario, "TB_USUARIO"));
+        AcoesBancoDeDados.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, dadosUsuario, "TB_USUARIO"));
         
         if (!noPessoa.equals("") && !noSobrenome.equals("") && !noCargo.equals("") && !noEmpresa.equals("") && !noEndereco.equals("")
                 && !dtNascimento.equals("  /  /    ") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
@@ -38,8 +37,8 @@ public class ConfigCadastro {
                     String[] usuario = {noLogin, noSenha};
                     String[] pessoa = {noPessoa, noSobrenome, dtNascimento, noEmail, noEndereco, noEmpresa, noCargo};
 
-                    banco.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(usuario, "TB_USUARIO"));
-                    banco.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(pessoa, "TB_PESSOA"));
+                    AcoesBancoDeDados.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(usuario, "TB_USUARIO"));
+                    AcoesBancoDeDados.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(pessoa, "TB_PESSOA"));
 
                 } else {
                     throw new PasswordsDontMatchException("Senhas não conferemem");
