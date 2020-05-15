@@ -65,7 +65,7 @@ public class ConfigChat {
             try {
                 String mensagem = TelaLogin.nomeUsuario;
                 PrintStream ps = new PrintStream(socketCliente.getOutputStream());
-                mensagem = TelaLogin.nomeUsuario + ":" + "----" + txaEnviar.getText() + "----" + Componentes.dataHoraAtual() + "----" + AcoesBancoDeDados.resultNoServidor;
+                mensagem = "[" + TelaLogin.nomeUsuario + "]" + "----" + txaEnviar.getText() + "----" + Componentes.dataHoraAtual() + "----" + AcoesBancoDeDados.resultNoServidor;
                 ps.println(mensagem);
                 ps.flush();
                 txaEnviar.setText(null);

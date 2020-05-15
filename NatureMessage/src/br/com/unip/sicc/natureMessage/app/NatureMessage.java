@@ -17,8 +17,9 @@ public class NatureMessage {
         //new TelaServidor();
         //new TelaLogin();
        //new TelaChat(5000);
-        new TelaConsultaRelatorio();
+        //new TelaConsultaRelatorio();
         //new TelaSobre();
+       new TelaInicial();
         //System.out.println(Componentes.dataHoraAtual());
     }
 }
