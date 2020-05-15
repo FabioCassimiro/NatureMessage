@@ -75,11 +75,10 @@ public class ConfigChat {
         }
     }
 
-    public static String carregaMensagem() {
-        String[] campos = {"NOSERVIDOR"};
-        String[] dados = {AcoesBancoDeDados.resultNoServidor};
-        AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(campos, dados, "TB_MENSAGEM"));
-        
+    public static String dadosChat() {
+        String[] camposServidor = {"NOSERVIDOR"};
+        String[] dadosServidor = {AcoesBancoDeDados.resultNoServidor};
+        AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(camposServidor, dadosServidor, "TB_MENSAGEM"));
         return AcoesBancoDeDados.mensagemCompleta;
     }
 }

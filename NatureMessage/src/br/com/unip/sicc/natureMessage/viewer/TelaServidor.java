@@ -13,6 +13,7 @@ import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -63,7 +64,7 @@ public class TelaServidor {
                     servidor.ValidaServidor(txfEnderecoIP.getText().toUpperCase());
                     telaServidor.dispose();
                     new TelaChat(servidor.getPortaServidor());
-                    componente.montaMensagemAviso("Conectado a: " + servidor.getNomeServidor(), "SUCESSO");
+                    JOptionPane.showMessageDialog(null,"Conectado a: " + servidor.getNomeServidor(),"Mensagem servidor",JOptionPane.INFORMATION_MESSAGE);
                 } catch (ServerNotFoundException ex) {
                     ex.printStackTrace();
                 }

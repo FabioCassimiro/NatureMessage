@@ -16,10 +16,10 @@ public class AcoesBancoDeDados {
     public static String resultCdServidor;
     public static String resultNoServidor;
     public static String mensagemCompleta = "";
-    static String noPessoa;
-    static String noSobrenome;
-    static String noCargo;
-    static String noEmpresa;
+    public static String noPessoa;
+    public static String noSobrenome;
+    public static String noCargo;
+    public static String noEmpresa;
 
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
         String comando = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " + tabela : "SELECT * FROM " + tabela + " WHERE ";
@@ -74,7 +74,7 @@ public class AcoesBancoDeDados {
             }
 
         }
-
+        System.out.println(comando);
         return comando;
     }
 
@@ -94,7 +94,7 @@ public class AcoesBancoDeDados {
                 if (!resultado.equals("")) {
                     resultNoLogin = resultado.getString("noLogin");
                     resultNoSenha = resultado.getString("noSenha");
-                    //resultCdUsuario = resultado.getString("CdUsuario");
+                    resultCdUsuario = resultado.getString("CdUsuario");
                 }
             }
 
@@ -141,6 +141,7 @@ public class AcoesBancoDeDados {
             Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
         } catch (SQLException e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, " Erro atualizar visto por ultimo.\n Exception Banco de dados");
         }
     }

@@ -84,13 +84,13 @@ public class TelaChat extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Logoff", JOptionPane.YES_OPTION) == 0) {
-                    AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Ultimo acesso: " + Componentes.dataHoraAtual() , " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
+                    AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Ultimo acesso: " + Componentes.dataHoraAtual(), " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
                     telaChat.dispose();
                     new TelaLogin();
                 }
             }
         });
-       
+
         JButton desconectServidor = botoesPadrao.montaBotaoAlteravel("Desconectar do servidor");
         desconectServidor.setBounds(34, 385, 150, 35);
         desconectServidor.setFont(new Font("Arial", Font.BOLD, 12));
@@ -109,7 +109,7 @@ public class TelaChat extends JFrame {
 
         JScrollPane barraChat = new JScrollPane(txaChat = new JEditorPane());
         txaChat.setEditable(false);
-        txaChat.setText(ConfigChat.carregaMensagem());
+        txaChat.setText(ConfigChat.dadosChat());
         txaChat.setForeground(new Color(138, 43, 226));
         txaChat.setFont(new Font("Arial", Font.PLAIN, 15));
         barraChat.setBounds(260, 63, 600, 320);
@@ -123,9 +123,10 @@ public class TelaChat extends JFrame {
         pnlChat.add(Componentes.montaTexto("Usuário: " + TelaLogin.nomeUsuario, 11, Color.WHITE, 50, 130, 150, 25));
         lblStatus = Componentes.montaTexto("Conectado a: " + AcoesBancoDeDados.resultNoServidor, 11, Color.WHITE, 260, 37, 150, 25);
 
-        pnlChat.add(Componentes.montaTexto("Empresa: ", 12, Color.WHITE, 16, 155, 200, 35));
-        pnlChat.add(Componentes.montaTexto("Cargo: ", 12, Color.WHITE, 16, 175, 200, 35));
-        
+        pnlChat.add(Componentes.montaTexto("Nome: " + AcoesBancoDeDados.noPessoa + " " + AcoesBancoDeDados.noSobrenome, 12, Color.WHITE, 16, 145, 200, 35));
+        pnlChat.add(Componentes.montaTexto("Empresa: " + AcoesBancoDeDados.noEmpresa, 12, Color.WHITE, 16, 165, 200, 35));
+        pnlChat.add(Componentes.montaTexto("Cargo: " + AcoesBancoDeDados.noCargo, 12, Color.WHITE, 16, 185, 200, 35));
+
         pnlChat.add(btnPerfil);
         pnlChat.add(desconectServidor);
         pnlChat.add(linhaSeparatorMenu);

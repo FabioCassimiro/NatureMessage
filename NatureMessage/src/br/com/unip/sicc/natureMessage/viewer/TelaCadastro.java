@@ -148,7 +148,7 @@ public class TelaCadastro {
                     //Validações do cadastro.
                     ConfigCadastro.ConfigCadastroValida(txfUsuario.getText(), pwdSenha.getText());
                     cadastro.CadastroUsuario(txfNome.getText(), txfSobrenome.getText(), txfDtNasc.getText(), txfEmail.getText(),
-                            txfEmail.getText(), txfEndereco.getText(), txfCargo.getText(), txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
+                             txfEndereco.getText(),txfEmpresa.getText(), txfCargo.getText(), txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
 
                     JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!", "Nature Message", JOptionPane.INFORMATION_MESSAGE);
                     telaCadastro.dispose();
