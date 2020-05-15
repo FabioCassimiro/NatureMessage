@@ -276,9 +276,9 @@ public class Componentes {
         Date data = new Date();
         Calendar dataAtual = new GregorianCalendar();
         data.setTime(data.getTime());
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM");
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM ");
         SimpleDateFormat formata = new SimpleDateFormat("h:mm a");
-        return formata.format(data) + "|"+ formatador.format(data);
+        return formata.format(data) + " | "+ formatador.format(data);
     }
 
     public void montaIconeFrame(JFrame icone) {
