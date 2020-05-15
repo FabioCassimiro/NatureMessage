@@ -87,16 +87,19 @@ public class AcoesBancoDeDados {
 //->Consulta usuário no banco de dados.
     public static void ConsultaLoginSenha(String sqlquery) {
         try {
-
+            System.out.println(sqlquery);
             PreparedStatement pesquisa = ConexaoBancoDeDados.conexao().prepareStatement(sqlquery);
             ResultSet resultado = pesquisa.executeQuery();
-            if (!resultado.equals("")) {
-                resultNoLogin = resultado.getString("noLogin");
-                resultNoSenha = resultado.getString("noSenha");
-                resultCdUsuario = resultado.getString("CdUsuario");
+            while (resultado.next()) {
+                if (!resultado.equals("")) {
+                    resultNoLogin = resultado.getString("noLogin");
+                    resultNoSenha = resultado.getString("noSenha");
+                    //resultCdUsuario = resultado.getString("CdUsuario");
+                }
             }
 
         } catch (SQLException e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, " Erro consulta de Usuario.\n Exception Banco de dados");
         }
     }
@@ -118,12 +121,13 @@ public class AcoesBancoDeDados {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
-
-            if (!resultado.equals("")) {
-                resulIpServidor = resultado.getString("IPSERVIDOR");
-                resulPtServidor = resultado.getString("PTSERVIDOR");
-                resultCdServidor = resultado.getString("CDSERVIDOR");
-                resultNoServidor = resultado.getString("NOSERVIDOR");
+            while (resultado.next()) {
+                if (!resultado.equals("")) {
+                    resulIpServidor = resultado.getString("IPSERVIDOR");
+                    resulPtServidor = resultado.getString("PTSERVIDOR");
+                    resultCdServidor = resultado.getString("CDSERVIDOR");
+                    resultNoServidor = resultado.getString("NOSERVIDOR");
+                }
             }
 
         } catch (SQLException e) {
@@ -145,12 +149,13 @@ public class AcoesBancoDeDados {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
-
-            if (!resultado.equals("")) {
-                noPessoa = resultado.getString("noPessoa");
-                noSobrenome = resultado.getString("noSobrenome");
-                noCargo = resultado.getString("noCargo");
-                noEmpresa = resultado.getString("noEmpresa");
+            while (resultado.next()) {
+                if (!resultado.equals("")) {
+                    noPessoa = resultado.getString("noPessoa");
+                    noSobrenome = resultado.getString("noSobrenome");
+                    noCargo = resultado.getString("noCargo");
+                    noEmpresa = resultado.getString("noEmpresa");
+                }
             }
 
         } catch (SQLException e) {
