@@ -1,5 +1,6 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
+import br.com.unip.sicc.natureMessage.control.ConfigRelatorio;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -49,6 +50,7 @@ public class TelaConsultaRelatorio {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ConfigRelatorio.montaRelatorio("ENEL", 50, "Muito boa");
             }
         });
         
@@ -58,7 +60,7 @@ public class TelaConsultaRelatorio {
         btnLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("limpas");
+                System.out.println("teset");
             }
         });
         

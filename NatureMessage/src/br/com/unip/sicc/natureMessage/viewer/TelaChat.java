@@ -36,7 +36,6 @@ public class TelaChat extends JFrame {
 
     PainelPadrao pnlChat = new PainelPadrao();
     Componentes botoesPadrao = new Componentes();
-
     JFrame telaChat = new JFrame();
 
     public TelaChat(int portaServidor) {

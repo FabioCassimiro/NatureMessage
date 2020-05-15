@@ -10,13 +10,16 @@ public class AcoesBancoDeDados {
 
     public static String resultNoLogin;
     public static String resultNoSenha;
+    public static String resultCdUsuario;
     public static String resulIpServidor;
     public static String resulPtServidor;
     public static String resultCdServidor;
     public static String resultNoServidor;
     public static String mensagemCompleta = "";
-    String noPessoa;
-    String noSobrenome;
+    static String noPessoa;
+    static String noSobrenome;
+    static String noCargo;
+    static String noEmpresa;
 
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
         String comando = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " + tabela : "SELECT * FROM " + tabela + " WHERE ";
@@ -48,9 +51,19 @@ public class AcoesBancoDeDados {
     }
 
     public static String comandoInsert(String[] campos, String tabela) {
-        String comando = tabela.equals("TB_USUARIO")
-                ? "INSERT INTO TB_USUARIO (NOLOGIN,NOSENHA) VALUES("
-                : "INSERT INTO TB_PESSOA(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(";
+        String comando = "";
+
+        switch (tabela) {
+            case "TB_USUARIO":
+                comando = "INSERT INTO TB_USUARIO (NOLOGIN,NOSENHA) VALUES(";
+                break;
+            case "TB_PESSOA":
+                comando = "INSERT INTO TB_PESSOA(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(";
+                break;
+            case "TB_RELATORIO":
+                comando = "INSERT INTO TB_RELATORIO (NORELATORIO,NOLOGIN,NOEMPRESA,DTCRIACAO,SITUACAO,OBSERVACAO) VALUES (";
+                break;
+        }
 
         for (int i = 0; i < campos.length; i++) {
 
@@ -72,15 +85,15 @@ public class AcoesBancoDeDados {
     }
 
 //->Consulta usuário no banco de dados.
-    public void ConsultaLoginSenha(String sqlquery) {
+    public static void ConsultaLoginSenha(String sqlquery) {
         try {
 
             PreparedStatement pesquisa = ConexaoBancoDeDados.conexao().prepareStatement(sqlquery);
             ResultSet resultado = pesquisa.executeQuery();
-
-            while (resultado.next()) {
+            if (!resultado.equals("")) {
                 resultNoLogin = resultado.getString("noLogin");
                 resultNoSenha = resultado.getString("noSenha");
+                resultCdUsuario = resultado.getString("CdUsuario");
             }
 
         } catch (SQLException e) {
@@ -90,7 +103,7 @@ public class AcoesBancoDeDados {
     //->Fim Consulta usuário.
 
     //->Cria usuario no banco de dados
-    public void CriaCadastroUsuario(String sqlquery) {
+    public static void CriaCadastroUsuario(String sqlquery) {
 
         try {
             Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
@@ -106,13 +119,11 @@ public class AcoesBancoDeDados {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
 
-            while (resultado.next()) {
-                if (!resultado.equals("")) {
-                    resulIpServidor = resultado.getString("IPSERVIDOR");
-                    resulPtServidor = resultado.getString("PTSERVIDOR");
-                    resultCdServidor = resultado.getString("CDSERVIDOR");
-                    resultNoServidor = resultado.getString("NOSERVIDOR");
-                }
+            if (!resultado.equals("")) {
+                resulIpServidor = resultado.getString("IPSERVIDOR");
+                resulPtServidor = resultado.getString("PTSERVIDOR");
+                resultCdServidor = resultado.getString("CDSERVIDOR");
+                resultNoServidor = resultado.getString("NOSERVIDOR");
             }
 
         } catch (SQLException e) {
@@ -130,18 +141,16 @@ public class AcoesBancoDeDados {
         }
     }
 
-    public void ConsultaPessoa(String sqlQuery) {
+    public static void ConsultaPessoa(String sqlQuery) {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
 
-            while (resultado.next()) {
-                if (!resultado.equals("")) {
-                    resulIpServidor = resultado.getString("IPSERVIDOR");
-                    resulPtServidor = resultado.getString("PTSERVIDOR");
-                    resultCdServidor = resultado.getString("CDSERVIDOR");
-                    resultNoServidor = resultado.getString("NOSERVIDOR");
-                }
+            if (!resultado.equals("")) {
+                noPessoa = resultado.getString("noPessoa");
+                noSobrenome = resultado.getString("noSobrenome");
+                noCargo = resultado.getString("noCargo");
+                noEmpresa = resultado.getString("noEmpresa");
             }
 
         } catch (SQLException e) {
