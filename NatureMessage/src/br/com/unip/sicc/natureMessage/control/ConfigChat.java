@@ -10,6 +10,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Calendar;
 import javax.swing.JEditorPane;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -22,8 +23,7 @@ public class ConfigChat {
             socketCliente = new Socket(AcoesBancoDeDados.resulIpServidor, porta);
             Thread(txaChat, socketCliente);
         } catch (IOException ex) {
-            ex.printStackTrace();
-            System.out.println("erro");
+            JOptionPane.showMessageDialog(null, "Não foi possivel estabelecer conexao","Mensagem Servidor",JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -40,19 +40,25 @@ public class ConfigChat {
 
                     while ((msgReceb = bufferedReader.readLine()) != null) {
                         if (txaChat.getText().equals("")) {
-                            txaChat.setText(msgReceb);
+                            txaChat.setText(msgReceb.replace(TelaLogin.nomeUsuario, "Eu"));
                         } else {
                             String msg = txaChat.getText() + "\n\n" + msgReceb;
                             SwingUtilities.invokeLater(new Runnable() {
                                 @Override
                                 public void run() {
-                                    txaChat.setText(msg);
+                                    if(msg.startsWith(TelaLogin.nomeUsuario)){
+                                        txaChat.setText(msg.replace(TelaLogin.nomeUsuario, "Eu"));
+                                    }else{
+                                        txaChat.setText(msg.replace("Recebido", "Enviado"));
+                                    }
+                                    
+                                    
                                 }
                             });
                         }
                     }
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    
                 }
             }
         });
@@ -79,6 +85,6 @@ public class ConfigChat {
         String[] camposServidor = {"NOSERVIDOR"};
         String[] dadosServidor = {AcoesBancoDeDados.resultNoServidor};
         AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(camposServidor, dadosServidor, "TB_MENSAGEM"));
-        return AcoesBancoDeDados.mensagemCompleta;
+        return AcoesBancoDeDados.mensagemCompleta.replace(TelaLogin.nomeUsuario,"Eu");
     }
 }
