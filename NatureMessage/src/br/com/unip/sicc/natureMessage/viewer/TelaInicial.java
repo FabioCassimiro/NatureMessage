@@ -31,6 +31,8 @@ public class TelaInicial {
     }
 
     public JPanel montaPainelInicial() {
+        
+        pnlInicial.add(Componentes.btnMinimizar(telaInicial));
 
         JLabel lblLogo = Componentes.montaTexto("", 35, Color.WHITE, 340, 120, 250, 250);
         lblLogo.setIcon(componentes.buscaImagem("logo.png"));
