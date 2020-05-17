@@ -24,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.ScrollPaneConstants;
 
 public class TelaChat extends JFrame {
 
@@ -113,6 +114,7 @@ public class TelaChat extends JFrame {
         txaChat.setForeground(new Color(138, 43, 226));
         txaChat.setFont(new Font("Arial", Font.PLAIN, 15));
         barraChat.setBounds(260, 63, 600, 320);
+        barraChat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         JScrollPane scrollEnviar = new JScrollPane(txaEnviar);
         txaEnviar = new JTextField();
