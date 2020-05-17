@@ -47,7 +47,6 @@ public class ConfigChat {
                             public void run() {
                                 
                                 if (msg.startsWith("[" + TelaLogin.nomeUsuario + "]")) {
-                                    //txaChat.setText(txaChat.getText() + "\n\n" +  msg.replace("Recebido", "Enviado").replace(TelaLogin.nomeUsuario, "Eu"));
                                     txaChat.setText(!txaChat.getText().equals("")? txaChat.getText() + "\n\n" +  msg.replace("Recebido", "Enviado").replace(TelaLogin.nomeUsuario, "Eu"):
                                             msg.replace("Recebido", "Enviado").replace(TelaLogin.nomeUsuario, "Eu"));
                                 } else {
