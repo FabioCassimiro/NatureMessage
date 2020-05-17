@@ -119,13 +119,13 @@ public class TelaChat extends JFrame {
         txaEnviar.setBounds(260, 390, 515, 35);
 
         pnlChat.add(Componentes.montaTexto("NATURE", 25, Color.WHITE, 60, 20, 350, 32));
-        pnlChat.add(Componentes.montaTexto("MESSAGE CHAT", 10, Color.WHITE, 72, 38, 350, 25));
+        pnlChat.add(Componentes.montaTexto("- MESSAGE CHAT -", 10, Color.WHITE, 65, 38, 350, 25));
         pnlChat.add(Componentes.montaTexto("Usuário: " + TelaLogin.nomeUsuario, 11, Color.WHITE, 50, 130, 150, 25));
         lblStatus = Componentes.montaTexto("Conectado a: " + AcoesBancoDeDados.resultNoServidor, 11, Color.WHITE, 260, 37, 150, 25);
 
-        pnlChat.add(Componentes.montaTexto("Nome: " + AcoesBancoDeDados.noPessoa + " " + AcoesBancoDeDados.noSobrenome, 12, Color.WHITE, 16, 145, 200, 35));
-        pnlChat.add(Componentes.montaTexto("Empresa: " + AcoesBancoDeDados.noEmpresa, 12, Color.WHITE, 16, 165, 200, 35));
-        pnlChat.add(Componentes.montaTexto("Cargo: " + AcoesBancoDeDados.noCargo, 12, Color.WHITE, 16, 185, 200, 35));
+        pnlChat.add(Componentes.montaTexto("Nome: " + AcoesBancoDeDados.noPessoa + " " + AcoesBancoDeDados.noSobrenome, 12, Color.WHITE, 16, 165, 200, 35));
+        pnlChat.add(Componentes.montaTexto("Empresa: " + AcoesBancoDeDados.noEmpresa, 12, Color.WHITE, 16, 185, 200, 35));
+        pnlChat.add(Componentes.montaTexto("Cargo: " + AcoesBancoDeDados.noCargo, 12, Color.WHITE, 16, 205, 200, 35));
 
         pnlChat.add(btnPerfil);
         pnlChat.add(desconectServidor);

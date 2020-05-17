@@ -49,6 +49,7 @@ public class TelaSobre {
                 //telaSobre.dispose();
             }
         });
+        imgFabio.setToolTipText("Fabio");
 
         JButton imgWalisson = new JButton();
         imgWalisson.setIcon(componentes.buscaImagem("Walisson.jpeg"));
@@ -59,6 +60,7 @@ public class TelaSobre {
                 TelaBiografia walisson = new TelaBiografia("Walisson");
             }
         });
+        imgWalisson.setToolTipText("Walisson");
 
         JButton imgJoao = new JButton();
         imgJoao.setIcon(componentes.buscaImagem("Joao.jpeg"));
@@ -69,6 +71,7 @@ public class TelaSobre {
                 TelaBiografia joao = new TelaBiografia("Joao");
             }
         });
+        imgJoao.setToolTipText("João");
 
         JButton imgDaniel = new JButton();
         imgDaniel.setIcon(componentes.buscaImagem("Daniel.jpeg"));
@@ -79,6 +82,7 @@ public class TelaSobre {
                 TelaBiografia daniel = new TelaBiografia("Daniel");
             }
         });
+        imgDaniel.setToolTipText("Daniel");
 
         JButton imgMarcos = new JButton();
         imgMarcos.setIcon(componentes.buscaImagem("Marcos.jpeg"));
@@ -89,6 +93,7 @@ public class TelaSobre {
                 TelaBiografia marcos = new TelaBiografia("Marcos");
             }
         });
+        imgMarcos.setToolTipText("Marcos");
 
         pnlSobre.add(imgMarcos);
         pnlSobre.add(imgJoao);

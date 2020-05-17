@@ -67,7 +67,7 @@ public class TelaCadastro {
                         || !txfEmpresa.getText().equals("") || !txfEndereco.getText().equals("") || !txfEmail.getText().equals("")
                         || !txfUsuario.getText().equals("") || !pwdSenha.getText().equals("") || !pwdConfirmaSenha.getText().equals("")) {
 
-                    if (JOptionPane.showConfirmDialog(null, "Todos os campo serão limpos,Deseja continuar?", "Continuar?",
+                    if (JOptionPane.showConfirmDialog(null, "Todos os campo serão perdidos, Deseja continuar?", "Continuar?",
                             JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 
                         ConfigCadastro.AcaoLimpar(txfNome, txfSobrenome, txfCargo, txfEmpresa, txfEndereco, txfDtNasc,

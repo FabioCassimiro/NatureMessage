@@ -36,6 +36,7 @@ public class PainelPadrao extends JPanel {
                 new TelaSobre();
             }
         });
+        btnInfo.setToolTipText("Sobre");
 
         JLabel lblDesenvolvimento = Componentes.montaTexto("DESENVOLVIDO POR ALUNOS DA UNIVERSIDADE PAULISTA (UNIP)", 10, Color.WHITE, 285, 468, 350, 15);
         lblDesenvolvimento.setFont(new Font("Arial", Font.PLAIN, 10));

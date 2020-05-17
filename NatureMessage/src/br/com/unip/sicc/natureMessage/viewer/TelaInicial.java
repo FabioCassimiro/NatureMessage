@@ -36,7 +36,7 @@ public class TelaInicial {
         lblLogo.setIcon(componentes.buscaImagem("logo.png"));
 
         pnlInicial.add(Componentes.montaTexto("NATURE", 35, Color.WHITE, 378, 100, 350, 32));
-        pnlInicial.add(Componentes.montaTexto("MESSAGE", 22, Color.WHITE, 396, 124, 350, 32));
+        pnlInicial.add(Componentes.montaTexto("- MESSAGE -", 22, Color.WHITE, 382, 124, 350, 32));
         pnlInicial.add(Componentes.montaSeparadora(352, 380, 200, 1));
 
         JButton btnInicia = componentes.montaBotaoAlteravel("Iniciar");
@@ -76,6 +76,7 @@ public class TelaInicial {
             }
 
         });
+        btnDAO.setToolTipText("Banco de dados");
 
         pnlInicial.add(btnInicia);
         pnlInicial.add(btnManual);
