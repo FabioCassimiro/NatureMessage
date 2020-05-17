@@ -41,7 +41,7 @@ public class ConfigCadastro {
                     AcoesBancoDeDados.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(pessoa, "TB_PESSOA"));
 
                 } else {
-                    throw new PasswordsDontMatchException("Senhas não conferemem");
+                    throw new PasswordsDontMatchException("Senhas não conferem");
                 }
 
             } else {
@@ -49,7 +49,7 @@ public class ConfigCadastro {
             }
 
         } else {
-            throw new InsufficientCharactersException("Campo obrigatorios não precenchidos");
+            throw new InsufficientCharactersException("Campos obrigatorios não preenchidos");
 
         }
 
