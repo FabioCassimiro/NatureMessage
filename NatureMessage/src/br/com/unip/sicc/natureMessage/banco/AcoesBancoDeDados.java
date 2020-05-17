@@ -184,7 +184,7 @@ public class AcoesBancoDeDados {
                     }
                 }
             }
-
+            System.out.println(mensagemCompleta);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, " Erro ao carregar mensagens.\n Exception Banco de dados");
         }

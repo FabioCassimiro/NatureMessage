@@ -90,6 +90,7 @@ public class TelaChat extends JFrame {
                     AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Ultimo acesso: " + Componentes.dataHoraAtual(), " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
                     telaChat.dispose();
                     new TelaLogin();
+                    AcoesBancoDeDados.mensagemCompleta = "";
                 }
             }
         });
@@ -104,6 +105,8 @@ public class TelaChat extends JFrame {
                 if (JOptionPane.showConfirmDialog(null, "Deseja realmente sair do servidor?", "Nature Message", JOptionPane.YES_OPTION) == 0) {
                     telaChat.dispose();
                     new TelaServidor();
+                    AcoesBancoDeDados.mensagemCompleta = "";
+                    System.out.println("Desconectei" + AcoesBancoDeDados.mensagemCompleta);
                 }
             }
         });

@@ -84,6 +84,7 @@ public class ConfigChat {
         String[] camposServidor = {"NOSERVIDOR"};
         String[] dadosServidor = {AcoesBancoDeDados.resultNoServidor};
         AcoesBancoDeDados.carregaMensagem(AcoesBancoDeDados.comandoSelect(camposServidor, dadosServidor, "TB_MENSAGEM"));
+        System.out.println("Mensagem Completa" + AcoesBancoDeDados.mensagemCompleta);
         return AcoesBancoDeDados.mensagemCompleta.replace(TelaLogin.nomeUsuario, "Eu");
     }
 }
