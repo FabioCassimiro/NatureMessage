@@ -51,6 +51,8 @@ public class TelaChat extends JFrame {
 
     public JPanel montaPainelChat() {
 
+        pnlChat.add(Componentes.btnMinimizar(telaChat));
+        
         JButton btnPerfil = Componentes.montaBotaoPadrao("");
         btnPerfil.setBounds(60, 45, 100, 100);
         btnPerfil.setIcon(componentes.buscaImagem("perfil.png"));
@@ -84,7 +86,7 @@ public class TelaChat extends JFrame {
         btnLogoff.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Logoff", JOptionPane.YES_OPTION) == 0) {
+                if (JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Nature Message", JOptionPane.YES_OPTION) == 0) {
                     AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Ultimo acesso: " + Componentes.dataHoraAtual(), " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
                     telaChat.dispose();
                     new TelaLogin();
@@ -99,8 +101,10 @@ public class TelaChat extends JFrame {
         desconectServidor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                telaChat.dispose();
-                new TelaServidor();
+                if (JOptionPane.showConfirmDialog(null, "Deseja realmente sair do servidor?", "Nature Message", JOptionPane.YES_OPTION) == 0) {
+                    telaChat.dispose();
+                    new TelaServidor();
+                }
             }
         });
 
@@ -123,7 +127,7 @@ public class TelaChat extends JFrame {
         pnlChat.add(Componentes.montaTexto("NATURE", 25, Color.WHITE, 60, 20, 350, 32));
         pnlChat.add(Componentes.montaTexto("- MESSAGE CHAT -", 10, Color.WHITE, 65, 38, 350, 25));
         pnlChat.add(Componentes.montaTexto("Usuário: " + TelaLogin.nomeUsuario, 11, Color.WHITE, 50, 130, 150, 25));
-        lblStatus = Componentes.montaTexto("Conectado a: " + AcoesBancoDeDados.resultNoServidor, 11, Color.WHITE, 260, 37, 150, 25);
+        lblStatus = Componentes.montaTexto("Conectado a: " + AcoesBancoDeDados.resultNoServidor, 11, Color.WHITE, 260, 37, 400, 25);
 
         pnlChat.add(Componentes.montaTexto("Nome: " + AcoesBancoDeDados.noPessoa + " " + AcoesBancoDeDados.noSobrenome, 12, Color.WHITE, 16, 165, 200, 35));
         pnlChat.add(Componentes.montaTexto("Empresa: " + AcoesBancoDeDados.noEmpresa, 12, Color.WHITE, 16, 185, 200, 35));

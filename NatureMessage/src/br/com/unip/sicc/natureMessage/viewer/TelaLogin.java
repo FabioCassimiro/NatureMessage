@@ -42,6 +42,16 @@ public class TelaLogin {
     }
 
     public JPanel montaPainelLogin() {
+        
+        JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaLogin.dispose();
+                new TelaInicial();
+            }
+        });
+        
+        pnlLogin.add(Componentes.btnMinimizar(telaLogin));
         pnlLogin.add(Componentes.montaTexto("LOGIN", 35, Color.WHITE, 405, 100, 350, 32));
         pnlLogin.add(Componentes.montaTexto("TALK NOW!", 15, Color.white, 418, 127, 350, 25));
         pnlLogin.add(Componentes.montaTexto("Usuario:", 12, Color.WHITE, 277, 202, 350, 25));
@@ -110,7 +120,7 @@ public class TelaLogin {
         pnlLogin.add(pwdSenha);
         pnlLogin.add(btnEntra);
         pnlLogin.add(btnCadastro);
-        
+        pnlLogin.add(btnVoltar);
 
         return pnlLogin;
     }

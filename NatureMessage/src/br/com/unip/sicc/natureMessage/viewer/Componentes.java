@@ -179,7 +179,7 @@ public class Componentes {
         return linkRedesSociais;
     }
 
-    public static JRadioButton montaRadio(String conteudo,int x, int y) {
+    public static JRadioButton montaRadio(String conteudo, int x, int y) {
         JRadioButton radio = new JRadioButton(conteudo);
         radio.setBackground(null);
         radio.setForeground(Color.WHITE);
@@ -187,19 +187,34 @@ public class Componentes {
         radio.setFocusPainted(false);
         radio.setFont(new Font("Arial", Font.BOLD, 12));
         radio.setBounds(x, y, 39, 20);
-        return radio;  
+        return radio;
     }
-    
-    public static String dataHoraAtual(){
+
+    public static String dataHoraAtual() {
         Date data = new Date();
         Calendar dataAtual = new GregorianCalendar();
         data.setTime(data.getTime());
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM ");
         SimpleDateFormat formata = new SimpleDateFormat("h:mm a");
-        return formata.format(data) + " | "+ formatador.format(data);
+        return formata.format(data) + " | " + formatador.format(data);
     }
 
     public void montaIconeFrame(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));
+    }
+
+    public static JLabel btnMinimizar(JFrame janela) {
+        JLabel minimizar = new JLabel("_");
+        minimizar.setForeground(Color.WHITE);
+        minimizar.setFont(new Font("Arial", Font.BOLD, 25));
+        minimizar.setBounds(845, -1, 25, 25);
+        minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                janela.setExtendedState(JFrame.ICONIFIED);
+            }
+        });
+
+        return minimizar;
     }
 }

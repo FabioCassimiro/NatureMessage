@@ -59,6 +59,8 @@ public class TelaCadastro {
     }
 
     public JPanel montaPainelCadastro() {
+        
+        pnlCadastro.add(Componentes.btnMinimizar(telaCadastro));
 
         btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override

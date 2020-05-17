@@ -23,7 +23,9 @@ public class TelaBiografia {
     }
 
     public JPanel montaBiografiaAluno(String aluno) {
-
+        
+        pnlBiografia.add(Componentes.btnMinimizar(telaBiografia));
+        
         JLabel imgAluno = new JLabel();
         imgAluno.setIcon(componentes.buscaImagem(aluno + ".jpeg"));
         imgAluno.setBounds(50, 50, 90, 125);
