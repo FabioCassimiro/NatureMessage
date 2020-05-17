@@ -78,6 +78,7 @@ public class TelaBiografia {
                 pnlBiografia.add(Componentes.montaTexto("<html>Responsável por:<br>"
                         + "Desenvolvimento da documentação</html>", 15, Color.WHITE, 150, 25, 400, 150));
                 linkInstagram = "marcosnews/";
+                linkLinkedin = "in/marcos-paulo-c-da-silva-78b48710a/";
                 break;
         }
 

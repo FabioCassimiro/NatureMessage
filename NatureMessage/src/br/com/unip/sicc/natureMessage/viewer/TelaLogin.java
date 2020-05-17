@@ -16,6 +16,7 @@ import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -47,9 +48,15 @@ public class TelaLogin {
         pnlLogin.add(Componentes.montaTexto("Senha:", 12, Color.WHITE, 277, 260, 350, 25));
         pnlLogin.add(Componentes.montaSeparadora(277, 255, 350, 1));
         pnlLogin.add(Componentes.montaSeparadora(277, 318, 350, 1));
-
-        txfUsuario = Componentes.montaTxfPadrao(277, 225, 350, 30);
-        pwdSenha = Componentes.montaPwdPadrao(277, 285, 350, 30);
+        
+        JLabel lblImageSenha = new JLabel(componentes.buscaImagem("cadeado.png"));
+        lblImageSenha.setBounds(277, 285, 30, 30);
+        
+        JLabel lblImageLogin = new JLabel(componentes.buscaImagem("usuario.png"));
+        lblImageLogin.setBounds(277, 225, 30, 30);
+        
+        txfUsuario = Componentes.montaTxfPadrao(306, 225, 320, 30);
+        pwdSenha = Componentes.montaPwdPadrao(306, 285, 320, 30);
 
         JButton btnEntra = Componentes.montaBotaoAlteravel("Entrar");
         btnEntra.setBounds(277, 342, 350, 30);
@@ -97,10 +104,13 @@ public class TelaLogin {
             }
         });
 
+        pnlLogin.add(lblImageSenha);
+        pnlLogin.add(lblImageLogin);
         pnlLogin.add(txfUsuario);
         pnlLogin.add(pwdSenha);
         pnlLogin.add(btnEntra);
         pnlLogin.add(btnCadastro);
+        
 
         return pnlLogin;
     }
