@@ -1,6 +1,5 @@
 package br.com.unip.sicc.natureMessage.banco;
 
-import br.com.unip.sicc.natureMessage.viewer.TelaLogin;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -21,25 +20,26 @@ public class AcoesBancoDeDados {
     public static String noSobrenome;
     public static String noCargo;
     public static String noEmpresa;
-
+    
+    
     public static String comandoSelect(String[] campos, String[] dados, String tabela) {
-        String comando = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " + tabela : "SELECT * FROM " + tabela + " WHERE ";
+        String comandoSelect = dados.length == 0 && campos.length == 0 ? "SELECT * FROM " + tabela : "SELECT * FROM " + tabela + " WHERE ";
 
         if (campos.length != 0 && dados.length != 0) {
 
             for (int i = 0; i < campos.length; i++) {
                 //Somente uma Condicao
                 if (campos.length == 1) {
-                    comando += campos[i] + " = " + "'" + dados[i] + "'";
+                    comandoSelect += campos[i] + " = " + "'" + dados[i] + "'";
                 }
                 //Varias condicoes
                 if (campos.length > 1) {
                     if (i == campos.length) {
-                        comando += campos[i] + " = " + "'" + dados[i] + "'";
+                        comandoSelect += campos[i] + " = " + "'" + dados[i] + "'";
                     } else if (i == campos.length - 1) {
-                        comando += campos[i] + " = " + "'" + dados[i] + "'";
+                        comandoSelect += campos[i] + " = " + "'" + dados[i] + "'";
                     } else {
-                        comando += campos[i] + " = " + "'" + dados[i] + "'" + " AND ";
+                        comandoSelect += campos[i] + " = " + "'" + dados[i] + "'" + " AND ";
                     }
 
                 }
@@ -48,47 +48,44 @@ public class AcoesBancoDeDados {
 
         }
 
-        return comando;
+        return comandoSelect;
     }
 
     public static String comandoInsert(String[] campos, String tabela) {
-        String comando = "";
+        String comandoInsert = "";
 
         switch (tabela) {
             case "TB_USUARIO":
-                comando = "INSERT INTO TB_USUARIO (NOLOGIN,NOSENHA) VALUES(";
+                comandoInsert = "INSERT INTO TB_USUARIO (NOLOGIN,NOSENHA) VALUES(";
                 break;
             case "TB_PESSOA":
-                comando = "INSERT INTO TB_PESSOA(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(";
+                comandoInsert = "INSERT INTO TB_PESSOA(NOPESSOA,NOSOBRENOME,DTNASCIMENTO,NOEMAIL,NOENDERECO,NOEMPRESA,NOCARGO) VALUES(";
                 break;
             case "TB_RELATORIO":
-                comando = "INSERT INTO TB_RELATORIO (NORELATORIO,NOLOGIN,NOEMPRESA,DTCRIACAO,SITUACAO,OBSERVACAO) VALUES (";
+                comandoInsert = "INSERT INTO TB_RELATORIO (NORELATORIO,NOLOGIN,NOEMPRESA,DTCRIACAO,SITUACAO,OBSERVACAO) VALUES (";
                 break;
         }
 
         for (int i = 0; i < campos.length; i++) {
 
             if (i == campos.length - 1) {
-                comando += "'" + campos[i] + "')";
+                comandoInsert += "'" + campos[i] + "')";
             } else {
-                comando += "'" + campos[i] + "'" + ",";
+                comandoInsert += "'" + campos[i] + "'" + ",";
             }
 
         }
-        System.out.println(comando);
-        return comando;
+        return comandoInsert;
     }
 
-    //UPDATE tb_usuario SET VISTO = "08/05 as 00:46" WHERE NOLOGIN = "fcassimiro";
     public static String comandoUpdate(String campo, String valor, String condicao, String tabela) {
-        String comando = "UPDATE " + tabela + " SET " + campo + " = " + "'" + valor + "'" + " WHERE " + condicao;
-        return comando;
+        String comandoUpdate = "UPDATE " + tabela + " SET " + campo + " = " + "'" + valor + "'" + " WHERE " + condicao;
+        return comandoUpdate;
     }
 
-//->Consulta usuário no banco de dados.
-    public static void ConsultaLoginSenha(String sqlquery) {
+    
+    public static void consultaCredenciais(String sqlquery) {
         try {
-            System.out.println(sqlquery);
             PreparedStatement pesquisa = ConexaoBancoDeDados.conexao().prepareStatement(sqlquery);
             ResultSet resultado = pesquisa.executeQuery();
             while (resultado.next()) {
@@ -98,27 +95,26 @@ public class AcoesBancoDeDados {
                     resultCdUsuario = resultado.getString("CdUsuario");
                 }
             }
-
+            
         } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, " Erro consulta de Usuario.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro consulta de Usuario.\n Exception Banco de dados",
+                    "NatureMessage", JOptionPane.ERROR_MESSAGE);
         }
     }
-    //->Fim Consulta usuário.
 
-    //->Cria usuario no banco de dados
-    public static void CriaCadastroUsuario(String sqlquery) {
-
+    
+    public static void criaCadastroUsuario(String sqlquery) {
         try {
             Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Erro criação de Usuario/Pessoa .\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro criação de Usuario/Pessoa .\n Exception Banco de dados",
+                    "NatureMessage", JOptionPane.ERROR_MESSAGE);
         }
     }
-    //->Fim criação usuario.
 
-    public void ConsultaServidor(String sqlQuery) {
+    
+    public void consultaServidor(String sqlQuery) {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
@@ -132,22 +128,24 @@ public class AcoesBancoDeDados {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Erro consulta de Servidor.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro consulta de Servidor.\n Exception Banco de dados",
+                    "NatureMessage", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    
     public static void atualizaUltimoLogin(String sqlquery) {
 
         try {
             Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlquery);
+            
         } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, " Erro atualizar visto por ultimo.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro atualizar visto por ultimo.\n Exception Banco de dados",
+                    "NatureMessage", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public static void ConsultaPessoa(String sqlQuery) {
+    public static void consultaPessoa(String sqlQuery) {
         try {
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
@@ -161,14 +159,14 @@ public class AcoesBancoDeDados {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Erro consulta de Servidor.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro consulta de Servidor.\n Exception Banco de dados",
+                    "NatureMessage", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public static void carregaMensagem(String sqlQuery) {
         try {
             mensagemCompleta = "";
-            System.out.println(sqlQuery);
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
 
@@ -185,9 +183,10 @@ public class AcoesBancoDeDados {
                     }
                 }
             }
-            System.out.println(mensagemCompleta);
+            
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Erro ao carregar mensagens.\n Exception Banco de dados");
+            JOptionPane.showMessageDialog(null, " Erro ao carregar mensagens.\n Exception Banco de dados",
+                    "NatureMessage", JOptionPane.ERROR_MESSAGE);
         }
     }
 

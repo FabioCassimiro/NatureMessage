@@ -32,7 +32,7 @@ public class ConfigConexaoServidor {
 
     public void ValidaServidor(String cdHostname) throws ServerNotFoundException {
         String [] dadosServidor = {cdHostname};
-        dados.ConsultaServidor(AcoesBancoDeDados.comandoSelect(camposServidor, dadosServidor, "TB_SERVIDOR"));
+        dados.consultaServidor(AcoesBancoDeDados.comandoSelect(camposServidor, dadosServidor, "TB_SERVIDOR"));
         if (cdHostname.equals(AcoesBancoDeDados.resultCdServidor)) {
            // noHostname = dados.getResultNoHostname();
             portaServidor = Integer.parseInt(AcoesBancoDeDados.resulPtServidor);

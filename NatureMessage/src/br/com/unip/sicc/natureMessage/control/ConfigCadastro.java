@@ -27,7 +27,7 @@ public class ConfigCadastro {
              String noCargo, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatchException {
         
         String[] dadosUsuario = {noLogin, noSenha};
-        AcoesBancoDeDados.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, dadosUsuario, "TB_USUARIO"));
+        AcoesBancoDeDados.consultaCredenciais(AcoesBancoDeDados.comandoSelect(camposUsuario, dadosUsuario, "TB_USUARIO"));
         
         if (!noPessoa.equals("") && !noSobrenome.equals("") && !noCargo.equals("") && !noEmpresa.equals("") && !noEndereco.equals("")
                 && !dtNascimento.equals("  /  /    ") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
@@ -37,8 +37,8 @@ public class ConfigCadastro {
                     String[] usuario = {noLogin, noSenha};
                     String[] pessoa = {noPessoa, noSobrenome, dtNascimento, noEmail, noEndereco, noEmpresa, noCargo};
 
-                    AcoesBancoDeDados.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(usuario, "TB_USUARIO"));
-                    AcoesBancoDeDados.CriaCadastroUsuario(AcoesBancoDeDados.comandoInsert(pessoa, "TB_PESSOA"));
+                    AcoesBancoDeDados.criaCadastroUsuario(AcoesBancoDeDados.comandoInsert(usuario, "TB_USUARIO"));
+                    AcoesBancoDeDados.criaCadastroUsuario(AcoesBancoDeDados.comandoInsert(pessoa, "TB_PESSOA"));
 
                 } else {
                     throw new PasswordsDontMatchException("Senhas não conferem");

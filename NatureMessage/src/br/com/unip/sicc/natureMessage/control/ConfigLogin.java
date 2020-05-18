@@ -16,14 +16,14 @@ public class ConfigLogin {
     public String ValidaUsuarioSenha(String usuario, String senha) throws UserInvalidException, InvalidPasswordException {
         String[] camposUsuario = {"NOLOGIN", "NOSENHA"};
         String[] camposDados = {usuario, senha};
-        AcoesBD.ConsultaLoginSenha(AcoesBancoDeDados.comandoSelect(camposUsuario, camposDados, "TB_USUARIO"));
+        AcoesBD.consultaCredenciais(AcoesBancoDeDados.comandoSelect(camposUsuario, camposDados, "TB_USUARIO"));
 
         if (usuario.equals(AcoesBancoDeDados.resultNoLogin) && senha.equals(AcoesBancoDeDados.resultNoSenha)) {
             String[] camposPessoa = {"CDPESSOA"};
             String[] dadosPessoa = {AcoesBancoDeDados.resultCdUsuario};
 
             AcoesBancoDeDados.atualizaUltimoLogin(AcoesBancoDeDados.comandoUpdate("VISTO", "Entrada no sistema: " + Componentes.dataHoraAtual(), " NOLOGIN = " + "'" + AcoesBancoDeDados.resultNoLogin + "'", "TB_USUARIO"));
-            AcoesBancoDeDados.ConsultaPessoa(AcoesBancoDeDados.comandoSelect(camposPessoa, dadosPessoa, "TB_PESSOA"));
+            AcoesBancoDeDados.consultaPessoa(AcoesBancoDeDados.comandoSelect(camposPessoa, dadosPessoa, "TB_PESSOA"));
             return AcoesBancoDeDados.resultNoLogin;
         }
         if (usuario.equals(AcoesBancoDeDados.resultNoLogin) && !senha.equals(AcoesBancoDeDados.resultNoSenha)) {
