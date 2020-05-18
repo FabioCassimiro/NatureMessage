@@ -4,6 +4,7 @@ import br.com.unip.sicc.natureMessage.viewer.TelaInicial;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class ConexaoBancoDeDados {
 
@@ -19,7 +20,8 @@ public class ConexaoBancoDeDados {
             Connection conect = null;
             return conect = DriverManager.getConnection(url, noUsuarioBanco, noSenhaBanco);
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, " Erro de conexão com o Banco de Dados .\n Exception Banco de dados",
+                    "NatureMessage", JOptionPane.ERROR_MESSAGE);
         }
         return null;
 
