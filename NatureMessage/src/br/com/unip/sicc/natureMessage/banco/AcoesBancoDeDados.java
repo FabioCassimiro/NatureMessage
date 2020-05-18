@@ -16,7 +16,7 @@ public class AcoesBancoDeDados {
     public static String resulPtServidor;
     public static String resultCdServidor;
     public static String resultNoServidor;
-    public static String mensagemCompleta = "";
+    public static String mensagemCompleta;
     public static String noPessoa;
     public static String noSobrenome;
     public static String noCargo;
@@ -167,6 +167,7 @@ public class AcoesBancoDeDados {
 
     public static void carregaMensagem(String sqlQuery) {
         try {
+            mensagemCompleta = "";
             System.out.println(sqlQuery);
             PreparedStatement servidor = ConexaoBancoDeDados.conexao().prepareStatement(sqlQuery);
             ResultSet resultado = servidor.executeQuery();
