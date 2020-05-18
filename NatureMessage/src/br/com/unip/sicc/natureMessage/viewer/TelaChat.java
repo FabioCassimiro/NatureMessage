@@ -2,13 +2,11 @@ package br.com.unip.sicc.natureMessage.viewer;
 
 import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.control.ConfigChat;
-import br.com.unip.sicc.natureMessage.model.Arquivo;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.Calendar;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -28,15 +26,12 @@ import javax.swing.ScrollPaneConstants;
 
 public class TelaChat extends JFrame {
 
-    private Arquivo arquivo;
-    Componentes componentes = new Componentes();
+    private Componentes componentes = new Componentes();
     private JTextField txaEnviar;
     private JEditorPane txaChat;
     private final String actionName = "TECLA_ENTER";
     private JLabel lblStatus;
-
-    PainelPadrao pnlChat = new PainelPadrao();
-    Componentes botoesPadrao = new Componentes();
+    private PainelPadrao pnlChat = new PainelPadrao();
     JFrame telaChat = new JFrame();
 
     public TelaChat(int portaServidor) {
@@ -45,19 +40,19 @@ public class TelaChat extends JFrame {
         telaChat.setLocationRelativeTo(null);
         telaChat.setUndecorated(true);
         telaChat.setVisible(true);
-        botoesPadrao.montaIconeFrame(telaChat);
+        componentes.montaIconeFrame(telaChat);
         ConfigChat.Chat(txaChat, portaServidor);
     }
 
     public JPanel montaPainelChat() {
 
-        pnlChat.add(Componentes.btnMinimizar(telaChat));
+        pnlChat.add(Componentes.montaBtnMinimizar(telaChat));
         
-        JButton btnPerfil = Componentes.montaBotaoPadrao("");
+        JButton btnPerfil = Componentes.montaBtnPadrao("");
         btnPerfil.setBounds(60, 45, 100, 100);
         btnPerfil.setIcon(componentes.buscaImagem("perfil.png"));
 
-        JButton btnEnviar = botoesPadrao.montaBotaoAlteravel("Enviar");
+        JButton btnEnviar = componentes.montaBotaoAlteravel("Enviar");
         btnEnviar.setBounds(782, 390, 79, 35);
         btnEnviar.setBackground(new Color(0, 255, 127));
         btnEnviar.addActionListener(new ActionListener() {
@@ -80,7 +75,7 @@ public class TelaChat extends JFrame {
         ActionMap actionMap = btnEnviar.getActionMap();
         actionMap.put(actionName, actionTecla);
 
-        JButton btnLogoff = Componentes.montaBotaoPadrao("Logoff");
+        JButton btnLogoff = Componentes.montaBtnPadrao("Logoff");
         btnLogoff.setFont(new Font("Arial", Font.BOLD, 12));
         btnLogoff.setBounds(60, 420, 100, 25);
         btnLogoff.addActionListener(new ActionListener() {
@@ -95,7 +90,7 @@ public class TelaChat extends JFrame {
             }
         });
 
-        JButton desconectServidor = botoesPadrao.montaBotaoAlteravel("Desconectar do servidor");
+        JButton desconectServidor = componentes.montaBotaoAlteravel("Desconectar do servidor");
         desconectServidor.setBounds(34, 385, 150, 35);
         desconectServidor.setFont(new Font("Arial", Font.BOLD, 12));
         desconectServidor.setBackground(null);
@@ -105,8 +100,6 @@ public class TelaChat extends JFrame {
                 if (JOptionPane.showConfirmDialog(null, "Deseja realmente sair do servidor?", "Nature Message", JOptionPane.YES_OPTION) == 0) {
                     telaChat.dispose();
                     new TelaServidor();
-                    AcoesBancoDeDados.mensagemCompleta = "";
-                    System.out.println("Desconectei" + AcoesBancoDeDados.mensagemCompleta);
                 }
             }
         });

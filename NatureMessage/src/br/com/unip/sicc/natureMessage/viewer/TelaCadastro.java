@@ -60,9 +60,9 @@ public class TelaCadastro {
 
     public JPanel montaPainelCadastro() {
         
-        pnlCadastro.add(Componentes.btnMinimizar(telaCadastro));
+        pnlCadastro.add(Componentes.montaBtnMinimizar(telaCadastro));
 
-        btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
+        btnVoltar = Componentes.montaBtnIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!txfNome.getText().equals("") || !txfSobrenome.getText().equals("") || !txfCargo.getText().equals("")
@@ -147,11 +147,10 @@ public class TelaCadastro {
             public void actionPerformed(ActionEvent e) {
                 validacaoCampos();
                 try {
-                    //Validações do cadastro.
                     ConfigCadastro.ConfigCadastroValida(txfUsuario.getText(), pwdSenha.getText());
                     cadastro.CadastroUsuario(txfNome.getText(), txfSobrenome.getText(), txfDtNasc.getText(), txfEmail.getText(),
                              txfEndereco.getText(),txfEmpresa.getText(), txfCargo.getText(), txfUsuario.getText(), pwdSenha.getText(), pwdConfirmaSenha.getText());
-
+                    
                     JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!", "Nature Message", JOptionPane.INFORMATION_MESSAGE);
                     telaCadastro.dispose();
                     new TelaLogin();
@@ -216,7 +215,7 @@ public class TelaCadastro {
     public void validacaoCampos() {
         lnsNome.setForeground(Componentes.validaCampo(txfNome.getText(), "VALIDAR"));
         lnsSobrenome.setForeground(Componentes.validaCampo(txfSobrenome.getText(), "VALIDAR"));
-        lnsDtNasc.setForeground(Componentes.validaCampoEspecial(txfDtNasc.getText(), "VALIDAR"));
+        lnsDtNasc.setForeground(Componentes.validaCampoData(txfDtNasc.getText(), "VALIDAR"));
         lnsCargo.setForeground(Componentes.validaCampo(txfCargo.getText(), "VALIDAR"));
         lnsEmpresa.setForeground(Componentes.validaCampo(txfEmpresa.getText(), "VALIDAR"));
         lnsEndereco.setForeground(Componentes.validaCampo(txfEndereco.getText(), "VALIDAR"));

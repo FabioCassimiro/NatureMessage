@@ -24,7 +24,7 @@ public class TelaBiografia {
 
     public JPanel montaBiografiaAluno(String aluno) {
         
-        pnlBiografia.add(Componentes.btnMinimizar(telaBiografia));
+        pnlBiografia.add(Componentes.montaBtnMinimizar(telaBiografia));
         
         JLabel imgAluno = new JLabel();
         imgAluno.setIcon(componentes.buscaImagem(aluno + ".jpeg"));
@@ -33,7 +33,7 @@ public class TelaBiografia {
         String linkGitHub = null;
         String linkLinkedin = null;
 
-        JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
+        JButton btnVoltar = Componentes.montaBtnIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaBiografia.dispose();

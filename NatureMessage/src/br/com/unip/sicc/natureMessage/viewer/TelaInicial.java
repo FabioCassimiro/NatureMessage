@@ -32,7 +32,7 @@ public class TelaInicial {
 
     public JPanel montaPainelInicial() {
         
-        pnlInicial.add(Componentes.btnMinimizar(telaInicial));
+        pnlInicial.add(Componentes.montaBtnMinimizar(telaInicial));
 
         JLabel lblLogo = Componentes.montaTexto("", 35, Color.WHITE, 340, 120, 250, 250);
         lblLogo.setIcon(componentes.buscaImagem("logo.png"));
@@ -52,7 +52,7 @@ public class TelaInicial {
             }
         });
 
-        JButton btnManual = Componentes.montaBotaoPadrao("Manual de funcionamento");
+        JButton btnManual = Componentes.montaBtnPadrao("Manual de funcionamento");
         btnManual.setBounds(378, 377, 150, 35);
         btnManual.addActionListener(new ActionListener() {
             @Override
@@ -60,7 +60,7 @@ public class TelaInicial {
                 //Acao invoca manual.
             }
         });
-        JButton btnDAO = Componentes.montaBotaoIcone(imagemExecute, 0, 450, 50, 50, new ActionListener() {
+        JButton btnDAO = Componentes.montaBtnIcone(imagemExecute, 0, 450, 50, 50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String user = JOptionPane.showInputDialog("Digite o usuario");

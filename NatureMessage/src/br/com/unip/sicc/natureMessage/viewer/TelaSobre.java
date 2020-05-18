@@ -23,8 +23,8 @@ public class TelaSobre {
 
     public JPanel montaPainelSobre() {
 
-        pnlSobre.add(Componentes.btnMinimizar(telaSobre));
-        JButton btnVoltar = Componentes.montaBotaoIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
+        pnlSobre.add(Componentes.montaBtnMinimizar(telaSobre));
+        JButton btnVoltar = Componentes.montaBtnIcone(componentes.buscaImagem("setaVoltar.png"), 15, 10, 25, 25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaSobre.dispose();

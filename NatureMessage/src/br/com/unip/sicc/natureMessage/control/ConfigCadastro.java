@@ -19,13 +19,13 @@ public class ConfigCadastro {
             throw new InsufficientCharactersException("A senha deve ter pelo menos 8(oito) caracteres!");
         }
     }
-    
-    public void CadastroUsuario(String noPessoa, String noSobrenome,String dtNascimento,String noEmail, String noEndereco, String noEmpresa,
-             String noCargo, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatchException {
-        
+
+    public void CadastroUsuario(String noPessoa, String noSobrenome, String dtNascimento, String noEmail, String noEndereco, String noEmpresa,
+            String noCargo, String noLogin, String noSenha, String confirmacaoSenha) throws InsufficientCharactersException, UserRegisteredException, PasswordsDontMatchException {
+
         String[] dadosUsuario = {noLogin, noSenha};
         AcoesBancoDeDados.consultaCredenciais(AcoesBancoDeDados.comandoSelect(camposUsuario, dadosUsuario, "TB_USUARIO"));
-        
+
         if (!noPessoa.equals("") && !noSobrenome.equals("") && !noCargo.equals("") && !noEmpresa.equals("") && !noEndereco.equals("")
                 && !dtNascimento.equals("  /  /    ") && !noEmail.equals("") && !noLogin.equals("") && !noSenha.equals("")) {
 

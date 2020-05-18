@@ -4,7 +4,6 @@ import br.com.unip.sicc.natureMessage.banco.AcoesBancoDeDados;
 import br.com.unip.sicc.natureMessage.exception.InvalidPasswordException;
 import br.com.unip.sicc.natureMessage.exception.UserInvalidException;
 import br.com.unip.sicc.natureMessage.viewer.Componentes;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 public class ConfigLogin {
