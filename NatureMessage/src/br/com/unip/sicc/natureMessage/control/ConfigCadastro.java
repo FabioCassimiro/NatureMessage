@@ -47,7 +47,6 @@ public class ConfigCadastro {
 
         } else {
             throw new InsufficientCharactersException("Campos obrigatorios não preenchidos");
-
         }
 
     }

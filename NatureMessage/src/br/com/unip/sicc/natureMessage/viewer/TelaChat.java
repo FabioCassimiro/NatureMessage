@@ -63,7 +63,7 @@ public class TelaChat extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ConfigChat.botaoEnviarActionPerformed(txaEnviar);
+                ConfigChat.acaoEnviar(txaEnviar);
             }
         });
         Action actionTecla = new AbstractAction() {

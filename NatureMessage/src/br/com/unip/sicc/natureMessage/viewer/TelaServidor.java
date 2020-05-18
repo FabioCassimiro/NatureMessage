@@ -1,5 +1,6 @@
 package br.com.unip.sicc.natureMessage.viewer;
 
+import br.com.unip.sicc.natureMessage.control.ConfigChat;
 import br.com.unip.sicc.natureMessage.control.ConfigConexaoServidor;
 import br.com.unip.sicc.natureMessage.exception.ServerNotFoundException;
 import java.awt.Color;
@@ -65,7 +66,9 @@ public class TelaServidor {
                     servidor.ValidaServidor(txfEnderecoIP.getText().toUpperCase());
                     telaServidor.dispose();
                     new TelaChat(servidor.getPortaServidor());
-                    JOptionPane.showMessageDialog(null,"Conectado a: " + servidor.getNomeServidor(),"Mensagem servidor",JOptionPane.INFORMATION_MESSAGE);
+                    String mensagemStatus = ConfigChat.status.equals("Online")? "Conectado a: " + servidor.getNomeServidor() :"Servidor: " + servidor.getNomeServidor() + " Offline\n"
+                            + "Somente as mensagens foram carregadas" ;
+                    JOptionPane.showMessageDialog(null,mensagemStatus,"Mensagem servidor",ConfigChat.status.equals("Online")?JOptionPane.INFORMATION_MESSAGE:JOptionPane.ERROR_MESSAGE);
                 } catch (ServerNotFoundException ex) {
                     ex.printStackTrace();
                 }

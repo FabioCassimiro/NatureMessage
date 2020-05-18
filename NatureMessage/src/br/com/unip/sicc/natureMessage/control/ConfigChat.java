@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -17,12 +19,15 @@ import javax.swing.SwingUtilities;
 public class ConfigChat {
 
     static Socket socketCliente;
+    public static String status;
 
     public static void Chat(JEditorPane txaChat, int porta) {
         try {
             socketCliente = new Socket(AcoesBancoDeDados.resulIpServidor, porta);
+            status = "Online";
             Thread(txaChat, socketCliente);
         } catch (IOException ex) {
+            status = "Offile";
             JOptionPane.showMessageDialog(null, "Não foi possivel estabelecer conexao", "Mensagem Servidor", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -38,34 +43,30 @@ public class ConfigChat {
                     InputStreamReader inputStreamReader = new InputStreamReader(socketCliente.getInputStream());
                     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-                    while ((msgReceb = bufferedReader.readLine()) != null) {
-
-                        //String msg = txaChat.getText() + "\n\n" + msgReceb;
+                    while (( msgReceb = bufferedReader.readLine()) != null) {
                         String msg = msgReceb;
                         SwingUtilities.invokeLater(new Runnable() {
                             @Override
                             public void run() {
-                                
+                                //Adiciona mensagens na JEDITORPANE.
                                 if (msg.startsWith("[" + TelaLogin.nomeUsuario + "]")) {
                                     txaChat.setText(!txaChat.getText().equals("")? txaChat.getText() + "\n\n" +  msg.replace("Recebido", "Enviado").replace(TelaLogin.nomeUsuario, "Eu"):
                                             msg.replace("Recebido", "Enviado").replace(TelaLogin.nomeUsuario, "Eu"));
                                 } else {
                                     txaChat.setText(!txaChat.getText().equals("")? txaChat.getText() + "\n\n" +  msg:msg);
                                 }
-
                             }
                         });
                     }
                 } catch (IOException ex) {
-
+                    ex.getMessage();
                 }
             }
         });
         tr.start();
     }
 
-    public static void botaoEnviarActionPerformed(JTextField txaEnviar) {
-        Calendar dataHora = Calendar.getInstance();
+    public static void acaoEnviar(JTextField txaEnviar) {
         if (!txaEnviar.getText().equals("")) {
             try {
                 String mensagem = TelaLogin.nomeUsuario;
@@ -74,8 +75,11 @@ public class ConfigChat {
                 ps.println(mensagem);
                 ps.flush();
                 txaEnviar.setText(null);
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Não foi possivel enviar a mensagem, servidor Offline.",
+                    "NatureMessage", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ex) {
+                Logger.getLogger(ConfigChat.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
