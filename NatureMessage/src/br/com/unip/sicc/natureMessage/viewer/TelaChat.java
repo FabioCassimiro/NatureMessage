@@ -109,12 +109,13 @@ public class TelaChat extends JFrame {
         linhaSeparatorMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         JScrollPane barraChat = new JScrollPane(txaChat = new JEditorPane());
+        barraChat.setBounds(260, 63, 600, 320);
+        barraChat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         txaChat.setEditable(false);
         txaChat.setText(ConfigChat.dadosChat());
         txaChat.setForeground(new Color(138, 43, 226));
         txaChat.setFont(new Font("Arial", Font.PLAIN, 15));
-        barraChat.setBounds(260, 63, 600, 320);
-        barraChat.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        
 
         JScrollPane scrollEnviar = new JScrollPane(txaEnviar);
         txaEnviar = new JTextField();

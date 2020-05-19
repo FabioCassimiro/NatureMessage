@@ -47,7 +47,6 @@ public class TelaSobre {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 TelaBiografia fabio = new TelaBiografia("Fabio");
-                //telaSobre.dispose();
             }
         });
         imgFabio.setToolTipText("Fabio");

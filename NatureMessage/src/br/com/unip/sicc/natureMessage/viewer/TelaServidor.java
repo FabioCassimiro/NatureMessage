@@ -38,7 +38,7 @@ public class TelaServidor {
 
         pnlServidor.add(Componentes.montaBtnMinimizar(telaServidor));
         pnlServidor.add(Componentes.montaTexto("Servidor", 35, Color.white, 361, 100, 350, 32));
-        pnlServidor.add(Componentes.montaTexto("Informe endereço IP:", 12, Color.white, 277, 202, 350, 25));
+        pnlServidor.add(Componentes.montaTexto("Informe o codigo do servidor:", 12, Color.white, 277, 202, 350, 25));
         txfEnderecoIP = Componentes.montaTxfPadrao(277, 225, 350, 30);
         pnlServidor.add(Componentes.montaSeparadora(277, 255, 350, 1));
 
