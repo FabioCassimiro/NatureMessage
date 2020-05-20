@@ -39,6 +39,7 @@ public class TelaLogin {
         telaLogin.setLocationRelativeTo(null);
         telaLogin.setUndecorated(true);
         telaLogin.setVisible(true);
+        componentes.montaIconeFrame(telaLogin);
     }
 
     public JPanel montaPainelLogin() {

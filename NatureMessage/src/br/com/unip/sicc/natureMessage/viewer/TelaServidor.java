@@ -22,7 +22,7 @@ import javax.swing.KeyStroke;
 public class TelaServidor {
 
     private PainelPadrao pnlServidor = new PainelPadrao();
-    private Componentes componente = new Componentes();
+    private Componentes componentes = new Componentes();
     private JFrame telaServidor = new JFrame();
     private JTextField txfEnderecoIP;
 
@@ -32,6 +32,7 @@ public class TelaServidor {
         telaServidor.setLocationRelativeTo(null);
         telaServidor.setUndecorated(true);
         telaServidor.setVisible(true);
+        componentes.montaIconeFrame(telaServidor);
     }
 
     public JPanel montaPainelServidor() {
@@ -42,7 +43,7 @@ public class TelaServidor {
         txfEnderecoIP = Componentes.montaTxfPadrao(277, 225, 350, 30);
         pnlServidor.add(Componentes.montaSeparadora(277, 255, 350, 1));
 
-        JButton btnEntra = componente.montaBotaoAlteravel("Entrar");
+        JButton btnEntra = Componentes.montaBotaoAlteravel("Entrar");
         btnEntra.setBounds(277, 268, 350, 30);
         btnEntra.setBackground(new Color(0, 255, 127));
         Action actionTecla = new AbstractAction() {
@@ -70,7 +71,7 @@ public class TelaServidor {
                             + "Somente as mensagens foram carregadas" ;
                     JOptionPane.showMessageDialog(null,mensagemStatus,"Mensagem servidor",ConfigChat.status.equals("Online")?JOptionPane.INFORMATION_MESSAGE:JOptionPane.ERROR_MESSAGE);
                 } catch (ServerNotFoundException ex) {
-                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Servidor não Existe","NatureMessage",JOptionPane.ERROR_MESSAGE);
                 }
 
             }

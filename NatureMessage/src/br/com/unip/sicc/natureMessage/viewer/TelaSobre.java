@@ -19,6 +19,7 @@ public class TelaSobre {
         telaSobre.setLocationRelativeTo(null);
         telaSobre.setUndecorated(true);
         telaSobre.setVisible(true);
+        componentes.montaIconeFrame(telaSobre);
     }
 
     public JPanel montaPainelSobre() {
@@ -28,6 +29,7 @@ public class TelaSobre {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaSobre.dispose();
+                
             }
         });
 
@@ -47,6 +49,7 @@ public class TelaSobre {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 TelaBiografia fabio = new TelaBiografia("Fabio");
+                telaSobre.dispose();
             }
         });
         imgFabio.setToolTipText("Fabio");
@@ -58,6 +61,7 @@ public class TelaSobre {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 TelaBiografia walisson = new TelaBiografia("Walisson");
+                telaSobre.dispose();
             }
         });
         imgWalisson.setToolTipText("Walisson");
@@ -69,6 +73,7 @@ public class TelaSobre {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 TelaBiografia joao = new TelaBiografia("Joao");
+                telaSobre.dispose();
             }
         });
         imgJoao.setToolTipText("João");
@@ -80,6 +85,7 @@ public class TelaSobre {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 TelaBiografia daniel = new TelaBiografia("Daniel");
+                telaSobre.dispose();
             }
         });
         imgDaniel.setToolTipText("Daniel");
@@ -91,6 +97,7 @@ public class TelaSobre {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 TelaBiografia marcos = new TelaBiografia("Marcos");
+                telaSobre.dispose();
             }
         });
         imgMarcos.setToolTipText("Marcos");

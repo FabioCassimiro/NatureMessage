@@ -56,6 +56,7 @@ public class TelaCadastro {
         telaCadastro.setLocationRelativeTo(null);
         telaCadastro.setUndecorated(true);
         telaCadastro.setVisible(true);
+        componentes.montaIconeFrame(telaCadastro);
     }
 
     public JPanel montaPainelCadastro() {

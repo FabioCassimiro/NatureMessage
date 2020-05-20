@@ -20,6 +20,7 @@ public class TelaBiografia {
         telaBiografia.setLocationRelativeTo(null);
         telaBiografia.setUndecorated(true);
         telaBiografia.setVisible(true);
+        componentes.montaIconeFrame(telaBiografia);
     }
 
     public JPanel montaBiografiaAluno(String aluno) {
@@ -37,6 +38,7 @@ public class TelaBiografia {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaBiografia.dispose();
+                new TelaSobre();
             }
         });
 

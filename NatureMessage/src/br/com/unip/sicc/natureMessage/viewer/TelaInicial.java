@@ -28,6 +28,7 @@ public class TelaInicial {
         telaInicial.setLocationRelativeTo(null);
         telaInicial.setUndecorated(true);
         telaInicial.setVisible(true);
+        componentes.montaIconeFrame(telaInicial);
     }
 
     public JPanel montaPainelInicial() {
