@@ -201,7 +201,7 @@ public class Componentes {
     }
 
     public void montaIconeFrame(JFrame icone) {
-        icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logo.png")));
+        icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/natureMessage/image/logoIcone.png")));
     }
 
 }
